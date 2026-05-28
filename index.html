@@ -297,10 +297,10 @@ h3.display {
 
 .body-text {
   font-family: var(--sans);
-  font-size: clamp(13px, 1.05vw, 16px);
-  line-height: 1.7;
-  font-weight: 300;
-  color: var(--ink-soft);
+  font-size: clamp(17px, 1.3vw, 20px);
+  line-height: 1.65;
+  font-weight: 400;
+  color: var(--ink);
   letter-spacing: 0.01em;
 }
 
@@ -1285,20 +1285,15 @@ svg.choreo.sun-arcs { animation: sprite-spin-slow 240s linear infinite; }
 
 /* Star Wars frame note */
 .framing-note {
-  font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-  margin-top: 28px;
-  max-width: 540px;
-  line-height: 1.7;
-  font-weight: 300;
-  text-transform: none;
-  letter-spacing: 0.04em;
-  font-style: italic;
   font-family: var(--serif);
-  font-size: 15px;
+  font-size: clamp(17px, 1.35vw, 20px);
+  line-height: 1.6;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-soft);
+  letter-spacing: 0.005em;
+  margin-top: 28px;
+  max-width: 620px;
 }
 
 .framing-note::before {
@@ -1306,11 +1301,12 @@ svg.choreo.sun-arcs { animation: sprite-spin-slow 240s linear infinite; }
   display: block;
   font-family: var(--sans);
   font-style: normal;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--amber);
-  margin-bottom: 10px;
+  font-weight: 500;
+  margin-bottom: 12px;
 }
 
 /* Scrollbar */
@@ -13073,7 +13069,7 @@ function renderIntake(scene) {
       <div class="intake-block">
         <div class="eyebrow reveal-word">${scene.eyebrow}</div>
         <h2 class="display reveal-word" style="transition-delay:300ms;font-size:clamp(28px,3.6vw,52px);font-style:italic;margin:8px 0 4px">${scene.title}</h2>
-        <div class="body-text reveal-word" style="transition-delay:600ms;font-style:italic;font-family:var(--serif);font-size:17px;color:var(--ink-mute)">${scene.sub}</div>
+        <div class="body-text reveal-word" style="transition-delay:600ms;font-style:italic;font-family:var(--serif);font-size:clamp(18px,1.5vw,22px);line-height:1.55;color:var(--ink-soft)">${scene.sub}</div>
 
         <div class="intake-grid" style="margin-top:32px">
           <div class="intake-field reveal-word" style="transition-delay:900ms">
@@ -13162,7 +13158,7 @@ function renderNarrative(scene) {
     <h2 class="display" style="margin:36px 0 32px">
       ${wordReveal(scene.body.join(' '), 200)}
     </h2>
-    ${lines.length ? `<div class="body-text" style="max-width:620px;margin:0;font-size:clamp(15px,1.4vw,20px);line-height:1.6">
+    ${lines.length ? `<div class="body-text" style="max-width:680px;margin:0;font-size:clamp(17px,1.4vw,21px);line-height:1.65;color:var(--ink)">
       ${lines.map((line, i) => `<p style="margin-bottom:14px">${wordReveal(line, 1500 + i*1200)}</p>`).join('')}
     </div>` : ''}
   </div>`;
@@ -13259,7 +13255,7 @@ function renderQuestion(scene, idx) {
           <span class="practice reveal-word">${scene.practice || ''}</span>
           <span class="reveal-word">${scene.locationLabel}</span>
         </div>
-        ${scene.setup ? `<div class="body-text reveal-word" style="margin-bottom:24px;color:var(--ink-mute);font-style:italic;font-family:var(--serif);font-size:17px">${scene.setup}</div>` : ''}
+        ${scene.setup ? `<div class="body-text reveal-word" style="margin-bottom:24px;color:var(--ink-soft);font-style:italic;font-family:var(--serif);font-size:clamp(18px,1.4vw,21px);line-height:1.55;max-width:680px">${scene.setup}</div>` : ''}
         <div class="q-prompt">${wordReveal(scene.prompt, 200)}</div>
         ${body}
         <button class="q-advance" id="qAdvance" onclick="submitAnswer()">
@@ -13326,7 +13322,7 @@ function renderEndReflection(scene) {
           <span class="practice reveal-word">${scene.eyebrow}</span>
           <span class="reveal-word">${scene.locationLabel}</span>
         </div>
-        ${scene.intro ? `<div class="body-text reveal-word" style="margin-bottom:24px;color:var(--ink-mute);font-style:italic;font-family:var(--serif);font-size:17px">${scene.intro}</div>` : ''}
+        ${scene.intro ? `<div class="body-text reveal-word" style="margin-bottom:24px;color:var(--ink-soft);font-style:italic;font-family:var(--serif);font-size:clamp(18px,1.4vw,21px);line-height:1.55;max-width:680px">${scene.intro}</div>` : ''}
         <div class="q-prompt">${wordReveal(scene.prompt, 200)}</div>
         <textarea class="q-textarea" id="qInput" placeholder="${scene.placeholder || ''}" oninput="textChanged()"></textarea>
         <div class="q-text-meta">Optional — saved with your result so you can return to it.</div>
