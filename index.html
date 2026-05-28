@@ -4,6 +4,31 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Strategic Force Assessment</title>
+<script>
+// Gate the cinematic assessment behind the brand landing.
+// If the user hasn't picked a story yet, send them to start.html.
+// Bypassed by: ?admin=1 (admin entry), ?skin=<id> (deep link), or
+// already-set localStorage skin (returning user).
+(function() {
+  try {
+    var params = new URLSearchParams(window.location.search);
+    if (params.has('admin')) return;
+    var deepSkin = params.get('skin');
+    if (deepSkin) {
+      // Allow deep links like /?skin=apollo_11 — persist and continue.
+      try { localStorage.setItem('mandarin.assessment.currentSkin', deepSkin); } catch (e) {}
+      try { localStorage.setItem('mandarin.assessment.flowStarted', '1'); } catch (e) {}
+      return;
+    }
+    var saved = localStorage.getItem('mandarin.assessment.currentSkin');
+    if (saved) return;
+    // First-time / cleared-storage visit — show the brand landing.
+    window.location.replace('/start.html');
+  } catch (e) {
+    // If anything throws, fall through and load the assessment as usual.
+  }
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">

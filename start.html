@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="The Strategic Force Assessment — a short, story-driven diagnostic that reveals how you think, decide, and lead under pressure. Built on the 12-Practice Strategic Mastery framework." />
+<title>The Strategic Force Assessment | Mandarin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #f4f0e8;
+  --cream-soft: #ece5d7;
+  --ink: #0a0a0a;
+  --ink-soft: #1c1c1c;
+  --ink-mute: #555048;
+  --ink-dim: #807868;
+  --rule: #d8d2c5;
+  --rule-soft: #e7e2d6;
+  --orange: #ff481d;
+  --orange-bright: #ff6b00;
+  --orange-deep: #c93a16;
+  --black: #000;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ─────────── TOP NAVIGATION ─────────── */
+.topnav {
+  background: var(--black);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.topnav-inner {
+  max-width: 1480px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 36px;
+  gap: 24px;
+}
+.topnav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.topnav-logo svg {
+  height: 26px;
+  width: auto;
+}
+.topnav-logo-text {
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: 0.005em;
+  color: #fff;
+}
+.topnav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+.topnav-links a {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+.topnav-links a:hover { opacity: 1; }
+.topnav-cta {
+  border: 1px solid #fff;
+  padding: 12px 18px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff !important;
+  opacity: 1 !important;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.topnav-cta:hover { background: #fff; color: var(--black) !important; }
+@media (max-width: 980px) {
+  .topnav-links { display: none; }
+  .topnav-inner { padding: 14px 20px; }
+}
+
+/* ─────────── HERO ─────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 65px);
+  background: var(--cream);
+}
+.hero-image {
+  background: #0c0a0a center / cover no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+.hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.25) 100%);
+  pointer-events: none;
+}
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 80px 80px 80px;
+  max-width: 720px;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 24px;
+}
+.hero-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--orange);
+  vertical-align: middle;
+  margin-right: 12px;
+  transform: translateY(-2px);
+}
+.hero h1 {
+  font-size: clamp(40px, 5.5vw, 76px);
+  font-weight: 900;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.hero-sub {
+  font-size: clamp(20px, 1.6vw, 26px);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+.hero-sub em {
+  font-style: normal;
+  color: var(--orange);
+}
+.hero-body {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 540px;
+  margin-bottom: 28px;
+}
+.hero-body p + p { margin-top: 14px; }
+.hero-stats {
+  display: flex;
+  gap: 36px;
+  margin-top: 16px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+}
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+}
+.hero-stat-num {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.hero-stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 6px;
+}
+@media (max-width: 980px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-image { min-height: 320px; }
+  .hero-content { padding: 56px 28px; }
+}
+
+/* ─────────── SECTION FRAMING ─────────── */
+.section {
+  padding: 100px 36px;
+  background: var(--cream);
+  border-top: 1px solid var(--rule-soft);
+}
+.section.tight { padding: 72px 36px; }
+.section.dark {
+  background: var(--ink);
+  color: var(--cream);
+  border-color: rgba(255,255,255,0.06);
+}
+.section-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.section-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 18px;
+}
+.section h2 {
+  font-size: clamp(32px, 3.6vw, 56px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-bottom: 24px;
+  max-width: 1000px;
+}
+.section.dark h2 { color: var(--cream); }
+.section-lede {
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 760px;
+  margin-bottom: 56px;
+}
+.section.dark .section-lede { color: var(--cream-soft); }
+
+/* ─────────── "WHAT YOU'LL DISCOVER" ─────────── */
+.discover-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px 56px;
+  margin-top: 8px;
+}
+.discover-item {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 4px 0;
+}
+.discover-tick {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.discover-tick svg { width: 14px; height: 14px; }
+.discover-text {
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ─────────── "WHAT IT'S BASED ON" ─────────── */
+.framework-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.framework-text p {
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--cream-soft);
+  margin-bottom: 18px;
+}
+.framework-text strong {
+  color: var(--cream);
+  font-weight: 600;
+}
+.framework-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 48px;
+  margin-top: 36px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+.framework-stat-num {
+  font-size: 40px;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--orange);
+  letter-spacing: -0.02em;
+}
+.framework-stat-label {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--cream-soft);
+  margin-top: 8px;
+  line-height: 1.35;
+}
+.framework-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.framework-pillar {
+  background: var(--ink);
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+.framework-pillar-num {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--orange);
+  padding-top: 4px;
+}
+.framework-pillar-title {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.framework-pillar-body {
+  font-size: 14px;
+  color: var(--cream-soft);
+  line-height: 1.5;
+}
+@media (max-width: 980px) {
+  .framework-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ─────────── PICK YOUR STORY ─────────── */
+.story-section {
+  background: var(--cream);
+  padding-bottom: 60px;
+}
+.story-helper {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink-mute);
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.story-helper em {
+  font-style: normal;
+  color: var(--orange);
+  font-weight: 600;
+}
+.skin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.skin-card {
+  cursor: pointer;
+  background: #fff;
+  border: 2px solid var(--rule);
+  position: relative;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.skin-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--ink);
+  box-shadow: 0 18px 40px -22px rgba(0,0,0,0.35);
+}
+.skin-card.selected {
+  border-color: var(--orange);
+  box-shadow: 0 24px 50px -22px rgba(255,72,29,0.45), 0 0 0 1px var(--orange) inset;
+  transform: translateY(-3px);
+}
+.skin-card-image {
+  aspect-ratio: 4 / 3;
+  background: #1a1614 center / cover no-repeat;
+  position: relative;
+}
+.skin-card-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.55) 100%);
+}
+.skin-card-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(0,0,0,0.55);
+  padding: 6px 10px;
+  backdrop-filter: blur(6px);
+}
+.skin-card-check {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 0.2s ease;
+}
+.skin-card-check svg { width: 16px; height: 16px; }
+.skin-card.selected .skin-card-check {
+  opacity: 1;
+  transform: scale(1);
+}
+.skin-card-body {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.skin-card-name {
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.skin-card-tagline {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--orange);
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+.skin-card-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-mute);
+  flex: 1;
+}
+
+/* Begin CTA */
+.begin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 12px;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid var(--rule);
+}
+.begin-row-text {
+  font-size: 15px;
+  color: var(--ink-mute);
+}
+.begin-row-text strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.begin-row-text .begin-skin-name {
+  color: var(--orange);
+  font-weight: 700;
+}
+.begin-btn {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--black);
+  border: none;
+  padding: 18px 32px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.begin-btn:hover:not(:disabled) {
+  background: var(--orange);
+  transform: translateY(-1px);
+}
+.begin-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.begin-btn svg {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+/* ─────────── FOOTER ─────────── */
+.footer {
+  background: var(--black);
+  color: var(--cream-soft);
+  padding: 56px 36px 36px;
+}
+.footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: center;
+}
+.footer-mark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer-mark svg { height: 28px; width: auto; }
+.footer-mark-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--cream);
+}
+.footer-meta {
+  text-align: right;
+  font-size: 12px;
+  color: var(--ink-dim);
+  line-height: 1.6;
+}
+.footer-meta a { color: var(--cream-soft); text-decoration: underline; text-underline-offset: 3px; }
+.footer-meta a:hover { color: var(--cream); }
+@media (max-width: 700px) {
+  .footer-inner { grid-template-columns: 1fr; text-align: center; }
+  .footer-mark { justify-content: center; }
+  .footer-meta { text-align: center; }
+}
+
+/* ─────────── UTILS ─────────── */
+.scroll-anchor {
+  position: relative;
+  top: -70px;
+  visibility: hidden;
+}
+</style>
+</head>
+<body>
+
+<!-- ─────────── TOP NAV ─────────── -->
+<header class="topnav">
+  <div class="topnav-inner">
+    <a class="topnav-logo" href="https://www.teammandarin.com/" aria-label="Mandarin home">
+      <svg viewBox="0 0 235 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="m-grad-nav" x1="65" y1="148" x2="131" y2="113" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ff6a1f"/>
+            <stop offset="0.22" stop-color="#ff5f1e"/>
+            <stop offset="0.67" stop-color="#ff4e1d"/>
+            <stop offset="1" stop-color="#ff481d"/>
+          </linearGradient>
+        </defs>
+        <polygon fill="url(#m-grad-nav)" points="139.43 0 92.31 35.2 85.37 100.69 67.33 84.92 34.93 109.09 27.89 154.91 27.88 154.9 16.66 141.62 0 154.03 19.87 210 61.46 193.17 67.63 155.12 96.45 202.36 131.35 188.28 133.23 119.37 170.1 195.5 232.37 170.25 139.43 0"/>
+      </svg>
+      <span class="topnav-logo-text">mandarin</span>
+    </a>
+    <nav>
+      <ul class="topnav-links">
+        <li><a href="https://www.teammandarin.com/strategic-capability-accelerator">Programme</a></li>
+        <li><a href="https://www.teammandarin.com/strategic-capability-masterclass">Masterclass</a></li>
+        <li><a href="https://www.teammandarin.com/leadership-circle-profile">Coaching</a></li>
+        <li><a href="https://www.teammandarin.com/be-more-strategic-book">Book</a></li>
+        <li><a href="https://www.teammandarin.com/resources">Resources</a></li>
+        <li><a href="https://www.teammandarin.com/contact">Contact</a></li>
+        <li><a class="topnav-cta" href="#pick-your-story">Take the Assessment</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ─────────── HERO ─────────── -->
+<section class="hero">
+  <div class="hero-image" style="background-image: url('images/scene-twin-suns.png');"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">The Strategic Force Assessment</div>
+    <h1>How do you lead when pressure enters the room?</h1>
+    <p class="hero-sub">It's not about knowing strategy.<br><em>It's about being strategic.</em></p>
+    <div class="hero-body">
+      <p>Most leaders don't lack capability. They lack a clear view of the pattern that drives their decisions when complexity, ambiguity, and consequence collide.</p>
+      <p>The Strategic Force Assessment is a short, story-driven diagnostic that surfaces that pattern — and gives you a precise read on where your strategic capability is strong, where it's drifting, and what to do about it.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">~12 min</div>
+        <div class="hero-stat-label">to complete</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">12</div>
+        <div class="hero-stat-label">essential practices</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">4</div>
+        <div class="hero-stat-label">story worlds</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── WHAT YOU'LL DISCOVER ─────────── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-eyebrow">What you'll discover</div>
+    <h2>Where your strategic capability is strong — and where it's drifting.</h2>
+    <p class="section-lede">The assessment moves through a series of high-pressure scenes designed to bypass familiar assumptions. By the end, you'll have a clear, evidence-based read on the pattern beneath your decisions.</p>
+
+    <div class="discover-grid">
+      <div class="discover-item">
+        <div class="discover-tick">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19 7.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="discover-text">Your <strong>strategic archetype</strong> — the default leadership pattern that shapes how you decide under pressure.</div>
+      </div>
+      <div class="discover-item">
+        <div class="discover-tick">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19 7.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="discover-text">Your scores across the <strong>12 essential practices</strong> of Strategic Mastery, mapped to the four levels of capability.</div>
+      </div>
+      <div class="discover-item">
+        <div class="discover-tick">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19 7.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="discover-text">The <strong>secondary pattern</strong> that overlays your archetype — the harder-to-see tendency that emerges only when the heat is on.</div>
+      </div>
+      <div class="discover-item">
+        <div class="discover-tick">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19 7.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="discover-text">Your exposure to the <strong>three strategic risks</strong> — Control Bias, Moral Drift, and Detachment Under Pressure.</div>
+      </div>
+      <div class="discover-item">
+        <div class="discover-tick">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19 7.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="discover-text">Where your <strong>biggest opportunity for growth</strong> sits — the practice most likely to unlock the next level of capability for you.</div>
+      </div>
+      <div class="discover-item">
+        <div class="discover-tick">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19 7.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="discover-text">Four <strong>concrete next steps</strong> tailored to your archetype — small experiments you can run in the next seven days.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── WHAT IT'S BASED ON ─────────── -->
+<section class="section dark">
+  <div class="section-inner">
+    <div class="framework-grid">
+      <div class="framework-text">
+        <div class="section-eyebrow">What it's based on</div>
+        <h2>The Be More Strategic framework. Twelve practices. Four levels.</h2>
+        <p>The Strategic Force Assessment is calibrated against Charlie Curson's <strong>Be More Strategic</strong> framework — the same 12-Practice Strategic Mastery model used inside global organisations to build the capability to think clearly, decide well, and act with intent when it matters most.</p>
+        <p>Built on 25+ years of advisory work with more than 250 organisations across 30+ industries, the framework distils strategic capability into twelve practices, organised across four levels — from deepening self-awareness to scaling your impact.</p>
+
+        <div class="framework-stats">
+          <div>
+            <div class="framework-stat-num">25+</div>
+            <div class="framework-stat-label">years building<br>strategic capability</div>
+          </div>
+          <div>
+            <div class="framework-stat-num">250+</div>
+            <div class="framework-stat-label">organisations across<br>30+ industries</div>
+          </div>
+          <div>
+            <div class="framework-stat-num">12</div>
+            <div class="framework-stat-label">essential practices<br>of strategic mastery</div>
+          </div>
+          <div>
+            <div class="framework-stat-num">4</div>
+            <div class="framework-stat-label">levels from awareness<br>to impact</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="framework-pillars">
+        <div class="framework-pillar">
+          <div class="framework-pillar-num">L1</div>
+          <div>
+            <div class="framework-pillar-title">Deepen Self-Awareness</div>
+            <div class="framework-pillar-body">Understand yourself. Master your emotions. Embed reflective practice as habit, not event.</div>
+          </div>
+        </div>
+        <div class="framework-pillar">
+          <div class="framework-pillar-num">L2</div>
+          <div>
+            <div class="framework-pillar-title">Cultivate Open-Mindedness</div>
+            <div class="framework-pillar-body">Be curious. Listen deeply. Think critically before you conclude.</div>
+          </div>
+        </div>
+        <div class="framework-pillar">
+          <div class="framework-pillar-num">L3</div>
+          <div>
+            <div class="framework-pillar-title">Develop Strategic Capabilities</div>
+            <div class="framework-pillar-body">Unlock creativity. Manage uncertainty. Hold the long view.</div>
+          </div>
+        </div>
+        <div class="framework-pillar">
+          <div class="framework-pillar-num">L4</div>
+          <div>
+            <div class="framework-pillar-title">Scale Your Impact</div>
+            <div class="framework-pillar-body">Act decisively. Collaborate inclusively. Influence with credibility.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── PICK YOUR STORY ─────────── -->
+<section class="section story-section">
+  <span id="pick-your-story" class="scroll-anchor"></span>
+  <div class="section-inner">
+    <div class="section-eyebrow">Choose your story</div>
+    <h2>Four worlds. The same diagnostic underneath.</h2>
+    <p class="section-lede">The assessment runs identically across all four story worlds — same 12 practices, same scoring, same archetypes. The story is the lens. Pick the one that pulls you in.</p>
+    <div class="story-helper"><em>Click a card</em> to choose your story — then hit <em>Begin</em>.</div>
+
+    <div class="skin-grid" id="skinGrid">
+
+      <div class="skin-card" data-skin="force_trial" tabindex="0" role="button" aria-pressed="false">
+        <div class="skin-card-image" style="background-image: url('images/scene-twin-suns.png');">
+          <div class="skin-card-tag">Sci-fi · The Coalition</div>
+          <div class="skin-card-check">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19 7.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="skin-card-body">
+          <div class="skin-card-name">The Strategic Force Trial</div>
+          <div class="skin-card-tagline">A galaxy after a long peace. A commander you must judge.</div>
+          <div class="skin-card-desc">Cinematic space-opera prologue. Coalition courtrooms, a Tatooine interlude with a hermit, and a denouement that asks what kind of leader you really are.</div>
+        </div>
+      </div>
+
+      <div class="skin-card" data-skin="apollo_11" tabindex="0" role="button" aria-pressed="false">
+        <div class="skin-card-image" style="background-image: url('images/skin-apollo/scene-mocr.png');">
+          <div class="skin-card-tag">Historical · 1969 Mission Control</div>
+          <div class="skin-card-check">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19 7.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="skin-card-body">
+          <div class="skin-card-name">Trajectory · Apollo 11</div>
+          <div class="skin-card-tagline">Houston. Three days to the Moon. The pressure system you have to navigate.</div>
+          <div class="skin-card-desc">Set inside the Mission Operations Control Room before and during the launch, with Katherine Johnson as your quiet north star and a Flight Director as the system you have to read.</div>
+        </div>
+      </div>
+
+      <div class="skin-card" data-skin="yi" tabindex="0" role="button" aria-pressed="false">
+        <div class="skin-card-image" style="background-image: url('images/skin-yi/scene-fleet-under-fire.png');">
+          <div class="skin-card-tag">Historical · 1597 Korean Coast</div>
+          <div class="skin-card-check">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19 7.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="skin-card-body">
+          <div class="skin-card-name">Twelve Ships · Yi Sun-sin</div>
+          <div class="skin-card-tagline">Admiral. Twelve ships. A court that has already condemned you.</div>
+          <div class="skin-card-desc">Walk in the boots of Admiral Yi Sun-sin in the days before Myeongnyang. A study in conviction, restraint, and the strategic mind in its rarest form.</div>
+        </div>
+      </div>
+
+      <div class="skin-card" data-skin="latimer" tabindex="0" role="button" aria-pressed="false">
+        <div class="skin-card-image" style="background-image: url('images/skin-latimer/scene-drafting-room.png');">
+          <div class="skin-card-tag">Historical · 1880s New York</div>
+          <div class="skin-card-check">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19 7.5" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="skin-card-body">
+          <div class="skin-card-name">Filament · Lewis Latimer</div>
+          <div class="skin-card-tagline">A patent office. A drafting room. A reputation to make.</div>
+          <div class="skin-card-desc">Step into Lewis Latimer's New York at the dawn of electric light — and the strategic choices that turned a draftsman's hand into one of the most consequential careers of the era.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="begin-row">
+      <div class="begin-row-text" id="beginText">
+        <strong>Pick a story above</strong> to enable the Begin button.
+      </div>
+      <button class="begin-btn" id="beginBtn" disabled onclick="beginAssessment()">
+        Begin the Assessment
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12 H19 M14 7 L19 12 L14 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-mark">
+      <svg viewBox="0 0 235 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="m-grad-foot" x1="65" y1="148" x2="131" y2="113" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#ff6a1f"/>
+            <stop offset="1" stop-color="#ff481d"/>
+          </linearGradient>
+        </defs>
+        <polygon fill="url(#m-grad-foot)" points="139.43 0 92.31 35.2 85.37 100.69 67.33 84.92 34.93 109.09 27.89 154.91 27.88 154.9 16.66 141.62 0 154.03 19.87 210 61.46 193.17 67.63 155.12 96.45 202.36 131.35 188.28 133.23 119.37 170.1 195.5 232.37 170.25 139.43 0"/>
+      </svg>
+      <div class="footer-mark-text">mandarin</div>
+    </div>
+    <div class="footer-meta">
+      An assessment by <a href="https://www.teammandarin.com/">Team Mandarin</a>.<br>
+      Built on the <a href="https://www.teammandarin.com/be-more-strategic-book">Be More Strategic</a> framework by Charlie Curson.<br>
+      &copy; Mandarin Business Associates Limited 2026
+    </div>
+  </div>
+</footer>
+
+<script>
+const SKIN_KEY = 'mandarin.assessment.currentSkin';
+const FLOW_KEY = 'mandarin.assessment.flowStarted';
+
+let selectedSkin = null;
+
+const grid = document.getElementById('skinGrid');
+const beginBtn = document.getElementById('beginBtn');
+const beginText = document.getElementById('beginText');
+
+function pickCard(card) {
+  const skinId = card.dataset.skin;
+  selectedSkin = skinId;
+  grid.querySelectorAll('.skin-card').forEach(c => {
+    c.classList.remove('selected');
+    c.setAttribute('aria-pressed', 'false');
+  });
+  card.classList.add('selected');
+  card.setAttribute('aria-pressed', 'true');
+
+  const name = card.querySelector('.skin-card-name').textContent.trim();
+  beginText.innerHTML = 'You chose <span class="begin-skin-name">' + name + '</span>. Ready when you are.';
+  beginBtn.disabled = false;
+}
+
+grid.querySelectorAll('.skin-card').forEach(card => {
+  card.addEventListener('click', () => pickCard(card));
+  card.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pickCard(card); }
+  });
+});
+
+function beginAssessment() {
+  if (!selectedSkin) return;
+  try {
+    localStorage.setItem(SKIN_KEY, selectedSkin);
+    localStorage.setItem(FLOW_KEY, '1');
+  } catch (e) {}
+  // Honour ?admin=1 if present on this page (rare, but for testing)
+  const params = new URLSearchParams(window.location.search);
+  const adminQ = params.has('admin') ? '?admin=1' : '';
+  window.location.href = '/' + adminQ;
+}
+</script>
+</body>
+</html>
