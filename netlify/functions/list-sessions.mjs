@@ -8,10 +8,13 @@ export default async (req) => {
   const auth = requireAdmin(req);
   if (!auth.ok) return json({ error: auth.error }, auth.status);
 
+  // Netlify Blobs treats keys with "/" as nested under a virtual directory.
+  // List with `directories: true` so the full key (e.g. "sessions/abc.json")
+  // comes back in `blobs[].key`, not in a separate `directories` array.
+  const store = getStore("sessions");
   let blobs;
   try {
-    const store = getStore("sessions");
-    const result = await store.list({ prefix: "sessions/" });
+    const result = await store.list({ prefix: "sessions/", directories: true });
     blobs = result.blobs || [];
   } catch (e) {
     console.error("Failed to list Blobs:", e);
@@ -20,7 +23,6 @@ export default async (req) => {
 
   // Fetch each session. For low volume (hundreds), one round-trip each is fine.
   // If this ever runs slow, we can add a separate "index" blob.
-  const store = getStore("sessions");
   const sessions = [];
   for (const b of blobs) {
     try {
