@@ -1,0 +1,14 @@
+# Build artifacts
+node_modules/
+.netlify/
+
+# Deploy artifacts
+deploy-*.zip
+*.tgz
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/

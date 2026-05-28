@@ -1,0 +1,2420 @@
+{
+  "id": "yi_sunsin",
+  "name": "Twelve Ships · Admiral Yi",
+  "tagline": "1597 · Joseon · the campaign before Myeongnyang.",
+  "description": "Set in the months before the Battle of Myeongnyang — with Admiral Yi Sun-sin as your quiet mentor in disgrace, and Admiral Won Gyun as the pressure system you have to navigate.",
+  "theme": {
+    "--amber": "#b53536",
+    "--amber-bright": "#d75557",
+    "--amber-deep": "#7a1818",
+    "--amber-glow": "rgba(181, 53, 54, 0.35)",
+    "--brand-orange": "#b53536",
+    "--brand-tangerine": "#d75557",
+    "--brand-yellow": "#c4a56a",
+    "--bg": "#120c08",
+    "--bg-deep": "#0a0604",
+    "--panel": "#1a120c",
+    "--ink": "#f1e6cb",
+    "--ink-soft": "#d8caa8",
+    "--ink-mute": "#a99880",
+    "--ink-label": "#ebe0c4",
+    "--ink-dim": "#5d4f3a",
+    "--serif": "'Gowun Batang', 'Noto Serif KR', 'EB Garamond', Georgia, serif",
+    "--sans": "'Noto Sans KR', 'Inter', sans-serif",
+    "fontImport": "https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+  },
+  "characters": {
+    "commander": "Admiral Won Gyun",
+    "mentor": "Admiral Yi Sun-sin"
+  },
+  "bodyClasses": [
+    "skin-petals"
+  ],
+  "scenes": [
+    {
+      "type": "landing",
+      "location": "Joseon · Autumn 1597",
+      "locationLabel": "JOSEON · AUTUMN OF THE FIRE YEAR",
+      "title": [
+        "Twelve",
+        "Ships",
+        "·",
+        "<em>Yi</em>"
+      ],
+      "sub": "An assessment of how you think, decide, and lead when pressure enters the room",
+      "note": "Set in the months before the Battle of Myeongnyang — to bypass familiar assumptions and reveal the pattern beneath",
+      "cta": "Enter the court",
+      "duration": 12000
+    },
+    {
+      "type": "intake",
+      "locationLabel": "NAVAL ROSTER · CONFIDENTIAL",
+      "eyebrow": "Before we begin",
+      "title": "Present yourself to the court.",
+      "sub": "Used to address you correctly through the campaign and to render your portrait."
+    },
+    {
+      "type": "crawl",
+      "locationLabel": "PROLOGUE · ROYAL DISPATCH",
+      "preamble": "1597 · Hanseong · The Court of Joseon",
+      "title": [
+        "Twelve",
+        "Ships"
+      ],
+      "episode": "Prologue · The Memorial",
+      "paragraphs": [
+        "It is a time of fire. Five long years of invasion have stretched the Joseon court to its limit. Old certainties — order, loyalty, the very meaning of patience — are being asked to bend.",
+        "In the shadow of the fleet's defeat, the Council has summoned one rare voice. The Admiral believes {{firstName}} can think clearly when others panic. The kingdom does not lack plans. It lacks people who can hold the line when those plans fail.",
+        "Admiral Won Gyun has risen to restore order to the sea. He waits for {{firstName}} in the war chamber at Yeosu. He has already begun to choose...."
+      ],
+      "duration": 43400,
+      "crawlStyle": "scroll",
+      "markSvg": "<svg viewBox=\"0 0 200 200\" aria-hidden=\"true\">\n  <!-- Vermillion outer seal block (slightly worn edges) -->\n  <rect x=\"18\" y=\"18\" width=\"164\" height=\"164\" fill=\"#b53536\" stroke=\"#7a1818\" stroke-width=\"2\"/>\n  <rect x=\"22\" y=\"22\" width=\"156\" height=\"156\" fill=\"none\" stroke=\"#7a1818\" stroke-width=\"0.5\" opacity=\"0.6\"/>\n  <!-- 忠 = upper 中 (middle) + lower 心 (heart) -->\n  <g fill=\"#f1e6cb\" stroke=\"none\">\n    <!-- 中: vertical box -->\n    <rect x=\"72\"  y=\"36\"  width=\"56\" height=\"6\"/>\n    <rect x=\"72\"  y=\"76\"  width=\"56\" height=\"6\"/>\n    <rect x=\"72\"  y=\"36\"  width=\"6\"  height=\"46\"/>\n    <rect x=\"122\" y=\"36\"  width=\"6\"  height=\"46\"/>\n    <!-- 中: vertical stroke through the box -->\n    <rect x=\"97\"  y=\"26\"  width=\"6\"  height=\"76\"/>\n    <!-- 心: heart-shape strokes -->\n    <!-- left curve -->\n    <path d=\"M 56 130 Q 50 150 60 168 L 66 168 Q 60 152 64 134 Z\"/>\n    <!-- centre dot -->\n    <rect x=\"86\" y=\"118\" width=\"8\" height=\"10\" transform=\"rotate(-22 90 123)\"/>\n    <!-- main heart base curve -->\n    <path d=\"M 60 134 Q 100 178 140 134 L 142 142 Q 100 188 58 142 Z\"/>\n    <!-- right dot -->\n    <rect x=\"124\" y=\"120\" width=\"8\" height=\"10\" transform=\"rotate(28 128 125)\"/>\n    <!-- top right dot -->\n    <rect x=\"142\" y=\"132\" width=\"6\" height=\"8\" transform=\"rotate(-12 145 136)\"/>\n  </g>\n  <!-- Aged highlight + shadow for vermillion stamp -->\n  <line x1=\"22\" y1=\"22\"  x2=\"178\" y2=\"22\"  stroke=\"rgba(0,0,0,0.3)\" stroke-width=\"1\"/>\n  <line x1=\"22\" y1=\"178\" x2=\"178\" y2=\"178\" stroke=\"rgba(255,255,255,0.18)\" stroke-width=\"1\"/>\n</svg>",
+      "countdown": "AUTUMN OF THE FIRE YEAR · THIRTEEN SHIPS REMAIN"
+    },
+    {
+      "type": "narrative",
+      "location": "Yeosu · Naval Command",
+      "locationLabel": "YEOSU · WAR CHAMBER OF THE FLEET",
+      "eyebrow": "Act One · The Summons",
+      "artId": "summonsHerald",
+      "layout": "disc-left",
+      "body": [
+        "The",
+        "sea",
+        "is",
+        "narrowing."
+      ],
+      "bodyAfter": [
+        "Coastal villages burn at night. Scouts return without their captains. The captains who remain are asking for another council.",
+        "You have been summoned, {{firstName}} — because you are believed to think clearly when others panic."
+      ],
+      "duration": 8500
+    },
+    {
+      "type": "narrative-scene",
+      "location": "Coruscant · Council Chamber",
+      "locationLabel": "ADMIRAL WON GYUN",
+      "artId": "councilChamber",
+      "quote": "\"The fleet does not lack captains. It lacks people who can think clearly when those plans fail.\"",
+      "speaker": "Admiral Won Gyun",
+      "layout": "disc-right",
+      "duration": 9000
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "location": "Coruscant · Council Chamber",
+      "locationLabel": "Q01 · UNDERSTAND SELF",
+      "practice": "Understand Self",
+      "setup": "Won Gyun studies you. The chamber falls silent. You feel the weight of being watched — by him, and by yourself.",
+      "prompt": "When pressure rises, I am aware of how my thinking and behaviour are beginning to change.",
+      "labels": [
+        "Strongly disagree",
+        "Disagree",
+        "Neutral",
+        "Agree",
+        "Strongly agree"
+      ],
+      "scoring": [
+        {
+          "understand_self": 0
+        },
+        {
+          "understand_self": 25
+        },
+        {
+          "understand_self": 50
+        },
+        {
+          "understand_self": 75
+        },
+        {
+          "understand_self": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q02 · MASTER EMOTIONS",
+      "practice": "Master Emotions",
+      "setup": "A junior officer is humiliated in front of the whole council. The room goes still. Heat rises in your chest.",
+      "prompt": "In the moment, what do you most notice happening inside you?",
+      "options": [
+        {
+          "copy": "A clean composure — I detach from the heat and keep the room orderly.",
+          "score": {
+            "master_emotions": 35,
+            "detachment_pressure": 55
+          }
+        },
+        {
+          "copy": "A defensive impulse to step in immediately and reassert the council's discipline.",
+          "score": {
+            "master_emotions": 25,
+            "control_bias": 45
+          }
+        },
+        {
+          "copy": "A flash of anger or shame that I can name, but not yet act on cleanly.",
+          "score": {
+            "master_emotions": 60,
+            "understand_self": 50
+          }
+        },
+        {
+          "copy": "A steady warmth and a clear breath — I feel the reaction, choose how to respond, and act.",
+          "score": {
+            "master_emotions": 95,
+            "understand_self": 70,
+            "embed_practices": 50
+          }
+        },
+        {
+          "copy": "A blankness — I freeze, and I notice the freeze itself.",
+          "score": {
+            "master_emotions": 35,
+            "understand_self": 60
+          }
+        },
+        {
+          "copy": "I leave the chamber emotionally before my body does.",
+          "score": {
+            "master_emotions": 30,
+            "detachment_pressure": 65,
+            "understand_self": 25
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q03 · EMBED PRACTICES",
+      "practice": "Embed Practices",
+      "setup": "Between councils the corridor of the headquarters empties. A single moment of stillness before the next dispatch.",
+      "prompt": "I have daily rituals — reflection, ink and brush, deliberate pauses — that I rely on to stay aware of myself under load.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Often",
+        "It is part of how I live"
+      ],
+      "scoring": [
+        {
+          "embed_practices": 5
+        },
+        {
+          "embed_practices": 30
+        },
+        {
+          "embed_practices": 55
+        },
+        {
+          "embed_practices": 80
+        },
+        {
+          "embed_practices": 100
+        }
+      ]
+    },
+    {
+      "type": "narrative-scene",
+      "location": "Coruscant · Lower Corridor",
+      "locationLabel": "ADMIRAL WON GYUN",
+      "artId": "fracturedCity",
+      "quote": "\"We are rebuilding the kingdom's honour. But people confuse caution with cowardice. Tell me — what would you do first?\"",
+      "speaker": "Admiral Won Gyun",
+      "layout": "disc-left",
+      "duration": 9000
+    },
+    {
+      "type": "question",
+      "kind": "ranking",
+      "locationLabel": "Q04 · BE FUTURE-FOCUSED",
+      "practice": "Be Future-Focused",
+      "setup": "Smoke rises from a coastal village to the south. Scouts report the enemy fleet is regrouping. Won Gyun waits for your answer.",
+      "prompt": "You are asked to stabilise a sea-route under threat. Rank these priorities from first to last.",
+      "items": [
+        {
+          "label": "Understand the root causes before acting",
+          "score": {
+            "future_focused": 80,
+            "think_critically": 70,
+            "be_curious": 60
+          }
+        },
+        {
+          "label": "Build the long-term coastal defence that prevents recurrence",
+          "score": {
+            "future_focused": 100,
+            "collaborate_inclusively": 55
+          }
+        },
+        {
+          "label": "Restore immediate naval control of the strait",
+          "score": {
+            "act_decisively": 70,
+            "manage_uncertainty": 35,
+            "control_bias": 40
+          }
+        },
+        {
+          "label": "Secure the most senior captains so the chain of command holds",
+          "score": {
+            "influence_effortlessly": 60,
+            "control_bias": 35,
+            "moral_drift": 20
+          }
+        }
+      ],
+      "weights": [
+        1,
+        0.65,
+        0.35,
+        0.05
+      ]
+    },
+    {
+      "type": "narrative",
+      "locationLabel": "YEOSU · COUNCIL OF CAPTAINS",
+      "eyebrow": "Act Two · The Council",
+      "artId": "chaoticCouncil",
+      "layout": "disc-right",
+      "body": [
+        "You",
+        "meet",
+        "the",
+        "captains."
+      ],
+      "bodyAfter": [
+        "They speak over each other. Fear. Anger. Blame. Maps spread across a low table.",
+        "Won Gyun says nothing. He watches you instead."
+      ],
+      "duration": 7500
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q05 · LISTEN DEEPLY",
+      "practice": "Listen Deeply",
+      "setup": "Three captains. One is silent — staring at the chart. Another is shouting. A third keeps glancing at the door.",
+      "prompt": "What do you do first?",
+      "options": [
+        {
+          "copy": "Step in and direct the council toward a clear next step.",
+          "score": {
+            "act_decisively": 45,
+            "influence_effortlessly": 35,
+            "listen_deeply": 15,
+            "control_bias": 40
+          }
+        },
+        {
+          "copy": "Stay quiet and observe — track who speaks, who avoids, who repeats themselves.",
+          "score": {
+            "listen_deeply": 90,
+            "understand_self": 55,
+            "think_critically": 50
+          }
+        },
+        {
+          "copy": "Ask each captain one specific clarifying question, especially the silent one.",
+          "score": {
+            "listen_deeply": 80,
+            "be_curious": 85,
+            "collaborate_inclusively": 55
+          }
+        },
+        {
+          "copy": "Align them quickly around a shared plan to halt the chaos.",
+          "score": {
+            "influence_effortlessly": 70,
+            "collaborate_inclusively": 45,
+            "listen_deeply": 30
+          }
+        },
+        {
+          "copy": "Mirror back what I am hearing beneath the words — fear, exhaustion, betrayal.",
+          "score": {
+            "listen_deeply": 95,
+            "master_emotions": 60,
+            "collaborate_inclusively": 60
+          }
+        },
+        {
+          "copy": "Defer the council until I can speak with each captain at his post individually.",
+          "score": {
+            "think_critically": 45,
+            "listen_deeply": 35,
+            "act_decisively": 25
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q06 · LISTEN DEEPLY",
+      "practice": "Listen Deeply",
+      "setup": "Won Gyun leans toward your ear. \"Look at the silent one,\" he murmurs. \"What is he telling you that the others are not?\"",
+      "prompt": "When conversations become chaotic, my instinct is to take control quickly — rather than stay present and read the pattern.",
+      "labels": [
+        "Strongly disagree",
+        "Disagree",
+        "Neutral",
+        "Agree",
+        "Strongly agree"
+      ],
+      "scoring": [
+        {
+          "listen_deeply": 100,
+          "master_emotions": 80,
+          "control_bias": 0
+        },
+        {
+          "listen_deeply": 75,
+          "master_emotions": 65,
+          "control_bias": 10
+        },
+        {
+          "listen_deeply": 50,
+          "master_emotions": 50,
+          "control_bias": 25
+        },
+        {
+          "listen_deeply": 25,
+          "master_emotions": 35,
+          "control_bias": 55
+        },
+        {
+          "listen_deeply": 10,
+          "master_emotions": 20,
+          "control_bias": 80
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q07 · BE CURIOUS",
+      "practice": "Be Curious",
+      "setup": "One captain hands you a sketch — a strait you have never sailed, with notations in a fisherman's hand. \"This is what the disagreement is really about,\" he says.",
+      "prompt": "How do you respond to the unfamiliar chart?",
+      "options": [
+        {
+          "copy": "Politely set it aside — the strait is not the priority right now.",
+          "score": {
+            "be_curious": 15,
+            "act_decisively": 35
+          }
+        },
+        {
+          "copy": "Examine it, then ask three questions about what it shows and where it came from.",
+          "score": {
+            "be_curious": 95,
+            "listen_deeply": 60,
+            "think_critically": 50
+          }
+        },
+        {
+          "copy": "Acknowledge it and promise to come back to it after the immediate situation is resolved.",
+          "score": {
+            "be_curious": 50,
+            "act_decisively": 45
+          }
+        },
+        {
+          "copy": "Ask him to walk me through it, slowly, before I respond to anything else in the room.",
+          "score": {
+            "be_curious": 100,
+            "listen_deeply": 80,
+            "collaborate_inclusively": 50
+          }
+        },
+        {
+          "copy": "Recognise the place from my training and reference it back to him authoritatively.",
+          "score": {
+            "influence_effortlessly": 40,
+            "be_curious": 25,
+            "control_bias": 30
+          }
+        },
+        {
+          "copy": "Notice my reaction to not-knowing, and stay with the discomfort before responding.",
+          "score": {
+            "be_curious": 85,
+            "understand_self": 70,
+            "master_emotions": 55
+          }
+        }
+      ]
+    },
+    {
+      "type": "narrative-scene",
+      "locationLabel": "NIGHT WATCH · A FLEET UNDER FIRE",
+      "artId": "convoyArc",
+      "quote": "\"We engage now. Or we wait.\"",
+      "speaker": "Admiral Won Gyun",
+      "layout": "disc-right",
+      "duration": 7500
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q08 · MANAGE UNCERTAINTY",
+      "practice": "Manage Uncertainty",
+      "setup": "A coastal squadron has sent fragmentary signals. You have a third of the picture. You have minutes.",
+      "prompt": "What do you choose?",
+      "options": [
+        {
+          "copy": "Order the attack with what I have — momentum matters more than completeness.",
+          "score": {
+            "act_decisively": 80,
+            "manage_uncertainty": 65,
+            "control_bias": 25
+          }
+        },
+        {
+          "copy": "Hold until I can confirm one critical scout report.",
+          "score": {
+            "think_critically": 55,
+            "manage_uncertainty": 20,
+            "act_decisively": 15
+          }
+        },
+        {
+          "copy": "Delegate the decision to the squadron commander closest to the engagement.",
+          "score": {
+            "collaborate_inclusively": 70,
+            "act_decisively": 35,
+            "manage_uncertainty": 40
+          }
+        },
+        {
+          "copy": "Split the force — partial action on what I know, hold reserve for what I don't.",
+          "score": {
+            "think_critically": 70,
+            "manage_uncertainty": 80,
+            "unlock_creativity": 55,
+            "act_decisively": 60
+          }
+        },
+        {
+          "copy": "Make the smallest reversible move, then re-read the situation.",
+          "score": {
+            "manage_uncertainty": 95,
+            "think_critically": 65,
+            "act_decisively": 55
+          }
+        },
+        {
+          "copy": "Refuse the false choice and ask what assumptions are forcing it.",
+          "score": {
+            "think_critically": 90,
+            "be_curious": 70,
+            "manage_uncertainty": 60
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q09 · MANAGE UNCERTAINTY",
+      "practice": "Manage Uncertainty",
+      "setup": "Won Gyun watches your face for the half-second of doubt before you answer. He has seen this moment in a hundred others.",
+      "prompt": "I am comfortable making high-stakes decisions without full information.",
+      "labels": [
+        "Strongly disagree",
+        "Disagree",
+        "Sometimes",
+        "Agree",
+        "Strongly agree"
+      ],
+      "scoring": [
+        {
+          "manage_uncertainty": 10,
+          "act_decisively": 10
+        },
+        {
+          "manage_uncertainty": 30,
+          "act_decisively": 30
+        },
+        {
+          "manage_uncertainty": 55,
+          "act_decisively": 50
+        },
+        {
+          "manage_uncertainty": 80,
+          "act_decisively": 75
+        },
+        {
+          "manage_uncertainty": 100,
+          "act_decisively": 85,
+          "control_bias": 15
+        }
+      ]
+    },
+    {
+      "type": "narrative",
+      "locationLabel": "AFTERMATH · COASTAL DAWN",
+      "eyebrow": "Act Three · The Burning Coast",
+      "artId": "aftermathMedbay",
+      "layout": "disc-left",
+      "body": [
+        "The",
+        "engagement",
+        "is",
+        "over.",
+        "But",
+        "at",
+        "a",
+        "cost."
+      ],
+      "bodyAfter": [
+        "Coastal villages burned. Fishermen and farmers lost.",
+        "Won Gyun remains calm. \"Necessary,\" he says. You feel something shift."
+      ],
+      "duration": 8000,
+      "variants": {
+        "leaning_hale": {
+          "bodyAfter": [
+            "Collateral damage. Civilian loss.",
+            "Hale remains calm. \"Necessary,\" he says — and you find yourself almost agreeing before you have asked the question."
+          ]
+        },
+        "resisting_hale": {
+          "bodyAfter": [
+            "Collateral damage. Civilian loss.",
+            "Hale remains calm. \"Necessary,\" he says. You do not look away from him."
+          ]
+        }
+      }
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q10 · MASTER EMOTIONS",
+      "practice": "Master Emotions",
+      "setup": "You stand in the courtyard at dawn. A surgeon's hands are shaking. A list of names is being read. Won Gyun waits at the gate.",
+      "prompt": "In moments with heavy moral consequence, you most often:",
+      "options": [
+        {
+          "copy": "Stay composed and move forward — the campaign needs me functional now.",
+          "score": {
+            "master_emotions": 65,
+            "act_decisively": 50,
+            "detachment_pressure": 45
+          }
+        },
+        {
+          "copy": "Pause, reflect deeply, name what I feel, and only act once I have processed it.",
+          "score": {
+            "master_emotions": 90,
+            "understand_self": 80,
+            "embed_practices": 50
+          }
+        },
+        {
+          "copy": "Question the decision afterwards — was it really the right call?",
+          "score": {
+            "understand_self": 70,
+            "think_critically": 60,
+            "master_emotions": 50
+          }
+        },
+        {
+          "copy": "Create deliberate distance from the emotion to think clearly.",
+          "score": {
+            "master_emotions": 40,
+            "detachment_pressure": 85,
+            "moral_drift": 25
+          }
+        },
+        {
+          "copy": "Sit with the people most affected before I sit with anything else.",
+          "score": {
+            "master_emotions": 75,
+            "collaborate_inclusively": 70,
+            "listen_deeply": 65
+          }
+        },
+        {
+          "copy": "Channel the weight into a clearer commitment about what I will not do again.",
+          "score": {
+            "master_emotions": 80,
+            "future_focused": 60,
+            "understand_self": 65
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q11 · THINK CRITICALLY",
+      "practice": "Think Critically",
+      "setup": "You replay the engagement. Three different briefings before the order was given. Three different versions of what was true. One was the one Won Gyun handed you first.",
+      "prompt": "You suspect a troubling pattern in how decisions are being framed for you. What do you do?",
+      "options": [
+        {
+          "copy": "Challenge it directly in the next council.",
+          "score": {
+            "act_decisively": 65,
+            "influence_effortlessly": 45,
+            "master_emotions": 40
+          }
+        },
+        {
+          "copy": "Quietly gather evidence across several decisions before raising anything.",
+          "score": {
+            "think_critically": 95,
+            "manage_uncertainty": 65,
+            "understand_self": 45
+          }
+        },
+        {
+          "copy": "Run a small experiment — frame the next dispatch differently and see what happens.",
+          "score": {
+            "think_critically": 80,
+            "unlock_creativity": 60,
+            "influence_effortlessly": 45
+          }
+        },
+        {
+          "copy": "Set it aside — pattern recognition under stress is unreliable.",
+          "score": {
+            "collaborate_inclusively": 10,
+            "moral_drift": 40,
+            "control_bias": 20
+          }
+        },
+        {
+          "copy": "Share my hypothesis with one trusted captain and ask them to challenge it.",
+          "score": {
+            "think_critically": 85,
+            "collaborate_inclusively": 70,
+            "understand_self": 50
+          }
+        },
+        {
+          "copy": "Send three scouts to ask the same question of different villages and triangulate.",
+          "score": {
+            "think_critically": 90,
+            "be_curious": 70
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q12 · BE CURIOUS",
+      "practice": "Be Curious",
+      "setup": "A retired admiral from the southern province offers to teach you his model of tide and current — the old way, before the war. It will take three evenings.",
+      "prompt": "When I encounter an idea that does not fit my model of the world, my first impulse is to lean in, not push back.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "Almost always"
+      ],
+      "scoring": [
+        {
+          "be_curious": 5
+        },
+        {
+          "be_curious": 30
+        },
+        {
+          "be_curious": 55
+        },
+        {
+          "be_curious": 80
+        },
+        {
+          "be_curious": 100
+        }
+      ]
+    },
+    {
+      "type": "midpoint",
+      "locationLabel": "ADMIRAL YI'S COTTAGE · INTERLUDE · 01 / 03",
+      "eyebrow": "Interlude · Admiral Yi",
+      "intro": "You leave Yeosu under a moon. A long ride to a modest village. The cottage door is open. Admiral Yi Sun-sin is at a low desk, ink stick and brush in hand, copying a passage from the Analects. He does not ask you to sit. He does not ask you to answer aloud. He asks you three questions, one at a time. Write only what is true.",
+      "showIntro": true,
+      "prompt": "What are you noticing about how you are <em>thinking</em>?",
+      "placeholder": "The shape your thoughts have been taking…",
+      "hint": "A line, a phrase, an image — whatever is true right now.",
+      "key": "reflect_midpoint_thinking"
+    },
+    {
+      "type": "midpoint",
+      "locationLabel": "ADMIRAL YI'S COTTAGE · INTERLUDE · 02 / 03",
+      "eyebrow": "Interlude · Admiral Yi",
+      "showIntro": false,
+      "prompt": "What are you noticing about how you are <em>feeling</em>?",
+      "placeholder": "Name it without judging it…",
+      "hint": "Whatever it is — the Admiral is not surprised.",
+      "key": "reflect_midpoint_feeling"
+    },
+    {
+      "type": "midpoint",
+      "locationLabel": "ADMIRAL YI'S COTTAGE · INTERLUDE · 03 / 03",
+      "eyebrow": "Interlude · Admiral Yi",
+      "showIntro": false,
+      "prompt": "What are you noticing about how you are <em>behaving</em>?",
+      "placeholder": "What you have done — or not done — that you can already see…",
+      "hint": "You do not have to know yet. The campaign continues when you do.",
+      "key": "reflect_midpoint_behaving",
+      "isLast": true
+    },
+    {
+      "type": "narrative",
+      "locationLabel": "ACT FOUR · THE PATTERN",
+      "eyebrow": "Act Four · The Pattern",
+      "artId": "shadowPattern",
+      "layout": "disc-right",
+      "body": [
+        "You",
+        "begin",
+        "to",
+        "notice",
+        "something."
+      ],
+      "bodyAfter": [
+        "Won Gyun chooses aggression over reconnaissance. Speed over consensus. Certainty over doubt.",
+        "The pattern is subtle. Once seen, impossible to ignore."
+      ],
+      "duration": 8000,
+      "variants": {
+        "staying_curious": {
+          "bodyAfter": [
+            "Hale chooses control over ambiguity. Speed over consensus. Certainty over doubt.",
+            "You had already half-seen this. Now you can name it."
+          ]
+        },
+        "drifting": {
+          "bodyAfter": [
+            "Hale chooses control over ambiguity. Speed over consensus. Certainty over doubt.",
+            "You realise — quietly — that you have been making the same trade-offs."
+          ]
+        }
+      }
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q13 · THINK CRITICALLY",
+      "practice": "Think Critically",
+      "setup": "A scout report arrives with a tidy explanation. It is plausible. It is fast. It is exactly what you would prefer to be true.",
+      "prompt": "When an explanation feels neat and immediately convincing, I deliberately slow down and look for what it might be hiding.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "It is a discipline"
+      ],
+      "scoring": [
+        {
+          "think_critically": 10
+        },
+        {
+          "think_critically": 35
+        },
+        {
+          "think_critically": 55
+        },
+        {
+          "think_critically": 80
+        },
+        {
+          "think_critically": 100
+        }
+      ]
+    },
+    {
+      "type": "narrative-scene",
+      "locationLabel": "ADMIRAL WON GYUN'S QUARTERS · LATE",
+      "artId": "privateMeet",
+      "quote": "\"The council is weak. They hesitate. They demand more scouts. We don't need more voices. We need a victory.\"",
+      "speaker": "Admiral Won Gyun",
+      "layout": "disc-left",
+      "duration": 9000
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q14 · INFLUENCE EFFORTLESSLY",
+      "practice": "Influence Effortlessly",
+      "setup": "Won Gyun wants you to help him build alignment across the captains. He asks you how.",
+      "prompt": "What do you believe is the most effective way to create lasting alignment?",
+      "options": [
+        {
+          "copy": "Persuasion through logic and evidence.",
+          "score": {
+            "influence_effortlessly": 65,
+            "think_critically": 45
+          }
+        },
+        {
+          "copy": "Authority and clarity — direction beats debate.",
+          "score": {
+            "influence_effortlessly": 45,
+            "act_decisively": 55,
+            "control_bias": 60
+          }
+        },
+        {
+          "copy": "Emotional connection — meet people where they live.",
+          "score": {
+            "influence_effortlessly": 75,
+            "listen_deeply": 55,
+            "collaborate_inclusively": 45
+          }
+        },
+        {
+          "copy": "Shared ownership — they helped design it, so they help defend it.",
+          "score": {
+            "collaborate_inclusively": 90,
+            "influence_effortlessly": 85,
+            "be_curious": 45
+          }
+        },
+        {
+          "copy": "A story — one frame that makes everyone's contribution visible.",
+          "score": {
+            "influence_effortlessly": 85,
+            "unlock_creativity": 60,
+            "future_focused": 55
+          }
+        },
+        {
+          "copy": "Repetition — the same clear message delivered the same way until it lands.",
+          "score": {
+            "influence_effortlessly": 50,
+            "act_decisively": 35,
+            "control_bias": 30
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "ranking",
+      "locationLabel": "Q15 · UNLOCK CREATIVITY",
+      "practice": "Unlock Creativity",
+      "setup": "You are asked to redesign a failing engagement plan. The old plan is technically sound, but politically brittle. It solves the naval problem and worsens the village one.",
+      "prompt": "Rank your approach to redesigning the plan, from first to last.",
+      "items": [
+        {
+          "label": "Generate as many divergent options as possible before narrowing",
+          "score": {
+            "unlock_creativity": 100,
+            "manage_uncertainty": 55
+          }
+        },
+        {
+          "label": "Seek external perspectives from fishermen, farmers, and old sailors",
+          "score": {
+            "be_curious": 90,
+            "collaborate_inclusively": 80,
+            "listen_deeply": 65
+          }
+        },
+        {
+          "label": "Build a small experimental engagement and iterate",
+          "score": {
+            "unlock_creativity": 75,
+            "manage_uncertainty": 80,
+            "act_decisively": 65
+          }
+        },
+        {
+          "label": "Refine the existing plan — the bones are sound",
+          "score": {
+            "think_critically": 50,
+            "unlock_creativity": 15
+          }
+        }
+      ],
+      "weights": [
+        1,
+        0.65,
+        0.35,
+        0.05
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q16 · UNLOCK CREATIVITY",
+      "practice": "Unlock Creativity",
+      "setup": "You stand in front of an empty sea chart. The brief: a path forward no one has considered.",
+      "prompt": "When constraints tighten, my first instinct is to reframe the problem rather than push harder on the old plan.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "Almost always"
+      ],
+      "scoring": [
+        {
+          "unlock_creativity": 10
+        },
+        {
+          "unlock_creativity": 35
+        },
+        {
+          "unlock_creativity": 55
+        },
+        {
+          "unlock_creativity": 80
+        },
+        {
+          "unlock_creativity": 100
+        }
+      ]
+    },
+    {
+      "type": "narrative",
+      "locationLabel": "ACT FIVE · THE QUIET COUNCIL",
+      "eyebrow": "Act Five · The Quiet Council",
+      "artId": "alliesWhisper",
+      "layout": "disc-left",
+      "body": [
+        "Your",
+        "fellow",
+        "officers",
+        "begin",
+        "to",
+        "question",
+        "Won Gyun."
+      ],
+      "bodyAfter": [
+        "Quietly. Carefully. They do not accuse him. They simply ask whether the campaign's direction has changed.",
+        "Won Gyun calls it treason."
+      ],
+      "duration": 8000
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q17 · COLLABORATE INCLUSIVELY",
+      "practice": "Collaborate Inclusively",
+      "setup": "Three of your closest allies pull you aside between watches. They are afraid. They are not wrong. But Won Gyun is watching the war chamber.",
+      "prompt": "What do you do?",
+      "options": [
+        {
+          "copy": "Align them with the Admiral quickly to keep the council intact.",
+          "score": {
+            "influence_effortlessly": 50,
+            "collaborate_inclusively": 25,
+            "control_bias": 40
+          }
+        },
+        {
+          "copy": "Encourage open debate — the dissent is the data.",
+          "score": {
+            "collaborate_inclusively": 90,
+            "listen_deeply": 75,
+            "master_emotions": 55
+          }
+        },
+        {
+          "copy": "Mediate between them — surface the assumptions on each side.",
+          "score": {
+            "collaborate_inclusively": 85,
+            "think_critically": 70,
+            "understand_self": 55
+          }
+        },
+        {
+          "copy": "Escalate the concerns formally to the court.",
+          "score": {
+            "act_decisively": 65,
+            "influence_effortlessly": 35,
+            "master_emotions": 45
+          }
+        },
+        {
+          "copy": "Create a private structure for them to speak safely until I understand the pattern.",
+          "score": {
+            "collaborate_inclusively": 80,
+            "listen_deeply": 65,
+            "embed_practices": 55
+          }
+        },
+        {
+          "copy": "Wait — disagreement under pressure rarely produces the truest answer.",
+          "score": {
+            "master_emotions": 50,
+            "manage_uncertainty": 45,
+            "collaborate_inclusively": 20
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q18 · COLLABORATE INCLUSIVELY",
+      "practice": "Collaborate Inclusively",
+      "setup": "You sense the captains around you self-editing. Smoothing. Withholding the honest scout report.",
+      "prompt": "I actively invite people to disagree with me — and I work to make them safer when they do.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "It is one of my disciplines"
+      ],
+      "scoring": [
+        {
+          "collaborate_inclusively": 10
+        },
+        {
+          "collaborate_inclusively": 35
+        },
+        {
+          "collaborate_inclusively": 55
+        },
+        {
+          "collaborate_inclusively": 80
+        },
+        {
+          "collaborate_inclusively": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q19 · COLLABORATE INCLUSIVELY",
+      "practice": "Collaborate Inclusively",
+      "setup": "A delegation of village elders arrives. They will not speak with Won Gyun. They will only speak with you. They are not soldiers.",
+      "prompt": "How do you set up the conversation?",
+      "options": [
+        {
+          "copy": "In the formal war chamber — institutional weight signals respect.",
+          "score": {
+            "collaborate_inclusively": 30,
+            "influence_effortlessly": 50,
+            "control_bias": 30
+          }
+        },
+        {
+          "copy": "On their terms, in a place they choose, with their own translators.",
+          "score": {
+            "collaborate_inclusively": 95,
+            "listen_deeply": 80,
+            "be_curious": 65
+          }
+        },
+        {
+          "copy": "Privately, just me and their three elders, so trust can build first.",
+          "score": {
+            "collaborate_inclusively": 80,
+            "listen_deeply": 70
+          }
+        },
+        {
+          "copy": "I send a representative first to understand the protocols.",
+          "score": {
+            "collaborate_inclusively": 60,
+            "be_curious": 65,
+            "think_critically": 45
+          }
+        },
+        {
+          "copy": "Open the meeting — anyone in their group can speak in any order.",
+          "score": {
+            "collaborate_inclusively": 85,
+            "listen_deeply": 60,
+            "master_emotions": 50
+          }
+        },
+        {
+          "copy": "Around food. Real food. We eat before we negotiate.",
+          "score": {
+            "collaborate_inclusively": 90,
+            "master_emotions": 60,
+            "unlock_creativity": 55
+          }
+        }
+      ]
+    },
+    {
+      "type": "narrative-scene",
+      "locationLabel": "ADMIRAL'S DAIS · ORDER DELIVERED",
+      "artId": "breakingPoint",
+      "quote": "\"The southern villages refuse our requisitions. Cut their fishing fleet from the sea. Apply pressure. We sail on schedule.\"",
+      "speaker": "Admiral Won Gyun",
+      "layout": "disc-right",
+      "duration": 9000
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q20 · ACT DECISIVELY",
+      "practice": "Act Decisively",
+      "setup": "The order is given. The room understands the implication — those villages will starve. Every eye finds yours.",
+      "prompt": "You believe the order will cause serious harm. What do you do?",
+      "options": [
+        {
+          "copy": "Follow the order — chain of command exists for a reason.",
+          "score": {
+            "moral_drift": 80,
+            "control_bias": 45,
+            "collaborate_inclusively": 10
+          }
+        },
+        {
+          "copy": "Challenge it privately, after the room clears.",
+          "score": {
+            "influence_effortlessly": 55,
+            "master_emotions": 65,
+            "act_decisively": 45
+          }
+        },
+        {
+          "copy": "Refuse openly, in front of everyone.",
+          "score": {
+            "act_decisively": 90,
+            "understand_self": 70,
+            "influence_effortlessly": 45
+          }
+        },
+        {
+          "copy": "Propose an alternative that solves the supply problem without the harm — right now, in the room.",
+          "score": {
+            "unlock_creativity": 85,
+            "collaborate_inclusively": 70,
+            "act_decisively": 70,
+            "moral_drift": -20
+          }
+        },
+        {
+          "copy": "Delay — buy time and re-open the question with new evidence.",
+          "score": {
+            "think_critically": 55,
+            "manage_uncertainty": 50,
+            "moral_drift": 15
+          }
+        },
+        {
+          "copy": "Step out of the chain entirely and warn the villages directly.",
+          "score": {
+            "act_decisively": 80,
+            "master_emotions": 50,
+            "influence_effortlessly": 40
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q21 · ACT DECISIVELY",
+      "practice": "Act Decisively",
+      "setup": "There is a moment where waiting another hour will cost more than a wrong call.",
+      "prompt": "When a clear trade-off is required, I make the call — and I own it, including what it costs.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "Almost always"
+      ],
+      "scoring": [
+        {
+          "act_decisively": 10
+        },
+        {
+          "act_decisively": 35
+        },
+        {
+          "act_decisively": 55
+        },
+        {
+          "act_decisively": 80
+        },
+        {
+          "act_decisively": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q22 · BE FUTURE-FOCUSED",
+      "practice": "Be Future-Focused",
+      "setup": "A choice will solve today and create something heavier next year.",
+      "prompt": "I weigh the long-term consequences of a decision as seriously as the immediate outcome.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "Almost always"
+      ],
+      "scoring": [
+        {
+          "future_focused": 10
+        },
+        {
+          "future_focused": 35
+        },
+        {
+          "future_focused": 55
+        },
+        {
+          "future_focused": 80
+        },
+        {
+          "future_focused": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q23 · BE FUTURE-FOCUSED",
+      "practice": "Be Future-Focused",
+      "setup": "A young officer asks you: \"What are we trying to build, ten years from now, that justifies this?\"",
+      "prompt": "What is your honest answer?",
+      "options": [
+        {
+          "copy": "I focus on this campaign. Ten years is a story we tell ourselves.",
+          "score": {
+            "future_focused": 15,
+            "act_decisively": 50
+          }
+        },
+        {
+          "copy": "A coast where this engagement never has to be made again.",
+          "score": {
+            "future_focused": 95,
+            "unlock_creativity": 65,
+            "think_critically": 60
+          }
+        },
+        {
+          "copy": "Order. Discipline. The freedom that comes from things actually working.",
+          "score": {
+            "future_focused": 55,
+            "control_bias": 45
+          }
+        },
+        {
+          "copy": "People — specifically, more captains like you, ready to make hard calls well.",
+          "score": {
+            "future_focused": 90,
+            "collaborate_inclusively": 70,
+            "influence_effortlessly": 55
+          }
+        },
+        {
+          "copy": "I don't fully know yet. That is part of why I am still here, listening.",
+          "score": {
+            "future_focused": 65,
+            "be_curious": 70,
+            "understand_self": 55
+          }
+        },
+        {
+          "copy": "A council that can disagree without breaking.",
+          "score": {
+            "future_focused": 85,
+            "collaborate_inclusively": 80,
+            "listen_deeply": 55
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q24 · EMBED PRACTICES",
+      "practice": "Embed Practices",
+      "setup": "At the end of the watch, the chamber empties. You have twenty quiet minutes before sleep.",
+      "prompt": "What do you most often do with that time?",
+      "options": [
+        {
+          "copy": "Catch up on dispatches I missed — the day is never finished.",
+          "score": {
+            "embed_practices": 15,
+            "act_decisively": 35,
+            "control_bias": 25
+          }
+        },
+        {
+          "copy": "Walk in silence — let the day settle on its own.",
+          "score": {
+            "embed_practices": 80,
+            "master_emotions": 70
+          }
+        },
+        {
+          "copy": "Write — what I noticed, what I felt, what I decided badly.",
+          "score": {
+            "embed_practices": 95,
+            "understand_self": 85
+          }
+        },
+        {
+          "copy": "Speak with one person I trust who is not part of this campaign.",
+          "score": {
+            "embed_practices": 80,
+            "collaborate_inclusively": 60,
+            "master_emotions": 60
+          }
+        },
+        {
+          "copy": "Read something with no obvious purpose — poetry, history, anything else.",
+          "score": {
+            "embed_practices": 75,
+            "be_curious": 70,
+            "unlock_creativity": 50
+          }
+        },
+        {
+          "copy": "Sleep — recovery is the practice.",
+          "score": {
+            "embed_practices": 55,
+            "master_emotions": 50
+          }
+        }
+      ]
+    },
+    {
+      "type": "narrative",
+      "locationLabel": "PRIVATE LOG · LATE",
+      "eyebrow": "Act Six · The Mirror in the Cabin",
+      "artId": "reckoningMirror",
+      "layout": "disc-right",
+      "body": [
+        "You",
+        "review",
+        "the",
+        "decisions."
+      ],
+      "bodyAfter": [
+        "The saved engagement. The silenced councils. The reframed dissent.",
+        "The language of duty becoming the machinery of control. Not duty. Compliance."
+      ],
+      "duration": 9000
+    },
+    {
+      "type": "question",
+      "kind": "short-text",
+      "locationLabel": "Q25 · UNDERSTAND SELF",
+      "practice": "Understand Self",
+      "setup": "A reflection between scenes. Write what you actually feel — not what would sound impressive.",
+      "prompt": "Looking back, when did you first sense something was wrong?",
+      "placeholder": "A moment, a sentence, a feeling — write it freely…",
+      "hint": "1–3 sentences · not scored automatically · used to surface where you notice weak signals"
+    },
+    {
+      "type": "narrative-scene",
+      "locationLabel": "CONFRONTATION · WON GYUN'S TENT",
+      "artId": "confrontation",
+      "quote": "\"Order requires control, {{firstName}}. Mercy is inefficient. You and I want the same thing.\"",
+      "speaker": "Admiral Won Gyun",
+      "layout": "disc-left",
+      "duration": 9000
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q26 · INFLUENCE EFFORTLESSLY",
+      "practice": "Influence Effortlessly",
+      "setup": "Won Gyun is not angry. He is calm. He believes every word. He wants you to walk out of this tent as his ally.",
+      "prompt": "How do you respond to him — not as strategy, but as influence?",
+      "options": [
+        {
+          "copy": "I dismantle his argument logically, piece by piece.",
+          "score": {
+            "think_critically": 70,
+            "influence_effortlessly": 50,
+            "master_emotions": 45
+          }
+        },
+        {
+          "copy": "I find the human inside the position and speak to that.",
+          "score": {
+            "influence_effortlessly": 90,
+            "listen_deeply": 70,
+            "master_emotions": 65
+          }
+        },
+        {
+          "copy": "I tell him what he is becoming, gently and without contempt.",
+          "score": {
+            "influence_effortlessly": 85,
+            "understand_self": 65,
+            "master_emotions": 75
+          }
+        },
+        {
+          "copy": "I ask him three questions he can't answer without revealing himself.",
+          "score": {
+            "influence_effortlessly": 80,
+            "think_critically": 75,
+            "be_curious": 60
+          }
+        },
+        {
+          "copy": "I refuse the false alliance openly and walk out.",
+          "score": {
+            "act_decisively": 80,
+            "influence_effortlessly": 40,
+            "understand_self": 60
+          }
+        },
+        {
+          "copy": "I sit with him in silence until the silence does the work.",
+          "score": {
+            "influence_effortlessly": 70,
+            "master_emotions": 80,
+            "listen_deeply": 75
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q27 · INFLUENCE EFFORTLESSLY",
+      "practice": "Influence Effortlessly",
+      "setup": "A test that lives outside this campaign too: how others come to trust your judgement.",
+      "prompt": "People I serve with adopt my recommendations because of trust and clarity — not because of position, volume, or pressure.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "Almost always"
+      ],
+      "scoring": [
+        {
+          "influence_effortlessly": 10
+        },
+        {
+          "influence_effortlessly": 35
+        },
+        {
+          "influence_effortlessly": 55
+        },
+        {
+          "influence_effortlessly": 80
+        },
+        {
+          "influence_effortlessly": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q28 · MASTER EMOTIONS",
+      "practice": "Master Emotions",
+      "setup": "A confrontation just ended. Your hands are still steady, but something is moving underneath.",
+      "prompt": "In high-stress moments, I can recognise what I am feeling, name it, and stay engaged with the situation.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "Almost always"
+      ],
+      "scoring": [
+        {
+          "master_emotions": 10
+        },
+        {
+          "master_emotions": 35
+        },
+        {
+          "master_emotions": 55
+        },
+        {
+          "master_emotions": 80
+        },
+        {
+          "master_emotions": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q29 · UNDERSTAND SELF",
+      "practice": "Understand Self",
+      "setup": "A trusted captain tells you: \"You become more controlling when you are afraid. I don't think you see it.\"",
+      "prompt": "What is your honest first reaction?",
+      "options": [
+        {
+          "copy": "Defensive — I want to explain why he is wrong.",
+          "score": {
+            "understand_self": 25,
+            "master_emotions": 30
+          }
+        },
+        {
+          "copy": "Curious — I want him to tell me the three most recent examples.",
+          "score": {
+            "understand_self": 95,
+            "be_curious": 80,
+            "master_emotions": 65
+          }
+        },
+        {
+          "copy": "Grateful — but unsure whether to believe it yet.",
+          "score": {
+            "understand_self": 75,
+            "master_emotions": 55
+          }
+        },
+        {
+          "copy": "I already knew. I just hadn't admitted it.",
+          "score": {
+            "understand_self": 90,
+            "embed_practices": 55,
+            "master_emotions": 60
+          }
+        },
+        {
+          "copy": "Quietly hurt — I will sit with it before I respond.",
+          "score": {
+            "understand_self": 70,
+            "master_emotions": 65
+          }
+        },
+        {
+          "copy": "I dismiss it — he doesn't see the pressure I am under.",
+          "score": {
+            "understand_self": 10,
+            "control_bias": 50,
+            "moral_drift": 25
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q30 · LISTEN DEEPLY",
+      "practice": "Listen Deeply",
+      "setup": "In conversations that matter, you can choose to listen for words — or for everything else.",
+      "prompt": "I listen for what is unsaid — tone, silence, what people avoid — as carefully as I listen for what is said.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "It is a discipline"
+      ],
+      "scoring": [
+        {
+          "listen_deeply": 10
+        },
+        {
+          "listen_deeply": 35
+        },
+        {
+          "listen_deeply": 55
+        },
+        {
+          "listen_deeply": 80
+        },
+        {
+          "listen_deeply": 100
+        }
+      ]
+    },
+    {
+      "type": "narrative",
+      "locationLabel": "ACT SEVEN · TWELVE SHIPS",
+      "eyebrow": "Act Seven · Twelve Ships",
+      "artId": "dividedChamber",
+      "layout": "disc-left",
+      "body": [
+        "The",
+        "court",
+        "is",
+        "divided."
+      ],
+      "bodyAfter": [
+        "Word has come from Chilcheollyang. The fleet is lost. Twelve ships remain afloat.",
+        "A new order arrives from the king — and you must choose your position. The Japanese fleet of three hundred is sailing for Myeongnyang."
+      ],
+      "duration": 7500
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q31 · ACT DECISIVELY",
+      "practice": "Act Decisively",
+      "setup": "The chamber is full. The order in five minutes. You do not get to abstain.",
+      "prompt": "What do you do?",
+      "options": [
+        {
+          "copy": "Support Won Gyun's remaining loyalists — order above all.",
+          "score": {
+            "control_bias": 100,
+            "moral_drift": 80,
+            "influence_effortlessly": 25
+          }
+        },
+        {
+          "copy": "Oppose them openly — the fleet must follow Yi.",
+          "score": {
+            "act_decisively": 85,
+            "understand_self": 70,
+            "manage_uncertainty": 55
+          }
+        },
+        {
+          "copy": "Seek a compromise between the factions.",
+          "score": {
+            "collaborate_inclusively": 75,
+            "influence_effortlessly": 65,
+            "think_critically": 55
+          }
+        },
+        {
+          "copy": "Propose a third structure — a new command architecture for the twelve ships.",
+          "score": {
+            "unlock_creativity": 90,
+            "future_focused": 80,
+            "act_decisively": 70
+          }
+        },
+        {
+          "copy": "Step back entirely — let the court resolve it.",
+          "score": {
+            "moral_drift": 35,
+            "act_decisively": 10,
+            "understand_self": 25
+          }
+        },
+        {
+          "copy": "Buy time — call for a 24-hour deliberation under the king's seal.",
+          "score": {
+            "manage_uncertainty": 65,
+            "think_critically": 60,
+            "collaborate_inclusively": 50
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q32 · BE CURIOUS",
+      "practice": "Be Curious",
+      "setup": "The dust settles. You are offered a role on Admiral Yi's restored staff. You will need to keep learning, fast, for the rest of your career.",
+      "prompt": "How will you actually do that?",
+      "options": [
+        {
+          "copy": "I will surround myself with senior captains and listen to their summaries.",
+          "score": {
+            "be_curious": 45,
+            "listen_deeply": 50,
+            "collaborate_inclusively": 40
+          }
+        },
+        {
+          "copy": "I will deliberately spend time with people whose discipline I do not share — fishermen, farmers, foreign scholars.",
+          "score": {
+            "be_curious": 95,
+            "listen_deeply": 70,
+            "collaborate_inclusively": 75
+          }
+        },
+        {
+          "copy": "I will read across fields I have no professional reason to study.",
+          "score": {
+            "be_curious": 85,
+            "unlock_creativity": 65,
+            "embed_practices": 60
+          }
+        },
+        {
+          "copy": "I will travel to provinces I have never visited and listen before I speak.",
+          "score": {
+            "be_curious": 90,
+            "listen_deeply": 75,
+            "future_focused": 50
+          }
+        },
+        {
+          "copy": "I will keep a record of what I got wrong, and review it monthly.",
+          "score": {
+            "be_curious": 80,
+            "understand_self": 80,
+            "embed_practices": 85
+          }
+        },
+        {
+          "copy": "I will teach — because teaching exposes what I do not actually understand.",
+          "score": {
+            "be_curious": 75,
+            "understand_self": 65,
+            "influence_effortlessly": 60
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q33 · MANAGE UNCERTAINTY",
+      "practice": "Manage Uncertainty",
+      "setup": "A new threat is emerging in a strait you do not know. You have no precedent. You have no chart.",
+      "prompt": "What is your first move?",
+      "options": [
+        {
+          "copy": "Commit to a clear direction — uncertainty is the enemy of momentum.",
+          "score": {
+            "act_decisively": 70,
+            "manage_uncertainty": 35,
+            "control_bias": 45
+          }
+        },
+        {
+          "copy": "Wait for clarity — the wrong action is worse than no action.",
+          "score": {
+            "think_critically": 35,
+            "manage_uncertainty": 20,
+            "act_decisively": 10
+          }
+        },
+        {
+          "copy": "Run several small scouting missions at once — let reality teach me.",
+          "score": {
+            "manage_uncertainty": 95,
+            "unlock_creativity": 80,
+            "act_decisively": 60
+          }
+        },
+        {
+          "copy": "Find a fisherman who has lived the strait and learn before I decide.",
+          "score": {
+            "be_curious": 85,
+            "listen_deeply": 75,
+            "manage_uncertainty": 70
+          }
+        },
+        {
+          "copy": "Hold the situation lightly — name what I don't know, out loud.",
+          "score": {
+            "manage_uncertainty": 90,
+            "understand_self": 70,
+            "collaborate_inclusively": 60
+          }
+        },
+        {
+          "copy": "Set a deadline by which I must decide, regardless.",
+          "score": {
+            "act_decisively": 65,
+            "manage_uncertainty": 55,
+            "control_bias": 25
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q34 · EMBED PRACTICES",
+      "practice": "Embed Practices",
+      "setup": "The practices that change you are the ones you do when nobody is watching.",
+      "prompt": "I have at least one reflection or learning ritual that I have sustained — even when pressure makes it inconvenient.",
+      "labels": [
+        "No",
+        "Briefly",
+        "On and off",
+        "Mostly",
+        "Yes, consistently"
+      ],
+      "scoring": [
+        {
+          "embed_practices": 10
+        },
+        {
+          "embed_practices": 35
+        },
+        {
+          "embed_practices": 55
+        },
+        {
+          "embed_practices": 80
+        },
+        {
+          "embed_practices": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q35 · THINK CRITICALLY",
+      "practice": "Think Critically",
+      "setup": "A clean scout report arrives. Everything fits. The author is competent. The recommendation is exactly what the court wants to hear.",
+      "prompt": "What do you do first?",
+      "options": [
+        {
+          "copy": "Accept the recommendation — the scout is good and the council has more pressing matters.",
+          "score": {
+            "think_critically": 15,
+            "act_decisively": 35
+          }
+        },
+        {
+          "copy": "Ask what evidence would change the conclusion — and whether any of it has been gathered.",
+          "score": {
+            "think_critically": 95,
+            "be_curious": 70
+          }
+        },
+        {
+          "copy": "Identify the assumption that, if wrong, breaks the whole story.",
+          "score": {
+            "think_critically": 90,
+            "future_focused": 55,
+            "manage_uncertainty": 55
+          }
+        },
+        {
+          "copy": "Bring in one officer who will disagree by reflex — and let them.",
+          "score": {
+            "think_critically": 80,
+            "collaborate_inclusively": 75
+          }
+        },
+        {
+          "copy": "Re-frame the question and watch how the recommendation does or does not survive.",
+          "score": {
+            "think_critically": 85,
+            "unlock_creativity": 65
+          }
+        },
+        {
+          "copy": "Run it past my gut and only intervene if it complains.",
+          "score": {
+            "think_critically": 30,
+            "understand_self": 40
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q36 · UNLOCK CREATIVITY",
+      "practice": "Unlock Creativity",
+      "setup": "A constraint everyone treats as fixed — supplies, time, tradition, royal decree — is the thing keeping you stuck.",
+      "prompt": "How do you most often work with constraints like that?",
+      "options": [
+        {
+          "copy": "I respect them and find efficiency within.",
+          "score": {
+            "unlock_creativity": 25,
+            "think_critically": 50
+          }
+        },
+        {
+          "copy": "I ignore them and design what is actually needed first, then negotiate.",
+          "score": {
+            "unlock_creativity": 90,
+            "act_decisively": 65,
+            "influence_effortlessly": 60
+          }
+        },
+        {
+          "copy": "I treat them as design material and let them shape the solution in surprising ways.",
+          "score": {
+            "unlock_creativity": 95,
+            "future_focused": 60,
+            "manage_uncertainty": 65
+          }
+        },
+        {
+          "copy": "I invite the people enforcing the constraint into the redesign.",
+          "score": {
+            "unlock_creativity": 80,
+            "collaborate_inclusively": 85,
+            "influence_effortlessly": 65
+          }
+        },
+        {
+          "copy": "I find the original reason the constraint exists — then test whether it still applies.",
+          "score": {
+            "unlock_creativity": 85,
+            "think_critically": 80,
+            "be_curious": 75
+          }
+        },
+        {
+          "copy": "I look for analogies in completely unrelated domains — agriculture, calligraphy, weather.",
+          "score": {
+            "unlock_creativity": 90,
+            "be_curious": 85
+          }
+        }
+      ]
+    },
+    {
+      "type": "twist",
+      "locationLabel": "DISPATCH · OUTBOUND",
+      "body": [
+        "A messenger arrives from the king.",
+        "The court is speaking. Not about Won Gyun. About <em>you</em>.",
+        "Your recommendations. Your decisions. Your silence when it mattered.",
+        "Won Gyun turns. Smiles."
+      ],
+      "quote": "\"You still think this was my campaign? Every step — you justified it.\"",
+      "speaker": "Admiral Won Gyun",
+      "variants": {
+        "drifting": {
+          "body": [
+            "The transmission flickers.",
+            "Council members are speaking. Not about Hale. About <em>you</em>.",
+            "Your recommendations. Your composure. The way the harder calls became easier each time.",
+            "Hale turns. Smiles. He knew."
+          ],
+          "quote": "\"You still think this was my strategy? You were the design. Every step — you justified it.\""
+        },
+        "resisting_hale": {
+          "body": [
+            "The transmission flickers.",
+            "Council members are speaking. Not about Hale. About <em>you</em>.",
+            "Your refusals. Your questions. The moments you would not pretend.",
+            "Hale turns. The smile does not arrive."
+          ],
+          "quote": "\"You were never mine. I should have seen it earlier.\""
+        }
+      },
+      "duration": 11000
+    },
+    {
+      "type": "end-reflection",
+      "locationLabel": "CLOSING REFLECTION · 01 / 04",
+      "eyebrow": "Closing reflection · Strengths",
+      "intro": "Before the result — four quiet questions. Write only what is true.",
+      "prompt": "In which moment of this campaign did you feel <em>most like yourself</em>? Where did your real strength show up?",
+      "placeholder": "Name the scene, the choice, the feeling…",
+      "key": "reflect_strengths"
+    },
+    {
+      "type": "end-reflection",
+      "locationLabel": "CLOSING REFLECTION · 02 / 04",
+      "eyebrow": "Closing reflection · Beliefs",
+      "prompt": "Which <em>belief</em> of yours was tested by this campaign — about people, command, or yourself?",
+      "placeholder": "A belief you held coming in, that has shifted or been confirmed…",
+      "key": "reflect_beliefs"
+    },
+    {
+      "type": "end-reflection",
+      "locationLabel": "CLOSING REFLECTION · 03 / 04",
+      "eyebrow": "Closing reflection · Mindset",
+      "prompt": "What <em>mindset shift</em> — if you made it — would change how you act under pressure?",
+      "placeholder": "From X to Y…",
+      "key": "reflect_mindset"
+    },
+    {
+      "type": "end-reflection",
+      "locationLabel": "CLOSING REFLECTION · 04 / 04",
+      "eyebrow": "Closing reflection · Behaviour",
+      "prompt": "Which single <em>skill or behaviour</em> — if you built it deliberately over the next ninety days — would change everything?",
+      "placeholder": "The one practice you would commit to…",
+      "key": "reflect_behaviour"
+    },
+    {
+      "type": "twist",
+      "locationLabel": "REFRAME · BEFORE THE RESULT",
+      "body": [
+        "This campaign was never about whether you were a hero or a villain.",
+        "It was about something more useful:",
+        "How easily good intentions <em>drift</em> under deadline pressure.",
+        "How quickly duty becomes compliance.",
+        "How subtly clarity becomes certainty."
+      ],
+      "quote": "And how much strategic capability depends on the ability to notice yourself before the pattern becomes the path.",
+      "speaker": "Reading your result",
+      "duration": 11000
+    },
+    {
+      "type": "results-launch"
+    }
+  ],
+  "archetypes": {
+    "reactive_defender": {
+      "name": "The Cadet Under Fire",
+      "band": "Strategic Infancy",
+      "headline": "You care about defending the coast — but pressure may be driving more of your strategy than you realise.",
+      "body": "Your result suggests that when stakes rise, your attention narrows fast. You may move into reaction, urgency, loyalty, or defence before you have understood what is happening. You are committed and action-oriented — but the same energy that makes you formidable in a skirmish can make you blind to the pattern beneath it. You may respond to symptoms rather than causes, miss weak scout signals, or confuse motion with progress.",
+      "risk": "Your risk is not lack of effort. It is pressure-led action. You may be protecting the kingdom while reinforcing the very patterns that weaken it.",
+      "focus": "Start at Level 1 — <em>Deepen Self-Awareness</em>. Notice your pressure patterns. Name your triggers. Build a pause before reacting. Separate fact from interpretation. Ask, \"What am I not seeing yet?\"",
+      "next": "Your first breakthrough is likely to come from seeing your own operating system more clearly — before you change anything else."
+    },
+    "tactical_survivor": {
+      "name": "The Coastal Captain",
+      "band": "Tactical Survivor",
+      "headline": "You can handle pressure — but your command may be too anchored in the immediate engagement.",
+      "body": "You are capable, practical, and effective in difficult straits. You make decisions, keep momentum, and solve immediate problems. Your result suggests, though, that short-term demands may be crowding out longer-term strategic thinking. You may prioritise control over understanding, optimise for victory rather than direction, and carry too much yourself.",
+      "risk": "Your risk is tactical over-functioning. You may become so good at surviving the current engagement that you unintentionally normalise crisis as the operating model.",
+      "focus": "Strengthen Level 3 — <em>Develop Strategic Capabilities</em>. Focus on future-orientation, creative options, and acting well in uncertainty. Move from \"What needs fixing now?\" to \"What future are we creating through this decision?\"",
+      "next": "Your growth edge is widening the time horizon you actually think in — from this watch, to this dynasty."
+    },
+    "hidden_drifter": {
+      "name": "The Compromised Commander",
+      "band": "Hidden Drift",
+      "headline": "You are more strategic than most — but your blindspots may emerge precisely when you feel most certain.",
+      "body": "You are thoughtful, capable, and likely well-intentioned. You can see complexity, make decisions, and influence others. But your result suggests a subtle risk: under pressure, your strengths may distort. Clarity becomes certainty. Decisiveness becomes control. Conviction becomes justification. Calm becomes detachment. This is the most psychologically important result because it mirrors how strategic drift happens in real campaigns — not through incompetence, but through capable officers making apparently reasonable choices under pressure.",
+      "risk": "Your risk is <em>justified drift</em>. You may continue making decisions that each seem defensible while the wider pattern moves quietly away from your stated values.",
+      "focus": "Work across Levels 1 and 2 together — <em>Deepen Self-Awareness</em> and <em>Cultivate Open-Mindedness</em>. Notice yourself under pressure. Listen most carefully when you disagree. Test the assumptions you would rather keep. Invite challenge. Watch the moment when \"necessary\" becomes a dangerous word.",
+      "next": "Your fastest development will come from learning to notice earlier — before the pattern becomes the path."
+    },
+    "strategic_operator": {
+      "name": "The Squadron Admiral",
+      "band": "Strategic Operator",
+      "headline": "You show strong strategic capability and a relatively balanced pattern under pressure.",
+      "body": "Your result suggests you can remain clear, reflective, and effective in complex situations. You likely balance action with thought, confidence with humility, and direction with collaboration. Composure under fire, thoughtful decisions, openness to council, alignment with crown and crew, and awareness of consequence are all visible in your pattern.",
+      "risk": "Your risk is not capability — it is consistency. Under enough pressure, even strong admirals drift into old patterns. The opportunity is to make your strategic capability more reliable, more repeatable, and more visible to others.",
+      "focus": "Strengthen Level 4 — <em>Scale Your Impact</em>. Decision quality, council alignment, influence without over-control, collaboration under tension. Turning strategic insight into action that travels.",
+      "next": "Your growth edge is becoming more conscious — and more deliberate — about the impact you already have."
+    },
+    "force_multiplier": {
+      "name": "The Architect of the Fleet",
+      "band": "Strategic Force Multiplier",
+      "headline": "You do not just think strategically. You increase the strategic capacity of the captains and kingdom around you.",
+      "body": "Your result suggests a highly integrated strategic profile. You can stay aware of yourself under pressure, regulate emotion without disconnecting from consequence, listen deeply, think critically, generate options in uncertainty, decide with courage and humility, and influence without domination. You hold complexity without collapsing into confusion or control.",
+      "risk": "Your risk is <em>over-reliance</em>. Others may look to you for clarity, judgement, and steadiness. Over time, that can quietly create dependency — unless you intentionally build capability in the fleet around you.",
+      "focus": "Your next level is multiplication. Develop strategic capability in others. Design decision systems. Build collective intelligence. Create the conditions for others to hold uncertainty without panic.",
+      "next": "Your development edge is to become less necessary — by making the fleet more strategically capable."
+    }
+  },
+  "secondaryPatterns": {
+    "architect_of_order": {
+      "name": "The Discipline Hawk",
+      "headline": "Drawn to order, command, and decisive action.",
+      "body": "You are highly effective in moments of chaos. But unchecked, your strength becomes rigidity. You may begin to mistake disagreement for cowardice, ambiguity for failure, and speed for strategy."
+    },
+    "the_justifier": {
+      "name": "The Excuses of War",
+      "headline": "At risk of rationalising questionable orders when the campaign feels important enough.",
+      "body": "This does not mean you lack values. It means your values can become vulnerable when victory, loyalty, or royal pressure enters the room."
+    },
+    "the_calm_blade": {
+      "name": "The Iron Hand",
+      "headline": "Composed in moments that unsettle others on the deck.",
+      "body": "That composure is valuable. But there is a fine line between regulation and emotional distance. Your edge is to remain steady without becoming disconnected from human consequence."
+    },
+    "the_consensus_seeker": {
+      "name": "The Council Builder",
+      "headline": "You create inclusion and invite voice — but may delay difficult orders.",
+      "body": "Your development edge is to preserve collaboration while becoming more decisive when the moment closes."
+    },
+    "the_decisive_commander": {
+      "name": "The Cannon's Voice",
+      "headline": "You move quickly and bring momentum — but your speed may narrow the field of scouting.",
+      "body": "Your edge is to slow down just enough to hear what the sea is trying to tell you."
+    },
+    "vision_under_strain": {
+      "name": "The Strategist Faltering",
+      "headline": "You see beyond the immediate engagement, but pressure may disrupt your steadiness on deck.",
+      "body": "Your edge is to build inner stability so your vision survives contact with reality."
+    }
+  },
+  "riskCopy": {
+    "control_bias": {
+      "name": "Command Reflex",
+      "low": "You appear able to pursue clarity without defaulting to command.",
+      "mod": "You may sometimes overvalue speed, certainty, or rank when pressure rises.",
+      "high": "You may be at risk of mistaking <em>command for strategy</em>. This can make you decisive — but it may also reduce listening, creativity, and trust on deck.",
+      "q": "Where might you be calling something <em>discipline</em> when it is actually obedience?"
+    },
+    "moral_drift": {
+      "name": "Battle Drift",
+      "low": "Your responses suggest a relatively strong ability to keep means and ends connected.",
+      "mod": "You may occasionally justify difficult orders when the campaign feels important enough.",
+      "high": "You may be vulnerable to rationalising harmful choices if they appear necessary for the victory.",
+      "q": "At what point does a necessary compromise become a betrayal of the campaign itself?"
+    },
+    "detachment_pressure": {
+      "name": "Iron Composure",
+      "low": "You appear able to stay connected to human consequence while under pressure.",
+      "mod": "Your composure is a strength, but it may sometimes become distance.",
+      "high": "You may remain calm in ways others on deck experience as emotionally unavailable, overly rational, or disconnected from impact.",
+      "q": "How do you stay steady without becoming unreachable?"
+    }
+  },
+  "nextSteps": {
+    "reactive_defender": [
+      {
+        "icon": "pause",
+        "title": "The five-breath pause",
+        "body": "Before responding to a scout report, count five full breaths. Notice what your body wants to do, then choose what to do.",
+        "test": "Try for 7 watches. Track each time you used it."
+      },
+      {
+        "icon": "journal",
+        "title": "A nightly two-line log",
+        "body": "Each evening write: \"Today I noticed…\" and \"Tomorrow I will…\". Build the muscle of self-observation.",
+        "test": "Do this for 21 days, then re-read the lot."
+      },
+      {
+        "icon": "mirror",
+        "title": "Ask one captain",
+        "body": "Ask one trusted captain: \"When pressure rises, what do you see me become on deck?\" Listen without defending.",
+        "test": "One question, one person, this week."
+      },
+      {
+        "icon": "question",
+        "title": "Replace \"should\" with \"if\"",
+        "body": "Notice your \"shoulds\" — they are usually pressure speaking. Reframe to \"if I did this, what would happen?\" Re-open the choice.",
+        "test": "Count your \"shoulds\" for one day. Reframe three."
+      }
+    ],
+    "tactical_survivor": [
+      {
+        "icon": "horizon",
+        "title": "The ten-year question",
+        "body": "On any non-trivial decision, ask: \"What does this look like a decade from now?\" Forces you out of fire-fighting and into direction.",
+        "test": "Apply to your next three meaningful decisions."
+      },
+      {
+        "icon": "experiment",
+        "title": "Run one strategic experiment",
+        "body": "Pick one current problem. Generate four genuinely different solutions before settling on one. Build option-fluency.",
+        "test": "One problem, four options, this week."
+      },
+      {
+        "icon": "doors",
+        "title": "Future-back planning",
+        "body": "Describe in detail what good looks like 18 months from now. Then walk backwards: what decision today would matter then?",
+        "test": "90 minutes, a single page, by the new moon."
+      },
+      {
+        "icon": "reframe",
+        "title": "Trade urgency for importance",
+        "body": "For one week, mark every order as either urgent OR important. Notice the ratio. Notice what does not survive scrutiny.",
+        "test": "Audit for 5 days. Drop three urgent-not-important items."
+      }
+    ],
+    "hidden_drifter": [
+      {
+        "icon": "notice",
+        "title": "The drift word audit",
+        "body": "Notice when you use words like \"necessary\", \"no choice\", \"this once\". Each is a possible drift signal. Pause, name, examine.",
+        "test": "Track for two weeks. Bring the list to a mentor."
+      },
+      {
+        "icon": "invite",
+        "title": "Invite your strongest dissenter",
+        "body": "Identify the captain most likely to disagree with you. Invite them into a real decision. Treat their resistance as data.",
+        "test": "One conversation, this month. Document what shifted."
+      },
+      {
+        "icon": "mirror",
+        "title": "The three captains sentence",
+        "body": "Ask three captains: \"What is one thing about my pattern under pressure that I probably do not see?\" Listen without explaining.",
+        "test": "Three people, one question, no defending."
+      },
+      {
+        "icon": "pause",
+        "title": "Slow down on the certain ones",
+        "body": "When a call feels obvious, you are most at risk. Apply a 24-hour rule to anything you are certain about.",
+        "test": "Use the rule three times this month."
+      }
+    ],
+    "strategic_operator": [
+      {
+        "icon": "multiply",
+        "title": "Develop one other officer",
+        "body": "Choose one officer in your orbit. Help them build a strategic muscle they currently lack. Multiplication begins with one.",
+        "test": "Name the person. Name the muscle. Begin."
+      },
+      {
+        "icon": "decide",
+        "title": "Make decisions more visible",
+        "body": "When you make a meaningful call, share publicly what you considered and what you weighed. Make the strategy legible.",
+        "test": "Try this on three decisions this month."
+      },
+      {
+        "icon": "reframe",
+        "title": "Sharpen the consequential 20%",
+        "body": "Identify the 20% of your decisions that drive 80% of outcomes. Concentrate your thinking time there. Delegate or systematise the rest.",
+        "test": "Map your decisions for a week. Re-balance time."
+      },
+      {
+        "icon": "experiment",
+        "title": "Pick one risk to deliberately reduce",
+        "body": "Look at your three risk overlays. Choose the one closest to becoming a real constraint. Design a small practice to soften it.",
+        "test": "One overlay, one practice, 30 days."
+      }
+    ],
+    "force_multiplier": [
+      {
+        "icon": "multiply",
+        "title": "Design a decision system",
+        "body": "Create a clear template for how strategic decisions get made in your command — owner, evidence, options, trade-offs, review. Replicable, not heroic.",
+        "test": "Build the v1 template. Apply to your next big call."
+      },
+      {
+        "icon": "invite",
+        "title": "Build the bench",
+        "body": "Identify three captains who could become the next layer of strategic capability. Invest in them deliberately, with regular feedback and stretch decisions.",
+        "test": "Three names. One conversation each, this month."
+      },
+      {
+        "icon": "mirror",
+        "title": "Make yourself less necessary",
+        "body": "In every council this month, ask: \"Could someone else here have led this?\" Then arrange for that to be true next time.",
+        "test": "One month of audit. Hand off two recurring councils."
+      },
+      {
+        "icon": "horizon",
+        "title": "Author the long memorial",
+        "body": "Write a short paper on the strategic capability you want your wider command to have in three years. Use it as a north star — share, debate, refine.",
+        "test": "One page. Share with three trusted readers."
+      }
+    ]
+  },
+  "imageMap": {
+    "archetypeDir": "images/skin-yi/",
+    "scene": {
+      "councilChamber": "images/skin-yi/scene-war-chamber.png",
+      "fracturedCity": "images/skin-yi/scene-burning-coast.png",
+      "convoyArc": "images/skin-yi/scene-fleet-under-fire.png",
+      "privateMeet": "images/skin-yi/scene-private-meeting.png",
+      "breakingPoint": "images/skin-yi/scene-admirals-dais.png",
+      "confrontation": "images/skin-yi/scene-confrontation.png",
+      "twinSuns": "images/skin-yi/scene-yi-cottage.png",
+      "summonsHerald": "images/skin-yi/scene-yeosu-overview.png",
+      "chaoticCouncil": "images/skin-yi/scene-council-of-captains.png",
+      "aftermathMedbay": "images/skin-yi/scene-courtyard-dawn.png",
+      "shadowPattern": "images/skin-yi/scene-shadow-pattern.png",
+      "alliesWhisper": "images/skin-yi/scene-allies-whisper.png",
+      "reckoningMirror": "images/skin-yi/scene-water-basin.png",
+      "dividedChamber": "images/skin-yi/scene-divided-court.png"
+    }
+  },
+  "imagePrompts": {
+    "art_direction": "Ukiyo-e woodblock print style. Flat layered colour fields, strong dark linework outlines around every form, classical East-Asian woodblock composition with foreground / middle / distant planes, decorative cloud bands and wave patterns, hatched shading reserved for shadow only. Joseon-era Korea, late 16th century. Period-correct armor, robes, hanbok, pavilion roofs with upturned eaves, panokseon warships, turtle ships in distant silhouette. Selective vermillion accent against muted earth-tone palette. Strong graphic framing — vertical or square format.",
+    "palette": "Deep ink-blue #0a0d18 base · Korean crimson #c41e3a accent · parchment cream #f0e8d0 highlights · soft black #1a1f2e shadow ink",
+    "archetypes": {
+      "reactive_defender": {
+        "filename_template": "images/skin-yi/archetype-reactive-defender-{gender}.png",
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. {genderDesc} in 16th-century Joseon naval officer armor, defensive crouch on the deck of a wooden warship at night, shielding the face from a rain of fire arrows. Crimson glow from distant burning coastline. Deep ink-blue sky, mist over the sea, brush-stroke wave texture. 1:1 square aspect ratio, melancholic. Palette deep ink-blue #0a0d18, vermillion #c41e3a, parchment cream #f0e8d0. Ukiyo-e woodblock finish. Strong graphic composition, generous negative space. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "tactical_survivor": {
+        "filename_template": "images/skin-yi/archetype-tactical-survivor-{gender}.png",
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. {genderDesc}, a weathered Joseon naval captain mid-stride along the deck of a panokseon at dusk, scanning the southern horizon. Bedroll and gear on shoulder, hanbok robe under leather armor, twin moons reflecting on calm water. Long shadow trailing behind. 1:1 square aspect ratio, sense of forward momentum, lonely. Palette deep ink-blue #0a0d18, vermillion #c41e3a, parchment cream #f0e8d0. Ukiyo-e woodblock finish. Strong graphic composition, atmospheric. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "hidden_drifter": {
+        "filename_template": "images/skin-yi/archetype-hidden-drifter-{gender}.png",
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. {genderDesc}, a solitary Joseon naval officer walking down a long covered pavilion corridor lit by hanging lanterns, polished wooden floor reflecting the figure subtly out of sync — slightly displaced, as if a second self trails them. Crimson light from a distant fire visible through paper screens. 1:1 square aspect ratio, contemplative, slightly unsettling. Palette deep ink-blue #0a0d18, vermillion #c41e3a, parchment cream #f0e8d0. Ukiyo-e woodblock finish. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "strategic_operator": {
+        "filename_template": "images/skin-yi/archetype-strategic-operator-{gender}.png",
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. {genderDesc}, a centred standing Joseon naval admiral in formal armor on a raised wooden dais, calm posture, hands relaxed, head slightly inclined toward a large sea chart. Other captains visible at lower stations listening, partially in shadow. Hanging crimson silk banners. 1:1 square aspect ratio, sense of grounded authority. Palette deep ink-blue #0a0d18, vermillion #c41e3a, parchment cream #f0e8d0. Ukiyo-e woodblock finish. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "force_multiplier": {
+        "filename_template": "images/skin-yi/archetype-force-multiplier-{gender}.png",
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. {genderDesc}, a central robed admiral standing on a raised platform bathed in lantern light, surrounded at the same elevation by other officers of equal stature, all illuminated by shared crimson light. Faint brushstroke lines of crimson connecting them. Pavilion architecture suggested behind. 1:1 square aspect ratio, mythic, communal. Palette deep ink-blue #0a0d18, vermillion #c41e3a, parchment cream #f0e8d0. Ukiyo-e woodblock finish. (Reminder: edge-to-edge, no border, no text.)"
+      }
+    },
+    "scenes": {
+      "yeosu_overview": {
+        "filename": "images/skin-yi/scene-yeosu-overview.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. Wide aerial view of Yeosu naval headquarters at night, pavilion roofs with upturned eaves, panokseon warships anchored in the bay, mist over water, distant watchtower. 1:1, vast scale, melancholic. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "war_chamber": {
+        "filename": "images/skin-yi/scene-war-chamber.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. Interior of a Joseon war chamber at night, low wooden table covered with sea charts, hanging crimson silk banners, a single figure standing at the table, lantern light overhead, empty seats in shadow surrounding. 1:1, hushed, vast. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "burning_coast": {
+        "filename": "images/skin-yi/scene-burning-coast.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. View from a ship's deck of a burning coastal village at night, pavilion roofs aflame casting crimson glow, distant smoke columns, two cloaked figures at the foreground viewpoint, backs to camera. 1:1, apocalyptic but quiet. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "fleet_under_fire": {
+        "filename": "images/skin-yi/scene-fleet-under-fire.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. A line of panokseon warships under attack at night, single arrows streaking from above as luminous strokes, dragon-prow turtle ship in distant silhouette, mist on water. 1:1, urgency under cold quiet. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "private_meeting": {
+        "filename": "images/skin-yi/scene-private-meeting.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. Two officers seated cross-legged at a low table at night, behind them a paper-screen window showing a distant crimson horizon glow. The right figure leans slightly forward, lit by lantern. 1:1, intimate, quietly tense. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "admirals_dais": {
+        "filename": "images/skin-yi/scene-admirals-dais.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. A lone figure standing on a raised wooden dais bathed in crimson lantern light, floating semi-transparent dispatch scrolls hovering around them at chest height, vertical hanging banners flanking. 1:1, hushed, weight of decision. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "confrontation": {
+        "filename": "images/skin-yi/scene-confrontation.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. Two officers in armor facing each other across a darkened pavilion, the negative space between them charged. Both partly silhouetted, one slightly lit from the right with crimson lantern. A thin horizon line bisects the wall behind. 1:1, mirrored stance, psychological standoff. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "yi_cottage": {
+        "filename": "images/skin-yi/scene-yi-cottage.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. Interior of Admiral Yi Sun-sin's modest cottage at dusk. The admiral, depicted respectfully and painterly, an aged Korean naval officer in plain robes (not armor), seated at a low desk with calligraphy brushes, an ink stick, and a half-written scroll. A single candle, a meditation cushion, a paper screen window. 1:1, meditative, dignified. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "council_of_captains": {
+        "filename": "images/skin-yi/scene-council-of-captains.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. A Joseon war chamber. Three captains in officer armor clustered around a low table covered with sea charts, mid-discussion — one with arm raised, one shouting, one with head turned aside silent. Concentric faint ink-ripple arcs from each. Lantern light overhead. 1:1, tension, fragmented voices. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "courtyard_dawn": {
+        "filename": "images/skin-yi/scene-courtyard-dawn.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. A long pavilion courtyard at dawn after a defeat, rows of wounded sailors on low pallets receding, a single standing figure in the foreground with head bowed, soft crimson light spilling from a brazier, reflective wet stone floor catching the glow. 1:1, hushed, sombre. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "shadow_pattern": {
+        "filename": "images/skin-yi/scene-shadow-pattern.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. A single Joseon naval officer standing centred, with two contradicting crimson lantern sources from left and right casting two long, diverging shadows toward camera — like a fork in identity. Halo of warm light behind the head. Otherwise pitch dark. 1:1, psychological doubling. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "allies_whisper": {
+        "filename": "images/skin-yi/scene-allies-whisper.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. Three Joseon officers clustered close together in a screen alcove between two paper-screen panels, heads tilted inward as if speaking quietly. A single warm-orange lantern overhead casting concentrated downlight. Heavy shadow at the edges. 1:1, conspiratorial, intimate. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "water_basin": {
+        "filename": "images/skin-yi/scene-water-basin.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. An officer in armor crouched at the edge of a still stone water basin in a pavilion courtyard at night, facing their own reflection — the reflection is faintly dimmer, slightly less certain. Lantern reflected as a single point of crimson light on the water. 1:1, recognition of self, reckoning. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "divided_court": {
+        "filename": "images/skin-yi/scene-divided-court.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Ukiyo-e woodblock-print rendering style — flat layered colours, strong outlines, classical East-Asian composition. Wide interior of the Joseon royal court at night, tiered seating receding, split down the centre by a hard vertical beam of crimson lantern light from above. Two clusters of robed officials occupy each side, mirrored. A single solitary figure stands centred on the seam of light, facing the front. 1:1, decisive moment, schism. Palette deep ink-blue, Korean crimson, parchment cream. (Reminder: edge-to-edge, no border, no text.)"
+      }
+    }
+  },
+  "choreoOverrides": {
+    "converging": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <path d=\"M 0 140 Q 400 122 800 140 T 1600 140\" fill=\"none\" stroke=\"rgba(196,30,58,0.400)\" stroke-width=\"1.10\"/><path d=\"M 0 220 Q 400 202 800 220 T 1600 220\" fill=\"none\" stroke=\"rgba(196,30,58,0.375)\" stroke-width=\"1.02\"/><path d=\"M 0 300 Q 400 282 800 300 T 1600 300\" fill=\"none\" stroke=\"rgba(196,30,58,0.350)\" stroke-width=\"0.94\"/><path d=\"M 0 380 Q 400 362 800 380 T 1600 380\" fill=\"none\" stroke=\"rgba(196,30,58,0.325)\" stroke-width=\"0.86\"/><path d=\"M 0 460 Q 400 442 800 460 T 1600 460\" fill=\"none\" stroke=\"rgba(196,30,58,0.300)\" stroke-width=\"0.78\"/><path d=\"M 0 540 Q 400 522 800 540 T 1600 540\" fill=\"none\" stroke=\"rgba(196,30,58,0.275)\" stroke-width=\"0.70\"/><path d=\"M 0 620 Q 400 602 800 620 T 1600 620\" fill=\"none\" stroke=\"rgba(196,30,58,0.250)\" stroke-width=\"0.62\"/><path d=\"M 0 700 Q 400 682 800 700 T 1600 700\" fill=\"none\" stroke=\"rgba(196,30,58,0.225)\" stroke-width=\"0.54\"/><path d=\"M 0 780 Q 400 762 800 780 T 1600 780\" fill=\"none\" stroke=\"rgba(196,30,58,0.200)\" stroke-width=\"0.46\"/>\n  </svg>",
+    "ripple": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <circle cx=\"800\" cy=\"450\" r=\"70\" fill=\"none\" stroke=\"rgba(196,30,58,0.50)\" stroke-width=\"0.6\"/><circle cx=\"800\" cy=\"450\" r=\"138\" fill=\"none\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.6\"/><circle cx=\"800\" cy=\"450\" r=\"206\" fill=\"none\" stroke=\"rgba(196,30,58,0.40)\" stroke-width=\"0.6\"/><circle cx=\"800\" cy=\"450\" r=\"274\" fill=\"none\" stroke=\"rgba(196,30,58,0.35)\" stroke-width=\"0.6\"/><circle cx=\"800\" cy=\"450\" r=\"342\" fill=\"none\" stroke=\"rgba(196,30,58,0.30)\" stroke-width=\"0.6\"/><circle cx=\"800\" cy=\"450\" r=\"410\" fill=\"none\" stroke=\"rgba(196,30,58,0.25)\" stroke-width=\"0.6\"/><circle cx=\"800\" cy=\"450\" r=\"478\" fill=\"none\" stroke=\"rgba(196,30,58,0.20)\" stroke-width=\"0.6\"/><circle cx=\"800\" cy=\"450\" r=\"546\" fill=\"none\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.6\"/><circle cx=\"800\" cy=\"450\" r=\"614\" fill=\"none\" stroke=\"rgba(196,30,58,0.10)\" stroke-width=\"0.6\"/>\n  </svg>",
+    "sun-arcs": "<svg class=\"choreo sun-arcs\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <!-- Three soft horizon arcs -->\n    <path d=\"M -100 700 Q 400 220 800 240 T 1700 700\" fill=\"none\" stroke=\"rgba(181,53,54,0.5)\" stroke-width=\"0.9\"/>\n    <path d=\"M -100 760 Q 400 300 800 320 T 1700 760\" fill=\"none\" stroke=\"rgba(181,53,54,0.32)\" stroke-width=\"0.7\"/>\n    <path d=\"M -100 820 Q 400 380 800 400 T 1700 820\" fill=\"none\" stroke=\"rgba(181,53,54,0.22)\" stroke-width=\"0.5\"/>\n    <!-- Vermillion rising sun -->\n    <circle cx=\"800\" cy=\"320\" r=\"60\" fill=\"rgba(181,53,54,0.25)\"/>\n    <circle cx=\"800\" cy=\"320\" r=\"34\" fill=\"#b53536\"/>\n    <!-- Korean five-cloud bands -->\n    <g opacity=\"0.45\">\n      <path d=\"M 200 240 Q 280 220 380 240 Q 480 260 580 240 Q 680 220 780 240\" fill=\"none\" stroke=\"#f1e6cb\" stroke-width=\"1.2\"/>\n      <path d=\"M 220 256 Q 300 240 400 256 Q 500 270 600 256\" fill=\"none\" stroke=\"#b53536\" stroke-width=\"0.8\"/>\n      <path d=\"M 920 200 Q 1000 180 1100 200 Q 1200 220 1300 200\" fill=\"none\" stroke=\"#f1e6cb\" stroke-width=\"1.2\"/>\n      <path d=\"M 940 216 Q 1020 200 1120 216 Q 1220 230 1320 216\" fill=\"none\" stroke=\"#b53536\" stroke-width=\"0.8\"/>\n    </g>\n  </svg>",
+    "grid": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <!-- Small Taegeuk roundel as the only emblem of presence (top right) -->\n    <g transform=\"translate(1510 56) scale(1.0)\">\n      <circle cx=\"0\" cy=\"0\" r=\"22\" fill=\"rgba(241,230,203,0.18)\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.8\"/>\n      <path d=\"M 0 -20 A 20 20 0 0 1 0 20 A 10 10 0 0 0 0 0 A 10 10 0 0 1 0 -20 Z\" fill=\"rgba(181,53,54,0.7)\"/>\n      <circle cx=\"0\" cy=\"-10\" r=\"3\" fill=\"#1a3e8c\" opacity=\"0.7\"/>\n      <circle cx=\"0\" cy=\"10\"  r=\"3\" fill=\"#b53536\"/>\n    </g>\n    <!-- Ghost corner brackets — Joseon framing -->\n    <path d=\"M 40  84  L 40  40  L 84  40\"  fill=\"none\" stroke=\"rgba(181,53,54,0.22)\" stroke-width=\"0.8\"/>\n    <path d=\"M 1560 84  L 1560 40  L 1516 40\"  fill=\"none\" stroke=\"rgba(181,53,54,0.22)\" stroke-width=\"0.8\"/>\n    <path d=\"M 40  816 L 40  860 L 84  860\" fill=\"none\" stroke=\"rgba(181,53,54,0.22)\" stroke-width=\"0.8\"/>\n    <path d=\"M 1560 816 L 1560 860 L 1516 860\" fill=\"none\" stroke=\"rgba(181,53,54,0.22)\" stroke-width=\"0.8\"/>\n  </svg>",
+    "fault": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <path d=\"M 0 580 Q 240 540 480 600 Q 720 660 960 580 Q 1200 500 1440 580 L 1600 580\" fill=\"none\" stroke=\"rgba(196,30,58,0.55)\" stroke-width=\"0.9\"/>\n    <path d=\"M 0 640 Q 240 600 480 660 Q 720 720 960 640 Q 1200 560 1440 640 L 1600 640\" fill=\"none\" stroke=\"rgba(196,30,58,0.3)\" stroke-width=\"0.6\"/>\n    <line x1=\"200\" y1=\"120\" x2=\"200\" y2=\"780\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"440\" y1=\"120\" x2=\"440\" y2=\"780\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"680\" y1=\"120\" x2=\"680\" y2=\"780\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"920\" y1=\"120\" x2=\"920\" y2=\"780\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"1160\" y1=\"120\" x2=\"1160\" y2=\"780\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"1400\" y1=\"120\" x2=\"1400\" y2=\"780\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/>\n  </svg>",
+    "web": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <line x1=\"800\" y1=\"450\" x2=\"1700\" y2=\"450\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1610.8719811121773\" y2=\"840.4953652058023\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1361.1408216728603\" y2=\"1153.6483342212268\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1000.268840560683\" y2=\"1327.435120963641\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"599.731159439317\" y2=\"1327.435120963641\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"238.85917832713983\" y2=\"1153.6483342212268\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"-10.871981112177082\" y2=\"840.4953652058024\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"-100\" y2=\"450.0000000000001\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"-10.871981112177195\" y2=\"59.504634794197784\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"238.85917832713972\" y2=\"-253.64833422122672\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"599.7311594393169\" y2=\"-427.4351209636412\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1000.2688405606827\" y2=\"-427.4351209636412\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1361.14082167286\" y2=\"-253.64833422122695\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1610.871981112177\" y2=\"59.5046347941975\" stroke=\"rgba(196,30,58,0.22)\" stroke-width=\"0.4\"/>\n    <circle cx=\"800\" cy=\"450\" r=\"200\" fill=\"none\" stroke=\"rgba(196,30,58,0.40)\" stroke-width=\"0.4\"/><circle cx=\"800\" cy=\"450\" r=\"340\" fill=\"none\" stroke=\"rgba(196,30,58,0.32)\" stroke-width=\"0.4\"/><circle cx=\"800\" cy=\"450\" r=\"480\" fill=\"none\" stroke=\"rgba(196,30,58,0.24)\" stroke-width=\"0.4\"/><circle cx=\"800\" cy=\"450\" r=\"620\" fill=\"none\" stroke=\"rgba(196,30,58,0.16)\" stroke-width=\"0.4\"/>\n    <circle cx=\"717.9652590315645\" cy=\"244.1377935880711\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"999.2675363290064\" cy=\"688.8061672949271\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"960.2745463419458\" cy=\"197.7275971214136\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"825.0250274124289\" cy=\"-27.359740158125078\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"1004.9578828170353\" cy=\"535.5454555769123\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"1036.963290496303\" cy=\"320.5839233524004\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"1298.54045463364\" cy=\"693.864723211404\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"609.1251448470568\" cy=\"167.38238605384834\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"1184.3926336502163\" cy=\"125.43790688689228\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"610.2875178251397\" cy=\"421.9510716981307\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"573.4671081216948\" cy=\"358.47082562171306\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"599.7147991258181\" cy=\"262.65363329395825\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"1344.8286102552802\" cy=\"342.68756329258844\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"999.9041287742353\" cy=\"909.6999343844072\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"909.7793142045737\" cy=\"369.0651677746368\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"795.2261721511413\" cy=\"22.5170700481454\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"692.3154660812363\" cy=\"1028.2778278935934\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/><circle cx=\"1087.6233720303703\" cy=\"32.634253761209095\" r=\"2\" fill=\"#f0e8d0\" opacity=\"0.7\"/>\n  </svg>"
+  },
+  "discArtOverrides": {
+    "summonsHerald": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <!-- Sky band + ink wash horizon -->\n    <rect x=\"0\" y=\"380\" width=\"600\" height=\"220\" fill=\"#0a0604\"/>\n    <line x1=\"0\" y1=\"380\" x2=\"600\" y2=\"380\" stroke=\"rgba(181,53,54,0.4)\" stroke-width=\"0.6\"/>\n    <!-- Cliff-edge with Korean pavilion -->\n    \n  <g transform=\"translate(300 260)\">\n    <!-- Roof: characteristic Korean upturned eaves -->\n    <path d=\"M -100 0 Q -110.00000000000001 -8 -90 -12 L -70 -36 L 0 -56.00000000000001 L 70 -36 L 90 -12 Q 110.00000000000001 -8 100 0 Z\" fill=\"#1a0e08\" stroke=\"#b53536\" stroke-width=\"0.4\"/>\n    <!-- Roof ridge tiles -->\n    <line x1=\"-70\" y1=\"-36\" x2=\"70\" y2=\"-36\" stroke=\"#b53536\" stroke-width=\"0.6\"/>\n    <!-- Dancheong band -->\n    <rect x=\"-80\" y=\"0\" width=\"160\" height=\"8\" fill=\"#b53536\" opacity=\"0.55\"/>\n    <!-- Body columns + walls -->\n    <rect x=\"-70\" y=\"8\" width=\"140\" height=\"68\" fill=\"#1a0e08\" stroke=\"#b53536\" stroke-width=\"0.3\"/>\n    <line x1=\"-36\" y1=\"8\" x2=\"-36\" y2=\"76\" stroke=\"#b53536\" stroke-width=\"0.3\"/>\n    <line x1=\"36\"  y1=\"8\" x2=\"36\"  y2=\"76\" stroke=\"#b53536\" stroke-width=\"0.3\"/>\n  </g>\n    <!-- Hanging taegeuk banner on long pole beside pavilion -->\n    <line x1=\"420\" y1=\"160\" x2=\"420\" y2=\"320\" stroke=\"#0d0a06\" stroke-width=\"2\"/>\n    \n  <g transform=\"translate(420 200)\">\n    <circle cx=\"0\" cy=\"0\" r=\"14\" fill=\"#f1e6cb\" stroke=\"#b53536\" stroke-width=\"0.84\"/>\n    <path d=\"M 0 -12.88 A 12.88 12.88 0 0 1 0 12.88 A 6.44 6.44 0 0 0 0 0 A 6.44 6.44 0 0 1 0 -12.88 Z\" fill=\"#b53536\"/>\n    <circle cx=\"0\" cy=\"-6.44\" r=\"2.24\" fill=\"#1a3e8c\"/>\n    <circle cx=\"0\" cy=\"6.44\"  r=\"2.24\" fill=\"#b53536\"/>\n  </g>\n    <!-- Five-cloud band drifting across sky -->\n    \n  <g transform=\"translate(180 130)\" opacity=\"0.8\">\n    <path d=\"M -110 0 Q -92.39999999999999 -26.4 -70.4 -13.2 Q -48.4 -35.2 -22 -17.6 Q 0 -39.6 26.4 -17.6 Q 48.4 -35.2 74.80000000000001 -13.2 Q 92.39999999999999 -30.800000000000004 110 0 Q 88 8.8 70.4 0 Q 48.4 8.8 26.4 0 Q 0 8.8 -26.4 0 Q -48.4 8.8 -70.4 0 Q -88 8.8 -110 0 Z\" fill=\"none\" stroke=\"#b53536\" stroke-width=\"0.7\" opacity=\"0.5\"/>\n    <path d=\"M -110 17.6 Q -92.39999999999999 -8.8 -70.4 4.4 Q -48.4 -17.6 -22 0 Q 0 -22 26.4 0 Q 48.4 -17.6 74.80000000000001 4.4 Q 92.39999999999999 -13.2 110 17.6\" fill=\"none\" stroke=\"#f1e6cb\" stroke-width=\"0.5\" opacity=\"0.6\"/>\n  </g>\n    <!-- Crane in flight (auspicious omen) -->\n    \n  <g transform=\"translate(460 90)\">\n    <path d=\"M -30 0 Q -12 -10.799999999999999 0 -7.199999999999999 Q 12 -3 30 -2.4 L 30 0 Q 12 -1.2 0 -4.8 Q -12 -8.4 -30 0 Z\" fill=\"#f1e6cb\" stroke=\"#1a0e08\" stroke-width=\"0.3\"/>\n    <circle cx=\"30\" cy=\"-2.4\" r=\"1.5\" fill=\"#1a0e08\"/>\n  </g>\n    <!-- Bamboo grove right edge -->\n    \n  <g transform=\"translate(560 380)\">\n    <rect x=\"-3\" y=\"-110\" width=\"6\" height=\"110\" fill=\"#0a0d0a\" opacity=\"0.85\"/>\n    <line x1=\"-6\" y1=\"-4\" x2=\"6\" y2=\"-4\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/><line x1=\"-6\" y1=\"-26\" x2=\"6\" y2=\"-26\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/><line x1=\"-6\" y1=\"-48\" x2=\"6\" y2=\"-48\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/><line x1=\"-6\" y1=\"-70\" x2=\"6\" y2=\"-70\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/><line x1=\"-6\" y1=\"-92\" x2=\"6\" y2=\"-92\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/>\n    <!-- Two leaves -->\n    <path d=\"M -2 -77 Q -22 -85.8 -28 -72.60000000000001 Q -18 -68.2 -2 -72.60000000000001 Z\" fill=\"#1a3a18\"/>\n    <path d=\"M  2 -49.5 Q  22 -58.300000000000004  28 -45.099999999999994 Q  18 -40.7  2 -45.099999999999994 Z\" fill=\"#1a3a18\"/>\n  </g>\n    <!-- Panokseon warships + turtle ship -->\n    \n      <rect x=\"120\" y=\"420\" width=\"40\" height=\"16\" fill=\"#0d0a06\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.5\"/>\n      <line x1=\"140\" y1=\"420\" x2=\"140\" y2=\"392\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.5\"/>\n      <rect x=\"128\" y=\"400\" width=\"24\" height=\"14\" fill=\"rgba(181,53,54,0.2)\" stroke=\"rgba(181,53,54,0.5)\" stroke-width=\"0.4\"/>\n    \n      <rect x=\"220\" y=\"420\" width=\"40\" height=\"16\" fill=\"#0d0a06\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.5\"/>\n      <line x1=\"240\" y1=\"420\" x2=\"240\" y2=\"388\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.5\"/>\n      <rect x=\"228\" y=\"396\" width=\"24\" height=\"14\" fill=\"rgba(181,53,54,0.2)\" stroke=\"rgba(181,53,54,0.5)\" stroke-width=\"0.4\"/>\n    \n      <rect x=\"320\" y=\"420\" width=\"40\" height=\"16\" fill=\"#0d0a06\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.5\"/>\n      <line x1=\"340\" y1=\"420\" x2=\"340\" y2=\"384\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.5\"/>\n      <rect x=\"328\" y=\"392\" width=\"24\" height=\"14\" fill=\"rgba(181,53,54,0.2)\" stroke=\"rgba(181,53,54,0.5)\" stroke-width=\"0.4\"/>\n    \n      <rect x=\"420\" y=\"420\" width=\"40\" height=\"16\" fill=\"#0d0a06\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.5\"/>\n      <line x1=\"440\" y1=\"420\" x2=\"440\" y2=\"380\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.5\"/>\n      <rect x=\"428\" y=\"388\" width=\"24\" height=\"14\" fill=\"rgba(181,53,54,0.2)\" stroke=\"rgba(181,53,54,0.5)\" stroke-width=\"0.4\"/>\n    \n    \n  <g transform=\"translate(520 425)\">\n    <!-- Hull -->\n    <path d=\"M -45 0 Q -40.5 -16.2 -27 -18 L 27 -18 Q 40.5 -16.2 45 0 Z\" fill=\"#0d0a06\" stroke=\"#b53536\" stroke-width=\"0.4\"/>\n    <!-- Spiked shell -->\n    <path d=\"M -28.8 -18 Q -18 -32.4 0 -32.4 Q 18 -32.4 28.8 -18\" fill=\"#0d0a06\" stroke=\"#b53536\" stroke-width=\"0.4\"/>\n    <line x1=\"-25.200000000000003\" y1=\"-23.400000000000002\" x2=\"-23.400000000000002\" y2=\"-30.6\" stroke=\"#b53536\" stroke-width=\"0.5\"/><line x1=\"-18.000000000000004\" y1=\"-23.400000000000002\" x2=\"-16.200000000000003\" y2=\"-30.6\" stroke=\"#b53536\" stroke-width=\"0.5\"/><line x1=\"-10.800000000000002\" y1=\"-23.400000000000002\" x2=\"-9.000000000000002\" y2=\"-30.6\" stroke=\"#b53536\" stroke-width=\"0.5\"/><line x1=\"-3.6000000000000014\" y1=\"-23.400000000000002\" x2=\"-1.8000000000000007\" y2=\"-30.6\" stroke=\"#b53536\" stroke-width=\"0.5\"/><line x1=\"3.599999999999998\" y1=\"-23.400000000000002\" x2=\"5.399999999999999\" y2=\"-30.6\" stroke=\"#b53536\" stroke-width=\"0.5\"/><line x1=\"10.799999999999997\" y1=\"-23.400000000000002\" x2=\"12.599999999999998\" y2=\"-30.6\" stroke=\"#b53536\" stroke-width=\"0.5\"/><line x1=\"18\" y1=\"-23.400000000000002\" x2=\"19.8\" y2=\"-30.6\" stroke=\"#b53536\" stroke-width=\"0.5\"/>\n    <!-- Dragon prow -->\n    <path d=\"M -45 0 L -54 -5.3999999999999995 L -49.50000000000001 -10.799999999999999 L -45 -5.3999999999999995 Z\" fill=\"#b53536\"/>\n    <circle cx=\"-49.50000000000001\" cy=\"-7.2\" r=\"1.08\" fill=\"#f1e6cb\"/>\n  </g>\n    <!-- Plum blossoms drifting in foreground -->\n    \n  <g transform=\"translate(70 200)\" opacity=\"0.55\">\n    <ellipse cx=\"0\" cy=\"-6\" rx=\"4\" ry=\"5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(0)\"/><ellipse cx=\"0\" cy=\"-6\" rx=\"4\" ry=\"5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(72)\"/><ellipse cx=\"0\" cy=\"-6\" rx=\"4\" ry=\"5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(144)\"/><ellipse cx=\"0\" cy=\"-6\" rx=\"4\" ry=\"5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(216)\"/><ellipse cx=\"0\" cy=\"-6\" rx=\"4\" ry=\"5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(288)\"/>\n    <circle cx=\"0\" cy=\"0\" r=\"1.7999999999999998\" fill=\"#b53536\"/>\n  </g>\n    \n  <g transform=\"translate(540 260)\" opacity=\"0.45\">\n    <ellipse cx=\"0\" cy=\"-4.8\" rx=\"3.2\" ry=\"4\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(0)\"/><ellipse cx=\"0\" cy=\"-4.8\" rx=\"3.2\" ry=\"4\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(72)\"/><ellipse cx=\"0\" cy=\"-4.8\" rx=\"3.2\" ry=\"4\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(144)\"/><ellipse cx=\"0\" cy=\"-4.8\" rx=\"3.2\" ry=\"4\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(216)\"/><ellipse cx=\"0\" cy=\"-4.8\" rx=\"3.2\" ry=\"4\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(288)\"/>\n    <circle cx=\"0\" cy=\"0\" r=\"1.44\" fill=\"#b53536\"/>\n  </g>\n    \n  <g transform=\"translate(120 320)\" opacity=\"0.65\">\n    <ellipse cx=\"0\" cy=\"-3.5999999999999996\" rx=\"2.4000000000000004\" ry=\"3\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(0)\"/><ellipse cx=\"0\" cy=\"-3.5999999999999996\" rx=\"2.4000000000000004\" ry=\"3\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(72)\"/><ellipse cx=\"0\" cy=\"-3.5999999999999996\" rx=\"2.4000000000000004\" ry=\"3\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(144)\"/><ellipse cx=\"0\" cy=\"-3.5999999999999996\" rx=\"2.4000000000000004\" ry=\"3\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(216)\"/><ellipse cx=\"0\" cy=\"-3.5999999999999996\" rx=\"2.4000000000000004\" ry=\"3\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(288)\"/>\n    <circle cx=\"0\" cy=\"0\" r=\"1.08\" fill=\"#b53536\"/>\n  </g>\n    <!-- Moon halo -->\n    <circle cx=\"120\" cy=\"120\" r=\"42\" fill=\"rgba(241,230,203,0.6)\" filter=\"url(#yiBlur)\"/>\n    <circle cx=\"120\" cy=\"120\" r=\"22\" fill=\"#f1e6cb\"/>\n    <!-- Stars -->\n    <circle cx=\"123.28786152447861\" cy=\"71.97721006923548\" r=\"0.6552893948199887\" fill=\"#f1e6cb\" opacity=\"0.26838037178606394\"/><circle cx=\"146.71156150369544\" cy=\"295.8942269565424\" r=\"0.8144114869854877\" fill=\"#f1e6cb\" opacity=\"0.6793656876369536\"/><circle cx=\"258.31240111151345\" cy=\"251.48607617434152\" r=\"0.7233276084453024\" fill=\"#f1e6cb\" opacity=\"0.34740446613418013\"/><circle cx=\"438.47534110019853\" cy=\"131.05164705621408\" r=\"0.46029584815646185\" fill=\"#f1e6cb\" opacity=\"0.4268304242214693\"/><circle cx=\"599.3301341876829\" cy=\"331.84024474789607\" r=\"0.9158888472133504\" fill=\"#f1e6cb\" opacity=\"0.28249905494794875\"/><circle cx=\"257.43047380690285\" cy=\"295.51197096864524\" r=\"0.9369982810694145\" fill=\"#f1e6cb\" opacity=\"0.5856172971952136\"/><circle cx=\"95.40297558195059\" cy=\"324.7279445738631\" r=\"0.5399587575314255\" fill=\"#f1e6cb\" opacity=\"0.2688801992337177\"/><circle cx=\"245.32452020892092\" cy=\"222.4531935413031\" r=\"1.0691485501676357\" fill=\"#f1e6cb\" opacity=\"0.5441451642264212\"/><circle cx=\"20.61012504030777\" cy=\"175.648107605257\" r=\"0.7128664883171898\" fill=\"#f1e6cb\" opacity=\"0.48368350522960196\"/><circle cx=\"342.4470951513198\" cy=\"112.56703814563937\" r=\"0.5716914117997304\" fill=\"#f1e6cb\" opacity=\"0.5232120739534487\"/><circle cx=\"85.465244199052\" cy=\"265.0202052156787\" r=\"0.8779204827081619\" fill=\"#f1e6cb\" opacity=\"0.5711386847731936\"/><circle cx=\"353.45997963474514\" cy=\"194.20827725875293\" r=\"0.7291800907392517\" fill=\"#f1e6cb\" opacity=\"0.5907562018112797\"/><circle cx=\"254.58003073495811\" cy=\"150.38842485258593\" r=\"0.8212620360440598\" fill=\"#f1e6cb\" opacity=\"0.5761897812196906\"/><circle cx=\"200.86999495062673\" cy=\"302.8687346304771\" r=\"0.8635615490029773\" fill=\"#f1e6cb\" opacity=\"0.303814856494069\"/><circle cx=\"393.03016851298963\" cy=\"332.4416445792937\" r=\"1.1309084609533866\" fill=\"#f1e6cb\" opacity=\"0.45059584246360856\"/><circle cx=\"589.5158937691502\" cy=\"152.98822306537406\" r=\"0.9500191899829759\" fill=\"#f1e6cb\" opacity=\"0.6568302731101621\"/><circle cx=\"293.4773786440159\" cy=\"203.98477049141283\" r=\"0.8033029935086399\" fill=\"#f1e6cb\" opacity=\"0.6772037222976215\"/><circle cx=\"367.5315794185038\" cy=\"275.62223932891146\" r=\"0.5433389181398296\" fill=\"#f1e6cb\" opacity=\"0.40838710873196754\"/><circle cx=\"59.881809043288435\" cy=\"89.47318843170866\" r=\"1.0315640988921502\" fill=\"#f1e6cb\" opacity=\"0.5699673535698897\"/><circle cx=\"487.46700674425506\" cy=\"97.22270717740103\" r=\"0.7813139903518137\" fill=\"#f1e6cb\" opacity=\"0.32830868049740797\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "councilChamber": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <!-- Upturned-eave Korean pavilion ceiling line -->\n    <path d=\"M 30 90 Q 60 72 90 76 L 510 76 Q 540 72 570 90\" fill=\"none\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.8\"/>\n    <path d=\"M 60 100 L 540 100\" stroke=\"rgba(181,53,54,0.4)\" stroke-width=\"0.5\"/>\n    <!-- Dancheong patterned beam -->\n    <rect x=\"60\" y=\"100\" width=\"32\" height=\"10\" fill=\"#b53536\" opacity=\"0.55\"/><rect x=\"96\" y=\"100\" width=\"32\" height=\"10\" fill=\"#1a3e8c\" opacity=\"0.55\"/><rect x=\"132\" y=\"100\" width=\"32\" height=\"10\" fill=\"#c4a56a\" opacity=\"0.55\"/><rect x=\"168\" y=\"100\" width=\"32\" height=\"10\" fill=\"#b53536\" opacity=\"0.55\"/><rect x=\"204\" y=\"100\" width=\"32\" height=\"10\" fill=\"#1a3e8c\" opacity=\"0.55\"/><rect x=\"240\" y=\"100\" width=\"32\" height=\"10\" fill=\"#c4a56a\" opacity=\"0.55\"/><rect x=\"276\" y=\"100\" width=\"32\" height=\"10\" fill=\"#b53536\" opacity=\"0.55\"/><rect x=\"312\" y=\"100\" width=\"32\" height=\"10\" fill=\"#1a3e8c\" opacity=\"0.55\"/><rect x=\"348\" y=\"100\" width=\"32\" height=\"10\" fill=\"#c4a56a\" opacity=\"0.55\"/><rect x=\"384\" y=\"100\" width=\"32\" height=\"10\" fill=\"#b53536\" opacity=\"0.55\"/><rect x=\"420\" y=\"100\" width=\"32\" height=\"10\" fill=\"#1a3e8c\" opacity=\"0.55\"/><rect x=\"456\" y=\"100\" width=\"32\" height=\"10\" fill=\"#c4a56a\" opacity=\"0.55\"/><rect x=\"492\" y=\"100\" width=\"32\" height=\"10\" fill=\"#b53536\" opacity=\"0.55\"/><rect x=\"528\" y=\"100\" width=\"32\" height=\"10\" fill=\"#1a3e8c\" opacity=\"0.55\"/>\n    <!-- Hanging silk banners with Taegeuk -->\n    <rect x=\"120\" y=\"116\" width=\"20\" height=\"200\" fill=\"#b53536\" opacity=\"0.7\"/>\n    \n  <g transform=\"translate(130 152)\">\n    <circle cx=\"0\" cy=\"0\" r=\"9\" fill=\"#f1e6cb\" stroke=\"#b53536\" stroke-width=\"0.54\"/>\n    <path d=\"M 0 -8.280000000000001 A 8.280000000000001 8.280000000000001 0 0 1 0 8.280000000000001 A 4.140000000000001 4.140000000000001 0 0 0 0 0 A 4.140000000000001 4.140000000000001 0 0 1 0 -8.280000000000001 Z\" fill=\"#b53536\"/>\n    <circle cx=\"0\" cy=\"-4.140000000000001\" r=\"1.44\" fill=\"#1a3e8c\"/>\n    <circle cx=\"0\" cy=\"4.140000000000001\"  r=\"1.44\" fill=\"#b53536\"/>\n  </g>\n    <rect x=\"460\" y=\"116\" width=\"20\" height=\"200\" fill=\"#b53536\" opacity=\"0.7\"/>\n    \n  <g transform=\"translate(470 152)\">\n    <circle cx=\"0\" cy=\"0\" r=\"9\" fill=\"#f1e6cb\" stroke=\"#b53536\" stroke-width=\"0.54\"/>\n    <path d=\"M 0 -8.280000000000001 A 8.280000000000001 8.280000000000001 0 0 1 0 8.280000000000001 A 4.140000000000001 4.140000000000001 0 0 0 0 0 A 4.140000000000001 4.140000000000001 0 0 1 0 -8.280000000000001 Z\" fill=\"#b53536\"/>\n    <circle cx=\"0\" cy=\"-4.140000000000001\" r=\"1.44\" fill=\"#1a3e8c\"/>\n    <circle cx=\"0\" cy=\"4.140000000000001\"  r=\"1.44\" fill=\"#b53536\"/>\n  </g>\n    <!-- Low chart table -->\n    <rect x=\"170\" y=\"420\" width=\"260\" height=\"44\" fill=\"#1a0e08\" stroke=\"rgba(181,53,54,0.4)\" stroke-width=\"0.5\"/>\n    <!-- Sea chart on the table -->\n    <rect x=\"186\" y=\"425\" width=\"228\" height=\"32\" fill=\"#f1e6cb\" opacity=\"0.16\"/>\n    <path d=\"M 186 442 Q 240 432 290 444 Q 340 456 414 442\" fill=\"none\" stroke=\"rgba(181,53,54,0.45)\" stroke-width=\"0.4\"/>\n    <!-- Lone figure in officer dress -->\n    <ellipse cx=\"300\" cy=\"510\" rx=\"20\" ry=\"6\" fill=\"#0d0805\"/>\n    <rect x=\"288\" y=\"358\" width=\"24\" height=\"100\" rx=\"5\" fill=\"#1a0e08\" stroke=\"rgba(181,53,54,0.5)\" stroke-width=\"0.55\"/>\n    <!-- Officer helmet silhouette -->\n    <path d=\"M 286 348 Q 286 338 296 338 L 304 338 Q 314 338 314 348 L 314 352 L 286 352 Z\" fill=\"#1a0e08\" stroke=\"rgba(181,53,54,0.5)\" stroke-width=\"0.4\"/>\n    <circle cx=\"300\" cy=\"345\" r=\"13\" fill=\"#1a0e08\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.5\"/>\n    <!-- Lantern halo above the table -->\n    <circle cx=\"300\" cy=\"220\" r=\"80\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\"/>\n    <circle cx=\"300\" cy=\"220\" r=\"14\" fill=\"#d75557\"/>\n    <!-- Five-cloud ornament above the eave -->\n    \n  <g transform=\"translate(300 56)\" opacity=\"0.8\">\n    <path d=\"M -120 0 Q -100.8 -28.799999999999997 -76.8 -14.399999999999999 Q -52.8 -38.4 -24 -19.2 Q 0 -43.199999999999996 28.799999999999997 -19.2 Q 52.8 -38.4 81.60000000000001 -14.399999999999999 Q 100.8 -33.6 120 0 Q 96 9.6 76.8 0 Q 52.8 9.6 28.799999999999997 0 Q 0 9.6 -28.799999999999997 0 Q -52.8 9.6 -76.8 0 Q -96 9.6 -120 0 Z\" fill=\"none\" stroke=\"#b53536\" stroke-width=\"0.7\" opacity=\"0.5\"/>\n    <path d=\"M -120 19.2 Q -100.8 -9.6 -76.8 4.8 Q -52.8 -19.2 -24 0 Q 0 -24 28.799999999999997 0 Q 52.8 -19.2 81.60000000000001 4.8 Q 100.8 -14.399999999999999 120 19.2\" fill=\"none\" stroke=\"#f1e6cb\" stroke-width=\"0.5\" opacity=\"0.6\"/>\n  </g>\n    <!-- Ceiling pinpricks -->\n    <circle cx=\"587.5545325733497\" cy=\"52.712342335910314\" r=\"0.7898968913900881\" fill=\"#f1e6cb\" opacity=\"0.7420010729526896\"/><circle cx=\"473.6852205474986\" cy=\"55.81251050155393\" r=\"1.4058636169911791\" fill=\"#f1e6cb\" opacity=\"0.33137207468317437\"/><circle cx=\"413.9841755846195\" cy=\"24.821265906313563\" r=\"1.2539536279991244\" fill=\"#f1e6cb\" opacity=\"0.48494024905533545\"/><circle cx=\"407.6429345341465\" cy=\"33.26852706948276\" r=\"0.5295189612237181\" fill=\"#f1e6cb\" opacity=\"0.3880278643348872\"/><circle cx=\"467.2105499871475\" cy=\"40.82802979355304\" r=\"1.0584189654034026\" fill=\"#f1e6cb\" opacity=\"0.45582437916610624\"/><circle cx=\"120.95918282484406\" cy=\"43.13332990498412\" r=\"0.6005050829493443\" fill=\"#f1e6cb\" opacity=\"0.662016272947024\"/><circle cx=\"27.487182809108333\" cy=\"37.57019405393287\" r=\"0.9833178522309336\" fill=\"#f1e6cb\" opacity=\"0.41649019653591385\"/><circle cx=\"277.127781735618\" cy=\"39.79406452211001\" r=\"0.97490315930988\" fill=\"#f1e6cb\" opacity=\"0.3416091127409044\"/><circle cx=\"474.2098796765811\" cy=\"58.03357683964763\" r=\"1.4476501697922979\" fill=\"#f1e6cb\" opacity=\"0.666042478616629\"/><circle cx=\"188.30931903569024\" cy=\"40.08434973160834\" r=\"0.5209427874337749\" fill=\"#f1e6cb\" opacity=\"0.33340301401909583\"/><circle cx=\"63.811401882392936\" cy=\"42.73008635930837\" r=\"0.8052515706033576\" fill=\"#f1e6cb\" opacity=\"0.31544176617935976\"/><circle cx=\"111.05893141541428\" cy=\"51.098184278395394\" r=\"0.5330738872619976\" fill=\"#f1e6cb\" opacity=\"0.7098407697511191\"/><circle cx=\"387.72078663050655\" cy=\"27.510887471305587\" r=\"0.6555616495571543\" fill=\"#f1e6cb\" opacity=\"0.4889235655486662\"/><circle cx=\"247.74543164120843\" cy=\"23.885445926794098\" r=\"0.5638138508650175\" fill=\"#f1e6cb\" opacity=\"0.776277827126393\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "fracturedCity": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <!-- Distant mountain ridge -->\n    <path d=\"M 0 380 L 80 340 L 160 360 L 240 320 L 320 350 L 400 310 L 480 340 L 560 320 L 600 340 L 600 380 Z\" fill=\"#1a1108\" opacity=\"0.6\"/>\n    <!-- Coastline silhouette -->\n    <path d=\"M 0 460 L 60 440 L 120 460 L 200 430 L 280 460 L 360 420 L 440 470 L 520 430 L 600 460 L 600 600 L 0 600 Z\" fill=\"#0a0604\"/>\n    <!-- Three Korean pavilions on shore, eaves upturned -->\n    \n      <path d=\"M 78 440 Q 74 432 82 430 L 90 416 L 110 408 L 130 416 L 138 430 Q 146 432 142 440 Z\" fill=\"#0a0604\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.5\"/>\n      <line x1=\"90\" y1=\"416\" x2=\"130\" y2=\"416\" stroke=\"rgba(181,53,54,0.7)\" stroke-width=\"0.6\"/>\n      <rect x=\"88\" y=\"440\" width=\"44\" height=\"32\" fill=\"#0a0604\" stroke=\"rgba(181,53,54,0.3)\" stroke-width=\"0.4\"/>\n    \n      <path d=\"M 248 440 Q 244 432 252 430 L 260 416 L 280 408 L 300 416 L 308 430 Q 316 432 312 440 Z\" fill=\"#0a0604\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.5\"/>\n      <line x1=\"260\" y1=\"416\" x2=\"300\" y2=\"416\" stroke=\"rgba(181,53,54,0.7)\" stroke-width=\"0.6\"/>\n      <rect x=\"258\" y=\"440\" width=\"44\" height=\"32\" fill=\"#0a0604\" stroke=\"rgba(181,53,54,0.3)\" stroke-width=\"0.4\"/>\n    \n      <path d=\"M 418 440 Q 414 432 422 430 L 430 416 L 450 408 L 470 416 L 478 430 Q 486 432 482 440 Z\" fill=\"#0a0604\" stroke=\"rgba(181,53,54,0.55)\" stroke-width=\"0.5\"/>\n      <line x1=\"430\" y1=\"416\" x2=\"470\" y2=\"416\" stroke=\"rgba(181,53,54,0.7)\" stroke-width=\"0.6\"/>\n      <rect x=\"428\" y=\"440\" width=\"44\" height=\"32\" fill=\"#0a0604\" stroke=\"rgba(181,53,54,0.3)\" stroke-width=\"0.4\"/>\n    \n    <!-- Fire glows -->\n    <ellipse cx=\"110\" cy=\"430\" rx=\"80\" ry=\"32\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\" opacity=\"0.85\"/>\n    <ellipse cx=\"450\" cy=\"440\" rx=\"100\" ry=\"36\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\" opacity=\"0.7\"/>\n    <!-- Ship's prow in foreground (two figures looking at the shore) -->\n    <rect x=\"280\" y=\"500\" width=\"6\" height=\"60\" fill=\"#040201\"/>\n    <rect x=\"320\" y=\"500\" width=\"6\" height=\"60\" fill=\"#040201\"/>\n    <circle cx=\"283\" cy=\"495\" r=\"5\" fill=\"#040201\"/>\n    <circle cx=\"323\" cy=\"495\" r=\"5\" fill=\"#040201\"/>\n    <line x1=\"200\" y1=\"540\" x2=\"400\" y2=\"540\" stroke=\"#0a0604\" stroke-width=\"3\"/>\n    <!-- Smoke columns rising -->\n    <ellipse cx=\"120\" cy=\"220\" rx=\"80\" ry=\"120\" fill=\"rgba(181,53,54,0.07)\" filter=\"url(#yiBlur)\"/>\n    <ellipse cx=\"440\" cy=\"200\" rx=\"90\" ry=\"140\" fill=\"rgba(181,53,54,0.07)\" filter=\"url(#yiBlur)\"/>\n    <!-- Crane fleeing across the sky -->\n    \n  <g transform=\"translate(380 150)\">\n    <path d=\"M -25 0 Q -10 -9 0 -6 Q 10 -2.5 25 -2 L 25 0 Q 10 -1 0 -4 Q -10 -7.000000000000001 -25 0 Z\" fill=\"#f1e6cb\" stroke=\"#1a0e08\" stroke-width=\"0.3\"/>\n    <circle cx=\"25\" cy=\"-2\" r=\"1.25\" fill=\"#1a0e08\"/>\n  </g>\n    <!-- Stars -->\n    <circle cx=\"72.46034072708136\" cy=\"82.2283873690956\" r=\"1.0875279151290027\" fill=\"#f1e6cb\" opacity=\"0.5371983776643507\"/><circle cx=\"257.06313467643633\" cy=\"158.81791151577946\" r=\"0.6591135854296439\" fill=\"#f1e6cb\" opacity=\"0.23382215704570936\"/><circle cx=\"346.5351686945319\" cy=\"27.258295480261413\" r=\"0.7045820073829518\" fill=\"#f1e6cb\" opacity=\"0.6271910556233256\"/><circle cx=\"53.63242696386163\" cy=\"96.73239339222374\" r=\"0.98822995546891\" fill=\"#f1e6cb\" opacity=\"0.33050266901868514\"/><circle cx=\"109.63574503874898\" cy=\"7.223969929046277\" r=\"0.562515074201116\" fill=\"#f1e6cb\" opacity=\"0.3249768738015922\"/><circle cx=\"535.5387995173753\" cy=\"134.44662143707995\" r=\"1.1728191062879063\" fill=\"#f1e6cb\" opacity=\"0.681082900932539\"/><circle cx=\"125.79039615940376\" cy=\"86.69916032237838\" r=\"0.7743271087025164\" fill=\"#f1e6cb\" opacity=\"0.6239160915725042\"/><circle cx=\"131.48743552760448\" cy=\"99.4747729579546\" r=\"1.1518813393922978\" fill=\"#f1e6cb\" opacity=\"0.4975149093402625\"/><circle cx=\"14.45484875350691\" cy=\"12.846140695026333\" r=\"0.7574484251641436\" fill=\"#f1e6cb\" opacity=\"0.280657797266004\"/><circle cx=\"89.49905550798528\" cy=\"66.41581499576615\" r=\"0.49358390780501316\" fill=\"#f1e6cb\" opacity=\"0.4580205666856803\"/><circle cx=\"279.7081899119559\" cy=\"82.87428314894781\" r=\"0.5239298958831328\" fill=\"#f1e6cb\" opacity=\"0.23215862857449615\"/><circle cx=\"25.04512596148065\" cy=\"92.76283833084045\" r=\"0.44084868591801724\" fill=\"#f1e6cb\" opacity=\"0.6428665293968152\"/><circle cx=\"579.5733044567357\" cy=\"158.743943179073\" r=\"0.5221471971286334\" fill=\"#f1e6cb\" opacity=\"0.47054645408483836\"/><circle cx=\"526.0325649445002\" cy=\"11.114031217009565\" r=\"1.1052946143077724\" fill=\"#f1e6cb\" opacity=\"0.6724032952521424\"/><circle cx=\"402.44455817747286\" cy=\"6.2040636737203325\" r=\"0.7084766156292055\" fill=\"#f1e6cb\" opacity=\"0.2520232582405701\"/><circle cx=\"145.46415377845622\" cy=\"148.22232405068922\" r=\"0.8580735677090943\" fill=\"#f1e6cb\" opacity=\"0.5905333596418574\"/><circle cx=\"585.7491498498468\" cy=\"140.90658823429732\" r=\"0.5984086092333334\" fill=\"#f1e6cb\" opacity=\"0.655026037964161\"/><circle cx=\"441.7175117745772\" cy=\"176.86367548211516\" r=\"0.9258059441103544\" fill=\"#f1e6cb\" opacity=\"0.3921426769483331\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "convoyArc": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <!-- Sea band -->\n    <rect x=\"0\" y=\"380\" width=\"600\" height=\"220\" fill=\"#04060e\"/>\n    <!-- Wave hatching -->\n    <path d=\"M 0 440 Q 150 430 300 440 T 600 440\" fill=\"none\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.5\"/><path d=\"M 0 462 Q 150 452 300 462 T 600 462\" fill=\"none\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.5\"/><path d=\"M 0 484 Q 150 474 300 484 T 600 484\" fill=\"none\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.5\"/><path d=\"M 0 506 Q 150 496 300 506 T 600 506\" fill=\"none\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.5\"/><path d=\"M 0 528 Q 150 518 300 528 T 600 528\" fill=\"none\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.5\"/><path d=\"M 0 550 Q 150 540 300 550 T 600 550\" fill=\"none\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.5\"/>\n    <!-- 4 ships in line -->\n    \n      <rect x=\"70\" y=\"390\" width=\"60\" height=\"20\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.5\"/>\n      <line x1=\"100\" y1=\"390\" x2=\"100\" y2=\"320\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.6\"/>\n      <rect x=\"82\" y=\"334\" width=\"36\" height=\"50\" fill=\"rgba(196,30,58,0.18)\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.5\"/>\n    \n      <rect x=\"190\" y=\"394\" width=\"60\" height=\"20\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.5\"/>\n      <line x1=\"220\" y1=\"394\" x2=\"220\" y2=\"324\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.6\"/>\n      <rect x=\"202\" y=\"338\" width=\"36\" height=\"50\" fill=\"rgba(196,30,58,0.18)\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.5\"/>\n    \n      <rect x=\"310\" y=\"398\" width=\"60\" height=\"20\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.5\"/>\n      <line x1=\"340\" y1=\"398\" x2=\"340\" y2=\"328\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.6\"/>\n      <rect x=\"322\" y=\"342\" width=\"36\" height=\"50\" fill=\"rgba(196,30,58,0.18)\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.5\"/>\n    \n      <rect x=\"430\" y=\"402\" width=\"60\" height=\"20\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.5\"/>\n      <line x1=\"460\" y1=\"402\" x2=\"460\" y2=\"332\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.6\"/>\n      <rect x=\"442\" y=\"346\" width=\"36\" height=\"50\" fill=\"rgba(196,30,58,0.18)\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.5\"/>\n    \n    <!-- Incoming arrows from above -->\n    <line x1=\"100\" y1=\"40\" x2=\"140\" y2=\"300\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.4\"/><line x1=\"200\" y1=\"40\" x2=\"240\" y2=\"315\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.4\"/><line x1=\"300\" y1=\"40\" x2=\"340\" y2=\"330\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.4\"/><line x1=\"400\" y1=\"40\" x2=\"440\" y2=\"345\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.4\"/><line x1=\"500\" y1=\"40\" x2=\"540\" y2=\"360\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.4\"/>\n    <!-- Flare in sky -->\n    <circle cx=\"200\" cy=\"120\" r=\"6\" fill=\"#e63946\"/>\n    <circle cx=\"200\" cy=\"120\" r=\"22\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\"/>\n    <!-- Stars -->\n    <circle cx=\"44.751108781450455\" cy=\"293.2507408500918\" r=\"0.6702659225683988\" fill=\"#f0e8d0\" opacity=\"0.350254295759377\"/><circle cx=\"68.66905909099859\" cy=\"30.983528405058017\" r=\"0.43698835440195316\" fill=\"#f0e8d0\" opacity=\"0.4533347972704829\"/><circle cx=\"125.173741311687\" cy=\"324.78303259088887\" r=\"1.0741664016058796\" fill=\"#f0e8d0\" opacity=\"0.3090728689242836\"/><circle cx=\"242.6651781261843\" cy=\"221.03944855830437\" r=\"0.735952917635776\" fill=\"#f0e8d0\" opacity=\"0.42277627882487473\"/><circle cx=\"289.7438323313005\" cy=\"21.431381002589497\" r=\"0.8590169881931209\" fill=\"#f0e8d0\" opacity=\"0.23588322192020722\"/><circle cx=\"494.9874634524839\" cy=\"167.3743407997472\" r=\"1.155186592270217\" fill=\"#f0e8d0\" opacity=\"0.6239276253213493\"/><circle cx=\"37.78661882391532\" cy=\"130.48384992396066\" r=\"0.6088353339402164\" fill=\"#f0e8d0\" opacity=\"0.520425481741212\"/><circle cx=\"585.0224105424533\" cy=\"106.8003748127639\" r=\"0.4060271889377964\" fill=\"#f0e8d0\" opacity=\"0.35602201931107974\"/><circle cx=\"370.7126722134881\" cy=\"317.6232032279903\" r=\"0.6132444579878156\" fill=\"#f0e8d0\" opacity=\"0.5986428023786716\"/><circle cx=\"546.0741790545011\" cy=\"181.3230954342081\" r=\"0.5236506729999123\" fill=\"#f0e8d0\" opacity=\"0.32901049412360356\"/><circle cx=\"65.80956993650547\" cy=\"304.3617926388112\" r=\"0.4039567919372917\" fill=\"#f0e8d0\" opacity=\"0.43328593818559386\"/><circle cx=\"60.63204554518662\" cy=\"113.14549436378944\" r=\"0.8271818892522405\" fill=\"#f0e8d0\" opacity=\"0.6057392520471596\"/><circle cx=\"319.5586545419395\" cy=\"121.40703653319453\" r=\"0.4806548874804646\" fill=\"#f0e8d0\" opacity=\"0.22058924924870954\"/><circle cx=\"513.4420954608254\" cy=\"309.38406899601404\" r=\"0.6167088950925219\" fill=\"#f0e8d0\" opacity=\"0.6784676044542697\"/><circle cx=\"588.2660361117138\" cy=\"222.62308898508888\" r=\"0.6496316025046979\" fill=\"#f0e8d0\" opacity=\"0.5316937837927436\"/><circle cx=\"354.40467177404616\" cy=\"71.50665222077906\" r=\"0.8881087537169261\" fill=\"#f0e8d0\" opacity=\"0.47277434671077917\"/><circle cx=\"471.3429357434097\" cy=\"131.77470499552354\" r=\"1.1831339183128895\" fill=\"#f0e8d0\" opacity=\"0.6067884259670671\"/><circle cx=\"477.9662046200854\" cy=\"275.23075608357465\" r=\"0.4947061637816205\" fill=\"#f0e8d0\" opacity=\"0.5226928385577558\"/><circle cx=\"51.68070871126558\" cy=\"201.17487050965457\" r=\"0.4722104632977711\" fill=\"#f0e8d0\" opacity=\"0.6606690657664369\"/><circle cx=\"518.8239296223749\" cy=\"213.14704921629263\" r=\"0.4883253460319937\" fill=\"#f0e8d0\" opacity=\"0.27295743222297647\"/><circle cx=\"242.37444655256203\" cy=\"309.7147401708661\" r=\"0.8199716598726747\" fill=\"#f0e8d0\" opacity=\"0.3463861553106032\"/><circle cx=\"432.35689092511893\" cy=\"132.86460636754822\" r=\"0.42763040834975236\" fill=\"#f0e8d0\" opacity=\"0.6631452267022735\"/><circle cx=\"397.96852811112274\" cy=\"220.81561101270836\" r=\"1.114616290903765\" fill=\"#f0e8d0\" opacity=\"0.32240400823439624\"/><circle cx=\"76.42764894705385\" cy=\"129.85727190353612\" r=\"0.7242502356399538\" fill=\"#f0e8d0\" opacity=\"0.3078507418833389\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "privateMeet": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <!-- Paper screen window with horizon -->\n    <rect x=\"60\" y=\"100\" width=\"480\" height=\"200\" fill=\"#040611\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.5\"/>\n    <line x1=\"60\" y1=\"200\" x2=\"540\" y2=\"200\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.4\"/>\n    <line x1=\"200\" y1=\"100\" x2=\"200\" y2=\"300\" stroke=\"rgba(196,30,58,0.25)\" stroke-width=\"0.3\"/>\n    <line x1=\"300\" y1=\"100\" x2=\"300\" y2=\"300\" stroke=\"rgba(196,30,58,0.25)\" stroke-width=\"0.3\"/>\n    <line x1=\"400\" y1=\"100\" x2=\"400\" y2=\"300\" stroke=\"rgba(196,30,58,0.25)\" stroke-width=\"0.3\"/>\n    <ellipse cx=\"300\" cy=\"200\" rx=\"200\" ry=\"40\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\" opacity=\"0.55\"/>\n    <!-- Two seated cross-legged figures -->\n    <ellipse cx=\"180\" cy=\"500\" rx=\"30\" ry=\"14\" fill=\"#0a0d18\"/>\n    <circle cx=\"180\" cy=\"430\" r=\"13\" fill=\"#0e1424\"/>\n    <rect x=\"158\" y=\"438\" width=\"44\" height=\"60\" rx=\"6\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.3)\" stroke-width=\"0.5\"/>\n    <ellipse cx=\"420\" cy=\"500\" rx=\"32\" ry=\"15\" fill=\"#0a0d18\"/>\n    <circle cx=\"420\" cy=\"425\" r=\"13\" fill=\"#0e1424\"/>\n    <rect x=\"396\" y=\"433\" width=\"48\" height=\"65\" rx=\"6\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.55\"/>\n    <!-- Low table -->\n    <rect x=\"240\" y=\"480\" width=\"120\" height=\"14\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.4\"/>\n    <ellipse cx=\"420\" cy=\"430\" rx=\"40\" ry=\"50\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\" opacity=\"0.4\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "breakingPoint": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <rect x=\"298\" y=\"60\" width=\"4\" height=\"500\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\"/>\n    <!-- Banners flanking -->\n    <rect x=\"120\" y=\"60\" width=\"14\" height=\"480\" fill=\"#c41e3a\" opacity=\"0.45\"/>\n    <rect x=\"466\" y=\"60\" width=\"14\" height=\"480\" fill=\"#c41e3a\" opacity=\"0.45\"/>\n    <!-- Floating dispatch scrolls -->\n    <rect x=\"80\" y=\"200\" width=\"80\" height=\"50\" fill=\"rgba(196,30,58,0.08)\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.5\" rx=\"2\"/>\n              <line x1=\"88\" y1=\"212\" x2=\"152\" y2=\"212\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.4\"/>\n              <line x1=\"88\" y1=\"222\" x2=\"142\" y2=\"222\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.4\"/>\n              <line x1=\"88\" y1=\"232\" x2=\"152\" y2=\"232\" stroke=\"rgba(196,30,58,0.3)\" stroke-width=\"0.4\"/><rect x=\"250\" y=\"200\" width=\"80\" height=\"50\" fill=\"rgba(196,30,58,0.08)\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.5\" rx=\"2\"/>\n              <line x1=\"258\" y1=\"212\" x2=\"322\" y2=\"212\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.4\"/>\n              <line x1=\"258\" y1=\"222\" x2=\"312\" y2=\"222\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.4\"/>\n              <line x1=\"258\" y1=\"232\" x2=\"322\" y2=\"232\" stroke=\"rgba(196,30,58,0.3)\" stroke-width=\"0.4\"/><rect x=\"420\" y=\"200\" width=\"80\" height=\"50\" fill=\"rgba(196,30,58,0.08)\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.5\" rx=\"2\"/>\n              <line x1=\"428\" y1=\"212\" x2=\"492\" y2=\"212\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.4\"/>\n              <line x1=\"428\" y1=\"222\" x2=\"482\" y2=\"222\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.4\"/>\n              <line x1=\"428\" y1=\"232\" x2=\"492\" y2=\"232\" stroke=\"rgba(196,30,58,0.3)\" stroke-width=\"0.4\"/><rect x=\"80\" y=\"320\" width=\"80\" height=\"50\" fill=\"rgba(196,30,58,0.08)\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.5\" rx=\"2\"/>\n              <line x1=\"88\" y1=\"332\" x2=\"152\" y2=\"332\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.4\"/>\n              <line x1=\"88\" y1=\"342\" x2=\"142\" y2=\"342\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.4\"/>\n              <line x1=\"88\" y1=\"352\" x2=\"152\" y2=\"352\" stroke=\"rgba(196,30,58,0.3)\" stroke-width=\"0.4\"/><rect x=\"250\" y=\"320\" width=\"80\" height=\"50\" fill=\"rgba(196,30,58,0.08)\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.5\" rx=\"2\"/>\n              <line x1=\"258\" y1=\"332\" x2=\"322\" y2=\"332\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.4\"/>\n              <line x1=\"258\" y1=\"342\" x2=\"312\" y2=\"342\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.4\"/>\n              <line x1=\"258\" y1=\"352\" x2=\"322\" y2=\"352\" stroke=\"rgba(196,30,58,0.3)\" stroke-width=\"0.4\"/><rect x=\"420\" y=\"320\" width=\"80\" height=\"50\" fill=\"rgba(196,30,58,0.08)\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.5\" rx=\"2\"/>\n              <line x1=\"428\" y1=\"332\" x2=\"492\" y2=\"332\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.4\"/>\n              <line x1=\"428\" y1=\"342\" x2=\"482\" y2=\"342\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.4\"/>\n              <line x1=\"428\" y1=\"352\" x2=\"492\" y2=\"352\" stroke=\"rgba(196,30,58,0.3)\" stroke-width=\"0.4\"/>\n    <!-- Lone figure -->\n    <rect x=\"288\" y=\"400\" width=\"24\" height=\"120\" rx=\"5\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.55)\" stroke-width=\"0.5\"/>\n    <circle cx=\"300\" cy=\"388\" r=\"14\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.6)\" stroke-width=\"0.5\"/>\n    <ellipse cx=\"300\" cy=\"540\" rx=\"80\" ry=\"12\" fill=\"rgba(196,30,58,0.18)\" filter=\"url(#yiBlur)\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "confrontation": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <line x1=\"60\" y1=\"280\" x2=\"540\" y2=\"280\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.4\"/>\n    <ellipse cx=\"300\" cy=\"280\" rx=\"200\" ry=\"14\" fill=\"rgba(196,30,58,0.15)\" filter=\"url(#yiBlur)\"/>\n    <line x1=\"300\" y1=\"60\" x2=\"300\" y2=\"540\" stroke=\"rgba(196,30,58,0.25)\" stroke-width=\"0.4\"/>\n    <!-- Helmet silhouettes (Joseon officer helmet shape) -->\n    <path d=\"M 180 290 Q 170 310 170 330 L 230 330 Q 230 310 220 290 Q 215 280 200 280 Q 185 280 180 290 Z\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.5\"/>\n    <path d=\"M 380 290 Q 370 310 370 330 L 430 330 Q 430 310 420 290 Q 415 280 400 280 Q 385 280 380 290 Z\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.6)\" stroke-width=\"0.55\"/>\n    <rect x=\"190\" y=\"330\" width=\"20\" height=\"170\" rx=\"4\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.5\"/>\n    <rect x=\"390\" y=\"330\" width=\"20\" height=\"170\" rx=\"4\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.55)\" stroke-width=\"0.5\"/>\n    <ellipse cx=\"300\" cy=\"380\" rx=\"90\" ry=\"12\" fill=\"rgba(196,30,58,0.2)\" filter=\"url(#yiBlur)\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "twinSuns": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <!-- Paper hanji screen wall, four panels -->\n    <rect x=\"60\" y=\"60\" width=\"480\" height=\"280\" fill=\"#1a120c\" stroke=\"rgba(181,53,54,0.35)\" stroke-width=\"0.5\"/>\n    <line x1=\"180\" y1=\"60\" x2=\"180\" y2=\"340\" stroke=\"rgba(181,53,54,0.32)\" stroke-width=\"0.45\"/><line x1=\"300\" y1=\"60\" x2=\"300\" y2=\"340\" stroke=\"rgba(181,53,54,0.32)\" stroke-width=\"0.45\"/><line x1=\"420\" y1=\"60\" x2=\"420\" y2=\"340\" stroke=\"rgba(181,53,54,0.32)\" stroke-width=\"0.45\"/>\n    <line x1=\"60\" y1=\"190\" x2=\"540\" y2=\"190\" stroke=\"rgba(181,53,54,0.28)\" stroke-width=\"0.4\"/>\n    <!-- Plum branch behind the screens, only silhouette visible -->\n    <path d=\"M 90 340 Q 120 240 200 200 Q 260 180 320 200\" fill=\"none\" stroke=\"rgba(20,8,4,0.55)\" stroke-width=\"2.5\"/>\n    \n  <g transform=\"translate(150 230)\" opacity=\"0.65\">\n    <ellipse cx=\"0\" cy=\"-5.3999999999999995\" rx=\"3.6\" ry=\"4.5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(0)\"/><ellipse cx=\"0\" cy=\"-5.3999999999999995\" rx=\"3.6\" ry=\"4.5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(72)\"/><ellipse cx=\"0\" cy=\"-5.3999999999999995\" rx=\"3.6\" ry=\"4.5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(144)\"/><ellipse cx=\"0\" cy=\"-5.3999999999999995\" rx=\"3.6\" ry=\"4.5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(216)\"/><ellipse cx=\"0\" cy=\"-5.3999999999999995\" rx=\"3.6\" ry=\"4.5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(288)\"/>\n    <circle cx=\"0\" cy=\"0\" r=\"1.6199999999999999\" fill=\"#b53536\"/>\n  </g>\n    \n  <g transform=\"translate(195 205)\" opacity=\"0.55\">\n    <ellipse cx=\"0\" cy=\"-4.2\" rx=\"2.8000000000000003\" ry=\"3.5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(0)\"/><ellipse cx=\"0\" cy=\"-4.2\" rx=\"2.8000000000000003\" ry=\"3.5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(72)\"/><ellipse cx=\"0\" cy=\"-4.2\" rx=\"2.8000000000000003\" ry=\"3.5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(144)\"/><ellipse cx=\"0\" cy=\"-4.2\" rx=\"2.8000000000000003\" ry=\"3.5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(216)\"/><ellipse cx=\"0\" cy=\"-4.2\" rx=\"2.8000000000000003\" ry=\"3.5\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(288)\"/>\n    <circle cx=\"0\" cy=\"0\" r=\"1.26\" fill=\"#b53536\"/>\n  </g>\n    \n  <g transform=\"translate(240 195)\" opacity=\"0.6\">\n    <ellipse cx=\"0\" cy=\"-4.8\" rx=\"3.2\" ry=\"4\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(0)\"/><ellipse cx=\"0\" cy=\"-4.8\" rx=\"3.2\" ry=\"4\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(72)\"/><ellipse cx=\"0\" cy=\"-4.8\" rx=\"3.2\" ry=\"4\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(144)\"/><ellipse cx=\"0\" cy=\"-4.8\" rx=\"3.2\" ry=\"4\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(216)\"/><ellipse cx=\"0\" cy=\"-4.8\" rx=\"3.2\" ry=\"4\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(288)\"/>\n    <circle cx=\"0\" cy=\"0\" r=\"1.44\" fill=\"#b53536\"/>\n  </g>\n    \n  <g transform=\"translate(290 215)\" opacity=\"0.5\">\n    <ellipse cx=\"0\" cy=\"-3.5999999999999996\" rx=\"2.4000000000000004\" ry=\"3\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(0)\"/><ellipse cx=\"0\" cy=\"-3.5999999999999996\" rx=\"2.4000000000000004\" ry=\"3\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(72)\"/><ellipse cx=\"0\" cy=\"-3.5999999999999996\" rx=\"2.4000000000000004\" ry=\"3\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(144)\"/><ellipse cx=\"0\" cy=\"-3.5999999999999996\" rx=\"2.4000000000000004\" ry=\"3\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(216)\"/><ellipse cx=\"0\" cy=\"-3.5999999999999996\" rx=\"2.4000000000000004\" ry=\"3\" fill=\"#e8a7a0\" stroke=\"#7a1818\" stroke-width=\"0.3\" transform=\"rotate(288)\"/>\n    <circle cx=\"0\" cy=\"0\" r=\"1.08\" fill=\"#b53536\"/>\n  </g>\n    <!-- Hanging amulet — small taegeuk on cord by the right screen edge -->\n    <line x1=\"510\" y1=\"80\" x2=\"510\" y2=\"148\" stroke=\"#0d0805\" stroke-width=\"1.4\"/>\n    \n  <g transform=\"translate(510 162)\">\n    <circle cx=\"0\" cy=\"0\" r=\"14\" fill=\"#f1e6cb\" stroke=\"#b53536\" stroke-width=\"0.84\"/>\n    <path d=\"M 0 -12.88 A 12.88 12.88 0 0 1 0 12.88 A 6.44 6.44 0 0 0 0 0 A 6.44 6.44 0 0 1 0 -12.88 Z\" fill=\"#b53536\"/>\n    <circle cx=\"0\" cy=\"-6.44\" r=\"2.24\" fill=\"#1a3e8c\"/>\n    <circle cx=\"0\" cy=\"6.44\"  r=\"2.24\" fill=\"#b53536\"/>\n  </g>\n    <!-- Low desk -->\n    <rect x=\"80\" y=\"378\" width=\"440\" height=\"44\" fill=\"#0d0805\" stroke=\"rgba(181,53,54,0.45)\" stroke-width=\"0.5\"/>\n    <line x1=\"80\" y1=\"378\" x2=\"520\" y2=\"378\" stroke=\"rgba(181,53,54,0.6)\" stroke-width=\"0.6\"/>\n    <!-- Unfurled scroll with brush calligraphy strokes -->\n    <rect x=\"170\" y=\"368\" width=\"200\" height=\"14\" fill=\"#f1e6cb\" opacity=\"0.85\"/>\n    <line x1=\"190\" y1=\"372\" x2=\"200\" y2=\"378\" stroke=\"#1a0e08\" stroke-width=\"2\"/>\n    <line x1=\"210\" y1=\"370\" x2=\"218\" y2=\"380\" stroke=\"#1a0e08\" stroke-width=\"2\"/>\n    <line x1=\"228\" y1=\"372\" x2=\"236\" y2=\"378\" stroke=\"#1a0e08\" stroke-width=\"2\"/>\n    <line x1=\"248\" y1=\"370\" x2=\"252\" y2=\"380\" stroke=\"#1a0e08\" stroke-width=\"2\"/>\n    <line x1=\"262\" y1=\"372\" x2=\"272\" y2=\"378\" stroke=\"#1a0e08\" stroke-width=\"2\"/>\n    <line x1=\"284\" y1=\"370\" x2=\"296\" y2=\"378\" stroke=\"#1a0e08\" stroke-width=\"2\"/>\n    <!-- Ink stick + vermillion ink dish -->\n    <rect x=\"386\" y=\"372\" width=\"42\" height=\"8\" fill=\"#1a0e08\" stroke=\"rgba(241,230,203,0.45)\" stroke-width=\"0.3\"/>\n    <circle cx=\"450\" cy=\"378\" r=\"7\" fill=\"#b53536\" stroke=\"#7a1818\" stroke-width=\"0.5\"/>\n    <circle cx=\"450\" cy=\"378\" r=\"3\" fill=\"#7a1818\"/>\n    <!-- Brush in a holder -->\n    <rect x=\"475\" y=\"350\" width=\"5\" height=\"32\" fill=\"#1a0e08\"/>\n    <path d=\"M 477 350 L 478 342 L 480 350 Z\" fill=\"#1a0e08\"/>\n    <!-- Oil lamp -->\n    <rect x=\"100\" y=\"350\" width=\"6\" height=\"28\" fill=\"#f1e6cb\"/>\n    <circle cx=\"103\" cy=\"346\" r=\"4\" fill=\"#d75557\"/>\n    <ellipse cx=\"103\" cy=\"346\" rx=\"50\" ry=\"70\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\" opacity=\"0.6\"/>\n    <!-- Yi seated cross-legged in plain robe -->\n    <ellipse cx=\"300\" cy=\"545\" rx=\"52\" ry=\"14\" fill=\"#0d0805\"/>\n    <rect x=\"274\" y=\"448\" width=\"52\" height=\"80\" rx=\"8\" fill=\"#1a0e08\" stroke=\"rgba(181,53,54,0.45)\" stroke-width=\"0.5\"/>\n    <!-- Folded hands -->\n    <ellipse cx=\"300\" cy=\"500\" rx=\"18\" ry=\"8\" fill=\"#1a0e08\" stroke=\"rgba(181,53,54,0.4)\" stroke-width=\"0.3\"/>\n    <!-- Head + topknot -->\n    <circle cx=\"300\" cy=\"440\" r=\"14\" fill=\"#1a0e08\"/>\n    <rect x=\"297\" y=\"420\" width=\"6\" height=\"10\" fill=\"#1a0e08\"/>\n    <!-- Pine branch in foreground left -->\n    \n  <g transform=\"translate(70 540)\">\n    <path d=\"M 0 0 Q -24 -48 -60 -60\" fill=\"none\" stroke=\"#1a0e08\" stroke-width=\"7.199999999999999\"/>\n    <g transform=\"translate(0 0)\">\n        <line x1=\"0\" y1=\"0\" x2=\"-12\" y2=\"-7.199999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n        <line x1=\"0\" y1=\"0\" x2=\"6\" y2=\"-14.399999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n        <line x1=\"0\" y1=\"0\" x2=\"-4.8\" y2=\"-14.399999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n      </g><g transform=\"translate(-15 -15)\">\n        <line x1=\"0\" y1=\"0\" x2=\"-12\" y2=\"-7.199999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n        <line x1=\"0\" y1=\"0\" x2=\"6\" y2=\"-14.399999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n        <line x1=\"0\" y1=\"0\" x2=\"-4.8\" y2=\"-14.399999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n      </g><g transform=\"translate(-30 -30)\">\n        <line x1=\"0\" y1=\"0\" x2=\"-12\" y2=\"-7.199999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n        <line x1=\"0\" y1=\"0\" x2=\"6\" y2=\"-14.399999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n        <line x1=\"0\" y1=\"0\" x2=\"-4.8\" y2=\"-14.399999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n      </g><g transform=\"translate(-45 -45)\">\n        <line x1=\"0\" y1=\"0\" x2=\"-12\" y2=\"-7.199999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n        <line x1=\"0\" y1=\"0\" x2=\"6\" y2=\"-14.399999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n        <line x1=\"0\" y1=\"0\" x2=\"-4.8\" y2=\"-14.399999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n      </g><g transform=\"translate(-60 -60)\">\n        <line x1=\"0\" y1=\"0\" x2=\"-12\" y2=\"-7.199999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n        <line x1=\"0\" y1=\"0\" x2=\"6\" y2=\"-14.399999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n        <line x1=\"0\" y1=\"0\" x2=\"-4.8\" y2=\"-14.399999999999999\" stroke=\"#1a3a18\" stroke-width=\"3\"/>\n      </g>\n  </g>\n    <!-- Bamboo grove silhouette far right -->\n    \n  <g transform=\"translate(540 540)\">\n    <rect x=\"-3\" y=\"-130\" width=\"6\" height=\"130\" fill=\"#0a0d0a\" opacity=\"0.85\"/>\n    <line x1=\"-6\" y1=\"-4\" x2=\"6\" y2=\"-4\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/><line x1=\"-6\" y1=\"-30\" x2=\"6\" y2=\"-30\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/><line x1=\"-6\" y1=\"-56\" x2=\"6\" y2=\"-56\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/><line x1=\"-6\" y1=\"-82\" x2=\"6\" y2=\"-82\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/><line x1=\"-6\" y1=\"-108\" x2=\"6\" y2=\"-108\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/>\n    <!-- Two leaves -->\n    <path d=\"M -2 -91 Q -22 -101.4 -28 -85.8 Q -18 -80.6 -2 -85.8 Z\" fill=\"#1a3a18\"/>\n    <path d=\"M  2 -58.5 Q  22 -68.9  28 -53.3 Q  18 -48.1  2 -53.3 Z\" fill=\"#1a3a18\"/>\n  </g>\n    \n  <g transform=\"translate(560 540)\">\n    <rect x=\"-3\" y=\"-100\" width=\"6\" height=\"100\" fill=\"#0a0d0a\" opacity=\"0.85\"/>\n    <line x1=\"-6\" y1=\"-4\" x2=\"6\" y2=\"-4\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/><line x1=\"-6\" y1=\"-29\" x2=\"6\" y2=\"-29\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/><line x1=\"-6\" y1=\"-54\" x2=\"6\" y2=\"-54\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/><line x1=\"-6\" y1=\"-79\" x2=\"6\" y2=\"-79\" stroke=\"#1a3a18\" stroke-width=\"0.8\"/>\n    <!-- Two leaves -->\n    <path d=\"M -2 -70 Q -22 -78 -28 -66 Q -18 -62 -2 -66 Z\" fill=\"#1a3a18\"/>\n    <path d=\"M  2 -45 Q  22 -53  28 -41 Q  18 -37  2 -41 Z\" fill=\"#1a3a18\"/>\n  </g>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "chaoticCouncil": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <!-- Pavilion eave -->\n    <path d=\"M 60 80 L 300 50 L 540 80\" fill=\"none\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.6\"/>\n    <!-- Low table -->\n    <rect x=\"100\" y=\"420\" width=\"400\" height=\"34\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.35)\" stroke-width=\"0.5\"/>\n    <!-- Chart on table -->\n    <rect x=\"200\" y=\"425\" width=\"200\" height=\"22\" fill=\"#f0e8d0\" opacity=\"0.12\"/>\n    <!-- Three captains -->\n    \n      <ellipse cx=\"150\" cy=\"540\" rx=\"32\" ry=\"14\" fill=\"#0a0d18\"/>\n      <rect x=\"128\" y=\"358\" width=\"44\" height=\"80\" rx=\"6\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.55)\" stroke-width=\"0.5\"/>\n      <path d=\"M 128 350 Q 128 340 138 340 L 162 340 Q 172 340 172 350 L 172 360 L 128 360 Z\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.5\"/>\n      <circle cx=\"150\" cy=\"335\" r=\"14\" fill=\"#0e1424\"/>\n      <path d=\"M 120 310 Q 150 280 180 310\" fill=\"none\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.5\"/>\n                    <path d=\"M 106 296 Q 150 260 194 296\" fill=\"none\" stroke=\"rgba(196,30,58,0.25)\" stroke-width=\"0.4\"/>\n    \n      <ellipse cx=\"300\" cy=\"540\" rx=\"32\" ry=\"14\" fill=\"#0a0d18\"/>\n      <rect x=\"278\" y=\"358\" width=\"44\" height=\"80\" rx=\"6\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.3)\" stroke-width=\"0.5\"/>\n      <path d=\"M 278 350 Q 278 340 288 340 L 312 340 Q 322 340 322 350 L 322 360 L 278 360 Z\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.3)\" stroke-width=\"0.5\"/>\n      <circle cx=\"300\" cy=\"335\" r=\"14\" fill=\"#0e1424\"/>\n      \n    \n      <ellipse cx=\"450\" cy=\"540\" rx=\"32\" ry=\"14\" fill=\"#0a0d18\"/>\n      <rect x=\"428\" y=\"358\" width=\"44\" height=\"80\" rx=\"6\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.55)\" stroke-width=\"0.5\"/>\n      <path d=\"M 428 350 Q 428 340 438 340 L 462 340 Q 472 340 472 350 L 472 360 L 428 360 Z\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.5\"/>\n      <circle cx=\"450\" cy=\"335\" r=\"14\" fill=\"#0e1424\"/>\n      <path d=\"M 420 310 Q 450 280 480 310\" fill=\"none\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.5\"/>\n                    <path d=\"M 406 296 Q 450 260 494 296\" fill=\"none\" stroke=\"rgba(196,30,58,0.25)\" stroke-width=\"0.4\"/>\n    \n    <!-- Lantern halo -->\n    <circle cx=\"300\" cy=\"160\" r=\"80\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "aftermathMedbay": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <!-- Pavilion ceiling -->\n    <rect x=\"40\" y=\"60\" width=\"520\" height=\"14\" fill=\"#0a0d18\"/>\n    <line x1=\"40\" y1=\"60\" x2=\"560\" y2=\"60\" stroke=\"rgba(196,30,58,0.3)\" stroke-width=\"0.4\"/>\n    <!-- Rows of low pallets -->\n    \n      <rect x=\"100\" y=\"120\" width=\"400\" height=\"10\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.25)\" stroke-width=\"0.4\"/>\n    \n      <rect x=\"125\" y=\"170\" width=\"350\" height=\"10\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.25)\" stroke-width=\"0.4\"/>\n    \n      <rect x=\"150\" y=\"220\" width=\"300\" height=\"10\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.25)\" stroke-width=\"0.4\"/>\n    \n      <rect x=\"175\" y=\"270\" width=\"250\" height=\"10\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.25)\" stroke-width=\"0.4\"/>\n    \n      <rect x=\"200\" y=\"320\" width=\"200\" height=\"10\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.25)\" stroke-width=\"0.4\"/>\n    \n    <!-- Foreground standing figure, head bowed -->\n    <ellipse cx=\"300\" cy=\"540\" rx=\"40\" ry=\"12\" fill=\"#0a0d18\"/>\n    <rect x=\"288\" y=\"410\" width=\"24\" height=\"120\" rx=\"5\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.55)\" stroke-width=\"0.5\"/>\n    <ellipse cx=\"300\" cy=\"402\" rx=\"14\" ry=\"16\" fill=\"#0e1424\"/>\n    <line x1=\"288\" y1=\"438\" x2=\"280\" y2=\"500\" stroke=\"#0e1424\" stroke-width=\"6\" stroke-linecap=\"round\"/>\n    <line x1=\"312\" y1=\"438\" x2=\"320\" y2=\"500\" stroke=\"#0e1424\" stroke-width=\"6\" stroke-linecap=\"round\"/>\n    <!-- Brazier light from camera-left -->\n    <ellipse cx=\"100\" cy=\"380\" rx=\"100\" ry=\"160\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\" opacity=\"0.45\"/>\n    <ellipse cx=\"300\" cy=\"540\" rx=\"200\" ry=\"14\" fill=\"rgba(196,30,58,0.15)\" filter=\"url(#yiBlur)\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "shadowPattern": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <ellipse cx=\"300\" cy=\"540\" rx=\"180\" ry=\"26\" fill=\"#04060e\" stroke=\"rgba(196,30,58,0.2)\" stroke-width=\"0.4\"/>\n    <path d=\"M 300 540 L 80 460 L 60 540 Z\" fill=\"#020308\" opacity=\"0.85\"/>\n    <path d=\"M 300 540 L 520 460 L 540 540 Z\" fill=\"#020308\" opacity=\"0.85\"/>\n    <rect x=\"288\" y=\"360\" width=\"24\" height=\"160\" rx=\"5\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.55)\" stroke-width=\"0.55\"/>\n    <path d=\"M 280 350 Q 280 340 290 340 L 310 340 Q 320 340 320 350 L 320 360 L 280 360 Z\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.55)\" stroke-width=\"0.55\"/>\n    <circle cx=\"300\" cy=\"345\" r=\"16\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.55)\" stroke-width=\"0.55\"/>\n    <ellipse cx=\"120\" cy=\"320\" rx=\"80\" ry=\"160\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\" opacity=\"0.5\"/>\n    <ellipse cx=\"480\" cy=\"320\" rx=\"80\" ry=\"160\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\" opacity=\"0.5\"/>\n    <circle cx=\"300\" cy=\"345\" r=\"50\" fill=\"none\" stroke=\"rgba(196,30,58,0.3)\" stroke-width=\"0.4\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "alliesWhisper": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <!-- Paper screen panels flanking -->\n    <rect x=\"60\" y=\"80\" width=\"140\" height=\"460\" fill=\"#11172a\" stroke=\"rgba(196,30,58,0.2)\" stroke-width=\"0.4\"/>\n    <rect x=\"400\" y=\"80\" width=\"140\" height=\"460\" fill=\"#11172a\" stroke=\"rgba(196,30,58,0.2)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"106\" y1=\"80\" x2=\"106\" y2=\"540\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.3\"/>\n      <line x1=\"446\" y1=\"80\" x2=\"446\" y2=\"540\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.3\"/>\n    \n      <line x1=\"152\" y1=\"80\" x2=\"152\" y2=\"540\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.3\"/>\n      <line x1=\"492\" y1=\"80\" x2=\"492\" y2=\"540\" stroke=\"rgba(196,30,58,0.15)\" stroke-width=\"0.3\"/>\n    \n    <ellipse cx=\"300\" cy=\"540\" rx=\"150\" ry=\"20\" fill=\"#04060e\"/>\n    <!-- Three figures clustered -->\n    \n      <rect x=\"240\" y=\"320\" width=\"32\" height=\"220\" rx=\"6\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.32)\" stroke-width=\"0.5\"/>\n      <circle cx=\"256\" cy=\"310\" r=\"14\" fill=\"#0e1424\"/>\n    \n      <rect x=\"284\" y=\"310\" width=\"32\" height=\"230\" rx=\"6\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.5\"/>\n      <circle cx=\"300\" cy=\"300\" r=\"14\" fill=\"#0e1424\"/>\n    \n      <rect x=\"328\" y=\"320\" width=\"32\" height=\"220\" rx=\"6\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.32)\" stroke-width=\"0.5\"/>\n      <circle cx=\"344\" cy=\"310\" r=\"14\" fill=\"#0e1424\"/>\n    \n    <!-- Single lantern -->\n    <circle cx=\"300\" cy=\"160\" r=\"6\" fill=\"#e63946\"/>\n    <circle cx=\"300\" cy=\"160\" r=\"40\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\" opacity=\"0.8\"/>\n    <line x1=\"256\" y1=\"310\" x2=\"300\" y2=\"300\" stroke=\"rgba(196,30,58,0.2)\" stroke-width=\"0.4\" stroke-dasharray=\"2 3\"/>\n    <line x1=\"344\" y1=\"310\" x2=\"300\" y2=\"300\" stroke=\"rgba(196,30,58,0.2)\" stroke-width=\"0.4\" stroke-dasharray=\"2 3\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "reckoningMirror": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <ellipse cx=\"300\" cy=\"540\" rx=\"240\" ry=\"22\" fill=\"#04060e\" stroke=\"rgba(196,30,58,0.2)\" stroke-width=\"0.4\"/>\n    <!-- Water basin -->\n    <ellipse cx=\"300\" cy=\"430\" rx=\"120\" ry=\"22\" fill=\"#0a0d18\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.5\"/>\n    <ellipse cx=\"300\" cy=\"430\" rx=\"110\" ry=\"16\" fill=\"#040611\"/>\n    <!-- Reflected lantern as a single crimson point -->\n    <circle cx=\"300\" cy=\"426\" r=\"4\" fill=\"#c41e3a\"/>\n    <ellipse cx=\"300\" cy=\"426\" rx=\"30\" ry=\"6\" fill=\"rgba(196,30,58,0.4)\" filter=\"url(#yiBlur)\"/>\n    <!-- Crouching figure -->\n    <ellipse cx=\"220\" cy=\"510\" rx=\"38\" ry=\"12\" fill=\"#0a0d18\"/>\n    <rect x=\"200\" y=\"420\" width=\"40\" height=\"80\" rx=\"5\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.5\"/>\n    <circle cx=\"220\" cy=\"410\" r=\"13\" fill=\"#0e1424\" stroke=\"rgba(196,30,58,0.5)\" stroke-width=\"0.5\"/>\n    <!-- Look line from figure to reflection -->\n    <line x1=\"230\" y1=\"415\" x2=\"290\" y2=\"428\" stroke=\"rgba(196,30,58,0.25)\" stroke-width=\"0.4\" stroke-dasharray=\"2 4\"/>\n    <!-- Background lantern -->\n    <ellipse cx=\"450\" cy=\"200\" rx=\"80\" ry=\"100\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\" opacity=\"0.4\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "dividedChamber": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"yiG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#11172a\"/>\n        <stop offset=\"60%\" stop-color=\"#0a0d18\"/>\n        <stop offset=\"100%\" stop-color=\"#04060e\"/>\n      </radialGradient>\n      <radialGradient id=\"yiRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#e63946\" stop-opacity=\"0.55\"/>\n        <stop offset=\"100%\" stop-color=\"#c41e3a\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"yiBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"yiBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#yiG)\"/>\n    \n    <!-- Pavilion eave -->\n    <path d=\"M 30 70 L 300 40 L 570 70\" fill=\"none\" stroke=\"rgba(196,30,58,0.4)\" stroke-width=\"0.6\"/>\n    <!-- Tiered seating receding -->\n    \n      <line x1=\"40\" y1=\"120\" x2=\"310\" y2=\"120\" stroke=\"rgba(196,30,58,0.1)\" stroke-width=\"0.4\"/>\n      <line x1=\"290\" y1=\"120\" x2=\"560\" y2=\"120\" stroke=\"rgba(196,30,58,0.1)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"160\" x2=\"302\" y2=\"160\" stroke=\"rgba(196,30,58,0.1)\" stroke-width=\"0.4\"/>\n      <line x1=\"298\" y1=\"160\" x2=\"560\" y2=\"160\" stroke=\"rgba(196,30,58,0.1)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"200\" x2=\"294\" y2=\"200\" stroke=\"rgba(196,30,58,0.1)\" stroke-width=\"0.4\"/>\n      <line x1=\"306\" y1=\"200\" x2=\"560\" y2=\"200\" stroke=\"rgba(196,30,58,0.1)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"240\" x2=\"286\" y2=\"240\" stroke=\"rgba(196,30,58,0.1)\" stroke-width=\"0.4\"/>\n      <line x1=\"314\" y1=\"240\" x2=\"560\" y2=\"240\" stroke=\"rgba(196,30,58,0.1)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"280\" x2=\"278\" y2=\"280\" stroke=\"rgba(196,30,58,0.1)\" stroke-width=\"0.4\"/>\n      <line x1=\"322\" y1=\"280\" x2=\"560\" y2=\"280\" stroke=\"rgba(196,30,58,0.1)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"320\" x2=\"270\" y2=\"320\" stroke=\"rgba(196,30,58,0.1)\" stroke-width=\"0.4\"/>\n      <line x1=\"330\" y1=\"320\" x2=\"560\" y2=\"320\" stroke=\"rgba(196,30,58,0.1)\" stroke-width=\"0.4\"/>\n    \n    <!-- Centre beam -->\n    <line x1=\"300\" y1=\"40\" x2=\"300\" y2=\"560\" stroke=\"rgba(196,30,58,0.45)\" stroke-width=\"0.8\"/>\n    <ellipse cx=\"300\" cy=\"300\" rx=\"14\" ry=\"260\" fill=\"url(#yiRed)\" filter=\"url(#yiBlurHi)\" opacity=\"0.6\"/>\n    <!-- Two clusters of figures, mirrored -->\n    \n      <rect x=\"146\" y=\"380\" width=\"8\" height=\"110\" rx=\"2\" fill=\"#04060e\"/>\n      <circle cx=\"150\" cy=\"376\" r=\"5\" fill=\"#04060e\"/>\n      <rect x=\"196\" y=\"388\" width=\"8\" height=\"114\" rx=\"2\" fill=\"#04060e\"/>\n      <circle cx=\"200\" cy=\"384\" r=\"5\" fill=\"#04060e\"/>\n      <rect x=\"246\" y=\"396\" width=\"8\" height=\"118\" rx=\"2\" fill=\"#04060e\"/>\n      <circle cx=\"250\" cy=\"392\" r=\"5\" fill=\"#04060e\"/>\n    \n      <rect x=\"346\" y=\"380\" width=\"8\" height=\"110\" rx=\"2\" fill=\"#04060e\"/>\n      <circle cx=\"350\" cy=\"376\" r=\"5\" fill=\"#04060e\"/>\n      <rect x=\"396\" y=\"388\" width=\"8\" height=\"114\" rx=\"2\" fill=\"#04060e\"/>\n      <circle cx=\"400\" cy=\"384\" r=\"5\" fill=\"#04060e\"/>\n      <rect x=\"446\" y=\"396\" width=\"8\" height=\"118\" rx=\"2\" fill=\"#04060e\"/>\n      <circle cx=\"450\" cy=\"392\" r=\"5\" fill=\"#04060e\"/>\n    <!-- Foreground decision figure on the seam -->\n    <rect x=\"294\" y=\"440\" width=\"12\" height=\"100\" rx=\"3\" fill=\"#0e1424\"/>\n    <circle cx=\"300\" cy=\"430\" r=\"8\" fill=\"#0e1424\"/>\n  \n    </svg><div class=\"disc-veil\"></div>"
+  }
+}

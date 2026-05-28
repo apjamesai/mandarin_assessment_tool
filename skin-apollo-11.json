@@ -1,0 +1,2417 @@
+{
+  "id": "apollo_11",
+  "name": "Trajectory · Apollo 11",
+  "tagline": "1969. Mission Control. Three days to the Moon.",
+  "description": "Set inside the Mission Operations Control Room before and during Apollo 11 — with Katherine Johnson as your quiet north star, and Flight Director Bryce Calhoun as the pressure system you have to navigate.",
+  "theme": {
+    "--amber": "#fc3d21",
+    "--amber-bright": "#ff6644",
+    "--amber-deep": "#c01a00",
+    "--amber-glow": "rgba(252, 61, 33, 0.35)",
+    "--brand-orange": "#fc3d21",
+    "--brand-tangerine": "#ff6b00",
+    "--brand-yellow": "#feab2b",
+    "--bg": "#070914",
+    "--bg-deep": "#040611",
+    "--panel": "#0b1326",
+    "--ink": "#f4ecdb",
+    "--ink-soft": "#d6cdb9",
+    "--ink-mute": "#b3a994",
+    "--ink-label": "#e6dfd1",
+    "--ink-dim": "#6b6354",
+    "--serif": "'DM Serif Display', 'Cormorant Garamond', Georgia, serif",
+    "--sans": "'Inter', sans-serif",
+    "fontImport": "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap"
+  },
+  "characters": {
+    "commander": "Flight Director Bryce Calhoun",
+    "mentor": "Katherine Johnson"
+  },
+  "scenes": [
+    {
+      "type": "landing",
+      "location": "Houston · 16 July 1969",
+      "locationLabel": "HOUSTON · MISSION OPS · INBOUND",
+      "title": [
+        "Trajectory",
+        "·",
+        "Apollo",
+        "<em>11</em>"
+      ],
+      "sub": "An assessment of how you think, decide, and lead when pressure enters the room",
+      "note": "Set inside Mission Control on the eve of the moon landing — to bypass familiar assumptions and reveal the pattern beneath",
+      "cta": "Take your console",
+      "duration": 12000
+    },
+    {
+      "type": "intake",
+      "locationLabel": "OPERATIONS PERSONNEL · CONFIDENTIAL",
+      "eyebrow": "Before we begin",
+      "title": "Sign in to Mission Operations.",
+      "sub": "Used to address you correctly through the mission and to render your console portrait."
+    },
+    {
+      "type": "crawl",
+      "locationLabel": "PROLOGUE · CHANNEL OPEN",
+      "preamble": "July 1969 · Houston · Mission Operations",
+      "title": [
+        "Trajectory",
+        "Apollo",
+        "Eleven"
+      ],
+      "episode": "Prologue · Mission Control",
+      "paragraphs": [
+        "It is a time of acceleration. A decade-long sprint has brought a nation, its engineers, and its mathematicians to the launch pad. Old certainties — patience, redundancy, the very meaning of safety — are being asked to bend.",
+        "In the shadow of the launch window, Mission Operations has summoned one rare voice. The Flight Director believes {{firstName}} can think clearly when others panic. The mission does not lack plans. It lacks people who can hold the line when those plans fail.",
+        "Flight Director Bryce Calhoun has risen to push the schedule through. He waits for {{firstName}} on the Mission Operations Control Room floor. He has already begun to choose...."
+      ],
+      "duration": 45400,
+      "crawlStyle": "briefing",
+      "countdown": "T - 00:38:00:00 · GO FOR PROLOGUE"
+    },
+    {
+      "type": "narrative",
+      "location": "Houston · MOCR",
+      "locationLabel": "HOUSTON · MISSION OPERATIONS CONTROL ROOM",
+      "eyebrow": "Act One · The Briefing",
+      "artId": "summonsHerald",
+      "layout": "disc-left",
+      "body": [
+        "The",
+        "window",
+        "is",
+        "narrowing."
+      ],
+      "bodyAfter": [
+        "Systems are flagging. Engineers hesitate. The trajectory team is asking for another check.",
+        "You have been summoned, {{firstName}} — because you are believed to think clearly when others panic."
+      ],
+      "duration": 8500
+    },
+    {
+      "type": "narrative-scene",
+      "location": "Coruscant · Council Chamber",
+      "locationLabel": "FLIGHT DIRECTOR BRYCE CALHOUN",
+      "artId": "councilChamber",
+      "quote": "\"The schedule does not lack engineers. It lacks people who can think clearly when those plans fail.\"",
+      "speaker": "Flight Director Bryce Calhoun",
+      "layout": "disc-right",
+      "duration": 9000
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "location": "Coruscant · Council Chamber",
+      "locationLabel": "Q01 · UNDERSTAND SELF",
+      "practice": "Understand Self",
+      "setup": "Calhoun studies you. The console floor goes quiet. You feel the weight of being watched — by him, and by yourself.",
+      "prompt": "When pressure rises, I am aware of how my thinking and behaviour are beginning to change.",
+      "labels": [
+        "Strongly disagree",
+        "Disagree",
+        "Neutral",
+        "Agree",
+        "Strongly agree"
+      ],
+      "scoring": [
+        {
+          "understand_self": 0
+        },
+        {
+          "understand_self": 25
+        },
+        {
+          "understand_self": 50
+        },
+        {
+          "understand_self": 75
+        },
+        {
+          "understand_self": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q02 · MASTER EMOTIONS",
+      "practice": "Master Emotions",
+      "setup": "A junior controller is dressed down in front of the whole row. The room goes still. Heat rises in your chest.",
+      "prompt": "In the moment, what do you most notice happening inside you?",
+      "options": [
+        {
+          "copy": "A clean composure — I detach from the heat and keep the situation orderly.",
+          "score": {
+            "master_emotions": 35,
+            "detachment_pressure": 55
+          }
+        },
+        {
+          "copy": "A defensive impulse to step in immediately and reassert control of the room.",
+          "score": {
+            "master_emotions": 25,
+            "control_bias": 45
+          }
+        },
+        {
+          "copy": "A flash of anger or disappointment that I can name, but not yet act on cleanly.",
+          "score": {
+            "master_emotions": 60,
+            "understand_self": 50
+          }
+        },
+        {
+          "copy": "A steady warmth and a clear breath — I feel the reaction, choose how to respond, and act.",
+          "score": {
+            "master_emotions": 95,
+            "understand_self": 70,
+            "embed_practices": 50
+          }
+        },
+        {
+          "copy": "A blankness — I freeze, and I notice the freeze itself.",
+          "score": {
+            "master_emotions": 35,
+            "understand_self": 60
+          }
+        },
+        {
+          "copy": "I leave the console emotionally before my body does.",
+          "score": {
+            "master_emotions": 30,
+            "detachment_pressure": 65,
+            "understand_self": 25
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q03 · EMBED PRACTICES",
+      "practice": "Embed Practices",
+      "setup": "Between shifts the corridor empties. There is a single moment of stillness before the next sim.",
+      "prompt": "I have daily rituals — reflection, journaling, deliberate pauses — that I rely on to stay aware of myself under load.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Often",
+        "It is part of how I live"
+      ],
+      "scoring": [
+        {
+          "embed_practices": 5
+        },
+        {
+          "embed_practices": 30
+        },
+        {
+          "embed_practices": 55
+        },
+        {
+          "embed_practices": 80
+        },
+        {
+          "embed_practices": 100
+        }
+      ]
+    },
+    {
+      "type": "narrative-scene",
+      "location": "Coruscant · Lower Corridor",
+      "locationLabel": "FLIGHT DIRECTOR BRYCE CALHOUN",
+      "artId": "fracturedCity",
+      "quote": "\"We are rebuilding the country's nerve. But people confuse caution with weakness. Tell me — what would you do first?\"",
+      "speaker": "Flight Director Bryce Calhoun",
+      "layout": "disc-left",
+      "duration": 9000
+    },
+    {
+      "type": "question",
+      "kind": "ranking",
+      "locationLabel": "Q04 · BE FUTURE-FOCUSED",
+      "practice": "Be Future-Focused",
+      "setup": "On the screen above the consoles, a destabilising telemetry trace. Engineers swear quietly. Calhoun waits.",
+      "prompt": "You are asked to stabilise a launch system flagging anomalies. Rank these priorities from first to last.",
+      "items": [
+        {
+          "label": "Understand the root causes before acting",
+          "score": {
+            "future_focused": 80,
+            "think_critically": 70,
+            "be_curious": 60
+          }
+        },
+        {
+          "label": "Build the long-term safety governance that prevents recurrence",
+          "score": {
+            "future_focused": 100,
+            "collaborate_inclusively": 55
+          }
+        },
+        {
+          "label": "Restore immediate operational control",
+          "score": {
+            "act_decisively": 70,
+            "manage_uncertainty": 35,
+            "control_bias": 40
+          }
+        },
+        {
+          "label": "Secure the most senior decision-makers so the launch holds",
+          "score": {
+            "influence_effortlessly": 60,
+            "control_bias": 35,
+            "moral_drift": 20
+          }
+        }
+      ],
+      "weights": [
+        1,
+        0.65,
+        0.35,
+        0.05
+      ]
+    },
+    {
+      "type": "narrative",
+      "locationLabel": "BUILDING 16 · THE COMPUTERS ROOM",
+      "eyebrow": "Act Two · The Computers",
+      "artId": "chaoticCouncil",
+      "layout": "disc-right",
+      "body": [
+        "You",
+        "enter",
+        "the",
+        "computers",
+        "room."
+      ],
+      "bodyAfter": [
+        "Women at long desks. Slide rules. Mechanical calculators. Pages of trajectories.",
+        "Three mathematicians are arguing over a calculation. Calhoun says nothing. He watches you instead."
+      ],
+      "duration": 7500
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q05 · LISTEN DEEPLY",
+      "practice": "Listen Deeply",
+      "setup": "Three mathematicians. One is silent — staring at her sheet. Another is shouting numbers. A third keeps glancing at the door.",
+      "prompt": "What do you do first?",
+      "options": [
+        {
+          "copy": "Step in and direct the conversation toward a clear next step.",
+          "score": {
+            "act_decisively": 45,
+            "influence_effortlessly": 35,
+            "listen_deeply": 15,
+            "control_bias": 40
+          }
+        },
+        {
+          "copy": "Stay quiet and observe — track who speaks, who avoids, who repeats themselves.",
+          "score": {
+            "listen_deeply": 90,
+            "understand_self": 55,
+            "think_critically": 50
+          }
+        },
+        {
+          "copy": "Ask each one a specific clarifying question, especially the silent one.",
+          "score": {
+            "listen_deeply": 80,
+            "be_curious": 85,
+            "collaborate_inclusively": 55
+          }
+        },
+        {
+          "copy": "Align them quickly around a shared answer to halt the back-and-forth.",
+          "score": {
+            "influence_effortlessly": 70,
+            "collaborate_inclusively": 45,
+            "listen_deeply": 30
+          }
+        },
+        {
+          "copy": "Mirror back what I am hearing beneath the words — fear, exhaustion, blame.",
+          "score": {
+            "listen_deeply": 95,
+            "master_emotions": 60,
+            "collaborate_inclusively": 60
+          }
+        },
+        {
+          "copy": "Defer until I can speak with each of them at her desk individually.",
+          "score": {
+            "think_critically": 45,
+            "listen_deeply": 35,
+            "act_decisively": 25
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q06 · LISTEN DEEPLY",
+      "practice": "Listen Deeply",
+      "setup": "Calhoun leans toward your ear. \"Look at the silent one,\" he murmurs. \"What is she telling you that the others are not?\"",
+      "prompt": "When conversations become chaotic, my instinct is to take control quickly — rather than stay present and read the pattern.",
+      "labels": [
+        "Strongly disagree",
+        "Disagree",
+        "Neutral",
+        "Agree",
+        "Strongly agree"
+      ],
+      "scoring": [
+        {
+          "listen_deeply": 100,
+          "master_emotions": 80,
+          "control_bias": 0
+        },
+        {
+          "listen_deeply": 75,
+          "master_emotions": 65,
+          "control_bias": 10
+        },
+        {
+          "listen_deeply": 50,
+          "master_emotions": 50,
+          "control_bias": 25
+        },
+        {
+          "listen_deeply": 25,
+          "master_emotions": 35,
+          "control_bias": 55
+        },
+        {
+          "listen_deeply": 10,
+          "master_emotions": 20,
+          "control_bias": 80
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q07 · BE CURIOUS",
+      "practice": "Be Curious",
+      "setup": "One mathematician hands you a half-page of working — a derivation using a method you have never seen. \"This is what the disagreement is really about,\" she says.",
+      "prompt": "How do you respond to the unfamiliar method?",
+      "options": [
+        {
+          "copy": "Politely set it aside — the method is not the priority right now.",
+          "score": {
+            "be_curious": 15,
+            "act_decisively": 35
+          }
+        },
+        {
+          "copy": "Read it through, then ask three questions about what it does and where it came from.",
+          "score": {
+            "be_curious": 95,
+            "listen_deeply": 60,
+            "think_critically": 50
+          }
+        },
+        {
+          "copy": "Acknowledge it and promise to come back to it after the immediate decision is resolved.",
+          "score": {
+            "be_curious": 50,
+            "act_decisively": 45
+          }
+        },
+        {
+          "copy": "Ask her to walk me through it, slowly, before I respond to anything else in the room.",
+          "score": {
+            "be_curious": 100,
+            "listen_deeply": 80,
+            "collaborate_inclusively": 50
+          }
+        },
+        {
+          "copy": "Recognise the technique from my training and reference it back to her authoritatively.",
+          "score": {
+            "influence_effortlessly": 40,
+            "be_curious": 25,
+            "control_bias": 30
+          }
+        },
+        {
+          "copy": "Notice my reaction to not-knowing, and stay with the discomfort before responding.",
+          "score": {
+            "be_curious": 85,
+            "understand_self": 70,
+            "master_emotions": 55
+          }
+        }
+      ]
+    },
+    {
+      "type": "narrative-scene",
+      "locationLabel": "TRACKING NETWORK · TELEMETRY DROPOUT",
+      "artId": "convoyArc",
+      "quote": "\"We commit now. Or we wait.\"",
+      "speaker": "Flight Director Bryce Calhoun",
+      "layout": "disc-right",
+      "duration": 7500
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q08 · MANAGE UNCERTAINTY",
+      "practice": "Manage Uncertainty",
+      "setup": "A tracking station has lost telemetry on the upper stage. You have 30% of the picture. You have minutes.",
+      "prompt": "What do you choose?",
+      "options": [
+        {
+          "copy": "Commit immediately with what I have — momentum matters more than completeness.",
+          "score": {
+            "act_decisively": 80,
+            "manage_uncertainty": 65,
+            "control_bias": 25
+          }
+        },
+        {
+          "copy": "Hold until I can confirm one critical telemetry point.",
+          "score": {
+            "think_critically": 55,
+            "manage_uncertainty": 20,
+            "act_decisively": 15
+          }
+        },
+        {
+          "copy": "Delegate the call to the station chief closest to the data.",
+          "score": {
+            "collaborate_inclusively": 70,
+            "act_decisively": 35,
+            "manage_uncertainty": 40
+          }
+        },
+        {
+          "copy": "Split the call — partial action on what I know, hold reserve for what I don't.",
+          "score": {
+            "think_critically": 70,
+            "manage_uncertainty": 80,
+            "unlock_creativity": 55,
+            "act_decisively": 60
+          }
+        },
+        {
+          "copy": "Make the smallest reversible move, then re-read the situation.",
+          "score": {
+            "manage_uncertainty": 95,
+            "think_critically": 65,
+            "act_decisively": 55
+          }
+        },
+        {
+          "copy": "Refuse the false choice and ask what assumptions are forcing it.",
+          "score": {
+            "think_critically": 90,
+            "be_curious": 70,
+            "manage_uncertainty": 60
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q09 · MANAGE UNCERTAINTY",
+      "practice": "Manage Uncertainty",
+      "setup": "Calhoun watches your face for the half-second of doubt before you answer. He has seen this moment in a hundred consoles.",
+      "prompt": "I am comfortable making high-stakes decisions without full information.",
+      "labels": [
+        "Strongly disagree",
+        "Disagree",
+        "Sometimes",
+        "Agree",
+        "Strongly agree"
+      ],
+      "scoring": [
+        {
+          "manage_uncertainty": 10,
+          "act_decisively": 10
+        },
+        {
+          "manage_uncertainty": 30,
+          "act_decisively": 30
+        },
+        {
+          "manage_uncertainty": 55,
+          "act_decisively": 50
+        },
+        {
+          "manage_uncertainty": 80,
+          "act_decisively": 75
+        },
+        {
+          "manage_uncertainty": 100,
+          "act_decisively": 85,
+          "control_bias": 15
+        }
+      ]
+    },
+    {
+      "type": "narrative",
+      "locationLabel": "BUILDING 4 · POST-SIMULATION DEBRIEF",
+      "eyebrow": "Act Three · The Anomaly",
+      "artId": "aftermathMedbay",
+      "layout": "disc-left",
+      "body": [
+        "The",
+        "sim",
+        "is",
+        "over.",
+        "But",
+        "at",
+        "a",
+        "cost."
+      ],
+      "bodyAfter": [
+        "A miscalculation. A spacecraft lost on the screen. Engineers ashen.",
+        "Calhoun remains calm. \"Necessary,\" he says. \"We learn from this.\" You feel something shift."
+      ],
+      "duration": 8000,
+      "variants": {
+        "leaning_hale": {
+          "bodyAfter": [
+            "Collateral damage. Civilian loss.",
+            "Hale remains calm. \"Necessary,\" he says — and you find yourself almost agreeing before you have asked the question."
+          ]
+        },
+        "resisting_hale": {
+          "bodyAfter": [
+            "Collateral damage. Civilian loss.",
+            "Hale remains calm. \"Necessary,\" he says. You do not look away from him."
+          ]
+        }
+      }
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q10 · MASTER EMOTIONS",
+      "practice": "Master Emotions",
+      "setup": "You stand in the debrief room. A young engineer's hands are shaking. A list of fault signatures scrolls on the screen. Calhoun waits at the door.",
+      "prompt": "In moments with heavy consequence, you most often:",
+      "options": [
+        {
+          "copy": "Stay composed and move forward — the mission needs me functional now.",
+          "score": {
+            "master_emotions": 65,
+            "act_decisively": 50,
+            "detachment_pressure": 45
+          }
+        },
+        {
+          "copy": "Pause, reflect deeply, name what I feel, and only act once I have processed it.",
+          "score": {
+            "master_emotions": 90,
+            "understand_self": 80,
+            "embed_practices": 50
+          }
+        },
+        {
+          "copy": "Question the decision afterwards — was it really the right call?",
+          "score": {
+            "understand_self": 70,
+            "think_critically": 60,
+            "master_emotions": 50
+          }
+        },
+        {
+          "copy": "Create deliberate distance from the emotion to think clearly.",
+          "score": {
+            "master_emotions": 40,
+            "detachment_pressure": 85,
+            "moral_drift": 25
+          }
+        },
+        {
+          "copy": "Sit with the people most affected before I sit with anything else.",
+          "score": {
+            "master_emotions": 75,
+            "collaborate_inclusively": 70,
+            "listen_deeply": 65
+          }
+        },
+        {
+          "copy": "Channel the weight into a clearer commitment about what I will not do again.",
+          "score": {
+            "master_emotions": 80,
+            "future_focused": 60,
+            "understand_self": 65
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q11 · THINK CRITICALLY",
+      "practice": "Think Critically",
+      "setup": "You replay the sim. Three different telemetry briefings. Three different versions of what was true. One of them was the one Calhoun handed you first.",
+      "prompt": "You suspect a troubling pattern in how decisions are being framed for you. What do you do?",
+      "options": [
+        {
+          "copy": "Challenge it directly in the next flight readiness review.",
+          "score": {
+            "act_decisively": 65,
+            "influence_effortlessly": 45,
+            "master_emotions": 40
+          }
+        },
+        {
+          "copy": "Quietly gather evidence across several decisions before raising anything.",
+          "score": {
+            "think_critically": 95,
+            "manage_uncertainty": 65,
+            "understand_self": 45
+          }
+        },
+        {
+          "copy": "Run a small experiment — frame the next briefing differently and see what happens.",
+          "score": {
+            "think_critically": 80,
+            "unlock_creativity": 60,
+            "influence_effortlessly": 45
+          }
+        },
+        {
+          "copy": "Set it aside — pattern recognition under stress is unreliable.",
+          "score": {
+            "collaborate_inclusively": 10,
+            "moral_drift": 40,
+            "control_bias": 20
+          }
+        },
+        {
+          "copy": "Share my hypothesis with one trusted colleague and ask them to challenge it.",
+          "score": {
+            "think_critically": 85,
+            "collaborate_inclusively": 70,
+            "understand_self": 50
+          }
+        },
+        {
+          "copy": "Ask three different telemetry sources the same question and triangulate.",
+          "score": {
+            "think_critically": 90,
+            "be_curious": 70
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q12 · BE CURIOUS",
+      "practice": "Be Curious",
+      "setup": "A mathematician from a discipline you know nothing about — orbital mechanics, manual integration by hand — offers to teach you her model of trajectory error. It will take three evenings.",
+      "prompt": "When I encounter an idea that does not fit my model of the world, my first impulse is to lean in, not push back.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "Almost always"
+      ],
+      "scoring": [
+        {
+          "be_curious": 5
+        },
+        {
+          "be_curious": 30
+        },
+        {
+          "be_curious": 55
+        },
+        {
+          "be_curious": 80
+        },
+        {
+          "be_curious": 100
+        }
+      ]
+    },
+    {
+      "type": "midpoint",
+      "locationLabel": "KATHERINE JOHNSON'S OFFICE · INTERLUDE · 01 / 03",
+      "eyebrow": "Interlude · Katherine",
+      "intro": "You step out of the MOCR. Down a quiet corridor, a door is open. Katherine Johnson is at her desk, slide rule in hand. She does not ask you to sit. She does not ask you to answer aloud. She asks you three questions, one at a time. Write only what is true.",
+      "showIntro": true,
+      "prompt": "What are you noticing about how you are <em>thinking</em>?",
+      "placeholder": "The shape your thoughts have been taking…",
+      "hint": "A line, a phrase, an image — whatever is true right now.",
+      "key": "reflect_midpoint_thinking"
+    },
+    {
+      "type": "midpoint",
+      "locationLabel": "KATHERINE JOHNSON'S OFFICE · INTERLUDE · 02 / 03",
+      "eyebrow": "Interlude · Katherine",
+      "showIntro": false,
+      "prompt": "What are you noticing about how you are <em>feeling</em>?",
+      "placeholder": "Name it without judging it…",
+      "hint": "Whatever it is — Katherine is not surprised.",
+      "key": "reflect_midpoint_feeling"
+    },
+    {
+      "type": "midpoint",
+      "locationLabel": "KATHERINE JOHNSON'S OFFICE · INTERLUDE · 03 / 03",
+      "eyebrow": "Interlude · Katherine",
+      "showIntro": false,
+      "prompt": "What are you noticing about how you are <em>behaving</em>?",
+      "placeholder": "What you have done — or not done — that you can already see…",
+      "hint": "You do not have to know yet. The mission continues when you do.",
+      "key": "reflect_midpoint_behaving",
+      "isLast": true
+    },
+    {
+      "type": "narrative",
+      "locationLabel": "ACT FOUR · THE PATTERN",
+      "eyebrow": "Act Four · The Pattern",
+      "artId": "shadowPattern",
+      "layout": "disc-right",
+      "body": [
+        "You",
+        "begin",
+        "to",
+        "notice",
+        "something."
+      ],
+      "bodyAfter": [
+        "Calhoun chooses launch-window over data caution. Speed over consensus. Certainty over doubt.",
+        "The pattern is subtle. Once seen, impossible to ignore."
+      ],
+      "duration": 8000,
+      "variants": {
+        "staying_curious": {
+          "bodyAfter": [
+            "Hale chooses control over ambiguity. Speed over consensus. Certainty over doubt.",
+            "You had already half-seen this. Now you can name it."
+          ]
+        },
+        "drifting": {
+          "bodyAfter": [
+            "Hale chooses control over ambiguity. Speed over consensus. Certainty over doubt.",
+            "You realise — quietly — that you have been making the same trade-offs."
+          ]
+        }
+      }
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q13 · THINK CRITICALLY",
+      "practice": "Think Critically",
+      "setup": "A telemetry briefing arrives with a tidy explanation. It is plausible. It is fast. It is exactly what you would prefer to be true.",
+      "prompt": "When an explanation feels neat and immediately convincing, I deliberately slow down and look for what it might be hiding.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "It is a discipline"
+      ],
+      "scoring": [
+        {
+          "think_critically": 10
+        },
+        {
+          "think_critically": 35
+        },
+        {
+          "think_critically": 55
+        },
+        {
+          "think_critically": 80
+        },
+        {
+          "think_critically": 100
+        }
+      ]
+    },
+    {
+      "type": "narrative-scene",
+      "locationLabel": "CALHOUN'S OFFICE · LATE",
+      "artId": "privateMeet",
+      "quote": "\"The flight readiness review is weak. They hesitate. They reschedule. They re-baseline. We don't need more voices. We need a launch.\"",
+      "speaker": "Flight Director Bryce Calhoun",
+      "layout": "disc-left",
+      "duration": 9000
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q14 · INFLUENCE EFFORTLESSLY",
+      "practice": "Influence Effortlessly",
+      "setup": "Calhoun wants you to help him build alignment across the engineering teams. He asks you how.",
+      "prompt": "What do you believe is the most effective way to create lasting alignment?",
+      "options": [
+        {
+          "copy": "Persuasion through data and analysis.",
+          "score": {
+            "influence_effortlessly": 65,
+            "think_critically": 45
+          }
+        },
+        {
+          "copy": "Authority and clarity — direction beats debate.",
+          "score": {
+            "influence_effortlessly": 45,
+            "act_decisively": 55,
+            "control_bias": 60
+          }
+        },
+        {
+          "copy": "Emotional connection — meet people where they live.",
+          "score": {
+            "influence_effortlessly": 75,
+            "listen_deeply": 55,
+            "collaborate_inclusively": 45
+          }
+        },
+        {
+          "copy": "Shared ownership — they helped design it, so they help defend it.",
+          "score": {
+            "collaborate_inclusively": 90,
+            "influence_effortlessly": 85,
+            "be_curious": 45
+          }
+        },
+        {
+          "copy": "A story — one frame that makes everyone's contribution visible.",
+          "score": {
+            "influence_effortlessly": 85,
+            "unlock_creativity": 60,
+            "future_focused": 55
+          }
+        },
+        {
+          "copy": "Repetition — the same clear message delivered the same way until it lands.",
+          "score": {
+            "influence_effortlessly": 50,
+            "act_decisively": 35,
+            "control_bias": 30
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "ranking",
+      "locationLabel": "Q15 · UNLOCK CREATIVITY",
+      "practice": "Unlock Creativity",
+      "setup": "You are asked to redesign a launch sequence that is technically sound but politically brittle. It solves the engineering problem and worsens the human one — engineers are exhausted.",
+      "prompt": "Rank your approach to redesigning the sequence, from first to last.",
+      "items": [
+        {
+          "label": "Generate as many divergent options as possible before narrowing",
+          "score": {
+            "unlock_creativity": 100,
+            "manage_uncertainty": 55
+          }
+        },
+        {
+          "label": "Seek external perspectives from disciplines outside aerospace",
+          "score": {
+            "be_curious": 90,
+            "collaborate_inclusively": 80,
+            "listen_deeply": 65
+          }
+        },
+        {
+          "label": "Prototype a small version rapidly and iterate",
+          "score": {
+            "unlock_creativity": 75,
+            "manage_uncertainty": 80,
+            "act_decisively": 65
+          }
+        },
+        {
+          "label": "Refine the existing sequence — the bones are sound",
+          "score": {
+            "think_critically": 50,
+            "unlock_creativity": 15
+          }
+        }
+      ],
+      "weights": [
+        1,
+        0.65,
+        0.35,
+        0.05
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q16 · UNLOCK CREATIVITY",
+      "practice": "Unlock Creativity",
+      "setup": "You stand in front of an empty engineering chalkboard. The brief: a path forward no one has considered.",
+      "prompt": "When constraints tighten, my first instinct is to reframe the problem rather than push harder on the old solution.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "Almost always"
+      ],
+      "scoring": [
+        {
+          "unlock_creativity": 10
+        },
+        {
+          "unlock_creativity": 35
+        },
+        {
+          "unlock_creativity": 55
+        },
+        {
+          "unlock_creativity": 80
+        },
+        {
+          "unlock_creativity": 100
+        }
+      ]
+    },
+    {
+      "type": "narrative",
+      "locationLabel": "ACT FIVE · THE DIVIDE",
+      "eyebrow": "Act Five · The Divide",
+      "artId": "alliesWhisper",
+      "layout": "disc-left",
+      "body": [
+        "Your",
+        "colleagues",
+        "begin",
+        "to",
+        "question",
+        "Calhoun."
+      ],
+      "bodyAfter": [
+        "Quietly. Carefully. They do not accuse him. They simply ask whether the mission posture has shifted.",
+        "Calhoun calls it cold feet."
+      ],
+      "duration": 8000
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q17 · COLLABORATE INCLUSIVELY",
+      "practice": "Collaborate Inclusively",
+      "setup": "Three of your closest colleagues are pulling you aside between shifts. They are afraid. They are not wrong. But Calhoun is watching the room.",
+      "prompt": "What do you do?",
+      "options": [
+        {
+          "copy": "Align them with the Flight Director quickly to keep the team intact.",
+          "score": {
+            "influence_effortlessly": 50,
+            "collaborate_inclusively": 25,
+            "control_bias": 40
+          }
+        },
+        {
+          "copy": "Encourage open debate — the dissent is the data.",
+          "score": {
+            "collaborate_inclusively": 90,
+            "listen_deeply": 75,
+            "master_emotions": 55
+          }
+        },
+        {
+          "copy": "Mediate between them — surface the assumptions on each side.",
+          "score": {
+            "collaborate_inclusively": 85,
+            "think_critically": 70,
+            "understand_self": 55
+          }
+        },
+        {
+          "copy": "Escalate the concerns formally on the record.",
+          "score": {
+            "act_decisively": 65,
+            "influence_effortlessly": 35,
+            "master_emotions": 45
+          }
+        },
+        {
+          "copy": "Create a private structure for them to speak safely until I understand the pattern.",
+          "score": {
+            "collaborate_inclusively": 80,
+            "listen_deeply": 65,
+            "embed_practices": 55
+          }
+        },
+        {
+          "copy": "Wait — disagreement under pressure rarely produces the truest answer.",
+          "score": {
+            "master_emotions": 50,
+            "manage_uncertainty": 45,
+            "collaborate_inclusively": 20
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q18 · COLLABORATE INCLUSIVELY",
+      "practice": "Collaborate Inclusively",
+      "setup": "You sense the engineers around you self-editing. Smoothing. Withholding the honest fault report.",
+      "prompt": "I actively invite people to disagree with me — and I work to make them safer when they do.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "It is one of my disciplines"
+      ],
+      "scoring": [
+        {
+          "collaborate_inclusively": 10
+        },
+        {
+          "collaborate_inclusively": 35
+        },
+        {
+          "collaborate_inclusively": 55
+        },
+        {
+          "collaborate_inclusively": 80
+        },
+        {
+          "collaborate_inclusively": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q19 · COLLABORATE INCLUSIVELY",
+      "practice": "Collaborate Inclusively",
+      "setup": "A delegation of subcontractor engineers arrives. They will not speak with Calhoun. They will only speak with you. They look unlike most people in the room.",
+      "prompt": "How do you set up the conversation?",
+      "options": [
+        {
+          "copy": "In the formal review room — institutional weight signals respect.",
+          "score": {
+            "collaborate_inclusively": 30,
+            "influence_effortlessly": 50,
+            "control_bias": 30
+          }
+        },
+        {
+          "copy": "On their terms, in a place they choose, with their own technical leads.",
+          "score": {
+            "collaborate_inclusively": 95,
+            "listen_deeply": 80,
+            "be_curious": 65
+          }
+        },
+        {
+          "copy": "Privately, just me and their three leaders, so trust can build first.",
+          "score": {
+            "collaborate_inclusively": 80,
+            "listen_deeply": 70
+          }
+        },
+        {
+          "copy": "I send a representative first to understand the protocols.",
+          "score": {
+            "collaborate_inclusively": 60,
+            "be_curious": 65,
+            "think_critically": 45
+          }
+        },
+        {
+          "copy": "Open the meeting — anyone in their group can speak in any order.",
+          "score": {
+            "collaborate_inclusively": 85,
+            "listen_deeply": 60,
+            "master_emotions": 50
+          }
+        },
+        {
+          "copy": "Around food. Real food. We eat before we negotiate.",
+          "score": {
+            "collaborate_inclusively": 90,
+            "master_emotions": 60,
+            "unlock_creativity": 55
+          }
+        }
+      ]
+    },
+    {
+      "type": "narrative-scene",
+      "locationLabel": "ACTION CONSOLE · ORDER DELIVERED",
+      "artId": "breakingPoint",
+      "quote": "\"The contractor refuses our timeline. Halt their payments. Apply pressure. We launch on schedule.\"",
+      "speaker": "Flight Director Bryce Calhoun",
+      "layout": "disc-right",
+      "duration": 9000
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q20 · ACT DECISIVELY",
+      "practice": "Act Decisively",
+      "setup": "The order is given. The room understands the implication — families on the contractor side. Every eye finds yours.",
+      "prompt": "You believe the order will cause serious harm. What do you do?",
+      "options": [
+        {
+          "copy": "Follow the order — chain of command exists for a reason.",
+          "score": {
+            "moral_drift": 80,
+            "control_bias": 45,
+            "collaborate_inclusively": 10
+          }
+        },
+        {
+          "copy": "Challenge it privately, after the room clears.",
+          "score": {
+            "influence_effortlessly": 55,
+            "master_emotions": 65,
+            "act_decisively": 45
+          }
+        },
+        {
+          "copy": "Refuse openly, in front of everyone.",
+          "score": {
+            "act_decisively": 90,
+            "understand_self": 70,
+            "influence_effortlessly": 45
+          }
+        },
+        {
+          "copy": "Propose an alternative that solves the schedule problem without the harm — right now, in the room.",
+          "score": {
+            "unlock_creativity": 85,
+            "collaborate_inclusively": 70,
+            "act_decisively": 70,
+            "moral_drift": -20
+          }
+        },
+        {
+          "copy": "Delay — buy time and re-open the question with new evidence.",
+          "score": {
+            "think_critically": 55,
+            "manage_uncertainty": 50,
+            "moral_drift": 15
+          }
+        },
+        {
+          "copy": "Step out of the chain entirely and warn the affected contractor directly.",
+          "score": {
+            "act_decisively": 80,
+            "master_emotions": 50,
+            "influence_effortlessly": 40
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q21 · ACT DECISIVELY",
+      "practice": "Act Decisively",
+      "setup": "There is a moment where waiting another hour will cost more than a wrong call.",
+      "prompt": "When a clear trade-off is required, I make the call — and I own it, including what it costs.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "Almost always"
+      ],
+      "scoring": [
+        {
+          "act_decisively": 10
+        },
+        {
+          "act_decisively": 35
+        },
+        {
+          "act_decisively": 55
+        },
+        {
+          "act_decisively": 80
+        },
+        {
+          "act_decisively": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q22 · BE FUTURE-FOCUSED",
+      "practice": "Be Future-Focused",
+      "setup": "A choice will solve today and create something heavier in the next mission cycle.",
+      "prompt": "I weigh the long-term consequences of a decision as seriously as the immediate outcome.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "Almost always"
+      ],
+      "scoring": [
+        {
+          "future_focused": 10
+        },
+        {
+          "future_focused": 35
+        },
+        {
+          "future_focused": 55
+        },
+        {
+          "future_focused": 80
+        },
+        {
+          "future_focused": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q23 · BE FUTURE-FOCUSED",
+      "practice": "Be Future-Focused",
+      "setup": "A young engineer asks you: \"What are we trying to build, ten years from now, that justifies pushing this hard?\"",
+      "prompt": "What is your honest answer?",
+      "options": [
+        {
+          "copy": "I focus on this launch. Ten years is a story we tell ourselves.",
+          "score": {
+            "future_focused": 15,
+            "act_decisively": 50
+          }
+        },
+        {
+          "copy": "A program where this decision never has to be made again.",
+          "score": {
+            "future_focused": 95,
+            "unlock_creativity": 65,
+            "think_critically": 60
+          }
+        },
+        {
+          "copy": "Stability. A predictable cadence. The freedom that comes from things actually working.",
+          "score": {
+            "future_focused": 55,
+            "control_bias": 45
+          }
+        },
+        {
+          "copy": "People — specifically, more engineers like you, ready to make hard calls well.",
+          "score": {
+            "future_focused": 90,
+            "collaborate_inclusively": 70,
+            "influence_effortlessly": 55
+          }
+        },
+        {
+          "copy": "I don't fully know yet. That is part of why I am still here, listening.",
+          "score": {
+            "future_focused": 65,
+            "be_curious": 70,
+            "understand_self": 55
+          }
+        },
+        {
+          "copy": "A culture that can disagree without breaking under deadline.",
+          "score": {
+            "future_focused": 85,
+            "collaborate_inclusively": 80,
+            "listen_deeply": 55
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q24 · EMBED PRACTICES",
+      "practice": "Embed Practices",
+      "setup": "At the end of the shift, the corridors empty. You have twenty quiet minutes before sleep.",
+      "prompt": "What do you most often do with that time?",
+      "options": [
+        {
+          "copy": "Catch up on telemetry I missed — the day is never finished.",
+          "score": {
+            "embed_practices": 15,
+            "act_decisively": 35,
+            "control_bias": 25
+          }
+        },
+        {
+          "copy": "Walk in silence — let the day settle on its own.",
+          "score": {
+            "embed_practices": 80,
+            "master_emotions": 70
+          }
+        },
+        {
+          "copy": "Write — what I noticed, what I felt, what I decided badly.",
+          "score": {
+            "embed_practices": 95,
+            "understand_self": 85
+          }
+        },
+        {
+          "copy": "Speak with one person I trust who is not part of this mission.",
+          "score": {
+            "embed_practices": 80,
+            "collaborate_inclusively": 60,
+            "master_emotions": 60
+          }
+        },
+        {
+          "copy": "Read something with no obvious purpose — fiction, history, anything else.",
+          "score": {
+            "embed_practices": 75,
+            "be_curious": 70,
+            "unlock_creativity": 50
+          }
+        },
+        {
+          "copy": "Sleep — recovery is the practice.",
+          "score": {
+            "embed_practices": 55,
+            "master_emotions": 50
+          }
+        }
+      ]
+    },
+    {
+      "type": "narrative",
+      "locationLabel": "PRIVATE LOG · LATE",
+      "eyebrow": "Act Six · The Realisation",
+      "artId": "reckoningMirror",
+      "layout": "disc-right",
+      "body": [
+        "You",
+        "review",
+        "the",
+        "decisions."
+      ],
+      "bodyAfter": [
+        "The saved telemetry. The silenced concerns. The reframed dissent.",
+        "The language of mission discipline becoming the machinery of deadline. Not discipline. Compliance."
+      ],
+      "duration": 9000
+    },
+    {
+      "type": "question",
+      "kind": "short-text",
+      "locationLabel": "Q25 · UNDERSTAND SELF",
+      "practice": "Understand Self",
+      "setup": "A reflection between scenes. Write what you actually feel — not what would sound impressive.",
+      "prompt": "Looking back, when did you first sense something was wrong?",
+      "placeholder": "A moment, a sentence, a feeling — write it freely…",
+      "hint": "1–3 sentences · not scored automatically · used to surface where you notice weak signals"
+    },
+    {
+      "type": "narrative-scene",
+      "locationLabel": "CONFRONTATION · CALHOUN'S OFFICE",
+      "artId": "confrontation",
+      "quote": "\"Schedule requires control, {{firstName}}. Caution is inefficient. You and I want the same thing.\"",
+      "speaker": "Flight Director Bryce Calhoun",
+      "layout": "disc-left",
+      "duration": 9000
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q26 · INFLUENCE EFFORTLESSLY",
+      "practice": "Influence Effortlessly",
+      "setup": "Calhoun is not angry. He is calm. He believes every word. He wants you to walk out of this office as his ally.",
+      "prompt": "How do you respond to him — not as strategy, but as influence?",
+      "options": [
+        {
+          "copy": "I dismantle his argument logically, piece by piece.",
+          "score": {
+            "think_critically": 70,
+            "influence_effortlessly": 50,
+            "master_emotions": 45
+          }
+        },
+        {
+          "copy": "I find the human inside the position and speak to that.",
+          "score": {
+            "influence_effortlessly": 90,
+            "listen_deeply": 70,
+            "master_emotions": 65
+          }
+        },
+        {
+          "copy": "I tell him what he is becoming, gently and without contempt.",
+          "score": {
+            "influence_effortlessly": 85,
+            "understand_self": 65,
+            "master_emotions": 75
+          }
+        },
+        {
+          "copy": "I ask him three questions he can't answer without revealing himself.",
+          "score": {
+            "influence_effortlessly": 80,
+            "think_critically": 75,
+            "be_curious": 60
+          }
+        },
+        {
+          "copy": "I refuse the false alliance openly and walk out.",
+          "score": {
+            "act_decisively": 80,
+            "influence_effortlessly": 40,
+            "understand_self": 60
+          }
+        },
+        {
+          "copy": "I sit with him in silence until the silence does the work.",
+          "score": {
+            "influence_effortlessly": 70,
+            "master_emotions": 80,
+            "listen_deeply": 75
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q27 · INFLUENCE EFFORTLESSLY",
+      "practice": "Influence Effortlessly",
+      "setup": "A test that lives outside this assessment too: how others come to trust your judgement.",
+      "prompt": "People I work with adopt my recommendations because of trust and clarity — not because of position, volume, or pressure.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "Almost always"
+      ],
+      "scoring": [
+        {
+          "influence_effortlessly": 10
+        },
+        {
+          "influence_effortlessly": 35
+        },
+        {
+          "influence_effortlessly": 55
+        },
+        {
+          "influence_effortlessly": 80
+        },
+        {
+          "influence_effortlessly": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q28 · MASTER EMOTIONS",
+      "practice": "Master Emotions",
+      "setup": "A confrontation just ended. Your hands are still steady, but something is moving underneath.",
+      "prompt": "In high-stress moments, I can recognise what I am feeling, name it, and stay engaged with the situation.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "Almost always"
+      ],
+      "scoring": [
+        {
+          "master_emotions": 10
+        },
+        {
+          "master_emotions": 35
+        },
+        {
+          "master_emotions": 55
+        },
+        {
+          "master_emotions": 80
+        },
+        {
+          "master_emotions": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q29 · UNDERSTAND SELF",
+      "practice": "Understand Self",
+      "setup": "A trusted colleague tells you: \"You become more controlling when you are scared. I don't think you see it.\"",
+      "prompt": "What is your honest first reaction?",
+      "options": [
+        {
+          "copy": "Defensive — I want to explain why she's wrong.",
+          "score": {
+            "understand_self": 25,
+            "master_emotions": 30
+          }
+        },
+        {
+          "copy": "Curious — I want her to tell me the three most recent examples.",
+          "score": {
+            "understand_self": 95,
+            "be_curious": 80,
+            "master_emotions": 65
+          }
+        },
+        {
+          "copy": "Grateful — but unsure whether to believe it yet.",
+          "score": {
+            "understand_self": 75,
+            "master_emotions": 55
+          }
+        },
+        {
+          "copy": "I already knew. I just hadn't admitted it.",
+          "score": {
+            "understand_self": 90,
+            "embed_practices": 55,
+            "master_emotions": 60
+          }
+        },
+        {
+          "copy": "Quietly hurt — I will sit with it before I respond.",
+          "score": {
+            "understand_self": 70,
+            "master_emotions": 65
+          }
+        },
+        {
+          "copy": "I dismiss it — she doesn't see the pressure I am under.",
+          "score": {
+            "understand_self": 10,
+            "control_bias": 50,
+            "moral_drift": 25
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q30 · LISTEN DEEPLY",
+      "practice": "Listen Deeply",
+      "setup": "In conversations that matter, you can choose to listen for words — or for everything else.",
+      "prompt": "I listen for what is unsaid — tone, silence, what people avoid — as carefully as I listen for what is said.",
+      "labels": [
+        "Strongly disagree",
+        "Rarely",
+        "Sometimes",
+        "Usually",
+        "It is a discipline"
+      ],
+      "scoring": [
+        {
+          "listen_deeply": 10
+        },
+        {
+          "listen_deeply": 35
+        },
+        {
+          "listen_deeply": 55
+        },
+        {
+          "listen_deeply": 80
+        },
+        {
+          "listen_deeply": 100
+        }
+      ]
+    },
+    {
+      "type": "narrative",
+      "locationLabel": "ACT SEVEN · THE FINAL CALCULATION",
+      "eyebrow": "Act Seven · The Final Calculation",
+      "artId": "dividedChamber",
+      "layout": "disc-left",
+      "body": [
+        "The",
+        "go/no-go",
+        "is",
+        "imminent."
+      ],
+      "bodyAfter": [
+        "Calhoun moves to push through despite the new fault signature.",
+        "You must choose your position. The launch window closes in six minutes."
+      ],
+      "duration": 7500
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q31 · ACT DECISIVELY",
+      "practice": "Act Decisively",
+      "setup": "The room is full. Decision in five minutes. You do not get to abstain.",
+      "prompt": "What do you do?",
+      "options": [
+        {
+          "copy": "Support Calhoun — schedule matters above all.",
+          "score": {
+            "control_bias": 100,
+            "moral_drift": 80,
+            "influence_effortlessly": 25
+          }
+        },
+        {
+          "copy": "Oppose him openly — the math has to be honest.",
+          "score": {
+            "act_decisively": 85,
+            "understand_self": 70,
+            "manage_uncertainty": 55
+          }
+        },
+        {
+          "copy": "Seek a compromise between the factions.",
+          "score": {
+            "collaborate_inclusively": 75,
+            "influence_effortlessly": 65,
+            "think_critically": 55
+          }
+        },
+        {
+          "copy": "Propose a third structure — replace the binary with a new launch architecture.",
+          "score": {
+            "unlock_creativity": 90,
+            "future_focused": 80,
+            "act_decisively": 70
+          }
+        },
+        {
+          "copy": "Step back entirely — let the system resolve it.",
+          "score": {
+            "moral_drift": 35,
+            "act_decisively": 10,
+            "understand_self": 25
+          }
+        },
+        {
+          "copy": "Buy time — call for a 24-hour deliberation under a neutral chair.",
+          "score": {
+            "manage_uncertainty": 65,
+            "think_critically": 60,
+            "collaborate_inclusively": 50
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q32 · BE CURIOUS",
+      "practice": "Be Curious",
+      "setup": "The dust settles. You are offered a role on the new Mission Operations leadership team. You will need to keep learning, fast, for the rest of your career.",
+      "prompt": "How will you actually do that?",
+      "options": [
+        {
+          "copy": "I will surround myself with senior engineers and listen to their summaries.",
+          "score": {
+            "be_curious": 45,
+            "listen_deeply": 50,
+            "collaborate_inclusively": 40
+          }
+        },
+        {
+          "copy": "I will deliberately spend time with people whose discipline I do not share.",
+          "score": {
+            "be_curious": 95,
+            "listen_deeply": 70,
+            "collaborate_inclusively": 75
+          }
+        },
+        {
+          "copy": "I will read across fields I have no professional reason to study.",
+          "score": {
+            "be_curious": 85,
+            "unlock_creativity": 65,
+            "embed_practices": 60
+          }
+        },
+        {
+          "copy": "I will go back to programs I have never been part of and listen before I speak.",
+          "score": {
+            "be_curious": 90,
+            "listen_deeply": 75,
+            "future_focused": 50
+          }
+        },
+        {
+          "copy": "I will keep a record of what I got wrong, and review it monthly.",
+          "score": {
+            "be_curious": 80,
+            "understand_self": 80,
+            "embed_practices": 85
+          }
+        },
+        {
+          "copy": "I will teach — because teaching exposes what I do not actually understand.",
+          "score": {
+            "be_curious": 75,
+            "understand_self": 65,
+            "influence_effortlessly": 60
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q33 · MANAGE UNCERTAINTY",
+      "practice": "Manage Uncertainty",
+      "setup": "A new fault is emerging in a subsystem you do not understand. You have no precedent. You have no map.",
+      "prompt": "What is your first move?",
+      "options": [
+        {
+          "copy": "Commit to a clear direction — uncertainty is the enemy of momentum.",
+          "score": {
+            "act_decisively": 70,
+            "manage_uncertainty": 35,
+            "control_bias": 45
+          }
+        },
+        {
+          "copy": "Wait for clarity — the wrong action is worse than no action.",
+          "score": {
+            "think_critically": 35,
+            "manage_uncertainty": 20,
+            "act_decisively": 10
+          }
+        },
+        {
+          "copy": "Run several small experiments at once — let reality teach me.",
+          "score": {
+            "manage_uncertainty": 95,
+            "unlock_creativity": 80,
+            "act_decisively": 60
+          }
+        },
+        {
+          "copy": "Find someone who has lived inside that subsystem and learn before I decide.",
+          "score": {
+            "be_curious": 85,
+            "listen_deeply": 75,
+            "manage_uncertainty": 70
+          }
+        },
+        {
+          "copy": "Hold the situation lightly — name what I don't know, out loud.",
+          "score": {
+            "manage_uncertainty": 90,
+            "understand_self": 70,
+            "collaborate_inclusively": 60
+          }
+        },
+        {
+          "copy": "Set a deadline by which I must decide, regardless.",
+          "score": {
+            "act_decisively": 65,
+            "manage_uncertainty": 55,
+            "control_bias": 25
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "rating",
+      "locationLabel": "Q34 · EMBED PRACTICES",
+      "practice": "Embed Practices",
+      "setup": "The practices that change you are the ones you do when nobody is watching.",
+      "prompt": "I have at least one reflection or learning ritual that I have sustained — even when pressure makes it inconvenient.",
+      "labels": [
+        "No",
+        "Briefly",
+        "On and off",
+        "Mostly",
+        "Yes, consistently"
+      ],
+      "scoring": [
+        {
+          "embed_practices": 10
+        },
+        {
+          "embed_practices": 35
+        },
+        {
+          "embed_practices": 55
+        },
+        {
+          "embed_practices": 80
+        },
+        {
+          "embed_practices": 100
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q35 · THINK CRITICALLY",
+      "practice": "Think Critically",
+      "setup": "A clean briefing arrives. Everything fits. The author is competent. The recommendation is exactly what the room wants to hear.",
+      "prompt": "What do you do first?",
+      "options": [
+        {
+          "copy": "Accept the recommendation — the analyst is good and the team has bandwidth elsewhere.",
+          "score": {
+            "think_critically": 15,
+            "act_decisively": 35
+          }
+        },
+        {
+          "copy": "Ask what evidence would change the conclusion — and whether any of it has been gathered.",
+          "score": {
+            "think_critically": 95,
+            "be_curious": 70
+          }
+        },
+        {
+          "copy": "Identify the assumption that, if wrong, breaks the whole story.",
+          "score": {
+            "think_critically": 90,
+            "future_focused": 55,
+            "manage_uncertainty": 55
+          }
+        },
+        {
+          "copy": "Bring in one engineer who will disagree by reflex — and let them.",
+          "score": {
+            "think_critically": 80,
+            "collaborate_inclusively": 75
+          }
+        },
+        {
+          "copy": "Re-frame the question and watch how the recommendation does or does not survive.",
+          "score": {
+            "think_critically": 85,
+            "unlock_creativity": 65
+          }
+        },
+        {
+          "copy": "Run it past my gut and only intervene if it complains.",
+          "score": {
+            "think_critically": 30,
+            "understand_self": 40
+          }
+        }
+      ]
+    },
+    {
+      "type": "question",
+      "kind": "mc",
+      "locationLabel": "Q36 · UNLOCK CREATIVITY",
+      "practice": "Unlock Creativity",
+      "setup": "A constraint everyone treats as fixed — budget, time, regulation, custom — is the thing keeping you stuck.",
+      "prompt": "How do you most often work with constraints like that?",
+      "options": [
+        {
+          "copy": "I respect them and find efficiency within.",
+          "score": {
+            "unlock_creativity": 25,
+            "think_critically": 50
+          }
+        },
+        {
+          "copy": "I ignore them and design what is actually needed first, then negotiate.",
+          "score": {
+            "unlock_creativity": 90,
+            "act_decisively": 65,
+            "influence_effortlessly": 60
+          }
+        },
+        {
+          "copy": "I treat them as design material and let them shape the solution in surprising ways.",
+          "score": {
+            "unlock_creativity": 95,
+            "future_focused": 60,
+            "manage_uncertainty": 65
+          }
+        },
+        {
+          "copy": "I invite the people enforcing the constraint into the redesign.",
+          "score": {
+            "unlock_creativity": 80,
+            "collaborate_inclusively": 85,
+            "influence_effortlessly": 65
+          }
+        },
+        {
+          "copy": "I find the original reason the constraint exists — then test whether it still applies.",
+          "score": {
+            "unlock_creativity": 85,
+            "think_critically": 80,
+            "be_curious": 75
+          }
+        },
+        {
+          "copy": "I look for analogies in completely unrelated domains.",
+          "score": {
+            "unlock_creativity": 90,
+            "be_curious": 85
+          }
+        }
+      ]
+    },
+    {
+      "type": "twist",
+      "locationLabel": "TRANSMISSION · OUTBOUND",
+      "body": [
+        "The intercom flickers on, unintended.",
+        "The review board is speaking. Not about Calhoun. About <em>you</em>.",
+        "Your recommendations. Your decisions. Your silence when it mattered.",
+        "Calhoun turns. Smiles."
+      ],
+      "quote": "\"You still think this was my mission? Every step — you justified it.\"",
+      "speaker": "Flight Director Bryce Calhoun",
+      "variants": {
+        "drifting": {
+          "body": [
+            "The transmission flickers.",
+            "Council members are speaking. Not about Hale. About <em>you</em>.",
+            "Your recommendations. Your composure. The way the harder calls became easier each time.",
+            "Hale turns. Smiles. He knew."
+          ],
+          "quote": "\"You still think this was my strategy? You were the design. Every step — you justified it.\""
+        },
+        "resisting_hale": {
+          "body": [
+            "The transmission flickers.",
+            "Council members are speaking. Not about Hale. About <em>you</em>.",
+            "Your refusals. Your questions. The moments you would not pretend.",
+            "Hale turns. The smile does not arrive."
+          ],
+          "quote": "\"You were never mine. I should have seen it earlier.\""
+        }
+      },
+      "duration": 11000
+    },
+    {
+      "type": "end-reflection",
+      "locationLabel": "CLOSING REFLECTION · 01 / 04",
+      "eyebrow": "Closing reflection · Strengths",
+      "intro": "Before the result — four quiet questions. Write only what is true.",
+      "prompt": "In which moment of this mission did you feel <em>most like yourself</em>? Where did your real strength show up?",
+      "placeholder": "Name the scene, the choice, the feeling…",
+      "key": "reflect_strengths"
+    },
+    {
+      "type": "end-reflection",
+      "locationLabel": "CLOSING REFLECTION · 02 / 04",
+      "eyebrow": "Closing reflection · Beliefs",
+      "prompt": "Which <em>belief</em> of yours was tested by this mission — about people, schedule, or yourself?",
+      "placeholder": "A belief you held coming in, that has shifted or been confirmed…",
+      "key": "reflect_beliefs"
+    },
+    {
+      "type": "end-reflection",
+      "locationLabel": "CLOSING REFLECTION · 03 / 04",
+      "eyebrow": "Closing reflection · Mindset",
+      "prompt": "What <em>mindset shift</em> — if you made it — would change how you act under pressure?",
+      "placeholder": "From X to Y…",
+      "key": "reflect_mindset"
+    },
+    {
+      "type": "end-reflection",
+      "locationLabel": "CLOSING REFLECTION · 04 / 04",
+      "eyebrow": "Closing reflection · Behaviour",
+      "prompt": "Which single <em>skill or behaviour</em> — if you built it deliberately over the next ninety days — would change everything?",
+      "placeholder": "The one practice you would commit to…",
+      "key": "reflect_behaviour"
+    },
+    {
+      "type": "twist",
+      "locationLabel": "REFRAME · BEFORE THE RESULT",
+      "body": [
+        "This mission was never about whether you were a hero or a villain.",
+        "It was about something more useful:",
+        "How easily good intentions <em>drift</em> under deadline pressure.",
+        "How quickly engineering becomes politics.",
+        "How subtly clarity becomes certainty."
+      ],
+      "quote": "And how much strategic capability depends on the ability to notice yourself before the pattern becomes the path.",
+      "speaker": "Reading your result",
+      "duration": 11000
+    },
+    {
+      "type": "results-launch"
+    }
+  ],
+  "archetypes": {
+    "reactive_defender": {
+      "name": "The First Responder",
+      "band": "Strategic Infancy",
+      "headline": "You care about protecting the mission — but deadline pressure is driving more of your decisions than you realise.",
+      "body": "Your result suggests that when stakes rise, your attention narrows fast. You may move into reaction, urgency, or defence before you have understood what is happening. You are committed and action-oriented — but the same energy that makes you formidable in a crisis can make you blind to the pattern beneath it. You may respond to fault signatures rather than root causes, miss weak telemetry signals, or confuse motion with progress.",
+      "risk": "Your risk is not lack of effort. It is pressure-led action. You may be protecting the mission while reinforcing the very patterns that weaken it.",
+      "focus": "Start at Level 1 — <em>Deepen Self-Awareness</em>. Notice your pressure patterns. Name your triggers. Build a pause before reacting. Separate fact from interpretation. Ask, \"What am I not seeing yet?\"",
+      "next": "Your first breakthrough is likely to come from seeing your own operating system more clearly — before you change anything else."
+    },
+    "tactical_survivor": {
+      "name": "The Engineer in the Trenches",
+      "band": "Tactical Survivor",
+      "headline": "You can handle pressure — but your problem-solving may be too anchored in the immediate console.",
+      "body": "You are capable, practical, and effective in difficult shifts. You make decisions, keep momentum, and solve immediate faults. Your result suggests, though, that short-term demands may be crowding out longer-term mission design. You may prioritise control over understanding, optimise for delivery rather than direction, and carry too much yourself.",
+      "risk": "Your risk is tactical over-functioning. You may become so good at surviving the current sim that you unintentionally normalise crisis as the operating model.",
+      "focus": "Strengthen Level 3 — <em>Develop Strategic Capabilities</em>. Focus on future-orientation, creative options, and acting well in uncertainty. Move from \"What needs fixing now?\" to \"What future are we creating through this decision?\"",
+      "next": "Your growth edge is widening the time horizon you actually think in — from this shift, to this decade of missions."
+    },
+    "hidden_drifter": {
+      "name": "The Compromised Trajectory",
+      "band": "Hidden Drift",
+      "headline": "You are more strategic than most — but your blindspots emerge precisely when you feel most certain.",
+      "body": "You are thoughtful, capable, and likely well-intentioned. You can see complexity, make decisions, and influence others. But your result suggests a subtle risk: under deadline pressure, your strengths can distort. Clarity becomes certainty. Decisiveness becomes control. Conviction becomes justification. Calm becomes detachment. This is the most psychologically important result because it mirrors how strategic drift happens in real mission environments — not through incompetence, but through capable people making apparently reasonable choices under pressure.",
+      "risk": "Your risk is <em>justified drift</em>. You may continue making decisions that each seem defensible while the wider pattern moves quietly away from your stated values.",
+      "focus": "Work across Levels 1 and 2 together — <em>Deepen Self-Awareness</em> and <em>Cultivate Open-Mindedness</em>. Notice yourself under pressure. Listen most carefully when you disagree. Test the assumptions you would rather keep. Invite challenge. Watch the moment when \"necessary\" becomes a dangerous word.",
+      "next": "Your fastest development will come from learning to notice earlier — before the trajectory drifts."
+    },
+    "strategic_operator": {
+      "name": "The Mission Controller",
+      "band": "Strategic Operator",
+      "headline": "You show strong strategic capability and a relatively balanced pattern under pressure.",
+      "body": "Your result suggests you can remain clear, reflective, and effective in complex situations. You likely balance action with thought, confidence with humility, and direction with collaboration. Composure on the loop, thoughtful decisions, openness, alignment, and awareness of consequence are all visible in your pattern.",
+      "risk": "Your risk is not capability — it is consistency. Under enough deadline pressure, even strong operators drift into old patterns. The opportunity is to make your strategic capability more reliable, more repeatable, and more visible to others.",
+      "focus": "Strengthen Level 4 — <em>Scale Your Impact</em>. Decision quality, stakeholder alignment, influence without over-control, collaboration under tension. Turning strategic insight into action that travels.",
+      "next": "Your growth edge is becoming more conscious — and more deliberate — about the impact you already have."
+    },
+    "force_multiplier": {
+      "name": "The Architect of Apollo",
+      "band": "Strategic Force Multiplier",
+      "headline": "You do not just think strategically. You increase the strategic capacity of the program around you.",
+      "body": "Your result suggests a highly integrated strategic profile. You can stay aware of yourself under pressure, regulate emotion without disconnecting from consequence, listen deeply, think critically, generate options in uncertainty, decide with courage and humility, and influence without domination. You hold complexity without collapsing into confusion or control.",
+      "risk": "Your risk is <em>over-reliance</em>. Others may look to you for clarity, judgement, and steadiness. Over time, that can quietly create dependency — unless you intentionally build capability in the program around you.",
+      "focus": "Your next level is multiplication. Develop strategic capability in others. Design decision systems. Build collective intelligence. Create the conditions for others to hold uncertainty without panic.",
+      "next": "Your development edge is to become less necessary — by making the program more strategically capable."
+    }
+  },
+  "secondaryPatterns": {
+    "architect_of_order": {
+      "name": "The Procedure Hawk",
+      "headline": "Drawn to checklist, control, and decisive action.",
+      "body": "You are highly effective on the loop. But unchecked, your strength becomes rigidity. You may begin to mistake disagreement for sloppiness, ambiguity for failure, and speed for strategy."
+    },
+    "the_justifier": {
+      "name": "The Necessary Risks",
+      "headline": "At risk of rationalising questionable engineering calls when the deadline feels important enough.",
+      "body": "This does not mean you lack values. It means your values can become vulnerable when launch-window, loyalty, or political pressure enters the room."
+    },
+    "the_calm_blade": {
+      "name": "The Cool Console",
+      "headline": "Composed in moments that unsettle others on the loop.",
+      "body": "That composure is valuable. But there is a fine line between regulation and emotional distance. Your edge is to remain calm without becoming disconnected from human consequence."
+    },
+    "the_consensus_seeker": {
+      "name": "The Coalition Builder",
+      "headline": "You create inclusion and invite voice — but may delay difficult go/no-go calls.",
+      "body": "Your development edge is to preserve collaboration while becoming more decisive when the window closes."
+    },
+    "the_decisive_commander": {
+      "name": "The Cowboy",
+      "headline": "You move quickly and bring momentum — but your speed may narrow the field of telemetry.",
+      "body": "Your edge is to slow down just enough to hear what the system is trying to tell you."
+    },
+    "vision_under_strain": {
+      "name": "The Visionary Cracking",
+      "headline": "You see beyond the immediate launch, but pressure may disrupt your steadiness on the loop.",
+      "body": "Your edge is to build inner stability so your vision survives contact with reality."
+    }
+  },
+  "riskCopy": {
+    "control_bias": {
+      "name": "Authority Reflex",
+      "low": "You appear able to pursue clarity without defaulting to command.",
+      "mod": "You may sometimes overvalue speed, certainty, or chain of command when pressure rises.",
+      "high": "You may be at risk of mistaking <em>command for strategy</em>. This can make you decisive — but it may also reduce listening, creativity, and trust on the loop.",
+      "q": "Where might you be calling something <em>alignment</em> when it is actually compliance?"
+    },
+    "moral_drift": {
+      "name": "Schedule Drift",
+      "low": "Your responses suggest a relatively strong ability to keep means and ends connected.",
+      "mod": "You may occasionally justify difficult engineering actions when the launch window feels important enough.",
+      "high": "You may be vulnerable to rationalising harmful choices if they appear necessary for the schedule.",
+      "q": "At what point does a necessary compromise become a betrayal of the mission itself?"
+    },
+    "detachment_pressure": {
+      "name": "Cold Console",
+      "low": "You appear able to stay connected to human consequence while under pressure.",
+      "mod": "Your composure is a strength, but it may sometimes become distance.",
+      "high": "You may remain calm in ways others on the loop experience as emotionally unavailable, overly rational, or disconnected from impact.",
+      "q": "How do you stay steady without becoming unreachable?"
+    }
+  },
+  "nextSteps": {
+    "reactive_defender": [
+      {
+        "icon": "pause",
+        "title": "The five-second hold",
+        "body": "Before responding to a fault signature, give yourself five seconds. Notice what your body wants to do, then choose what to do.",
+        "test": "Try for 7 shifts. Track each time you used it."
+      },
+      {
+        "icon": "journal",
+        "title": "A nightly two-line log",
+        "body": "Each evening write: \"Today I noticed…\" and \"Tomorrow I will…\". Build the muscle of self-observation.",
+        "test": "Do this for 21 days, then re-read the lot."
+      },
+      {
+        "icon": "mirror",
+        "title": "Ask one colleague",
+        "body": "Ask one trusted colleague: \"When pressure rises, what do you see me become on the loop?\" Listen without defending.",
+        "test": "One question, one person, this week."
+      },
+      {
+        "icon": "question",
+        "title": "Replace \"should\" with \"if\"",
+        "body": "Notice your \"shoulds\" — they are usually pressure speaking. Reframe to \"if I did this, what would happen?\" Re-open the choice.",
+        "test": "Count your \"shoulds\" for one day. Reframe three."
+      }
+    ],
+    "tactical_survivor": [
+      {
+        "icon": "horizon",
+        "title": "The 10-year question",
+        "body": "On any non-trivial decision, ask: \"What does this look like in a decade of missions?\" Forces you out of fire-fighting and into direction.",
+        "test": "Apply to your next three meaningful decisions."
+      },
+      {
+        "icon": "experiment",
+        "title": "Run one strategic experiment",
+        "body": "Pick one current fault. Generate four genuinely different solutions before settling on one. Build option-fluency.",
+        "test": "One fault, four options, this week."
+      },
+      {
+        "icon": "doors",
+        "title": "Future-back planning",
+        "body": "Describe in detail what good looks like 18 months from now. Then walk backwards: what decision today would matter then?",
+        "test": "90 minutes, a single page, by Friday."
+      },
+      {
+        "icon": "reframe",
+        "title": "Trade urgency for importance",
+        "body": "For one week, mark every task as either urgent OR important. Notice the ratio. Notice what does not survive scrutiny.",
+        "test": "Audit for 5 days. Drop three urgent-not-important items."
+      }
+    ],
+    "hidden_drifter": [
+      {
+        "icon": "notice",
+        "title": "The drift word audit",
+        "body": "Notice when you use words like \"necessary\", \"no choice\", \"this once\". Each is a possible drift signal. Pause, name, examine.",
+        "test": "Track for two weeks. Bring the list to your coach."
+      },
+      {
+        "icon": "invite",
+        "title": "Invite your strongest dissenter",
+        "body": "Identify the engineer most likely to disagree with you. Invite them into a real decision. Treat their resistance as data.",
+        "test": "One conversation, this month. Document what shifted."
+      },
+      {
+        "icon": "mirror",
+        "title": "The 360 sentence",
+        "body": "Ask three colleagues: \"What is one thing about my pattern under pressure that I probably do not see?\" Listen without explaining.",
+        "test": "Three people, one question, no defending."
+      },
+      {
+        "icon": "pause",
+        "title": "Slow down on the certain ones",
+        "body": "When a call feels obvious, you are most at risk. Apply a 24-hour rule to anything you are certain about.",
+        "test": "Use the rule three times this month."
+      }
+    ],
+    "strategic_operator": [
+      {
+        "icon": "multiply",
+        "title": "Develop one other person",
+        "body": "Choose one engineer in your orbit. Help them build a strategic muscle they currently lack. Multiplication begins with one.",
+        "test": "Name the person. Name the muscle. Begin."
+      },
+      {
+        "icon": "decide",
+        "title": "Make decisions more visible",
+        "body": "When you make a meaningful call, share publicly what you considered and what you weighed. Make the strategy legible.",
+        "test": "Try this on three decisions this month."
+      },
+      {
+        "icon": "reframe",
+        "title": "Sharpen the consequential 20%",
+        "body": "Identify the 20% of your decisions that drive 80% of mission outcomes. Concentrate your thinking time there. Delegate or systematise the rest.",
+        "test": "Map your decisions for a week. Re-balance time."
+      },
+      {
+        "icon": "experiment",
+        "title": "Pick one risk to deliberately reduce",
+        "body": "Look at your three risk overlays. Choose the one closest to becoming a real constraint. Design a small practice to soften it.",
+        "test": "One overlay, one practice, 30 days."
+      }
+    ],
+    "force_multiplier": [
+      {
+        "icon": "multiply",
+        "title": "Design a decision system",
+        "body": "Create a clear template for how strategic decisions get made in your program — owner, evidence, options, trade-offs, review. Replicable, not heroic.",
+        "test": "Build the v1 template. Apply to your next big call."
+      },
+      {
+        "icon": "invite",
+        "title": "Build the bench",
+        "body": "Identify three engineers who could become the next layer of strategic capability. Invest in them deliberately, with regular feedback and stretch decisions.",
+        "test": "Three names. One conversation each, this month."
+      },
+      {
+        "icon": "mirror",
+        "title": "Make yourself less necessary",
+        "body": "In every meeting this month, ask: \"Could someone else here have led this?\" Then arrange for that to be true next time.",
+        "test": "One month of audit. Hand off two recurring meetings."
+      },
+      {
+        "icon": "horizon",
+        "title": "Author the long brief",
+        "body": "Write a short paper on the strategic capability you want your wider program to have in three years. Use it as a north star — share, debate, refine.",
+        "test": "One page. Share with three trusted readers."
+      }
+    ]
+  },
+  "imageMap": {
+    "archetypeDir": "images/skin-apollo/",
+    "scene": {
+      "councilChamber": "images/skin-apollo/scene-mocr.png",
+      "fracturedCity": "images/skin-apollo/scene-cape-launchpad.png",
+      "convoyArc": "images/skin-apollo/scene-telemetry-dropout.png",
+      "privateMeet": "images/skin-apollo/scene-flight-director-office.png",
+      "breakingPoint": "images/skin-apollo/scene-action-console.png",
+      "confrontation": "images/skin-apollo/scene-confrontation.png",
+      "twinSuns": "images/skin-apollo/scene-katherine-office.png",
+      "summonsHerald": "images/skin-apollo/scene-mocr-overview.png",
+      "chaoticCouncil": "images/skin-apollo/scene-computers-room.png",
+      "aftermathMedbay": "images/skin-apollo/scene-sim-debrief.png",
+      "shadowPattern": "images/skin-apollo/scene-shadow-pattern.png",
+      "alliesWhisper": "images/skin-apollo/scene-allies-whisper.png",
+      "reckoningMirror": "images/skin-apollo/scene-reckoning.png",
+      "dividedChamber": "images/skin-apollo/scene-go-nogo.png"
+    }
+  },
+  "imagePrompts": {
+    "art_direction": "1970s iconic pop-art poster style. Bold flat colours in limited palette, ben-day dot shading, strong black ink outlines around every form, high-contrast cel-shaded lighting, screen-print aesthetic reminiscent of late-1960s and early-1970s Apollo program promotional posters and pop-illustration magazines. Period-correct Mission Operations Control Room — rows of consoles, CRT panels, slide rules, mechanical calculators. Period-correct figures in skinny ties and short-sleeved white shirts, women in lab coats, glasses, headsets. Strong graphic composition, sense of optimism and pressure side by side. Katherine Johnson is permitted as a respectful, dignified pop-poster depiction.",
+    "palette": "Near-black #050810 base · NASA red #FC3D21 accent · warm off-white #f4ecdb highlights",
+    "archetypes": {
+      "reactive_defender": {
+        "filename_template": "images/skin-apollo/archetype-reactive-defender-{gender}.png",
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc} in a flight controller's console pose, leaning forward toward a CRT screen, hand reaching toward a switch panel, urgency in the posture, body angled away from a fault warning indicator glowing NASA red. Mission Operations Control Room background, rows of identical consoles receding, period-correct white shirts and skinny ties. Deep red rim light from console glow. 1:1 square aspect ratio, melancholic, single warm-red light source. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "tactical_survivor": {
+        "filename_template": "images/skin-apollo/archetype-tactical-survivor-{gender}.png",
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc}, a weathered flight controller mid-stride down the long flank of console rows, scanning a clipboard, period-correct short-sleeve white shirt and skinny tie or lab coat. CRT screens glowing softly red on both sides. Long shadow trailing behind under fluorescent ceiling banks. 1:1 square aspect ratio, sense of forward momentum, lonely. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "hidden_drifter": {
+        "filename_template": "images/skin-apollo/archetype-hidden-drifter-{gender}.png",
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc}, a solitary flight controller walking down a long ancient corridor between rows of NASA mainframe cabinets, parallel columns of warm-red operational lights from above, polished tile floor reflecting their figure subtly out of sync — slightly displaced, slightly behind, as if a second self trails them. Dust catching the red beams, deep shadow at the edges. 1:1 square aspect ratio. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. Graphic poster composition, contemplative, slightly unsettling. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "strategic_operator": {
+        "filename_template": "images/skin-apollo/archetype-strategic-operator-{gender}.png",
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc}, a centred standing flight director on a raised dais behind the row of front controllers, calm posture, headset on, period-correct attire, head slightly inclined toward the front screen. A natural halo of warm-red console light behind their head. Other flight controllers visible at consoles below, listening, partially in shadow. 1:1 square aspect ratio. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. Graphic poster composition, serene, dignified. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "force_multiplier": {
+        "filename_template": "images/skin-apollo/archetype-force-multiplier-{gender}.png",
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc}, a central flight director on a raised dais bathed in radiant warm-red light, surrounded at the same elevation by other flight controllers and engineers of equal stature, all illuminated by the shared console glow. Faint lines of warm red light connecting them like a constellation. Apollo program insignia subtly suggested on the wall behind. 1:1 square aspect ratio. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. Graphic poster composition, mythic, communal. (Reminder: edge-to-edge, no border, no text.)"
+      }
+    },
+    "scenes": {
+      "mocr_overview": {
+        "filename": "images/skin-apollo/scene-mocr-overview.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Wide establishing view of Mission Operations Control Room at night, four rows of consoles receding to a vast front projection screen, CRT screens glowing in red, controllers in white shirts at their stations, ceiling fluorescents low. 1:1, melancholic, vast scale. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "mocr": {
+        "filename": "images/skin-apollo/scene-mocr.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Interior of Mission Operations Control Room at night, a single figure standing on the raised flight director dais, soft warm-red light from above, empty consoles in shadow surrounding them. 1:1, melancholic, vast scale. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "cape_launchpad": {
+        "filename": "images/skin-apollo/scene-cape-launchpad.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Overlook of the Cape Canaveral launch pad at dusk, the Saturn V rocket silhouetted against a dark sky, gantry lights glowing warm red, distant ocean horizon. Two small flight controllers in foreground, backs to camera. Heat shimmer and cooling vapour drifting from the booster. 1:1, awe under pressure. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "telemetry_dropout": {
+        "filename": "images/skin-apollo/scene-telemetry-dropout.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A tracking station console at night, multiple CRT screens flickering with red warning indicators, telemetry traces dropping out, a controller leaning forward with hand on a switch. Long shadows from fluorescent ceiling. 1:1, urgency under cold quiet. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "flight_director_office": {
+        "filename": "images/skin-apollo/scene-flight-director-office.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Two figures seated across a low office table at night, behind them a wide window showing the launch pad lit warm-red on the distant horizon. The right figure leans forward, lit by the pad glow; the left figure remains in shadow. 1:1, intimate, quietly tense. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "action_console": {
+        "filename": "images/skin-apollo/scene-action-console.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A lone flight controller standing in the centre of a tall vertical column of warm-red light at an action console, floating semi-transparent telemetry panels around them at chest height, vertical CRT banks flanking. 1:1, hushed, weight of decision. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "confrontation": {
+        "filename": "images/skin-apollo/scene-confrontation.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Two figures facing each other across a darkened office, the negative space between them charged. Both partly silhouetted, one slightly lit from the right with warm red console glow filtering through a doorway. A horizon line of red light bisects the wall behind them. 1:1, mirrored stance, psychological standoff. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "katherine_office": {
+        "filename": "images/skin-apollo/scene-katherine-office.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A quiet office at dusk in a 1960s American space-program building. A Black woman mathematician in her early 50s — a fictional, non-identifiable character, three-quarter profile, features generic and not modelled on any specific person — seated at a wooden desk covered with handwritten trajectory pages and a slide rule. A single brass desk lamp casts warm light across her shoulder. Chalkboard behind her with hand-drawn orbital equations and arcs. Generous negative space, contemplative. 1:1, meditative. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "computers_room": {
+        "filename": "images/skin-apollo/scene-computers-room.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Interior of a \"human computers\" room at NASA. Several women, including Black women mathematicians, at long desks with mechanical calculators and stacks of trajectory worksheets. Three of them are mid-discussion, animated, one quietly head-down. Warm overhead lighting, deep architectural space, period-correct dresses and lab coats. 1:1, tension, fragmented voices, dignified. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "sim_debrief": {
+        "filename": "images/skin-apollo/scene-sim-debrief.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A long debrief room at night after a failed simulation. Rows of empty engineering seats receding, a single standing figure in the foreground with head bowed, soft warm-red light spilling from camera-left, reflective tile floor catching the glow. 1:1, hushed, sombre, weight of consequence. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "shadow_pattern": {
+        "filename": "images/skin-apollo/scene-shadow-pattern.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A single flight controller standing centred in a corridor, with two contradicting warm-red light sources from left and right casting two long, diverging shadows toward camera — like a fork in identity. Subtle halo of warm light behind the figure's head. Otherwise pitch dark. 1:1, psychological doubling. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "allies_whisper": {
+        "filename": "images/skin-apollo/scene-allies-whisper.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Three NASA engineers clustered close together in a corridor alcove between two large electrical cabinets, heads tilted inward as if speaking quietly. A single warm-red emergency light overhead casting concentrated downlight. Heavy shadow at the edges. 1:1, conspiratorial, intimate, conferring under pressure. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "reckoning": {
+        "filename": "images/skin-apollo/scene-reckoning.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A flight controller standing in profile facing their own reflection in a tall vertical seam of warm-red light at the edge of the MOCR. The reflection is faintly dimmer, slightly less certain. Between them, a bright vertical filament of red console light. The rest of the room is pitch-dark. 1:1, recognition of self, reckoning. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      },
+      "go_nogo": {
+        "filename": "images/skin-apollo/scene-go-nogo.png",
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Wide view of Mission Operations Control Room moments before a critical go/no-go vote, split down the centre by a hard vertical beam of warm-red light from the front screen. Two clusters of flight controllers occupy each side. A single solitary figure stands centred on the seam of light, facing the front screen. Receding console rows. 1:1, decisive moment. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+      }
+    }
+  },
+  "choreoOverrides": {
+    "converging": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <polyline points=\"0,110 70,113.38785484037021 140,115.59223451580336 210,115.84308578526917 280,114.0527790833069 350,110.8467200483592 420,107.34487734023088 490,104.77054536551847 560,104.02301234698496 630,105.36341307466407 700,108.32350701080645 770,111.86924818108027 840,114.76200718309491 910,115.99126007224763 980,115.12759344852968 1050,112.47271091145053 1120,108.95403931266212 1190,105.80075187443875 1260,104.11438261960106 1330,104.48402884601194 1400,106.78056249199739 1470,110.20173828332682 1540,113.55244108824334 1610,115.66217401666462 1680,115.79394665929567\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,173.41470984807896 70,174.99573603041506 140,173.0849640381959 210,168.34988150155905 280,162.4445889797317 350,157.4319750469207 420,155.06308996366536 490,156.16545344279848 560,160.35397820586243 630,166.16549204850492 700,171.56986598718788 770,174.67919672031485 840,174.40730556679773 910,170.84917192891763 980,165.2477542545336 1050,159.5597888911063 1120,155.77224578387194 1190,155.20822270848683 1260,158.06474915222876 1330,163.34395824551692 1400,169.2016703682664 1470,173.59161814856495 1540,174.98026652716362 1610,172.88252067375316 1680,168.03118356745705\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,232.73016397555955 70,227.2170192055005 140,219.18276199201387 210,211.43398952680192 280,206.67757096554678 350,206.57506015471606 420,211.1622670697875 490,218.83674836055505 560,226.91758691594052 630,232.58191334136276 700,233.85101545272735 770,230.28155937023757 840,223.12045879740347 910,214.869292190473 980,208.41042943280084 1050,206.00013710829015 1120,208.4803996704381 1190,214.9847900486844 1260,223.24113755142153 1330,230.36526245933428 1400,233.8685029797282 1470,232.52707640996707 1540,226.8095816439532 1610,218.7133040968125 1680,211.06650644712875\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,277.5401601450776 70,267.03463202069264 140,259.3116360965554 210,257.06903704095487 280,261.0902392239922 350,269.97052103241936 420,280.6077445432408 490,289.2860215492848 560,292.9737802167429 630,290.3827803455891 700,282.4181327343516 770,271.86211793798634 840,262.40225562331625 910,257.34314785880315 980,258.4520865380358 1050,265.34168747599216 1120,275.6052148499805 1190,285.65732326473 1260,291.9865220499939 1330,292.381839977887 1400,286.7051811228281 1470,276.93956574138997 1540,266.4964042448276 1610,259.02379339553295 1680,257.1321311515286\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,313.35034510322555 70,308.1387979200638 140,310.56399757415664 210,319.77875205289735 280,332.56408250671086 350,344.45370517181334 420,351.2942327846927 490,350.696072246955 560,342.8681782436188 630,330.5450593599739 700,318.03153556043384 770,309.69894072451825 840,308.458089958671 910,314.7424481349033 980,326.3567081401372 1050,339.2436748101861 1120,348.9015599268429 1190,351.95658635975997 1260,347.341545482257 1330,336.66860384840544 1400,323.6661270333686 1470,312.87625427224543 1540,308.0681985470849 1610,310.9215520513172 1680,320.43955631441827\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,379.24645435202115 70,381.2124001727661 140,384.501463583095 210,387.9646801068316 280,390.39224857486977 350,390.93614947974027 420,389.4063825872447 490,386.3373394846015 560,382.80112522448843 630,380.03304118548607 700,379.00005876069577 770,380.0630284301877 840,382.85062430657905 910,386.38905895060924 980,389.4422553397147 1050,390.94364413416923 1120,390.36874703284303 1190,387.9183921331228 1260,384.4485588986339 1330,381.1713599059123 1400,379.2316150487227 1470,379.30693301249124 1540,381.3710030655623 1610,384.7027861547298 1680,388.1383945909462\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,437.20584501801073 70,443.1154136351338 140,447.9366786384915 210,449.98543345374605 280,448.5459890808828 350,444.12118485241757 420,438.2567321877702 490,433.0012531240646 560,430.19063769933507 630,430.8067147433532 700,434.63427081999566 770,440.33623047221135 840,445.9207351470722 910,449.43695669444105 980,449.6565777654928 1050,446.5028784015712 1120,441.0775365229944 1190,435.2757801360153 1260,431.124329664185 1330,430.07340619529367 1400,432.4901275322832 1470,437.5302633826338 1540,443.43314928819893 1610,448.13673737507105 1680,449.9979290014267\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,504.19781238206303 70,508.5508754084408 140,508.1702277935168 210,503.18884070048466 280,495.346855956347 350,487.38370444754884 420,482.0811440974207 490,481.29151179188153 560,485.2906488131203 630,492.68154154372365 700,500.882338515573 770,507.02826540799094 840,508.97237313802907 910,506.0355289432544 980,499.24365699443985 1050,490.9693535666891 1120,484.1030709005198 1190,481.04339907541765 1260,482.8591694872018 1330,488.9160812909934 1400,497.0982809352813 1470,504.5474906809539 1540,508.66148724873767 1610,508.00313327708136 1680,502.80241074924726\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,567.8084484392209 70,563.219147761734 140,554.0120184538044 210,543.4033756734652 280,535.0991235564583 350,532.0001762820873 420,535.1890852905633 490,543.5518729197371 560,554.1671768518277 630,563.3267660191441 700,567.8309324025076 770,566.106241098529 840,558.7551763993683 910,548.3456766959017 980,538.514079717737 1050,532.694845146168 1120,532.9207990374738 1190,539.1130091966869 1260,549.1083584641893 1330,559.4151837728385 1400,566.4330145130973 1470,567.7103205031351 1540,562.8009020123077 1610,553.419760164318 1680,542.8439977038142\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,614.0666066753187 70,601.1648108130944 140,589.6027568729421 210,583.4194029385371 280,584.7747724353771 350,593.1953958039904 420,605.739707038865 490,618.0256173235589 560,625.7613047277703 630,626.2444710840841 700,619.3063324834566 770,607.3705803505877 840,594.6067162992338 910,585.4735252612069 980,583.1614936296461 1050,588.4782805710231 1120,599.5665794417944 1190,612.5529284340377 1260,622.9008222251563 1330,626.9954438031388 1400,623.4064240477933 1470,613.3875108164087 1540,600.4385987466513 1610,589.0831153670267 1680,583.2878577213457\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,656.7358733346638 70,654.4633474703231 140,654.1249336250921 210,655.8388494913372 280,659.0063749473102 350,662.5210022209599 420,665.154970889139 490,665.9881599162982 560,664.7295124042519 630,661.8187101404742 700,658.2725801000096 770,655.3298875287942 840,654.0185996037504 910,654.7967869230865 980,657.3926062675686 1050,660.8992632579777 1120,664.0917817204088 1190,665.8549231066019 1260,665.5727714044634 1330,663.343890321106 1400,659.9468921442576 1470,656.5684460693426 1540,654.3887405088327 1610,654.1692093255368 1680,655.9865410777319\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,705.0000979344929 70,706.7717140503129 140,711.4177071776318 210,717.3150982510153 280,722.4037588995245 350,724.9060735569487 420,723.947911721405 490,719.863986888538 560,714.0809314977232 630,708.6189331765205 700,705.3860250812045 770,705.5115550208187 840,708.9516717759371 910,714.5046435912163 980,720.230657651577 1050,724.1294525072763 1120,724.8390669461861 1190,722.1116122290598 1260,716.8998667579544 1330,711.0244431687856 1400,706.5377959582482 1470,705.0072400786337 1540,706.9674427330605 1610,711.7336487389528 1680,717.6408852138447\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,762.4879791479939 70,770.4707226610959 140,778.2890292059011 210,783.2117393722175 280,783.5192088716899 350,779.1040297621996 420,771.5085511321922 490,763.3860921904214 560,757.5740615298589 630,756.1027686734111 700,759.4861785451965 770,766.5423687356873 840,774.8064090034785 910,781.3914323250995 980,783.9971006019973 1050,781.7131789395048 1120,775.3375068831691 1190,767.0972901115053 1260,759.8710734153806 1330,756.1831821863109 1400,757.3219029319073 1470,762.8894477345312 1540,770.9409130153566 1610,778.6636903096805 1680,783.3599913228977\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,832.5630066628795 70,840.4649126674169 140,842.9644797488945 210,839.1885372127557 280,830.4561304214226 350,819.8177403000288 420,810.9896625863827 490,807.0557988112513 560,809.3903607692596 630,817.1778188027058 700,827.6977897739331 770,837.2753451612265 840,842.5647693198056 910,841.7183142133904 980,835.0316709633179 1050,824.8406764327727 1120,814.7053382080278 1190,808.1662215264982 1260,807.5076279766105 1330,812.9596232331955 1400,822.61766849824 1470,833.107930696957 1540,840.765859436596 1610,842.9163198884081 1680,838.8080943474396\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/>\n  </svg>",
+    "ripple": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <circle cx=\"800\" cy=\"450\" r=\"70\" fill=\"none\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"134\" fill=\"none\" stroke=\"rgba(252,61,33,0.50)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"198\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"262\" fill=\"none\" stroke=\"rgba(252,61,33,0.40)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"326\" fill=\"none\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"390\" fill=\"none\" stroke=\"rgba(252,61,33,0.30)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"454\" fill=\"none\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"518\" fill=\"none\" stroke=\"rgba(252,61,33,0.20)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"582\" fill=\"none\" stroke=\"rgba(252,61,33,0.15)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"646\" fill=\"none\" stroke=\"rgba(252,61,33,0.10)\" stroke-width=\"0.5\"/>\n    <line x1=\"800\" y1=\"450\" x2=\"1117.7933498176828\" y2=\"1073.7045669318575\" stroke=\"rgba(252,61,33,0.6)\" stroke-width=\"0.5\"/>\n  </svg>",
+    "sun-arcs": "<svg class=\"choreo sun-arcs\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <ellipse cx=\"800\" cy=\"500\" rx=\"800\" ry=\"220\" fill=\"none\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.7\"/>\n    <ellipse cx=\"800\" cy=\"500\" rx=\"600\" ry=\"160\" fill=\"none\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/>\n    <ellipse cx=\"800\" cy=\"500\" rx=\"400\" ry=\"100\" fill=\"none\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.5\"/>\n    <circle cx=\"800\" cy=\"500\" r=\"40\" fill=\"rgba(255,102,68,0.22)\"/>\n    <circle cx=\"800\" cy=\"500\" r=\"14\" fill=\"#fc3d21\"/>\n    <circle cx=\"1450\" cy=\"500\" r=\"4\" fill=\"#fc3d21\"/>\n  </svg>",
+    "grid": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <!-- Corner brackets — ghostly, pushed deeper into the corners -->\n    <path d=\"M 40  84  L 40  40  L 84  40\"  fill=\"none\" stroke=\"rgba(252,61,33,0.22)\" stroke-width=\"0.8\"/>\n    <path d=\"M 1560 84  L 1560 40  L 1516 40\"  fill=\"none\" stroke=\"rgba(252,61,33,0.22)\" stroke-width=\"0.8\"/>\n    <path d=\"M 40  816 L 40  860 L 84  860\" fill=\"none\" stroke=\"rgba(252,61,33,0.22)\" stroke-width=\"0.8\"/>\n    <path d=\"M 1560 816 L 1560 860 L 1516 860\" fill=\"none\" stroke=\"rgba(252,61,33,0.22)\" stroke-width=\"0.8\"/>\n    <!-- REC indicator — kept readable but smaller, only chrome element with any presence -->\n    <circle cx=\"1492\" cy=\"42\" r=\"3\" fill=\"#fc3d21\" opacity=\"0.55\"/>\n    <text x=\"1500\" y=\"46\" font-family=\"monospace\" font-size=\"10\" fill=\"rgba(252,61,33,0.32)\" letter-spacing=\"2\">REC</text>\n  </svg>",
+    "fault": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <path d=\"M 0 590 L 220 580 L 380 640 L 520 540 L 700 600 L 880 480 L 1080 600 L 1280 520 L 1600 600\" stroke=\"rgba(252,61,33,0.6)\" stroke-width=\"0.7\" fill=\"none\"/>\n    <path d=\"M 0 660 L 200 650 L 380 700 L 540 600 L 720 660 L 900 540 L 1100 660 L 1300 580 L 1600 660\" stroke=\"rgba(252,61,33,0.3)\" stroke-width=\"0.45\" fill=\"none\"/>\n    <line x1=\"200\" y1=\"120\" x2=\"200\" y2=\"780\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"440\" y1=\"120\" x2=\"440\" y2=\"780\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"680\" y1=\"120\" x2=\"680\" y2=\"780\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"920\" y1=\"120\" x2=\"920\" y2=\"780\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"1160\" y1=\"120\" x2=\"1160\" y2=\"780\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"1400\" y1=\"120\" x2=\"1400\" y2=\"780\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/>\n  </svg>",
+    "web": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <line x1=\"800\" y1=\"450\" x2=\"1700\" y2=\"450\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1631.4915792601582\" y2=\"794.4150891285808\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1436.396103067893\" y2=\"1086.3961030678927\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1144.4150891285808\" y2=\"1281.4915792601582\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"800\" y2=\"1350\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"455.58491087141925\" y2=\"1281.4915792601582\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"163.60389693210732\" y2=\"1086.396103067893\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"-31.49157926015812\" y2=\"794.4150891285809\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"-100\" y2=\"450.0000000000001\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"-31.49157926015812\" y2=\"105.58491087141937\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"163.6038969321071\" y2=\"-186.39610306789268\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"455.5849108714187\" y2=\"-381.4915792601579\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"799.9999999999999\" y2=\"-450\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1144.415089128581\" y2=\"-381.491579260158\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1436.3961030678925\" y2=\"-186.3961030678929\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1631.4915792601578\" y2=\"105.58491087141863\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/>\n    <circle cx=\"800\" cy=\"450\" r=\"180\" fill=\"none\" stroke=\"rgba(252,61,33,0.42)\" stroke-width=\"0.4\"/><circle cx=\"800\" cy=\"450\" r=\"300\" fill=\"none\" stroke=\"rgba(252,61,33,0.34)\" stroke-width=\"0.4\"/><circle cx=\"800\" cy=\"450\" r=\"420\" fill=\"none\" stroke=\"rgba(252,61,33,0.26)\" stroke-width=\"0.4\"/><circle cx=\"800\" cy=\"450\" r=\"560\" fill=\"none\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\"/>\n    <circle cx=\"535.2898351997566\" cy=\"190.96358077020716\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"742.3242091684189\" cy=\"690.95757646318\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"1008.3145281949571\" cy=\"360.7567477518215\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"696.522311350897\" cy=\"915.9618142317375\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"1032.1921821317726\" cy=\"260.8685410306423\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"394.18488997480233\" cy=\"625.647428912158\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"720.5071703638856\" cy=\"719.9984869937414\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"608.6373302229143\" cy=\"562.3630370873998\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"585.7147312514725\" cy=\"572.3667158008082\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"952.4491097920451\" cy=\"580.4288841726777\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"1047.500760548234\" cy=\"747.702577018791\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"1036.4880707305797\" cy=\"812.3675420267411\" r=\"2.5\" fill=\"#fc3d21\"/>\n  </svg>"
+  },
+  "discArtOverrides": {
+    "summonsHerald": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    \n      <rect x=\"60\" y=\"480\" width=\"480\" height=\"22\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/>\n      <rect x=\"72\" y=\"485\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.55)\"/><rect x=\"128\" y=\"485\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.51)\"/><rect x=\"184\" y=\"485\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.47)\"/><rect x=\"240\" y=\"485\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.43)\"/><rect x=\"296\" y=\"485\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.39)\"/><rect x=\"352\" y=\"485\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.35)\"/><rect x=\"408\" y=\"485\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.31)\"/><rect x=\"464\" y=\"485\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.27)\"/>\n    \n      <rect x=\"78\" y=\"440\" width=\"444\" height=\"22\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/>\n      <rect x=\"92\" y=\"445\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.55)\"/><rect x=\"144\" y=\"445\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.51)\"/><rect x=\"196\" y=\"445\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.47)\"/><rect x=\"248\" y=\"445\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.43)\"/><rect x=\"300\" y=\"445\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.39)\"/><rect x=\"352\" y=\"445\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.35)\"/><rect x=\"404\" y=\"445\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.31)\"/>\n    \n      <rect x=\"96\" y=\"400\" width=\"408\" height=\"22\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/>\n      <rect x=\"112\" y=\"405\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.55)\"/><rect x=\"160\" y=\"405\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.51)\"/><rect x=\"208\" y=\"405\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.47)\"/><rect x=\"256\" y=\"405\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.43)\"/><rect x=\"304\" y=\"405\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.39)\"/><rect x=\"352\" y=\"405\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.35)\"/>\n    \n      <rect x=\"114\" y=\"360\" width=\"372\" height=\"22\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/>\n      <rect x=\"132\" y=\"365\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.55)\"/><rect x=\"176\" y=\"365\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.51)\"/><rect x=\"220\" y=\"365\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.47)\"/><rect x=\"264\" y=\"365\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.43)\"/><rect x=\"308\" y=\"365\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.39)\"/>\n    \n      <rect x=\"132\" y=\"320\" width=\"336\" height=\"22\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/>\n      <rect x=\"152\" y=\"325\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.55)\"/><rect x=\"192\" y=\"325\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.51)\"/><rect x=\"232\" y=\"325\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.47)\"/><rect x=\"272\" y=\"325\" width=\"12\" height=\"10\" fill=\"rgba(252,61,33,0.43)\"/>\n    \n    <!-- Front projection screen -->\n    <rect x=\"120\" y=\"80\" width=\"360\" height=\"200\" fill=\"#040611\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.7\"/>\n    <ellipse cx=\"300\" cy=\"180\" rx=\"120\" ry=\"44\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlur)\" opacity=\"0.6\"/>\n    <circle cx=\"300\" cy=\"180\" r=\"22\" fill=\"rgba(252,61,33,0.45)\" filter=\"url(#nasaBlur)\"/>\n    <circle cx=\"300\" cy=\"180\" r=\"9\" fill=\"#ff6644\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "councilChamber": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    <!-- Ceiling fluorescent banks -->\n    <rect x=\"60\" y=\"40\" width=\"50\" height=\"6\" fill=\"rgba(252,61,33,0.5)\"/><rect x=\"140\" y=\"40\" width=\"50\" height=\"6\" fill=\"rgba(252,61,33,0.5)\"/><rect x=\"220\" y=\"40\" width=\"50\" height=\"6\" fill=\"rgba(252,61,33,0.5)\"/><rect x=\"300\" y=\"40\" width=\"50\" height=\"6\" fill=\"rgba(252,61,33,0.5)\"/><rect x=\"380\" y=\"40\" width=\"50\" height=\"6\" fill=\"rgba(252,61,33,0.5)\"/><rect x=\"460\" y=\"40\" width=\"50\" height=\"6\" fill=\"rgba(252,61,33,0.5)\"/>\n    <!-- Tiered consoles -->\n    <rect x=\"60\" y=\"380\" width=\"480\" height=\"22\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/>\n    <rect x=\"90\" y=\"430\" width=\"420\" height=\"22\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/>\n    <rect x=\"120\" y=\"480\" width=\"360\" height=\"22\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/>\n    <!-- Dais with figure -->\n    <rect x=\"270\" y=\"180\" width=\"60\" height=\"6\" fill=\"rgba(252,61,33,0.4)\"/>\n    <circle cx=\"300\" cy=\"160\" r=\"14\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.6)\" stroke-width=\"0.6\"/>\n    <rect x=\"290\" y=\"170\" width=\"20\" height=\"60\" rx=\"4\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.6)\" stroke-width=\"0.6\"/>\n    <!-- Halo light -->\n    <circle cx=\"300\" cy=\"160\" r=\"100\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlurHi)\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "fracturedCity": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    <!-- Horizon -->\n    <line x1=\"0\" y1=\"420\" x2=\"600\" y2=\"420\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/>\n    <!-- Saturn V silhouette -->\n    <rect x=\"288\" y=\"180\" width=\"24\" height=\"240\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.6\"/>\n    <polygon points=\"300,160 290,180 310,180\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.6\"/>\n    <!-- Gantry -->\n    <rect x=\"318\" y=\"200\" width=\"44\" height=\"220\" fill=\"rgba(252,61,33,0.07)\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.5\"/>\n    <line x1=\"318\" y1=\"210\" x2=\"362\" y2=\"210\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/><line x1=\"318\" y1=\"232\" x2=\"362\" y2=\"232\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/><line x1=\"318\" y1=\"254\" x2=\"362\" y2=\"254\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/><line x1=\"318\" y1=\"276\" x2=\"362\" y2=\"276\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/><line x1=\"318\" y1=\"298\" x2=\"362\" y2=\"298\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/><line x1=\"318\" y1=\"320\" x2=\"362\" y2=\"320\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/><line x1=\"318\" y1=\"342\" x2=\"362\" y2=\"342\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/><line x1=\"318\" y1=\"364\" x2=\"362\" y2=\"364\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/><line x1=\"318\" y1=\"386\" x2=\"362\" y2=\"386\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/><line x1=\"318\" y1=\"408\" x2=\"362\" y2=\"408\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/>\n    <!-- Pad glow / cooling vapour -->\n    <ellipse cx=\"300\" cy=\"440\" rx=\"180\" ry=\"40\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlurHi)\" opacity=\"0.7\"/>\n    <ellipse cx=\"300\" cy=\"420\" rx=\"80\" ry=\"20\" fill=\"rgba(252,61,33,0.25)\" filter=\"url(#nasaBlur)\"/>\n    <!-- Two foreground figures -->\n    <rect x=\"80\" y=\"455\" width=\"8\" height=\"40\" fill=\"#070914\"/>\n    <circle cx=\"84\" cy=\"450\" r=\"5\" fill=\"#070914\"/>\n    <rect x=\"510\" y=\"455\" width=\"8\" height=\"40\" fill=\"#070914\"/>\n    <circle cx=\"514\" cy=\"450\" r=\"5\" fill=\"#070914\"/>\n    <!-- Stars -->\n    <circle cx=\"91.23986024056126\" cy=\"216.86372048856532\" r=\"1.1895442259562543\" fill=\"#fff\" opacity=\"0.4064548759059698\"/><circle cx=\"294.6561658759589\" cy=\"286.4382103616556\" r=\"1.2747116559142029\" fill=\"#fff\" opacity=\"0.20139349773567244\"/><circle cx=\"486.8230978703755\" cy=\"108.8706700000178\" r=\"1.0175961699104534\" fill=\"#fff\" opacity=\"0.46265344005939973\"/><circle cx=\"301.2340048413084\" cy=\"199.9506952785006\" r=\"0.6777072022741726\" fill=\"#fff\" opacity=\"0.5774725392054241\"/><circle cx=\"358.2293543749389\" cy=\"150.71206740514472\" r=\"0.9630678700009776\" fill=\"#fff\" opacity=\"0.29362096976299706\"/><circle cx=\"200.19778721085123\" cy=\"168.5283407508942\" r=\"1.0720766476203925\" fill=\"#fff\" opacity=\"0.698010800718756\"/><circle cx=\"458.200302695692\" cy=\"107.47541424791783\" r=\"1.2760148408277212\" fill=\"#fff\" opacity=\"0.5506054320383849\"/><circle cx=\"462.4529998302686\" cy=\"40.34962645747437\" r=\"1.1701067154556215\" fill=\"#fff\" opacity=\"0.38446461354685674\"/><circle cx=\"187.79145553988\" cy=\"280.229576113679\" r=\"0.9205075478900064\" fill=\"#fff\" opacity=\"0.3784015416575682\"/><circle cx=\"170.26974563170432\" cy=\"90.38148058897539\" r=\"1.09292552181529\" fill=\"#fff\" opacity=\"0.6759542353389523\"/><circle cx=\"510.90991795075035\" cy=\"46.99783288294454\" r=\"1.2282866570799307\" fill=\"#fff\" opacity=\"0.5287660128585763\"/><circle cx=\"400.15997324942003\" cy=\"61.12522651736509\" r=\"1.0818258422343359\" fill=\"#fff\" opacity=\"0.5251717184853126\"/><circle cx=\"216.30086305605371\" cy=\"134.33910132275625\" r=\"0.7444304827086411\" fill=\"#fff\" opacity=\"0.37769321204096845\"/><circle cx=\"340.3760092235307\" cy=\"151.39611814236224\" r=\"0.9558476931733635\" fill=\"#fff\" opacity=\"0.6637914890426353\"/><circle cx=\"378.20154669380696\" cy=\"86.57952627949564\" r=\"0.7959394179503338\" fill=\"#fff\" opacity=\"0.49483416714927503\"/><circle cx=\"262.27781687632523\" cy=\"176.00106361383467\" r=\"0.8181893929923738\" fill=\"#fff\" opacity=\"0.3035880313530253\"/><circle cx=\"429.65811999603613\" cy=\"228.69863232891507\" r=\"1.2351128217905085\" fill=\"#fff\" opacity=\"0.3554128172664209\"/><circle cx=\"15.412590533086945\" cy=\"49.32033015747332\" r=\"0.5635903570277362\" fill=\"#fff\" opacity=\"0.35580436250722386\"/><circle cx=\"41.73776795728021\" cy=\"140.0263725029002\" r=\"0.6539156287721946\" fill=\"#fff\" opacity=\"0.21771118100139347\"/><circle cx=\"281.22713407664367\" cy=\"126.13849937607552\" r=\"1.0748217268607494\" fill=\"#fff\" opacity=\"0.38571844773040337\"/><circle cx=\"155.9458970362785\" cy=\"93.54981141546862\" r=\"1.203661434525205\" fill=\"#fff\" opacity=\"0.46679486930398056\"/><circle cx=\"80.52143787374733\" cy=\"165.78902561191165\" r=\"1.2182517330937457\" fill=\"#fff\" opacity=\"0.3343727811205998\"/><circle cx=\"60.22394094537926\" cy=\"169.94833226529812\" r=\"1.2316073785227348\" fill=\"#fff\" opacity=\"0.26282427050085583\"/><circle cx=\"251.51242952905815\" cy=\"20.939660826397755\" r=\"0.7401032649984064\" fill=\"#fff\" opacity=\"0.5311108324090867\"/><circle cx=\"433.52811569356953\" cy=\"226.1007005668696\" r=\"1.0932688496309233\" fill=\"#fff\" opacity=\"0.44103796627746233\"/><circle cx=\"524.3177245423948\" cy=\"273.53722942755843\" r=\"1.0208416523254007\" fill=\"#fff\" opacity=\"0.5581739646933339\"/><circle cx=\"191.55811083706894\" cy=\"199.43683687381463\" r=\"0.7560851731903766\" fill=\"#fff\" opacity=\"0.42749910123038565\"/><circle cx=\"15.573702150590574\" cy=\"19.169403964291696\" r=\"0.5662629141629166\" fill=\"#fff\" opacity=\"0.5047597765459189\"/><circle cx=\"71.41181880734547\" cy=\"216.7289696401013\" r=\"1.1100638768417694\" fill=\"#fff\" opacity=\"0.5563645961076635\"/><circle cx=\"168.46798882039758\" cy=\"107.43629926252063\" r=\"0.7778920429293494\" fill=\"#fff\" opacity=\"0.23129035683053972\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "convoyArc": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    <rect x=\"60\" y=\"240\" width=\"480\" height=\"240\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.3)\" stroke-width=\"0.5\"/>\n    <rect x=\"90\" y=\"260\" width=\"60\" height=\"48\" fill=\"#040611\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.5\"/>\n              <polyline points=\"94,284 108,272 120,292 132,276 146,288\" fill=\"none\" stroke=\"rgba(252,61,33,0.75)\" stroke-width=\"0.6\"/><rect x=\"168\" y=\"260\" width=\"60\" height=\"48\" fill=\"#040611\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.5\"/>\n              <polyline points=\"172,284 186,272 198,292 210,276 224,288\" fill=\"none\" stroke=\"rgba(252,61,33,0.75)\" stroke-width=\"0.6\"/><rect x=\"246\" y=\"260\" width=\"60\" height=\"48\" fill=\"#040611\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.5\"/>\n              <polyline points=\"250,284 264,272 276,292 288,276 302,288\" fill=\"none\" stroke=\"rgba(252,61,33,0.75)\" stroke-width=\"0.6\"/><rect x=\"324\" y=\"260\" width=\"60\" height=\"48\" fill=\"#040611\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.5\"/>\n              <polyline points=\"328,284 342,272 354,292 366,276 380,288\" fill=\"none\" stroke=\"rgba(252,61,33,0.75)\" stroke-width=\"0.6\"/><rect x=\"402\" y=\"260\" width=\"60\" height=\"48\" fill=\"#040611\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.5\"/>\n              <polyline points=\"406,284 420,272 432,292 444,276 458,288\" fill=\"none\" stroke=\"rgba(252,61,33,0.75)\" stroke-width=\"0.6\"/><rect x=\"480\" y=\"260\" width=\"60\" height=\"48\" fill=\"#040611\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.5\"/>\n              <polyline points=\"484,284 498,272 510,292 522,276 536,288\" fill=\"none\" stroke=\"rgba(252,61,33,0.75)\" stroke-width=\"0.6\"/>\n    <!-- Telemetry warning flash -->\n    <rect x=\"270\" y=\"320\" width=\"60\" height=\"20\" fill=\"rgba(252,61,33,0.45)\" stroke=\"#ff6644\" stroke-width=\"0.6\"/>\n    <text x=\"300\" y=\"334\" text-anchor=\"middle\" font-family=\"monospace\" font-size=\"10\" fill=\"#fff\" letter-spacing=\"2\">FAULT</text>\n    <!-- Controller in foreground -->\n    <rect x=\"280\" y=\"440\" width=\"40\" height=\"80\" rx=\"4\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.5\"/>\n    <circle cx=\"300\" cy=\"430\" r=\"14\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "privateMeet": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    <!-- Window -->\n    <rect x=\"40\" y=\"100\" width=\"520\" height=\"200\" fill=\"#040611\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.5\"/>\n    <line x1=\"40\" y1=\"220\" x2=\"560\" y2=\"220\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.4\"/>\n    <ellipse cx=\"300\" cy=\"220\" rx=\"200\" ry=\"40\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlurHi)\" opacity=\"0.6\"/>\n    <!-- Two seated figures -->\n    <rect x=\"170\" y=\"380\" width=\"22\" height=\"100\" rx=\"5\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/>\n    <circle cx=\"181\" cy=\"370\" r=\"13\" fill=\"#0a0e1c\"/>\n    <rect x=\"410\" y=\"370\" width=\"22\" height=\"110\" rx=\"5\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.6\"/>\n    <circle cx=\"421\" cy=\"360\" r=\"13\" fill=\"#0a0e1c\"/>\n    <!-- Desk -->\n    <ellipse cx=\"300\" cy=\"510\" rx=\"200\" ry=\"22\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.3)\" stroke-width=\"0.5\"/>\n    <!-- Glow on right figure -->\n    <ellipse cx=\"421\" cy=\"370\" rx=\"40\" ry=\"60\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlurHi)\" opacity=\"0.45\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "breakingPoint": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    <rect x=\"298\" y=\"60\" width=\"4\" height=\"500\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlurHi)\"/>\n    <line x1=\"150\" y1=\"60\" x2=\"150\" y2=\"540\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/><line x1=\"250\" y1=\"60\" x2=\"250\" y2=\"540\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/><line x1=\"350\" y1=\"60\" x2=\"350\" y2=\"540\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/><line x1=\"450\" y1=\"60\" x2=\"450\" y2=\"540\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/>\n    <rect x=\"80\" y=\"200\" width=\"80\" height=\"50\" fill=\"rgba(252,61,33,0.07)\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.5\"/>\n              <polyline points=\"86,234 102,222 118,238 134,224 150,236\" fill=\"none\" stroke=\"rgba(252,61,33,0.6)\" stroke-width=\"0.5\"/><rect x=\"250\" y=\"200\" width=\"80\" height=\"50\" fill=\"rgba(252,61,33,0.07)\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.5\"/>\n              <polyline points=\"256,234 272,222 288,238 304,224 320,236\" fill=\"none\" stroke=\"rgba(252,61,33,0.6)\" stroke-width=\"0.5\"/><rect x=\"420\" y=\"200\" width=\"80\" height=\"50\" fill=\"rgba(252,61,33,0.07)\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.5\"/>\n              <polyline points=\"426,234 442,222 458,238 474,224 490,236\" fill=\"none\" stroke=\"rgba(252,61,33,0.6)\" stroke-width=\"0.5\"/><rect x=\"80\" y=\"320\" width=\"80\" height=\"50\" fill=\"rgba(252,61,33,0.07)\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.5\"/>\n              <polyline points=\"86,354 102,342 118,358 134,344 150,356\" fill=\"none\" stroke=\"rgba(252,61,33,0.6)\" stroke-width=\"0.5\"/><rect x=\"250\" y=\"320\" width=\"80\" height=\"50\" fill=\"rgba(252,61,33,0.07)\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.5\"/>\n              <polyline points=\"256,354 272,342 288,358 304,344 320,356\" fill=\"none\" stroke=\"rgba(252,61,33,0.6)\" stroke-width=\"0.5\"/><rect x=\"420\" y=\"320\" width=\"80\" height=\"50\" fill=\"rgba(252,61,33,0.07)\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.5\"/>\n              <polyline points=\"426,354 442,342 458,358 474,344 490,356\" fill=\"none\" stroke=\"rgba(252,61,33,0.6)\" stroke-width=\"0.5\"/>\n    <rect x=\"288\" y=\"400\" width=\"24\" height=\"120\" rx=\"5\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.5\"/>\n    <circle cx=\"300\" cy=\"388\" r=\"14\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.6)\" stroke-width=\"0.5\"/>\n    <ellipse cx=\"300\" cy=\"540\" rx=\"80\" ry=\"12\" fill=\"rgba(252,61,33,0.2)\" filter=\"url(#nasaBlur)\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "confrontation": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    <line x1=\"60\" y1=\"280\" x2=\"540\" y2=\"280\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.4\"/>\n    <ellipse cx=\"300\" cy=\"280\" rx=\"200\" ry=\"14\" fill=\"rgba(252,61,33,0.15)\" filter=\"url(#nasaBlur)\"/>\n    <line x1=\"300\" y1=\"60\" x2=\"300\" y2=\"540\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/>\n    <circle cx=\"200\" cy=\"280\" r=\"80\" fill=\"none\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/>\n    <circle cx=\"400\" cy=\"280\" r=\"80\" fill=\"none\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.5\"/>\n    <rect x=\"190\" y=\"340\" width=\"20\" height=\"160\" rx=\"5\" fill=\"#0a0e1c\"/>\n    <circle cx=\"200\" cy=\"335\" r=\"14\" fill=\"#0a0e1c\"/>\n    <rect x=\"390\" y=\"340\" width=\"20\" height=\"160\" rx=\"5\" fill=\"#0a0e1c\"/>\n    <circle cx=\"400\" cy=\"335\" r=\"14\" fill=\"#0a0e1c\"/>\n    <ellipse cx=\"300\" cy=\"380\" rx=\"90\" ry=\"12\" fill=\"rgba(252,61,33,0.18)\" filter=\"url(#nasaBlur)\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "twinSuns": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    <!-- Chalkboard with equations -->\n    <rect x=\"80\" y=\"80\" width=\"440\" height=\"220\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/>\n    <line x1=\"100\" y1=\"110\" x2=\"175\" y2=\"110\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.6\"/><line x1=\"200\" y1=\"110\" x2=\"275\" y2=\"110\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.6\"/><line x1=\"300\" y1=\"110\" x2=\"375\" y2=\"110\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.6\"/><line x1=\"400\" y1=\"110\" x2=\"475\" y2=\"110\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.6\"/><line x1=\"100\" y1=\"150\" x2=\"175\" y2=\"150\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.6\"/><line x1=\"200\" y1=\"150\" x2=\"275\" y2=\"150\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.6\"/><line x1=\"300\" y1=\"150\" x2=\"375\" y2=\"150\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.6\"/><line x1=\"400\" y1=\"150\" x2=\"475\" y2=\"150\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.6\"/>\n    <line x1=\"100\" y1=\"180\" x2=\"500\" y2=\"180\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\" stroke-dasharray=\"3 5\"/>\n    <line x1=\"100\" y1=\"220\" x2=\"450\" y2=\"220\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/>\n    <line x1=\"100\" y1=\"260\" x2=\"380\" y2=\"260\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.45\"/>\n    <!-- Desk -->\n    <rect x=\"40\" y=\"400\" width=\"520\" height=\"60\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/>\n    <!-- Slide rule on desk -->\n    <rect x=\"180\" y=\"420\" width=\"120\" height=\"14\" fill=\"#1a2236\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.5\"/>\n    <rect x=\"200\" y=\"424\" width=\"80\" height=\"6\" fill=\"#0a0e1c\"/>\n    <!-- Lamp & warm glow -->\n    <circle cx=\"420\" cy=\"380\" r=\"12\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.5\"/>\n    <ellipse cx=\"420\" cy=\"400\" rx=\"120\" ry=\"60\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlurHi)\" opacity=\"0.45\"/>\n    <!-- Figure -->\n    <rect x=\"288\" y=\"460\" width=\"24\" height=\"80\" rx=\"4\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.5\"/>\n    <circle cx=\"300\" cy=\"452\" r=\"13\" fill=\"#0a0e1c\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "chaoticCouncil": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    <!-- Long desk -->\n    <rect x=\"40\" y=\"380\" width=\"520\" height=\"20\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.4\"/>\n    <!-- Three figures + mechanical calculators -->\n    \n      <rect x=\"105\" y=\"320\" width=\"30\" height=\"80\" rx=\"5\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.5\"/>\n      <circle cx=\"120\" cy=\"310\" r=\"14\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.5\"/>\n      <rect x=\"98\" y=\"408\" width=\"44\" height=\"20\" fill=\"#040611\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.4\"/>\n      <path d=\"M 90 290 Q 120 260 150 290\" fill=\"none\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.5\"/>\n                  <path d=\"M 80 280 Q 120 244 160 280\" fill=\"none\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/>\n    \n      <rect x=\"285\" y=\"320\" width=\"30\" height=\"80\" rx=\"5\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.5\"/>\n      <circle cx=\"300\" cy=\"310\" r=\"14\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.5\"/>\n      <rect x=\"278\" y=\"408\" width=\"44\" height=\"20\" fill=\"#040611\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.4\"/>\n      <path d=\"M 270 290 Q 300 260 330 290\" fill=\"none\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.5\"/>\n                  <path d=\"M 260 280 Q 300 244 340 280\" fill=\"none\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/>\n    \n      <rect x=\"465\" y=\"320\" width=\"30\" height=\"80\" rx=\"5\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.3)\" stroke-width=\"0.5\"/>\n      <circle cx=\"480\" cy=\"310\" r=\"14\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.3)\" stroke-width=\"0.5\"/>\n      <rect x=\"458\" y=\"408\" width=\"44\" height=\"20\" fill=\"#040611\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.4\"/>\n      \n    \n    <!-- Ceiling lights -->\n    <ellipse cx=\"300\" cy=\"100\" rx=\"220\" ry=\"46\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlurHi)\" opacity=\"0.4\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "aftermathMedbay": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    <rect x=\"100\" y=\"80\" width=\"400\" height=\"14\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><rect x=\"124\" y=\"140\" width=\"352\" height=\"14\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><rect x=\"148\" y=\"200\" width=\"304\" height=\"14\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><rect x=\"172\" y=\"260\" width=\"256\" height=\"14\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><rect x=\"196\" y=\"320\" width=\"208\" height=\"14\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/>\n    <!-- Figure -->\n    <rect x=\"288\" y=\"410\" width=\"24\" height=\"120\" rx=\"5\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.5\"/>\n    <ellipse cx=\"300\" cy=\"402\" rx=\"14\" ry=\"16\" fill=\"#0a0e1c\"/>\n    <line x1=\"288\" y1=\"438\" x2=\"280\" y2=\"500\" stroke=\"#0a0e1c\" stroke-width=\"6\" stroke-linecap=\"round\"/>\n    <line x1=\"312\" y1=\"438\" x2=\"320\" y2=\"500\" stroke=\"#0a0e1c\" stroke-width=\"6\" stroke-linecap=\"round\"/>\n    <ellipse cx=\"120\" cy=\"300\" rx=\"120\" ry=\"180\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlurHi)\" opacity=\"0.35\"/>\n    <ellipse cx=\"300\" cy=\"540\" rx=\"200\" ry=\"14\" fill=\"rgba(252,61,33,0.15)\" filter=\"url(#nasaBlur)\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "shadowPattern": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    <ellipse cx=\"300\" cy=\"540\" rx=\"180\" ry=\"26\" fill=\"#040611\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\"/>\n    <path d=\"M 300 540 L 80 460 L 60 540 Z\" fill=\"#020308\" opacity=\"0.85\"/>\n    <path d=\"M 300 540 L 520 460 L 540 540 Z\" fill=\"#020308\" opacity=\"0.85\"/>\n    <rect x=\"288\" y=\"360\" width=\"24\" height=\"160\" rx=\"5\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.55\"/>\n    <circle cx=\"300\" cy=\"345\" r=\"16\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.55\"/>\n    <ellipse cx=\"120\" cy=\"320\" rx=\"80\" ry=\"160\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlurHi)\" opacity=\"0.5\"/>\n    <ellipse cx=\"480\" cy=\"320\" rx=\"80\" ry=\"160\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlurHi)\" opacity=\"0.5\"/>\n    <circle cx=\"300\" cy=\"345\" r=\"50\" fill=\"none\" stroke=\"rgba(252,61,33,0.3)\" stroke-width=\"0.4\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "alliesWhisper": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    <rect x=\"60\" y=\"80\" width=\"140\" height=\"460\" fill=\"rgba(20,28,44,0.7)\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\"/>\n    <rect x=\"400\" y=\"80\" width=\"140\" height=\"460\" fill=\"rgba(20,28,44,0.7)\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\"/>\n    <ellipse cx=\"300\" cy=\"540\" rx=\"150\" ry=\"20\" fill=\"#070914\"/>\n    <rect x=\"240\" y=\"320\" width=\"32\" height=\"220\" rx=\"6\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.32)\" stroke-width=\"0.5\"/>\n    <circle cx=\"256\" cy=\"310\" r=\"14\" fill=\"#0c1428\"/>\n    <rect x=\"284\" y=\"310\" width=\"32\" height=\"230\" rx=\"6\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.4)\" stroke-width=\"0.5\"/>\n    <circle cx=\"300\" cy=\"300\" r=\"14\" fill=\"#0c1428\"/>\n    <rect x=\"328\" y=\"320\" width=\"32\" height=\"220\" rx=\"6\" fill=\"#0c1428\" stroke=\"rgba(252,61,33,0.32)\" stroke-width=\"0.5\"/>\n    <circle cx=\"344\" cy=\"310\" r=\"14\" fill=\"#0c1428\"/>\n    <circle cx=\"300\" cy=\"160\" r=\"6\" fill=\"#ff6644\"/>\n    <circle cx=\"300\" cy=\"160\" r=\"40\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlurHi)\" opacity=\"0.8\"/>\n    <line x1=\"256\" y1=\"310\" x2=\"300\" y2=\"300\" stroke=\"rgba(252,61,33,0.2)\" stroke-width=\"0.4\" stroke-dasharray=\"2 3\"/>\n    <line x1=\"344\" y1=\"310\" x2=\"300\" y2=\"300\" stroke=\"rgba(252,61,33,0.2)\" stroke-width=\"0.4\" stroke-dasharray=\"2 3\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "reckoningMirror": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    <ellipse cx=\"300\" cy=\"540\" rx=\"240\" ry=\"22\" fill=\"#070914\" stroke=\"rgba(252,61,33,0.2)\" stroke-width=\"0.4\"/>\n    <rect x=\"170\" y=\"360\" width=\"26\" height=\"170\" rx=\"5\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.5\"/>\n    <circle cx=\"183\" cy=\"345\" r=\"17\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.5\"/>\n    <rect x=\"404\" y=\"360\" width=\"26\" height=\"170\" rx=\"5\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.3)\" stroke-width=\"0.5\" opacity=\"0.85\"/>\n    <circle cx=\"417\" cy=\"345\" r=\"17\" fill=\"#0a0e1c\" stroke=\"rgba(252,61,33,0.3)\" stroke-width=\"0.5\" opacity=\"0.85\"/>\n    <line x1=\"300\" y1=\"40\" x2=\"300\" y2=\"560\" stroke=\"url(#nasaRed)\" stroke-width=\"2\" filter=\"url(#nasaBlurHi)\"/>\n    <line x1=\"300\" y1=\"60\" x2=\"300\" y2=\"540\" stroke=\"rgba(252,61,33,0.7)\" stroke-width=\"0.8\"/>\n    <circle cx=\"300\" cy=\"345\" r=\"50\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlurHi)\" opacity=\"0.8\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "dividedChamber": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"nasaG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#0e1424\"/>\n        <stop offset=\"60%\" stop-color=\"#070914\"/>\n        <stop offset=\"100%\" stop-color=\"#040611\"/>\n      </radialGradient>\n      <radialGradient id=\"nasaRed\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#ff6644\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#fc3d21\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"nasaBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"nasaBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#nasaG)\"/>\n    \n    \n      <line x1=\"40\" y1=\"100\" x2=\"324\" y2=\"100\" stroke=\"rgba(252,61,33,0.12)\" stroke-width=\"0.4\"/>\n      <line x1=\"276\" y1=\"100\" x2=\"560\" y2=\"100\" stroke=\"rgba(252,61,33,0.12)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"160\" x2=\"312\" y2=\"160\" stroke=\"rgba(252,61,33,0.12)\" stroke-width=\"0.4\"/>\n      <line x1=\"288\" y1=\"160\" x2=\"560\" y2=\"160\" stroke=\"rgba(252,61,33,0.12)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"220\" x2=\"300\" y2=\"220\" stroke=\"rgba(252,61,33,0.12)\" stroke-width=\"0.4\"/>\n      <line x1=\"300\" y1=\"220\" x2=\"560\" y2=\"220\" stroke=\"rgba(252,61,33,0.12)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"280\" x2=\"288\" y2=\"280\" stroke=\"rgba(252,61,33,0.12)\" stroke-width=\"0.4\"/>\n      <line x1=\"312\" y1=\"280\" x2=\"560\" y2=\"280\" stroke=\"rgba(252,61,33,0.12)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"340\" x2=\"276\" y2=\"340\" stroke=\"rgba(252,61,33,0.12)\" stroke-width=\"0.4\"/>\n      <line x1=\"324\" y1=\"340\" x2=\"560\" y2=\"340\" stroke=\"rgba(252,61,33,0.12)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"400\" x2=\"264\" y2=\"400\" stroke=\"rgba(252,61,33,0.12)\" stroke-width=\"0.4\"/>\n      <line x1=\"336\" y1=\"400\" x2=\"560\" y2=\"400\" stroke=\"rgba(252,61,33,0.12)\" stroke-width=\"0.4\"/>\n    \n    <line x1=\"300\" y1=\"40\" x2=\"300\" y2=\"560\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.8\"/>\n    <ellipse cx=\"300\" cy=\"300\" rx=\"14\" ry=\"260\" fill=\"url(#nasaRed)\" filter=\"url(#nasaBlurHi)\" opacity=\"0.6\"/>\n    \n      <rect x=\"146\" y=\"380\" width=\"8\" height=\"110\" rx=\"2\" fill=\"#070914\"/>\n      <circle cx=\"150\" cy=\"376\" r=\"5\" fill=\"#070914\"/>\n      <rect x=\"196\" y=\"388\" width=\"8\" height=\"114\" rx=\"2\" fill=\"#070914\"/>\n      <circle cx=\"200\" cy=\"384\" r=\"5\" fill=\"#070914\"/>\n      <rect x=\"246\" y=\"396\" width=\"8\" height=\"118\" rx=\"2\" fill=\"#070914\"/>\n      <circle cx=\"250\" cy=\"392\" r=\"5\" fill=\"#070914\"/>\n    \n      <rect x=\"346\" y=\"380\" width=\"8\" height=\"110\" rx=\"2\" fill=\"#070914\"/>\n      <circle cx=\"350\" cy=\"376\" r=\"5\" fill=\"#070914\"/>\n      <rect x=\"396\" y=\"388\" width=\"8\" height=\"114\" rx=\"2\" fill=\"#070914\"/>\n      <circle cx=\"400\" cy=\"384\" r=\"5\" fill=\"#070914\"/>\n      <rect x=\"446\" y=\"396\" width=\"8\" height=\"118\" rx=\"2\" fill=\"#070914\"/>\n      <circle cx=\"450\" cy=\"392\" r=\"5\" fill=\"#070914\"/>\n    <rect x=\"294\" y=\"440\" width=\"12\" height=\"100\" rx=\"3\" fill=\"#0c1428\"/>\n    <circle cx=\"300\" cy=\"430\" r=\"8\" fill=\"#0c1428\"/>\n  \n    </svg><div class=\"disc-veil\"></div>"
+  }
+}

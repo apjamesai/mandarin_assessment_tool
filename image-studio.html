@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Image Studio · Strategic Force Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+:root {
+  --bg: #0c0a0a; --bg-deep: #060505; --panel: #1e1e23;
+  --ink: #ece5d7; --ink-soft: #c5bcab; --ink-mute: #807868; --ink-dim: #4a443c;
+  --amber: #ff5a2c; --amber-bright: #ff8a4a; --amber-deep: #c93a16;
+  --amber-glow: rgba(255, 90, 44, 0.35);
+  --brand-orange: #ff481d;
+  --serif: "Cormorant Garamond", Georgia, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --ease: cubic-bezier(.16, 1, .3, 1);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  background: var(--bg); color: var(--ink); font-family: var(--sans);
+  font-weight: 300; -webkit-font-smoothing: antialiased; min-height: 100vh;
+}
+body {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255,90,44,0.05), transparent 50%),
+    radial-gradient(circle at 80% 90%, rgba(255,90,44,0.03), transparent 60%),
+    var(--bg);
+}
+
+.shell { max-width: 1320px; margin: 0 auto; padding: 5vh 4vw 12vh; }
+
+header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-bottom: 48px; }
+.brand { display: flex; align-items: center; gap: 12px; font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--ink-mute); }
+.brand .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-orange); box-shadow: 0 0 8px rgba(255,72,29,0.7); }
+.brand .name { font-family: var(--serif); font-style: italic; font-size: 14px; letter-spacing: 0.06em; text-transform: none; color: var(--ink-soft); }
+h1 { font-family: var(--serif); font-style: italic; font-size: clamp(36px, 5vw, 64px); line-height: 1; font-weight: 300; letter-spacing: -0.018em; }
+h1 em { color: var(--amber); }
+.sub { font-family: var(--serif); font-style: italic; font-size: clamp(16px, 1.4vw, 20px); color: var(--ink-soft); margin-top: 12px; max-width: 760px; line-height: 1.5; }
+
+/* Section block */
+.section {
+  border: 1px solid rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.012);
+  padding: 22px 26px;
+  margin-bottom: 24px;
+}
+.section h2 {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.section .help {
+  font-family: var(--serif); font-style: italic;
+  font-size: 14px; color: var(--ink-soft); line-height: 1.5; margin-bottom: 14px;
+}
+.section .help code, .help code { font-family: monospace; font-size: 13px; color: var(--ink); background: rgba(255,255,255,0.04); padding: 1px 6px; }
+
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.row > * { flex: 0 0 auto; }
+
+label.input-label { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--amber); display: block; margin-bottom: 6px; }
+input.text, input.url, input.password, input.number {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--ink);
+  padding: 11px 14px;
+  font-family: monospace;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.4s var(--ease);
+  min-width: 260px;
+}
+input.text:focus, input.url:focus, input.password:focus, input.number:focus { border-color: var(--amber); }
+
+.btn {
+  padding: 12px 22px; background: rgba(255,90,44,0.08);
+  border: 1px solid var(--amber); color: var(--ink);
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  cursor: pointer; transition: all 0.4s var(--ease);
+}
+.btn:hover:not(:disabled) { background: rgba(255,90,44,0.18); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn.ghost { background: transparent; border-color: rgba(255,255,255,0.1); }
+.btn.ghost:hover:not(:disabled) { border-color: var(--ink-soft); }
+.btn.danger { border-color: rgba(255,72,29,0.5); color: #ffb3a0; }
+.btn.small { padding: 6px 12px; font-size: 9px; }
+
+.toggle-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.toggle {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  cursor: pointer; transition: all 0.4s var(--ease);
+  font-family: var(--sans); font-size: 12px;
+}
+.toggle:has(input:checked) { border-color: var(--amber); background: rgba(255,90,44,0.06); }
+.toggle input { accent-color: var(--amber); }
+.toggle .label { font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--ink); }
+.toggle .sub { font-family: var(--sans); font-size: 10px; color: var(--ink-mute); margin: 0; }
+
+.skin-card {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255,255,255,0.06);
+  cursor: pointer; transition: all 0.4s var(--ease);
+}
+.skin-card:has(input:checked) { border-color: var(--amber); background: rgba(255,90,44,0.04); }
+.skin-card .swatch { width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0; }
+.skin-card .label { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--ink); line-height: 1.1; }
+.skin-card .meta { font-family: var(--sans); font-size: 10px; color: var(--ink-mute); letter-spacing: 0.05em; }
+.skin-card input { display: none; }
+
+.progress-bar {
+  height: 2px; background: rgba(255,255,255,0.06);
+  position: relative; margin: 16px 0; overflow: hidden;
+}
+.progress-bar .fill {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, var(--amber-deep), var(--amber-bright));
+  width: 0%; transition: width 0.6s var(--ease);
+  box-shadow: 0 0 8px var(--amber-glow);
+}
+
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 1px; background: rgba(255,90,44,0.08);
+  border: 1px solid rgba(255,90,44,0.1);
+  margin-top: 14px;
+}
+.skin-group-title {
+  font-family: var(--sans); font-size: 10px;
+  letter-spacing: 0.5em; text-transform: uppercase; color: var(--amber);
+  margin: 24px 0 10px;
+  border-top: 1px solid rgba(255,90,44,0.15);
+  padding-top: 14px;
+}
+.tile {
+  background: var(--bg); padding: 12px;
+  display: flex; flex-direction: column; gap: 8px;
+  min-height: 270px;
+}
+.tile .label { font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--ink-mute); }
+.tile .name { font-family: var(--serif); font-style: italic; font-size: 15px; line-height: 1.2; color: var(--ink); }
+.tile .preview {
+  width: 100%; aspect-ratio: 1; background: #050405;
+  border: 1px solid rgba(255,255,255,0.05);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.tile .preview img { width: 100%; height: 100%; object-fit: cover; }
+.tile .preview .ph {
+  font-family: var(--serif); font-style: italic; font-size: 11px;
+  color: var(--ink-dim); padding: 0 8px; text-align: center;
+}
+.tile .preview .pulse-ring {
+  position: absolute; inset: 30%; border-radius: 50%;
+  border: 1px solid var(--amber); animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse { 0%, 100% { transform: scale(0.9); opacity: 0.3; } 50% { transform: scale(1.05); opacity: 0.8; } }
+.tile .status { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-mute); min-height: 12px; }
+.tile .status.ok { color: #7dc97d; }
+.tile .status.err { color: #ff6b6b; }
+.tile .status.busy { color: var(--amber); }
+
+.log {
+  background: #050405; border: 1px solid rgba(255,255,255,0.05);
+  padding: 16px; font-family: monospace; font-size: 12px;
+  color: var(--ink-soft); margin-top: 12px;
+  max-height: 200px; overflow-y: auto; white-space: pre-wrap;
+}
+.log .err { color: #ff8080; }
+.log .ok { color: #7dc97d; }
+.log .info { color: var(--amber); }
+
+.deploy-status {
+  font-family: var(--serif); font-style: italic; font-size: 16px;
+  color: var(--ink-soft); min-height: 22px; margin-top: 12px;
+}
+
+.muted { font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--ink-mute); }
+.warn { color: #ffb3a0; }
+.ok-text { color: #7dc97d; }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <header>
+    <div>
+      <div class="brand"><span class="dot"></span><span>Image Studio · </span><span class="name">Strategic Force Assessment</span></div>
+      <h1 style="margin-top:24px">Generate <em>all skins</em>. Deploy in place.</h1>
+      <div class="sub">Loads every skin's prompts, generates concept art through Google Gemini, and either downloads a ZIP organised into the correct subdirectories, or pushes it straight into your live Netlify site.</div>
+    </div>
+  </header>
+
+  <!-- 1 · KEY -->
+  <div class="section">
+    <h2>1 · Gemini API key</h2>
+    <div class="help">Get one at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" style="color:var(--amber)">aistudio.google.com/apikey</a>. Free tier covers all four skins. Stored only in this browser when you click <em>Save</em>.</div>
+    <div class="row">
+      <input id="apiKey" class="password" type="password" placeholder="AIza…" autocomplete="off" style="flex:1; min-width:300px"/>
+      <button class="btn ghost small" onclick="toggleKey('apiKey','apiKeyShow')">Show</button>
+      <button class="btn ghost small" onclick="saveKey()">Save locally</button>
+      <button class="btn ghost small" onclick="clearKey()">Clear</button>
+      <input id="model" class="text" type="text" value="gemini-2.5-flash-image" placeholder="gemini-2.5-flash-image" style="min-width:240px"/>
+    </div>
+  </div>
+
+  <!-- 2 · SKINS -->
+  <div class="section">
+    <h2>2 · Skins to generate</h2>
+    <div class="help">Each skin's prompts are loaded automatically when the page opens. Tick the skins you want. Each runs end-to-end before the next starts.</div>
+    <div id="skinPicker" class="toggle-row"></div>
+
+    <div style="margin-top:18px">
+      <label class="input-label">Genders (applies to archetype portraits)</label>
+      <div class="toggle-row" id="genderPicker">
+        <label class="toggle"><input type="checkbox" id="gender-she"  checked/><span class="label">She / Her</span></label>
+        <label class="toggle"><input type="checkbox" id="gender-he"   checked/><span class="label">He / Him</span></label>
+        <label class="toggle"><input type="checkbox" id="gender-they" checked/><span class="label">They / Them</span></label>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top:18px">
+      <label class="input-label" style="margin:0">Pacing</label>
+      <input id="delay" class="number" type="number" value="1200" min="0" step="100" style="min-width:120px"/>
+      <span class="muted">ms between API calls — 1200 is polite</span>
+    </div>
+  </div>
+
+  <!-- 3 · GENERATE -->
+  <div class="section">
+    <h2>3 · Generate</h2>
+    <div class="help">Click <em>Generate everything</em> to run the full batch for the selected skins. <em>Generate missing only</em> retries failures and skips already-finished images. The grid below fills in as images return.</div>
+    <div class="row">
+      <button class="btn" id="genAllBtn" onclick="generateAll()">Generate everything</button>
+      <button class="btn ghost" id="genMissingBtn" onclick="generateMissing()">Generate missing only</button>
+      <button class="btn danger" onclick="resetAll()">Reset all</button>
+      <div id="progress" style="margin-left:auto; font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--ink-mute)">—</div>
+    </div>
+    <div class="progress-bar"><div class="fill" id="progressFill"></div></div>
+    <div id="grids"></div>
+  </div>
+
+  <!-- 4 · SYNC TO NETLIFY -->
+  <div class="section">
+    <h2>4 · Sync to Netlify</h2>
+    <div class="help">
+      Pushes <strong style="color:var(--ink-soft); font-weight:400">code updates</strong> and <strong style="color:var(--ink-soft); font-weight:400">newly generated images</strong> as a single atomic deploy. Files already on Netlify that you didn't change — including previously-deployed images — are kept automatically. Only changed files are re-uploaded.
+    </div>
+
+    <div style="margin-top:14px; padding-top:14px; border-top:1px dashed rgba(255,255,255,0.08)">
+      <label class="input-label">Netlify Personal Access Token (PAT)</label>
+      <div class="help">Get one at <a href="https://app.netlify.com/user/applications#personal-access-tokens" target="_blank" rel="noopener" style="color:var(--amber)">app.netlify.com/user/applications</a> → <em>New access token</em>. Used only to deploy from this browser; rotate after use.</div>
+      <div class="row">
+        <input id="netlifyPat" class="password" type="password" placeholder="nfp_…" autocomplete="off" style="flex:1; min-width:300px"/>
+        <button class="btn ghost small" onclick="toggleKey('netlifyPat','netlifyPatShow')">Show</button>
+        <button class="btn ghost small" onclick="saveNetlifyPat()">Save locally</button>
+      </div>
+
+      <div class="row" style="margin-top:14px">
+        <div style="flex:1; min-width:260px">
+          <label class="input-label">Site ID</label>
+          <input id="siteId" class="text" type="text" value="f1cb6c00-4de2-4010-a043-fd8c6915f5d1" style="width:100%"/>
+        </div>
+        <div style="flex:1; min-width:200px">
+          <label class="input-label">Site URL (live)</label>
+          <input id="siteUrl" class="url" type="text" value="https://strategic-force-assessment.netlify.app" style="width:100%"/>
+        </div>
+      </div>
+
+      <!-- Code source picker — ZIP upload OR same-origin fetch -->
+      <div style="margin-top:18px; padding:14px 16px; border:1px dashed rgba(255,90,44,0.22); background: rgba(255,90,44,0.025);">
+        <label class="input-label" style="color:var(--ink-soft)">Code source — pick one</label>
+        <div class="help" style="margin-bottom:10px">
+          <strong style="color:var(--ink-soft); font-weight:400">A · Drop a deploy ZIP</strong> (no terminal, recommended). The Studio unzips it in your browser, hashes every file, and pushes only what changed.<br>
+          <strong style="color:var(--ink-soft); font-weight:400">B · Skip</strong> (terminal route): if you opened this page from <code>localhost:8000</code> via <code>python3 -m http.server</code>, the Studio reads sibling files directly. From the live URL, this fetches the <em>already-live</em> versions, so code wouldn't actually update.
+        </div>
+        <div class="row">
+          <label class="btn ghost" style="cursor:pointer">
+            Choose deploy ZIP…
+            <input type="file" id="deployZipInput" accept=".zip,application/zip" style="display:none" onchange="handleDeployZipFile(this.files && this.files[0])"/>
+          </label>
+          <button class="btn ghost small" onclick="clearUploadedZip()" id="clearZipBtn" style="display:none">Clear</button>
+          <span id="zipStatus" class="muted" style="margin-left:6px">No ZIP loaded — sync will use the live-site code as the baseline.</span>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top:18px">
+        <button class="btn" id="deployBtn" onclick="syncToNetlify()">Sync to Netlify (preserves images)</button>
+        <button class="btn ghost" id="zipBtn" onclick="downloadZip()" disabled>Download images as ZIP</button>
+      </div>
+      <div class="deploy-status" id="deployStatus"></div>
+    </div>
+  </div>
+
+  <div class="log" id="logBox" style="display:none"></div>
+</div>
+
+<script>
+// ─── State ───
+const SKIN_DEFS = [
+  { id: 'force_trial', label: 'Force Trial',         palette: '#ff5a2c', file: 'image-prompts.json',   subdir: '' },
+  { id: 'apollo_11',   label: 'Apollo 11',            palette: '#fc3d21', file: 'skin-apollo-11.json',  subdir: 'skin-apollo/' },
+  { id: 'yi_sunsin',   label: 'Twelve Ships · Yi',    palette: '#b53536', file: 'skin-yi.json',          subdir: 'skin-yi/' },
+  { id: 'latimer',     label: 'Filament · Latimer',   palette: '#d4982e', file: 'skin-latimer.json',    subdir: 'skin-latimer/' }
+];
+
+const STATE = {
+  skins: {},        // { skinId: { prompts: {...}, enabled: bool } }
+  imagesB64: {},    // { "path/to/file.png": base64 }
+  busy: false
+};
+
+const LS_KEY_GEMINI  = 'mandarin.image-studio.gemini-key';
+const LS_KEY_NETLIFY = 'mandarin.image-studio.netlify-pat';
+
+function log(msg, kind) {
+  const box = document.getElementById('logBox');
+  box.style.display = 'block';
+  const line = document.createElement('div');
+  if (kind) line.className = kind;
+  line.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+  box.appendChild(line);
+  box.scrollTop = box.scrollHeight;
+}
+
+function setProgress(done, total) {
+  document.getElementById('progressFill').style.width = (total ? done / total * 100 : 0) + '%';
+  document.getElementById('progress').textContent = total ? `${done} / ${total}` : '—';
+}
+
+function toggleKey(id, _show) {
+  const el = document.getElementById(id);
+  el.type = el.type === 'password' ? 'text' : 'password';
+}
+
+function saveKey() {
+  const v = document.getElementById('apiKey').value.trim();
+  if (!v) { log('No Gemini key to save.', 'err'); return; }
+  localStorage.setItem(LS_KEY_GEMINI, v);
+  log('Gemini key saved to localStorage.', 'ok');
+}
+function clearKey() {
+  document.getElementById('apiKey').value = '';
+  localStorage.removeItem(LS_KEY_GEMINI);
+  log('Gemini key cleared.', 'info');
+}
+function saveNetlifyPat() {
+  const v = document.getElementById('netlifyPat').value.trim();
+  if (!v) { log('No Netlify PAT to save.', 'err'); return; }
+  localStorage.setItem(LS_KEY_NETLIFY, v);
+  log('Netlify PAT saved to localStorage.', 'ok');
+}
+
+// ─── Load all skin prompts on boot ───
+async function loadAllSkins() {
+  const renderPicker = () => {
+    const picker = document.getElementById('skinPicker');
+    picker.innerHTML = SKIN_DEFS.map(s => {
+      const state = STATE.skins[s.id];
+      const loaded = state && state.prompts;
+      return `<label class="skin-card" ${loaded ? '' : 'style="opacity:0.45"'}>
+        <input type="checkbox" data-skin="${s.id}" ${loaded ? 'checked' : ''} ${loaded ? '' : 'disabled'} onchange="renderGrids()"/>
+        <span class="swatch" style="background:${s.palette}"></span>
+        <span>
+          <div class="label">${s.label}</div>
+          <div class="meta">${loaded ? `${Object.keys(state.prompts.archetypes).length} archetypes · ${Object.keys(state.prompts.scenes).length} scenes` : '— not loaded —'}</div>
+        </span>
+      </label>`;
+    }).join('');
+  };
+  renderPicker();
+
+  for (const def of SKIN_DEFS) {
+    try {
+      const r = await fetch(def.file);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const raw = await r.json();
+      let prompts;
+      if (def.id === 'force_trial') {
+        prompts = raw;            // image-prompts.json is the prompts object itself
+      } else {
+        if (!raw.imagePrompts || !raw.imagePrompts.archetypes || !raw.imagePrompts.scenes) {
+          throw new Error('skin JSON missing imagePrompts');
+        }
+        prompts = {
+          _genders: (STATE.skins.force_trial && STATE.skins.force_trial.prompts && STATE.skins.force_trial.prompts._genders) || {
+            she:  'female-presenting protagonist — woman, athletic build, mid-30s, expressive but composed',
+            he:   'male-presenting protagonist — man, athletic build, mid-30s, expressive but composed',
+            they: 'androgynous-presenting protagonist — gender-ambiguous, athletic build, mid-30s, neutral features'
+          },
+          archetypes: raw.imagePrompts.archetypes,
+          scenes: raw.imagePrompts.scenes
+        };
+      }
+      STATE.skins[def.id] = { prompts, enabled: true };
+      log(`Loaded ${def.label} prompts (${def.file})`, 'ok');
+    } catch (e) {
+      log(`Could not load ${def.file}: ${e.message}`, 'err');
+    }
+  }
+  renderPicker();
+  renderGrids();
+}
+
+function selectedSkinIds() {
+  return Array.from(document.querySelectorAll('#skinPicker input[data-skin]:checked')).map(el => el.dataset.skin);
+}
+function selectedGenders() {
+  return ['she','he','they'].filter(g => document.getElementById('gender-' + g).checked);
+}
+
+function renderGrids() {
+  const root = document.getElementById('grids');
+  const ids = selectedSkinIds();
+  if (!ids.length) { root.innerHTML = `<div class="muted" style="margin-top:18px">Select at least one skin above to see its tiles.</div>`; updateZipBtn(); return; }
+  root.innerHTML = ids.map(id => {
+    const def = SKIN_DEFS.find(s => s.id === id);
+    const skin = STATE.skins[id];
+    if (!skin) return '';
+    const genders = selectedGenders();
+    const archCount = Object.keys(skin.prompts.archetypes).length * genders.length;
+    const sceneCount = Object.keys(skin.prompts.scenes).length;
+    let archTiles = '';
+    Object.entries(skin.prompts.archetypes).forEach(([key, spec]) => {
+      genders.forEach(g => {
+        const filename = pathFor(def, spec, 'archetype', key, g);
+        archTiles += tileHTML('arch', id, key, g, filename, `${g.toUpperCase()} · ${key.replace(/_/g,' ')}`);
+      });
+    });
+    let sceneTiles = '';
+    Object.entries(skin.prompts.scenes).forEach(([key, spec]) => {
+      const filename = pathFor(def, spec, 'scene', key);
+      sceneTiles += tileHTML('scene', id, key, null, filename, `SCENE · ${key.replace(/_/g,' ')}`);
+    });
+    return `
+      <div class="skin-group-title">${def.label} · ${archCount} archetype + ${sceneCount} scene images</div>
+      <div class="grid">${archTiles}${sceneTiles}</div>
+    `;
+  }).join('');
+  Object.keys(STATE.imagesB64).forEach(fn => paintTile(fn));
+  updateZipBtn();
+}
+
+function pathFor(def, spec, kind, key, gender) {
+  if (kind === 'archetype') {
+    const raw = spec.filename_template
+      ? spec.filename_template.replace('{gender}', gender)
+      : `images/archetype-${key.replace(/_/g,'-')}-${gender}.png`;
+    return rebasePath(raw, def);
+  } else {
+    return rebasePath(spec.filename || `images/scene-${key.replace(/_/g,'-')}.png`, def);
+  }
+}
+function rebasePath(rawPath, def) {
+  // Ensure path is under images/{subdir}filename
+  // Source filenames may be 'images/skin-apollo/...' already — keep as-is
+  // For force_trial (subdir=''), keep as 'images/...'
+  return rawPath; // The prompt files already include the correct subdir
+}
+
+function tileHTML(kindShort, skinId, key, gender, filename, labelLine) {
+  const id = 'tile-' + filename.replace(/[\/\.]/g,'_');
+  return `<div class="tile" id="${id}" data-skin="${skinId}" data-kind="${kindShort}" data-key="${key}" ${gender ? `data-gender="${gender}"` : ''}>
+    <div class="label">${labelLine}</div>
+    <div class="preview" id="${id}-preview"><div class="ph">No image yet</div></div>
+    <div class="status" id="${id}-status">ready</div>
+    <div style="display:flex; gap:6px; margin-top:auto">
+      <button class="btn ghost small" style="flex:1" onclick="generateOne('${skinId}','${kindShort}','${key}',${gender?`'${gender}'`:'null'})">Generate</button>
+      <button class="btn ghost small" onclick="downloadOne('${filename}')" disabled id="${id}-dl">↓</button>
+    </div>
+  </div>`;
+}
+
+function paintTile(filename) {
+  const id = 'tile-' + filename.replace(/[\/\.]/g,'_');
+  const preview = document.getElementById(id + '-preview');
+  const dl = document.getElementById(id + '-dl');
+  if (!preview) return;
+  const b64 = STATE.imagesB64[filename];
+  if (b64) {
+    preview.innerHTML = `<img src="data:image/png;base64,${b64}" alt=""/>`;
+    if (dl) dl.disabled = false;
+    const status = document.getElementById(id + '-status');
+    if (status) { status.textContent = 'generated · ' + Math.round(b64.length * 0.75 / 1024) + ' KB'; status.className = 'status ok'; }
+  } else {
+    preview.innerHTML = '<div class="ph">No image yet</div>';
+    if (dl) dl.disabled = true;
+  }
+}
+
+// ─── Generation ───
+function getApiKey() {
+  const v = document.getElementById('apiKey').value.trim();
+  if (!v) { log('Paste a Gemini API key first.', 'err'); return null; }
+  return v;
+}
+function getModel() {
+  return document.getElementById('model').value.trim() || 'gemini-2.5-flash-image';
+}
+
+async function callGemini(prompt, apiKey, model) {
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=${encodeURIComponent(apiKey)}`;
+  const body = { contents: [{ parts: [{ text: prompt }] }], generationConfig: { responseModalities: ['IMAGE'] } };
+  const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  if (!r.ok) {
+    const txt = await r.text();
+    throw new Error(`HTTP ${r.status} — ${txt.slice(0, 220)}`);
+  }
+  const json = await r.json();
+  const parts = json.candidates?.[0]?.content?.parts || [];
+  const imgPart = parts.find(p => p.inlineData?.data || p.inline_data?.data);
+  if (!imgPart) {
+    const reason = json.candidates?.[0]?.finishReason || 'no IMAGE part';
+    throw new Error('No image · ' + reason);
+  }
+  return imgPart.inlineData?.data || imgPart.inline_data?.data;
+}
+
+// Internal worker — does NOT check STATE.busy. Used both by user-triggered
+// single calls (via generateOne) AND by batch loops.
+async function _runOne(skinId, kindShort, key, gender) {
+  const apiKey = getApiKey(); if (!apiKey) return;
+  const def = SKIN_DEFS.find(s => s.id === skinId);
+  const skin = STATE.skins[skinId];
+  if (!skin) return;
+  const spec = kindShort === 'arch' ? skin.prompts.archetypes[key] : skin.prompts.scenes[key];
+  if (!spec) return;
+  let filename, prompt;
+  if (kindShort === 'arch') {
+    filename = pathFor(def, spec, 'archetype', key, gender);
+    const genderDesc = skin.prompts._genders[gender];
+    prompt = spec.prompt_template.replace('{genderDesc}', genderDesc);
+  } else {
+    filename = pathFor(def, spec, 'scene', key);
+    prompt = spec.prompt;
+  }
+  const id = 'tile-' + filename.replace(/[\/\.]/g,'_');
+  const status = document.getElementById(id + '-status');
+  if (status) { status.textContent = 'generating…'; status.className = 'status busy'; }
+  const preview = document.getElementById(id + '-preview');
+  if (preview) preview.innerHTML = '<div class="pulse-ring"></div>';
+  try {
+    const b64 = await callGemini(prompt, apiKey, getModel());
+    STATE.imagesB64[filename] = b64;
+    paintTile(filename);
+    log('✓ ' + filename, 'ok');
+  } catch (e) {
+    if (status) { status.textContent = 'error · see log'; status.className = 'status err'; }
+    if (preview) preview.innerHTML = `<div class="ph" style="color:#ff8080">${escapeHTML(e.message.slice(0, 100))}</div>`;
+    log('✗ ' + filename + ' — ' + e.message, 'err');
+  }
+  updateZipBtn();
+}
+
+// Public single-tile entrypoint — guards against re-entry while a batch runs.
+async function generateOne(skinId, kindShort, key, gender) {
+  if (STATE.busy) { log('Busy — wait for current batch.', 'info'); return; }
+  STATE.busy = true;
+  try { await _runOne(skinId, kindShort, key, gender); }
+  finally { STATE.busy = false; }
+}
+
+function allItems() {
+  const items = [];
+  const ids = selectedSkinIds();
+  const genders = selectedGenders();
+  ids.forEach(skinId => {
+    const def = SKIN_DEFS.find(s => s.id === skinId);
+    const skin = STATE.skins[skinId];
+    if (!skin) return;
+    Object.keys(skin.prompts.archetypes).forEach(key => {
+      genders.forEach(g => items.push({ skinId, def, kindShort: 'arch', key, gender: g }));
+    });
+    Object.keys(skin.prompts.scenes).forEach(key => {
+      items.push({ skinId, def, kindShort: 'scene', key });
+    });
+  });
+  return items;
+}
+function filenameForItem(item) {
+  const spec = item.kindShort === 'arch'
+    ? STATE.skins[item.skinId].prompts.archetypes[item.key]
+    : STATE.skins[item.skinId].prompts.scenes[item.key];
+  return item.kindShort === 'arch'
+    ? pathFor(item.def, spec, 'archetype', item.key, item.gender)
+    : pathFor(item.def, spec, 'scene', item.key);
+}
+
+async function generateBatch(items) {
+  if (STATE.busy) { log('Busy — wait for current batch.', 'info'); return; }
+  if (!getApiKey()) return;
+  STATE.busy = true;
+  ['genAllBtn','genMissingBtn'].forEach(id => document.getElementById(id).disabled = true);
+  const delay = parseInt(document.getElementById('delay').value, 10) || 1200;
+  setProgress(0, items.length);
+  let done = 0;
+  try {
+    for (const item of items) {
+      await _runOne(item.skinId, item.kindShort, item.key, item.gender);
+      done++; setProgress(done, items.length);
+      if (done < items.length) await new Promise(r => setTimeout(r, delay));
+    }
+  } finally {
+    STATE.busy = false;
+    ['genAllBtn','genMissingBtn'].forEach(id => document.getElementById(id).disabled = false);
+    log(`Batch complete — ${done} / ${items.length}`, 'ok');
+  }
+}
+
+async function generateAll() {
+  const items = allItems();
+  if (!items.length) { log('No skins selected.', 'err'); return; }
+  log(`Generating ${items.length} images across ${selectedSkinIds().length} skin(s)`, 'info');
+  await generateBatch(items);
+}
+
+async function generateMissing() {
+  const missing = allItems().filter(it => !STATE.imagesB64[filenameForItem(it)]);
+  if (!missing.length) { log('Nothing missing.', 'ok'); return; }
+  log(`Generating ${missing.length} missing items`, 'info');
+  await generateBatch(missing);
+}
+
+function updateZipBtn() {
+  const n = Object.keys(STATE.imagesB64).length;
+  const zipBtn = document.getElementById('zipBtn');
+  zipBtn.disabled = !n;
+  zipBtn.textContent = n ? `Download images as ZIP (${n})` : 'Download images as ZIP';
+  // Deploy button stays enabled — sync may include only code, only images, or both.
+  const deployBtn = document.getElementById('deployBtn');
+  deployBtn.textContent = n
+    ? `Sync to Netlify (${n} new images, preserves rest)`
+    : 'Sync to Netlify (preserves images)';
+}
+
+function resetAll() {
+  if (!confirm('Clear every generated image from this session?')) return;
+  STATE.imagesB64 = {};
+  renderGrids();
+  setProgress(0, 0);
+  log('Cleared.', 'info');
+}
+
+// ─── Download ZIP ───
+function b64ToBytes(b64) {
+  const bin = atob(b64);
+  const arr = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+  return arr;
+}
+async function downloadZip() {
+  const filenames = Object.keys(STATE.imagesB64);
+  if (!filenames.length) return;
+  log(`Building ZIP with ${filenames.length} images…`, 'info');
+  const zip = new JSZip();
+  filenames.forEach(fn => {
+    zip.file(fn, STATE.imagesB64[fn], { base64: true });
+  });
+  zip.file('README.txt',
+    'This ZIP contains an "images" folder with all generated PNGs.\n' +
+    'Unzip directly into your Netlify deploy folder (it will merge into the existing images/ tree).\n' +
+    'Force Trial images: images/archetype-*.png + images/scene-*.png\n' +
+    'Apollo images:      images/skin-apollo/...\n' +
+    'Yi images:          images/skin-yi/...\n' +
+    'Latimer images:     images/skin-latimer/...\n');
+  const blob = await zip.generateAsync({ type: 'blob' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'strategic-force-images.zip'; a.click();
+  URL.revokeObjectURL(url);
+  log('ZIP downloaded.', 'ok');
+}
+function downloadOne(filename) {
+  const b64 = STATE.imagesB64[filename];
+  if (!b64) return;
+  const blob = new Blob([b64ToBytes(b64)], { type: 'image/png' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename.split('/').pop(); a.click();
+  URL.revokeObjectURL(url);
+}
+function escapeHTML(s) { return String(s).replace(/[<>&"]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c])); }
+
+// ─── Direct Netlify deploy ───
+// Strategy: Netlify atomic deploys take a manifest of {path: sha1}. Existing
+// files with unchanged hashes are reused from the previous deploy. We compute
+// SHA-1 of each generated PNG, fetch the current deploy's file manifest,
+// merge in the new images, POST the combined manifest, then PUT each
+// "required" file (which will be exactly the new PNGs).
+async function sha1Hex(bytes) {
+  const buf = await crypto.subtle.digest('SHA-1', bytes);
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function getNetlifyPat() {
+  const v = document.getElementById('netlifyPat').value.trim();
+  if (!v) { setDeployStatus('Paste a Netlify Personal Access Token first.', 'warn'); return null; }
+  return v;
+}
+function getSiteId() {
+  return document.getElementById('siteId').value.trim();
+}
+function setDeployStatus(msg, kind) {
+  const el = document.getElementById('deployStatus');
+  el.textContent = msg;
+  el.className = 'deploy-status' + (kind ? ' ' + kind : '');
+}
+
+// Files we attempt to read from the studio's origin and push to Netlify.
+// Same-origin fetch reads the LOCAL copy when the studio is served via
+// `python3 -m http.server` from the deploy folder, and reads the REMOTE
+// (live) copy when the studio is opened via its Netlify URL. Either way
+// the SHA-1 reflects whatever the studio can actually see.
+const CODE_FILES = [
+  'index.html',
+  'strategic-force-assessment.html',
+  'image-studio.html',
+  'netlify.toml',
+  'image-prompts.json',
+  'skin-apollo-11.json',
+  'skin-yi.json',
+  'skin-latimer.json',
+  'README.md',
+  'SETUP.md',
+  'SKIN-SPEC.md',
+  'DEPLOY.md',
+  'build-apollo-skin.js',
+  'build-yi-skin.js',
+  'build-latimer-skin.js',
+  'generate-images.js'
+];
+
+async function readLocalCodeFiles() {
+  const out = [];
+  for (const path of CODE_FILES) {
+    try {
+      const r = await fetch(path, { cache: 'no-store' });
+      if (!r.ok) { log(`  · skip ${path} (HTTP ${r.status})`, 'info'); continue; }
+      const bytes = new Uint8Array(await r.arrayBuffer());
+      const sha = await sha1Hex(bytes);
+      out.push({ path: '/' + path, bytes, sha });
+    } catch (e) {
+      log(`  · skip ${path} (${e.message})`, 'info');
+    }
+  }
+  return out;
+}
+
+// ─── ZIP-upload source ───
+// Lets a user without a terminal load their local deploy ZIP, which the Studio
+// unpacks via JSZip and uses as the code-file source for the next sync.
+async function handleDeployZipFile(file) {
+  if (!file) return;
+  const status = document.getElementById('zipStatus');
+  status.textContent = `Reading ${file.name}…`;
+  try {
+    const zip = await JSZip.loadAsync(file);
+    const entries = [];
+    let skipped = 0;
+    for (const [pathRaw, entry] of Object.entries(zip.files)) {
+      if (entry.dir) continue;
+      // strip junk MacOS metadata + thumbnails
+      if (pathRaw.startsWith('__MACOSX/') || pathRaw.endsWith('/.DS_Store') || pathRaw === '.DS_Store') {
+        skipped++; continue;
+      }
+      const bytes = new Uint8Array(await entry.async('uint8array'));
+      const sha = await sha1Hex(bytes);
+      // Normalise to a leading slash, and accept zips that have a single top-level folder.
+      let p = pathRaw.replace(/^\.\//, '');
+      // If every entry starts with the same folder name, strip it. (We detect after the loop.)
+      entries.push({ path: p, bytes, sha });
+    }
+
+    // Detect single root folder and strip it (e.g. netlify-deploy/index.html → index.html)
+    const tops = new Set();
+    for (const e of entries) {
+      const idx = e.path.indexOf('/');
+      tops.add(idx === -1 ? '' : e.path.slice(0, idx));
+    }
+    if (tops.size === 1 && !tops.has('')) {
+      const root = tops.values().next().value + '/';
+      entries.forEach(e => { e.path = e.path.slice(root.length); });
+      log(`Stripped root folder "${root.slice(0,-1)}" from ZIP entries`, 'info');
+    }
+
+    // Final paths: prepend '/'
+    entries.forEach(e => { e.path = '/' + e.path.replace(/^\/+/, ''); });
+
+    STATE.uploadedFiles = entries;
+    status.innerHTML = `✓ <strong style="color:var(--ink)">${file.name}</strong> — ${entries.length} files loaded${skipped ? ` (${skipped} system files ignored)` : ''}.`;
+    status.style.color = 'var(--ink-soft)';
+    document.getElementById('clearZipBtn').style.display = '';
+    log(`Loaded ZIP "${file.name}": ${entries.length} files ready to push`, 'ok');
+  } catch (e) {
+    STATE.uploadedFiles = null;
+    status.textContent = 'Could not read the ZIP — ' + e.message;
+    status.style.color = '#ff9080';
+    log(`ZIP load failed: ${e.message}`, 'err');
+  }
+}
+
+function clearUploadedZip() {
+  STATE.uploadedFiles = null;
+  document.getElementById('deployZipInput').value = '';
+  const status = document.getElementById('zipStatus');
+  status.textContent = 'No ZIP loaded — sync will use the live-site code as the baseline.';
+  status.style.color = '';
+  document.getElementById('clearZipBtn').style.display = 'none';
+  log('Cleared uploaded ZIP', 'info');
+}
+
+async function syncToNetlify() {
+  const pat = getNetlifyPat(); if (!pat) return;
+  const siteId = getSiteId(); if (!siteId) { setDeployStatus('Site ID is required.', 'warn'); return; }
+
+  document.getElementById('deployBtn').disabled = true;
+
+  try {
+    // 1. Code source — prefer the uploaded ZIP, else fall back to same-origin fetch.
+    let codeFiles;
+    if (STATE.uploadedFiles && STATE.uploadedFiles.length) {
+      codeFiles = STATE.uploadedFiles;
+      setDeployStatus(`Using uploaded ZIP — ${codeFiles.length} files…`);
+      log(`Code source: uploaded ZIP (${codeFiles.length} files)`, 'info');
+    } else {
+      setDeployStatus('Reading local code files…');
+      codeFiles = await readLocalCodeFiles();
+      log(`Code source: same-origin fetch (${codeFiles.length} files)`, 'info');
+    }
+
+    // 2. Hash any newly generated images
+    setDeployStatus('Hashing generated images…');
+    const newImages = [];
+    for (const fn of Object.keys(STATE.imagesB64)) {
+      const bytes = b64ToBytes(STATE.imagesB64[fn]);
+      const sha = await sha1Hex(bytes);
+      newImages.push({ path: '/' + fn.replace(/^\/+/, ''), bytes, sha });
+    }
+    log(`New images this session: ${newImages.length}`, 'info');
+
+    if (!codeFiles.length && !newImages.length) {
+      setDeployStatus('Nothing to push — generate images, or run the studio from a local folder so it can read code.', 'warn');
+      document.getElementById('deployBtn').disabled = false;
+      return;
+    }
+
+    // 3. Fetch current Netlify manifest — this is what preserves everything
+    setDeployStatus('Fetching current Netlify deploy manifest…');
+    const sitesR = await fetch(`https://api.netlify.com/api/v1/sites/${siteId}`, {
+      headers: { 'Authorization': 'Bearer ' + pat }
+    });
+    if (!sitesR.ok) throw new Error('GET site failed: HTTP ' + sitesR.status);
+    const siteJson = await sitesR.json();
+    const publishedId = siteJson.published_deploy?.id;
+    if (!publishedId) throw new Error('Site has no published deploy yet. Do a first drag-and-drop deploy before using this button.');
+    log(`Current published deploy: ${publishedId}`, 'info');
+
+    const filesR = await fetch(`https://api.netlify.com/api/v1/deploys/${publishedId}/files`, {
+      headers: { 'Authorization': 'Bearer ' + pat }
+    });
+    if (!filesR.ok) throw new Error('GET files failed: HTTP ' + filesR.status);
+    const existing = await filesR.json();
+    log(`Existing deploy has ${existing.length} files (these are preserved unless we override them)`, 'info');
+
+    // 4. Build merged manifest:
+    //    - existing site files baseline (preserves images, etc.)
+    //    - local code files override (latest local versions win)
+    //    - newly generated images added/overwritten
+    const manifest = {};
+    existing.forEach(f => { manifest[f.path] = f.sha; });
+    codeFiles.forEach(f => { manifest[f.path] = f.sha; });
+    newImages.forEach(f => { manifest[f.path] = f.sha; });
+    log(`Merged manifest: ${Object.keys(manifest).length} total paths`, 'info');
+
+    // 5. POST the deploy — Netlify returns which SHAs it needs uploaded
+    setDeployStatus('Creating new deploy…');
+    const deployR = await fetch(`https://api.netlify.com/api/v1/sites/${siteId}/deploys`, {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + pat, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ files: manifest, async: false })
+    });
+    if (!deployR.ok) {
+      const t = await deployR.text();
+      throw new Error('POST deploys failed: HTTP ' + deployR.status + ' — ' + t.slice(0, 200));
+    }
+    const deploy = await deployR.json();
+    const required = new Set(deploy.required || []);
+    log(`Deploy ${deploy.id} created — ${required.size} files need uploading`, 'info');
+
+    // 6. Upload only the files Netlify asks for
+    const allCandidates = [...codeFiles, ...newImages];
+    const seen = new Set();
+    const toUpload = [];
+    for (const item of allCandidates) {
+      if (!required.has(item.sha)) continue;
+      if (seen.has(item.sha)) continue; // skip duplicate SHAs (same file twice)
+      seen.add(item.sha);
+      toUpload.push(item);
+    }
+    if (required.size && !toUpload.length) {
+      log('Netlify wants files we don\'t have bytes for — possibly a permissions issue.', 'err');
+    }
+
+    let done = 0;
+    setProgress(0, toUpload.length);
+    for (const item of toUpload) {
+      setDeployStatus(`Uploading ${item.path}… (${done+1}/${toUpload.length})`);
+      const putR = await fetch(`https://api.netlify.com/api/v1/deploys/${deploy.id}/files${item.path}`, {
+        method: 'PUT',
+        headers: { 'Authorization': 'Bearer ' + pat, 'Content-Type': 'application/octet-stream' },
+        body: item.bytes
+      });
+      if (!putR.ok) {
+        const t = await putR.text();
+        throw new Error('PUT ' + item.path + ' failed: HTTP ' + putR.status + ' — ' + t.slice(0, 200));
+      }
+      log('  uploaded ' + item.path, 'ok');
+      done++; setProgress(done, toUpload.length);
+    }
+
+    // 7. Poll until ready
+    setDeployStatus('Waiting for Netlify to finalise the deploy…');
+    for (let i = 0; i < 40; i++) {
+      await new Promise(r => setTimeout(r, 1500));
+      const st = await fetch(`https://api.netlify.com/api/v1/deploys/${deploy.id}`, {
+        headers: { 'Authorization': 'Bearer ' + pat }
+      });
+      const sjson = await st.json();
+      if (sjson.state === 'ready') {
+        const url = document.getElementById('siteUrl').value.trim() || sjson.deploy_url || sjson.ssl_url;
+        setDeployStatus(`✓ Synced. Live at ${url}`, 'ok-text');
+        log('Deploy ready: ' + sjson.deploy_url, 'ok');
+        return;
+      }
+      if (sjson.state === 'error') {
+        throw new Error('Netlify reports deploy error: ' + (sjson.error_message || 'unknown'));
+      }
+    }
+    setDeployStatus('Deploy is taking longer than expected — check the Netlify dashboard.', 'warn');
+  } catch (e) {
+    setDeployStatus('Sync failed: ' + e.message, 'warn');
+    log('Sync failed: ' + e.message, 'err');
+  } finally {
+    document.getElementById('deployBtn').disabled = false;
+  }
+}
+
+// ─── Init ───
+document.getElementById('apiKey').value = localStorage.getItem(LS_KEY_GEMINI) || '';
+document.getElementById('netlifyPat').value = localStorage.getItem(LS_KEY_NETLIFY) || '';
+['gender-she','gender-he','gender-they'].forEach(id => document.getElementById(id).addEventListener('change', renderGrids));
+loadAllSkins();
+</script>
+</body>
+</html>

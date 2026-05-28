@@ -1,0 +1,10 @@
+{
+  "name": "strategic-force-assessment",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Strategic Force Assessment — single-page assessment app with Netlify Functions for centralised results.",
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0",
+    "@netlify/functions": "^3.0.0"
+  }
+}
