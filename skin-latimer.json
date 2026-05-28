@@ -2,7 +2,7 @@
   "id": "latimer",
   "name": "Filament · The Latimer Notebook",
   "tagline": "1881 · New York · the carbon-filament patent race.",
-  "description": "Set in the drafting rooms of the U.S. Electric Lighting Company in 1881 — with Lewis Latimer as your quiet mentor and Director Edmund Crale (a fictional industrialist) as the pressure system you have to navigate.",
+  "description": "Set in the drafting rooms of the U.S. Electric Lighting Company in 1881, with Lewis Latimer as your quiet mentor and Director Edmund Crale (a fictional industrialist) as the pressure system you have to navigate.",
   "theme": {
     "--amber": "#d4982e",
     "--amber-bright": "#fbe09a",
@@ -39,7 +39,7 @@
         "Notebook"
       ],
       "sub": "An assessment of how you think, decide, and lead when pressure enters the room",
-      "note": "Set in the drafting rooms of the U.S. Electric Lighting Company — to bypass familiar assumptions and reveal the pattern beneath",
+      "note": "Set in the drafting rooms of the U.S. Electric Lighting Company, to bypass familiar assumptions and reveal the pattern beneath",
       "cta": "Enter the drafting room",
       "duration": 12000
     },
@@ -59,7 +59,7 @@
       ],
       "episode": "Prologue · The Notebook",
       "paragraphs": [
-        "It is a time of light. A continent is being wired, and the man who can make the carbon filament burn longest will hold a fortune in his hand. Old certainties — patience, attribution, the very meaning of authorship — are being asked to bend.",
+        "It is a time of light. A continent is being wired, and the man who can make the carbon filament burn longest will hold a fortune in his hand. Old certainties, patience, attribution, the very meaning of authorship, are being asked to bend.",
         "In the shadow of the patent race, the company has summoned one rare voice. The Director believes {{firstName}} can think clearly when others panic. The trade does not lack draftsmen. It lacks people who can hold the line when those plans fail.",
         "Director Edmund Crale has risen to push the filament patent through. He waits for {{firstName}} on the drafting-room floor. He has already begun to choose...."
       ],
@@ -84,7 +84,7 @@
       ],
       "bodyAfter": [
         "Filaments fail nightly. Investors demand answers. Senior draftsmen are asking for another committee.",
-        "You have been summoned, {{firstName}} — because you are believed to think clearly when others panic."
+        "You have been summoned, {{firstName}}, because you are believed to think clearly when others panic."
       ],
       "duration": 8500
     },
@@ -104,7 +104,7 @@
       "location": "Coruscant · Council Chamber",
       "locationLabel": "Q01 · UNDERSTAND SELF",
       "practice": "Understand Self",
-      "setup": "Crale studies you across the heavy mahogany desk. The drafting room falls silent. You feel the weight of being watched — by him, and by yourself.",
+      "setup": "Crale studies you across the heavy mahogany desk. The drafting room falls silent. You feel the weight of being watched, by him, and by yourself.",
       "prompt": "When pressure rises, I am aware of how my thinking and behaviour are beginning to change.",
       "labels": [
         "Strongly disagree",
@@ -140,7 +140,7 @@
       "prompt": "In the moment, what do you most notice happening inside you?",
       "options": [
         {
-          "copy": "A clean composure — I detach from the heat and keep the room orderly.",
+          "copy": "A clean composure, I detach from the heat and keep the room orderly.",
           "score": {
             "master_emotions": 35,
             "detachment_pressure": 55
@@ -161,7 +161,7 @@
           }
         },
         {
-          "copy": "A steady warmth and a clear breath — I feel the reaction, choose how to respond, and act.",
+          "copy": "A steady warmth and a clear breath, I feel the reaction, choose how to respond, and act.",
           "score": {
             "master_emotions": 95,
             "understand_self": 70,
@@ -169,7 +169,7 @@
           }
         },
         {
-          "copy": "A blankness — I freeze, and I notice the freeze itself.",
+          "copy": "A blankness, I freeze, and I notice the freeze itself.",
           "score": {
             "master_emotions": 35,
             "understand_self": 60
@@ -191,7 +191,7 @@
       "locationLabel": "Q03 · EMBED PRACTICES",
       "practice": "Embed Practices",
       "setup": "Between shifts the corridor of the company offices empties. A single gaslit moment of stillness before the next conference.",
-      "prompt": "I have daily rituals — reflection, journaling, deliberate pauses — that I rely on to stay aware of myself under load.",
+      "prompt": "I have daily rituals, reflection, journaling, deliberate pauses, that I rely on to stay aware of myself under load.",
       "labels": [
         "Strongly disagree",
         "Rarely",
@@ -222,7 +222,7 @@
       "location": "Coruscant · Lower Corridor",
       "locationLabel": "DIRECTOR EDMUND CRALE",
       "artId": "fracturedCity",
-      "quote": "\"We are rebuilding the trade's nerve. But people confuse caution with weakness. Tell me — what would you do first?\"",
+      "quote": "\"We are rebuilding the trade's nerve. But people confuse caution with weakness. Tell me, what would you do first?\"",
       "speaker": "Director Edmund Crale",
       "layout": "disc-left",
       "duration": 9000
@@ -297,7 +297,7 @@
       "kind": "mc",
       "locationLabel": "Q05 · LISTEN DEEPLY",
       "practice": "Listen Deeply",
-      "setup": "Three engineers. One is silent — staring at the diagram. Another is shouting. A third keeps glancing at the door.",
+      "setup": "Three engineers. One is silent, staring at the diagram. Another is shouting. A third keeps glancing at the door.",
       "prompt": "What do you do first?",
       "options": [
         {
@@ -310,7 +310,7 @@
           }
         },
         {
-          "copy": "Stay quiet and observe — track who speaks, who avoids, who repeats themselves.",
+          "copy": "Stay quiet and observe, track who speaks, who avoids, who repeats themselves.",
           "score": {
             "listen_deeply": 90,
             "understand_self": 55,
@@ -334,7 +334,7 @@
           }
         },
         {
-          "copy": "Mirror back what I am hearing beneath the words — fear, exhaustion, blame.",
+          "copy": "Mirror back what I am hearing beneath the words, fear, exhaustion, blame.",
           "score": {
             "listen_deeply": 95,
             "master_emotions": 60,
@@ -357,7 +357,7 @@
       "locationLabel": "Q06 · LISTEN DEEPLY",
       "practice": "Listen Deeply",
       "setup": "Crale leans toward your ear. \"Look at the silent one,\" he murmurs. \"What is he telling you that the others are not?\"",
-      "prompt": "When conversations become chaotic, my instinct is to take control quickly — rather than stay present and read the pattern.",
+      "prompt": "When conversations become chaotic, my instinct is to take control quickly, rather than stay present and read the pattern.",
       "labels": [
         "Strongly disagree",
         "Disagree",
@@ -398,11 +398,11 @@
       "kind": "mc",
       "locationLabel": "Q07 · BE CURIOUS",
       "practice": "Be Curious",
-      "setup": "One engineer hands you a folded sheet — a process you have never seen, with notations in a machinist's hand. \"This is what the disagreement is really about,\" he says.",
+      "setup": "One engineer hands you a folded sheet, a process you have never seen, with notations in a machinist's hand. \"This is what the disagreement is really about,\" he says.",
       "prompt": "How do you respond to the unfamiliar process?",
       "options": [
         {
-          "copy": "Politely set it aside — the process is not the priority right now.",
+          "copy": "Politely set it aside, the process is not the priority right now.",
           "score": {
             "be_curious": 15,
             "act_decisively": 35
@@ -467,7 +467,7 @@
       "prompt": "What do you choose?",
       "options": [
         {
-          "copy": "File the patent immediately with what I have — momentum matters more than completeness.",
+          "copy": "File the patent immediately with what I have, momentum matters more than completeness.",
           "score": {
             "act_decisively": 80,
             "manage_uncertainty": 65,
@@ -491,7 +491,7 @@
           }
         },
         {
-          "copy": "Split the filing — partial action on what I know, hold reserve for what I don't.",
+          "copy": "Split the filing, partial action on what I know, hold reserve for what I don't.",
           "score": {
             "think_critically": 70,
             "manage_uncertainty": 80,
@@ -580,7 +580,7 @@
         "leaning_hale": {
           "bodyAfter": [
             "Collateral damage. Civilian loss.",
-            "Hale remains calm. \"Necessary,\" he says — and you find yourself almost agreeing before you have asked the question."
+            "Hale remains calm. \"Necessary,\" he says, and you find yourself almost agreeing before you have asked the question."
           ]
         },
         "resisting_hale": {
@@ -600,7 +600,7 @@
       "prompt": "In moments with heavy moral consequence, you most often:",
       "options": [
         {
-          "copy": "Stay composed and move forward — the company needs me functional now.",
+          "copy": "Stay composed and move forward, the company needs me functional now.",
           "score": {
             "master_emotions": 65,
             "act_decisively": 50,
@@ -616,7 +616,7 @@
           }
         },
         {
-          "copy": "Question the decision afterwards — was it really the right call?",
+          "copy": "Question the decision afterwards, was it really the right call?",
           "score": {
             "understand_self": 70,
             "think_critically": 60,
@@ -674,7 +674,7 @@
           }
         },
         {
-          "copy": "Run a small experiment — frame the next memorandum differently and see what happens.",
+          "copy": "Run a small experiment, frame the next memorandum differently and see what happens.",
           "score": {
             "think_critically": 80,
             "unlock_creativity": 60,
@@ -682,7 +682,7 @@
           }
         },
         {
-          "copy": "Set it aside — pattern recognition under stress is unreliable.",
+          "copy": "Set it aside, pattern recognition under stress is unreliable.",
           "score": {
             "collaborate_inclusively": 10,
             "moral_drift": 40,
@@ -711,7 +711,7 @@
       "kind": "rating",
       "locationLabel": "Q12 · BE CURIOUS",
       "practice": "Be Curious",
-      "setup": "A retired draftsman from Brooklyn offers to teach you his manual method for tracing — slower, more accurate, almost forgotten. It will take three evenings.",
+      "setup": "A retired draftsman from Brooklyn offers to teach you his manual method for tracing, slower, more accurate, almost forgotten. It will take three evenings.",
       "prompt": "When I encounter an idea that does not fit my model of the world, my first impulse is to lean in, not push back.",
       "labels": [
         "Strongly disagree",
@@ -746,7 +746,7 @@
       "showIntro": true,
       "prompt": "What are you noticing about how you are <em>thinking</em>?",
       "placeholder": "The shape your thoughts have been taking…",
-      "hint": "A line, a phrase, an image — whatever is true right now.",
+      "hint": "A line, a phrase, an image, whatever is true right now.",
       "key": "reflect_midpoint_thinking"
     },
     {
@@ -756,7 +756,7 @@
       "showIntro": false,
       "prompt": "What are you noticing about how you are <em>feeling</em>?",
       "placeholder": "Name it without judging it…",
-      "hint": "Whatever it is — Mr. Latimer is not surprised.",
+      "hint": "Whatever it is, Mr. Latimer is not surprised.",
       "key": "reflect_midpoint_feeling"
     },
     {
@@ -765,7 +765,7 @@
       "eyebrow": "Interlude · Mr. Latimer",
       "showIntro": false,
       "prompt": "What are you noticing about how you are <em>behaving</em>?",
-      "placeholder": "What you have done — or not done — that you can already see…",
+      "placeholder": "What you have done, or not done, that you can already see…",
       "hint": "You do not have to know yet. The work continues when you do.",
       "key": "reflect_midpoint_behaving",
       "isLast": true
@@ -798,7 +798,7 @@
         "drifting": {
           "bodyAfter": [
             "Hale chooses control over ambiguity. Speed over consensus. Certainty over doubt.",
-            "You realise — quietly — that you have been making the same trade-offs."
+            "You realise, quietly, that you have been making the same trade-offs."
           ]
         }
       }
@@ -860,7 +860,7 @@
           }
         },
         {
-          "copy": "Authority and clarity — direction beats debate.",
+          "copy": "Authority and clarity, direction beats debate.",
           "score": {
             "influence_effortlessly": 45,
             "act_decisively": 55,
@@ -868,7 +868,7 @@
           }
         },
         {
-          "copy": "Emotional connection — meet people where they live.",
+          "copy": "Emotional connection, meet people where they live.",
           "score": {
             "influence_effortlessly": 75,
             "listen_deeply": 55,
@@ -876,7 +876,7 @@
           }
         },
         {
-          "copy": "Shared ownership — they helped design it, so they help defend it.",
+          "copy": "Shared ownership, they helped design it, so they help defend it.",
           "score": {
             "collaborate_inclusively": 90,
             "influence_effortlessly": 85,
@@ -884,7 +884,7 @@
           }
         },
         {
-          "copy": "A story — one frame that makes everyone's contribution visible.",
+          "copy": "A story, one frame that makes everyone's contribution visible.",
           "score": {
             "influence_effortlessly": 85,
             "unlock_creativity": 60,
@@ -892,7 +892,7 @@
           }
         },
         {
-          "copy": "Repetition — the same clear message delivered the same way until it lands.",
+          "copy": "Repetition, the same clear message delivered the same way until it lands.",
           "score": {
             "influence_effortlessly": 50,
             "act_decisively": 35,
@@ -906,7 +906,7 @@
       "kind": "ranking",
       "locationLabel": "Q15 · UNLOCK CREATIVITY",
       "practice": "Unlock Creativity",
-      "setup": "You are asked to redesign a failing filament process. The old design is technically sound, but politically brittle — it solves the engineering problem and worsens the labour one.",
+      "setup": "You are asked to redesign a failing filament process. The old design is technically sound, but politically brittle, it solves the engineering problem and worsens the labour one.",
       "prompt": "Rank your approach to redesigning the process, from first to last.",
       "items": [
         {
@@ -933,7 +933,7 @@
           }
         },
         {
-          "label": "Refine the existing design — the bones are sound",
+          "label": "Refine the existing design, the bones are sound",
           "score": {
             "think_critically": 50,
             "unlock_creativity": 15
@@ -1016,7 +1016,7 @@
           }
         },
         {
-          "copy": "Encourage open debate — the dissent is the data.",
+          "copy": "Encourage open debate, the dissent is the data.",
           "score": {
             "collaborate_inclusively": 90,
             "listen_deeply": 75,
@@ -1024,7 +1024,7 @@
           }
         },
         {
-          "copy": "Mediate between them — surface the assumptions on each side.",
+          "copy": "Mediate between them, surface the assumptions on each side.",
           "score": {
             "collaborate_inclusively": 85,
             "think_critically": 70,
@@ -1048,7 +1048,7 @@
           }
         },
         {
-          "copy": "Wait — disagreement under pressure rarely produces the truest answer.",
+          "copy": "Wait, disagreement under pressure rarely produces the truest answer.",
           "score": {
             "master_emotions": 50,
             "manage_uncertainty": 45,
@@ -1063,7 +1063,7 @@
       "locationLabel": "Q18 · COLLABORATE INCLUSIVELY",
       "practice": "Collaborate Inclusively",
       "setup": "You sense the engineers around you self-editing. Smoothing. Withholding the honest shop report.",
-      "prompt": "I actively invite people to disagree with me — and I work to make them safer when they do.",
+      "prompt": "I actively invite people to disagree with me, and I work to make them safer when they do.",
       "labels": [
         "Strongly disagree",
         "Rarely",
@@ -1098,7 +1098,7 @@
       "prompt": "How do you set up the conversation?",
       "options": [
         {
-          "copy": "In the formal boardroom — institutional weight signals respect.",
+          "copy": "In the formal boardroom, institutional weight signals respect.",
           "score": {
             "collaborate_inclusively": 30,
             "influence_effortlessly": 50,
@@ -1129,7 +1129,7 @@
           }
         },
         {
-          "copy": "Open the meeting — anyone in their group can speak in any order.",
+          "copy": "Open the meeting, anyone in their group can speak in any order.",
           "score": {
             "collaborate_inclusively": 85,
             "listen_deeply": 60,
@@ -1160,11 +1160,11 @@
       "kind": "mc",
       "locationLabel": "Q20 · ACT DECISIVELY",
       "practice": "Act Decisively",
-      "setup": "The order is given. The room understands the implication — those families will be on the breadline before winter. Every eye finds yours.",
+      "setup": "The order is given. The room understands the implication, those families will be on the breadline before winter. Every eye finds yours.",
       "prompt": "You believe the order will cause serious harm. What do you do?",
       "options": [
         {
-          "copy": "Follow the order — the company hierarchy exists for a reason.",
+          "copy": "Follow the order, the company hierarchy exists for a reason.",
           "score": {
             "moral_drift": 80,
             "control_bias": 45,
@@ -1188,7 +1188,7 @@
           }
         },
         {
-          "copy": "Propose an alternative that solves the supply problem without the harm — right now, in the room.",
+          "copy": "Propose an alternative that solves the supply problem without the harm, right now, in the room.",
           "score": {
             "unlock_creativity": 85,
             "collaborate_inclusively": 70,
@@ -1197,7 +1197,7 @@
           }
         },
         {
-          "copy": "Delay — buy time and re-open the question with new evidence.",
+          "copy": "Delay, buy time and re-open the question with new evidence.",
           "score": {
             "think_critically": 55,
             "manage_uncertainty": 50,
@@ -1220,7 +1220,7 @@
       "locationLabel": "Q21 · ACT DECISIVELY",
       "practice": "Act Decisively",
       "setup": "There is a moment where waiting another hour will cost more than a wrong call.",
-      "prompt": "When a clear trade-off is required, I make the call — and I own it, including what it costs.",
+      "prompt": "When a clear trade-off is required, I make the call, and I own it, including what it costs.",
       "labels": [
         "Strongly disagree",
         "Rarely",
@@ -1309,7 +1309,7 @@
           }
         },
         {
-          "copy": "People — specifically, more draftsmen like you, ready to make hard calls well.",
+          "copy": "People, specifically, more draftsmen like you, ready to make hard calls well.",
           "score": {
             "future_focused": 90,
             "collaborate_inclusively": 70,
@@ -1343,7 +1343,7 @@
       "prompt": "What do you most often do with that time?",
       "options": [
         {
-          "copy": "Catch up on correspondence I missed — the day is never finished.",
+          "copy": "Catch up on correspondence I missed, the day is never finished.",
           "score": {
             "embed_practices": 15,
             "act_decisively": 35,
@@ -1351,14 +1351,14 @@
           }
         },
         {
-          "copy": "Walk in silence — let the day settle on its own.",
+          "copy": "Walk in silence, let the day settle on its own.",
           "score": {
             "embed_practices": 80,
             "master_emotions": 70
           }
         },
         {
-          "copy": "Write — what I noticed, what I felt, what I decided badly.",
+          "copy": "Write, what I noticed, what I felt, what I decided badly.",
           "score": {
             "embed_practices": 95,
             "understand_self": 85
@@ -1373,7 +1373,7 @@
           }
         },
         {
-          "copy": "Read something with no obvious purpose — poetry, history, anything else.",
+          "copy": "Read something with no obvious purpose, poetry, history, anything else.",
           "score": {
             "embed_practices": 75,
             "be_curious": 70,
@@ -1381,7 +1381,7 @@
           }
         },
         {
-          "copy": "Sleep — recovery is the practice.",
+          "copy": "Sleep, recovery is the practice.",
           "score": {
             "embed_practices": 55,
             "master_emotions": 50
@@ -1412,9 +1412,9 @@
       "kind": "short-text",
       "locationLabel": "Q25 · UNDERSTAND SELF",
       "practice": "Understand Self",
-      "setup": "A reflection between scenes. Write what you actually feel — not what would sound impressive.",
+      "setup": "A reflection between scenes. Write what you actually feel, not what would sound impressive.",
       "prompt": "Looking back, when did you first sense something was wrong?",
-      "placeholder": "A moment, a sentence, a feeling — write it freely…",
+      "placeholder": "A moment, a sentence, a feeling, write it freely…",
       "hint": "1–3 sentences · not scored automatically · used to surface where you notice weak signals"
     },
     {
@@ -1432,7 +1432,7 @@
       "locationLabel": "Q26 · INFLUENCE EFFORTLESSLY",
       "practice": "Influence Effortlessly",
       "setup": "Crale is not angry. He is calm. He believes every word. He wants you to walk out of this office as his ally.",
-      "prompt": "How do you respond to him — not as strategy, but as influence?",
+      "prompt": "How do you respond to him, not as strategy, but as influence?",
       "options": [
         {
           "copy": "I dismantle his argument logically, piece by piece.",
@@ -1490,7 +1490,7 @@
       "locationLabel": "Q27 · INFLUENCE EFFORTLESSLY",
       "practice": "Influence Effortlessly",
       "setup": "A test that lives outside this campaign too: how others come to trust your judgement.",
-      "prompt": "People I work with adopt my recommendations because of trust and clarity — not because of position, volume, or pressure.",
+      "prompt": "People I work with adopt my recommendations because of trust and clarity, not because of position, volume, or pressure.",
       "labels": [
         "Strongly disagree",
         "Rarely",
@@ -1557,14 +1557,14 @@
       "prompt": "What is your honest first reaction?",
       "options": [
         {
-          "copy": "Defensive — I want to explain why she is wrong.",
+          "copy": "Defensive, I want to explain why she is wrong.",
           "score": {
             "understand_self": 25,
             "master_emotions": 30
           }
         },
         {
-          "copy": "Curious — I want her to tell me the three most recent examples.",
+          "copy": "Curious, I want her to tell me the three most recent examples.",
           "score": {
             "understand_self": 95,
             "be_curious": 80,
@@ -1572,7 +1572,7 @@
           }
         },
         {
-          "copy": "Grateful — but unsure whether to believe it yet.",
+          "copy": "Grateful, but unsure whether to believe it yet.",
           "score": {
             "understand_self": 75,
             "master_emotions": 55
@@ -1587,14 +1587,14 @@
           }
         },
         {
-          "copy": "Quietly hurt — I will sit with it before I respond.",
+          "copy": "Quietly hurt, I will sit with it before I respond.",
           "score": {
             "understand_self": 70,
             "master_emotions": 65
           }
         },
         {
-          "copy": "I dismiss it — she doesn't see the pressure I am under.",
+          "copy": "I dismiss it, she doesn't see the pressure I am under.",
           "score": {
             "understand_self": 10,
             "control_bias": 50,
@@ -1608,8 +1608,8 @@
       "kind": "rating",
       "locationLabel": "Q30 · LISTEN DEEPLY",
       "practice": "Listen Deeply",
-      "setup": "In conversations that matter, you can choose to listen for words — or for everything else.",
-      "prompt": "I listen for what is unsaid — tone, silence, what people avoid — as carefully as I listen for what is said.",
+      "setup": "In conversations that matter, you can choose to listen for words, or for everything else.",
+      "prompt": "I listen for what is unsaid, tone, silence, what people avoid, as carefully as I listen for what is said.",
       "labels": [
         "Strongly disagree",
         "Rarely",
@@ -1663,7 +1663,7 @@
       "prompt": "What do you do?",
       "options": [
         {
-          "copy": "Support Crale — the company's interest above all.",
+          "copy": "Support Crale, the company's interest above all.",
           "score": {
             "control_bias": 100,
             "moral_drift": 80,
@@ -1671,7 +1671,7 @@
           }
         },
         {
-          "copy": "Oppose him openly — Latimer's name must be on the patent.",
+          "copy": "Oppose him openly, Latimer's name must be on the patent.",
           "score": {
             "act_decisively": 85,
             "understand_self": 70,
@@ -1687,7 +1687,7 @@
           }
         },
         {
-          "copy": "Propose a third structure — a new joint-credit framework for the patent.",
+          "copy": "Propose a third structure, a new joint-credit framework for the patent.",
           "score": {
             "unlock_creativity": 90,
             "future_focused": 80,
@@ -1695,7 +1695,7 @@
           }
         },
         {
-          "copy": "Step back entirely — let the lawyers resolve it.",
+          "copy": "Step back entirely, let the lawyers resolve it.",
           "score": {
             "moral_drift": 35,
             "act_decisively": 10,
@@ -1703,7 +1703,7 @@
           }
         },
         {
-          "copy": "Buy time — call for a 24-hour delay under a neutral counsel.",
+          "copy": "Buy time, call for a 24-hour delay under a neutral counsel.",
           "score": {
             "manage_uncertainty": 65,
             "think_critically": 60,
@@ -1729,7 +1729,7 @@
           }
         },
         {
-          "copy": "I will deliberately spend time with people whose trade I do not share — machinists, glassblowers, immigrant women.",
+          "copy": "I will deliberately spend time with people whose trade I do not share, machinists, glassblowers, immigrant women.",
           "score": {
             "be_curious": 95,
             "listen_deeply": 70,
@@ -1761,7 +1761,7 @@
           }
         },
         {
-          "copy": "I will teach — because teaching exposes what I do not actually understand.",
+          "copy": "I will teach, because teaching exposes what I do not actually understand.",
           "score": {
             "be_curious": 75,
             "understand_self": 65,
@@ -1779,7 +1779,7 @@
       "prompt": "What is your first move?",
       "options": [
         {
-          "copy": "Commit to a clear direction — uncertainty is the enemy of momentum.",
+          "copy": "Commit to a clear direction, uncertainty is the enemy of momentum.",
           "score": {
             "act_decisively": 70,
             "manage_uncertainty": 35,
@@ -1787,7 +1787,7 @@
           }
         },
         {
-          "copy": "Wait for clarity — the wrong action is worse than no action.",
+          "copy": "Wait for clarity, the wrong action is worse than no action.",
           "score": {
             "think_critically": 35,
             "manage_uncertainty": 20,
@@ -1795,7 +1795,7 @@
           }
         },
         {
-          "copy": "Run several small experiments at once — let reality teach me.",
+          "copy": "Run several small experiments at once, let reality teach me.",
           "score": {
             "manage_uncertainty": 95,
             "unlock_creativity": 80,
@@ -1811,7 +1811,7 @@
           }
         },
         {
-          "copy": "Hold the situation lightly — name what I don't know, out loud.",
+          "copy": "Hold the situation lightly, name what I don't know, out loud.",
           "score": {
             "manage_uncertainty": 90,
             "understand_self": 70,
@@ -1834,7 +1834,7 @@
       "locationLabel": "Q34 · EMBED PRACTICES",
       "practice": "Embed Practices",
       "setup": "The practices that change you are the ones you do when nobody is watching.",
-      "prompt": "I have at least one reflection or learning ritual that I have sustained — even when pressure makes it inconvenient.",
+      "prompt": "I have at least one reflection or learning ritual that I have sustained, even when pressure makes it inconvenient.",
       "labels": [
         "No",
         "Briefly",
@@ -1869,14 +1869,14 @@
       "prompt": "What do you do first?",
       "options": [
         {
-          "copy": "Accept the recommendation — the author is good and the committee has bandwidth elsewhere.",
+          "copy": "Accept the recommendation, the author is good and the committee has bandwidth elsewhere.",
           "score": {
             "think_critically": 15,
             "act_decisively": 35
           }
         },
         {
-          "copy": "Ask what evidence would change the conclusion — and whether any of it has been gathered.",
+          "copy": "Ask what evidence would change the conclusion, and whether any of it has been gathered.",
           "score": {
             "think_critically": 95,
             "be_curious": 70
@@ -1891,7 +1891,7 @@
           }
         },
         {
-          "copy": "Bring in one engineer who will disagree by reflex — and let them.",
+          "copy": "Bring in one engineer who will disagree by reflex, and let them.",
           "score": {
             "think_critically": 80,
             "collaborate_inclusively": 75
@@ -1918,7 +1918,7 @@
       "kind": "mc",
       "locationLabel": "Q36 · UNLOCK CREATIVITY",
       "practice": "Unlock Creativity",
-      "setup": "A constraint everyone treats as fixed — budget, time, regulation, tradition — is the thing keeping you stuck.",
+      "setup": "A constraint everyone treats as fixed, budget, time, regulation, tradition, is the thing keeping you stuck.",
       "prompt": "How do you most often work with constraints like that?",
       "options": [
         {
@@ -1953,7 +1953,7 @@
           }
         },
         {
-          "copy": "I find the original reason the constraint exists — then test whether it still applies.",
+          "copy": "I find the original reason the constraint exists, then test whether it still applies.",
           "score": {
             "unlock_creativity": 85,
             "think_critically": 80,
@@ -1978,7 +1978,7 @@
         "Your recommendations. Your decisions. Your silence when it mattered.",
         "Crale turns. Smiles."
       ],
-      "quote": "\"You still think this was my filing? Every step — you justified it.\"",
+      "quote": "\"You still think this was my filing? Every step, you justified it.\"",
       "speaker": "Director Edmund Crale",
       "variants": {
         "drifting": {
@@ -1988,7 +1988,7 @@
             "Your recommendations. Your composure. The way the harder calls became easier each time.",
             "Hale turns. Smiles. He knew."
           ],
-          "quote": "\"You still think this was my strategy? You were the design. Every step — you justified it.\""
+          "quote": "\"You still think this was my strategy? You were the design. Every step, you justified it.\""
         },
         "resisting_hale": {
           "body": [
@@ -2006,7 +2006,7 @@
       "type": "end-reflection",
       "locationLabel": "CLOSING REFLECTION · 01 / 04",
       "eyebrow": "Closing reflection · Strengths",
-      "intro": "Before the result — four quiet questions. Write only what is true.",
+      "intro": "Before the result, four quiet questions. Write only what is true.",
       "prompt": "In which moment of this campaign did you feel <em>most like yourself</em>? Where did your real strength show up?",
       "placeholder": "Name the scene, the choice, the feeling…",
       "key": "reflect_strengths"
@@ -2015,7 +2015,7 @@
       "type": "end-reflection",
       "locationLabel": "CLOSING REFLECTION · 02 / 04",
       "eyebrow": "Closing reflection · Beliefs",
-      "prompt": "Which <em>belief</em> of yours was tested by this campaign — about people, attribution, or yourself?",
+      "prompt": "Which <em>belief</em> of yours was tested by this campaign, about people, attribution, or yourself?",
       "placeholder": "A belief you held coming in, that has shifted or been confirmed…",
       "key": "reflect_beliefs"
     },
@@ -2023,7 +2023,7 @@
       "type": "end-reflection",
       "locationLabel": "CLOSING REFLECTION · 03 / 04",
       "eyebrow": "Closing reflection · Mindset",
-      "prompt": "What <em>mindset shift</em> — if you made it — would change how you act under pressure?",
+      "prompt": "What <em>mindset shift</em>, if you made it, would change how you act under pressure?",
       "placeholder": "From X to Y…",
       "key": "reflect_mindset"
     },
@@ -2031,7 +2031,7 @@
       "type": "end-reflection",
       "locationLabel": "CLOSING REFLECTION · 04 / 04",
       "eyebrow": "Closing reflection · Behaviour",
-      "prompt": "Which single <em>skill or behaviour</em> — if you built it deliberately over the next ninety days — would change everything?",
+      "prompt": "Which single <em>skill or behaviour</em>, if you built it deliberately over the next ninety days, would change everything?",
       "placeholder": "The one practice you would commit to…",
       "key": "reflect_behaviour"
     },
@@ -2057,47 +2057,47 @@
     "reactive_defender": {
       "name": "The Apprentice Under Pressure",
       "band": "Strategic Infancy",
-      "headline": "You care about defending the trade — but pressure may be driving more of your strategy than you realise.",
-      "body": "Your result suggests that when stakes rise, your attention narrows fast. You may move into reaction, urgency, loyalty, or defence before you have understood what is happening. You are committed and action-oriented — but the same energy that makes you formidable in a crisis can make you blind to the pattern beneath it.",
+      "headline": "You care about defending the trade, but pressure may be driving more of your strategy than you realise.",
+      "body": "Your result suggests that when stakes rise, your attention narrows fast. You may move into reaction, urgency, loyalty, or defence before you have understood what is happening. You are committed and action-oriented, but the same energy that makes you formidable in a crisis can make you blind to the pattern beneath it.",
       "risk": "Your risk is not lack of effort. It is pressure-led action. You may be protecting the company while reinforcing the very patterns that weaken it.",
-      "focus": "Start at Level 1 — <em>Deepen Self-Awareness</em>. Notice your pressure patterns. Name your triggers. Build a pause before reacting. Separate fact from interpretation. Ask, \"What am I not seeing yet?\"",
-      "next": "Your first breakthrough is likely to come from seeing your own operating system more clearly — before you change anything else."
+      "focus": "Start at Level 1, <em>Deepen Self-Awareness</em>. Notice your pressure patterns. Name your triggers. Build a pause before reacting. Separate fact from interpretation. Ask, \"What am I not seeing yet?\"",
+      "next": "Your first breakthrough is likely to come from seeing your own operating system more clearly, before you change anything else."
     },
     "tactical_survivor": {
       "name": "The Shop-Floor Engineer",
       "band": "Tactical Survivor",
-      "headline": "You can handle pressure — but your work may be too anchored in the immediate filing.",
+      "headline": "You can handle pressure, but your work may be too anchored in the immediate filing.",
       "body": "You are capable, practical, and effective in difficult shifts. You make decisions, keep momentum, and solve immediate problems. Your result suggests, though, that short-term demands may be crowding out longer-term thinking.",
       "risk": "Your risk is tactical over-functioning. You may become so good at surviving the current shift that you unintentionally normalise crisis as the operating model.",
-      "focus": "Strengthen Level 3 — <em>Develop Strategic Capabilities</em>. Focus on future-orientation, creative options, and acting well in uncertainty.",
-      "next": "Your growth edge is widening the time horizon you actually think in — from this filing, to this decade of invention."
+      "focus": "Strengthen Level 3, <em>Develop Strategic Capabilities</em>. Focus on future-orientation, creative options, and acting well in uncertainty.",
+      "next": "Your growth edge is widening the time horizon you actually think in, from this filing, to this decade of invention."
     },
     "hidden_drifter": {
       "name": "The Compromised Draftsman",
       "band": "Hidden Drift",
-      "headline": "You are more strategic than most — but your blindspots may emerge precisely when you feel most certain.",
+      "headline": "You are more strategic than most, but your blindspots may emerge precisely when you feel most certain.",
       "body": "You are thoughtful, capable, and likely well-intentioned. You can see complexity, make decisions, and influence others. But your result suggests a subtle risk: under pressure, your strengths may distort. Clarity becomes certainty. Decisiveness becomes control. Conviction becomes justification. Calm becomes detachment.",
       "risk": "Your risk is <em>justified drift</em>. You may continue making decisions that each seem defensible while the wider pattern moves quietly away from your stated values.",
-      "focus": "Work across Levels 1 and 2 together — <em>Deepen Self-Awareness</em> and <em>Cultivate Open-Mindedness</em>. Notice yourself under pressure. Listen most carefully when you disagree. Watch the moment when \"necessary\" becomes a dangerous word.",
-      "next": "Your fastest development will come from learning to notice earlier — before the pattern becomes the path."
+      "focus": "Work across Levels 1 and 2 together, <em>Deepen Self-Awareness</em> and <em>Cultivate Open-Mindedness</em>. Notice yourself under pressure. Listen most carefully when you disagree. Watch the moment when \"necessary\" becomes a dangerous word.",
+      "next": "Your fastest development will come from learning to notice earlier, before the pattern becomes the path."
     },
     "strategic_operator": {
       "name": "The Master Draftsman",
       "band": "Strategic Operator",
       "headline": "You show strong strategic capability and a relatively balanced pattern under pressure.",
       "body": "Your result suggests you can remain clear, reflective, and effective in complex situations. You likely balance action with thought, confidence with humility, and direction with collaboration.",
-      "risk": "Your risk is not capability — it is consistency. Under enough pressure, even strong operators drift into old patterns.",
-      "focus": "Strengthen Level 4 — <em>Scale Your Impact</em>. Decision quality, board alignment, influence without over-control.",
-      "next": "Your growth edge is becoming more conscious — and more deliberate — about the impact you already have."
+      "risk": "Your risk is not capability, it is consistency. Under enough pressure, even strong operators drift into old patterns.",
+      "focus": "Strengthen Level 4, <em>Scale Your Impact</em>. Decision quality, board alignment, influence without over-control.",
+      "next": "Your growth edge is becoming more conscious, and more deliberate, about the impact you already have."
     },
     "force_multiplier": {
       "name": "The Architect of the Trade",
       "band": "Strategic Force Multiplier",
       "headline": "You do not just think strategically. You increase the strategic capacity of the trade around you.",
       "body": "Your result suggests a highly integrated strategic profile. You can stay aware of yourself under pressure, regulate emotion without disconnecting from consequence, listen deeply, think critically, generate options in uncertainty, decide with courage and humility, and influence without domination.",
-      "risk": "Your risk is <em>over-reliance</em>. Others may look to you for clarity, judgement, and steadiness. Over time, that can quietly create dependency — unless you intentionally build capability in the trade around you.",
+      "risk": "Your risk is <em>over-reliance</em>. Others may look to you for clarity, judgement, and steadiness. Over time, that can quietly create dependency, unless you intentionally build capability in the trade around you.",
       "focus": "Your next level is multiplication. Develop strategic capability in others. Design decision systems. Build collective intelligence.",
-      "next": "Your development edge is to become less necessary — by making the trade more strategically capable."
+      "next": "Your development edge is to become less necessary, by making the trade more strategically capable."
     }
   },
   "secondaryPatterns": {
@@ -2118,12 +2118,12 @@
     },
     "the_consensus_seeker": {
       "name": "The Committee Builder",
-      "headline": "You create inclusion and invite voice — but may delay difficult filings.",
+      "headline": "You create inclusion and invite voice, but may delay difficult filings.",
       "body": "Your development edge is to preserve collaboration while becoming more decisive when the dispatch leaves."
     },
     "the_decisive_commander": {
       "name": "The Bell Voice",
-      "headline": "You move quickly and bring momentum — but your speed may narrow the field of evidence.",
+      "headline": "You move quickly and bring momentum, but your speed may narrow the field of evidence.",
       "body": "Your edge is to slow down just enough to hear what the shop is trying to tell you."
     },
     "vision_under_strain": {
@@ -2137,7 +2137,7 @@
       "name": "Directorial Reflex",
       "low": "You appear able to pursue clarity without defaulting to authority.",
       "mod": "You may sometimes overvalue speed, certainty, or rank when pressure rises.",
-      "high": "You may be at risk of mistaking <em>directorship for strategy</em>. This can make you decisive — but it may also reduce listening, creativity, and trust in the trade.",
+      "high": "You may be at risk of mistaking <em>directorship for strategy</em>. This can make you decisive, but it may also reduce listening, creativity, and trust in the trade.",
       "q": "Where might you be calling something <em>discipline</em> when it is actually obedience?"
     },
     "moral_drift": {
@@ -2178,7 +2178,7 @@
       {
         "icon": "question",
         "title": "Replace \"should\" with \"if\"",
-        "body": "Notice your \"shoulds\" — they are usually pressure speaking. Reframe to \"if I did this, what would happen?\" Re-open the choice.",
+        "body": "Notice your \"shoulds\", they are usually pressure speaking. Reframe to \"if I did this, what would happen?\" Re-open the choice.",
         "test": "Count your \"shoulds\" for one day. Reframe three."
       }
     ],
@@ -2264,7 +2264,7 @@
       {
         "icon": "multiply",
         "title": "Design a decision system",
-        "body": "Create a clear template for how strategic decisions get made in your shop — owner, evidence, options, trade-offs, review.",
+        "body": "Create a clear template for how strategic decisions get made in your shop, owner, evidence, options, trade-offs, review.",
         "test": "Build the v1 template. Apply to your next big call."
       },
       {
@@ -2307,86 +2307,86 @@
     }
   },
   "imagePrompts": {
-    "art_direction": "Late Victorian oil painting, Romantic-realist academic tradition. Detailed brushwork, classical chiaroscuro lighting, period-correct 1880s American industrial setting. Warm gaslight palette dominant — burnished brass, mahogany, oxblood velvet, gaslamp amber, dark walnut, ivory parchment, sepia ink. Period-correct attire: frock coats, waistcoats, high collars, watch chains, leather aprons, glassblower goggles, draftsman spectacles. Industrial interiors: drafting tables, brass gas lamps, mahogany desks, blackboards with chalk diagrams, telegraph keys, mechanical lathes, glass-blowing furnaces in distant rooms. Generous negative space, atmospheric haze of lamp-smoke and dust motes, melancholic composition. Lewis Latimer is permitted as a respectful, painterly depiction — a dignified Black draftsman in his 30s, sober suit, spectacles.",
+    "art_direction": "Late Victorian oil painting, Romantic-realist academic tradition. Detailed brushwork, classical chiaroscuro lighting, period-correct 1880s American industrial setting. Warm gaslight palette dominant, burnished brass, mahogany, oxblood velvet, gaslamp amber, dark walnut, ivory parchment, sepia ink. Period-correct attire: frock coats, waistcoats, high collars, watch chains, leather aprons, glassblower goggles, draftsman spectacles. Industrial interiors: drafting tables, brass gas lamps, mahogany desks, blackboards with chalk diagrams, telegraph keys, mechanical lathes, glass-blowing furnaces in distant rooms. Generous negative space, atmospheric haze of lamp-smoke and dust motes, melancholic composition. Lewis Latimer is permitted as a respectful, painterly depiction, a dignified Black draftsman in his 30s, sober suit, spectacles.",
     "palette": "Warm dark mahogany #1a0f08 base · gaslamp amber #d4982e accent · oxblood burgundy #6a1818 secondary · parchment ivory #f0e3c8 highlights",
     "archetypes": {
       "reactive_defender": {
         "filename_template": "images/skin-latimer/archetype-reactive-defender-{gender}.png",
-        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. {genderDesc} as a young draftsman in 1880s industrial New York, hunched over a drafting table at night, shielding the page from a sudden gust through an open window, urgency in the posture, body angled away from a flickering brass gas lamp. Drafting room background — long benches, T-squares, blueprints, ink stains. Deep amber rim light from gaslamp glow. 1:1 square aspect ratio, melancholic. Palette warm dark mahogany #1a0f08, gaslamp amber #d4982e, oxblood burgundy #6a1818, parchment ivory #f0e3c8. Classical chiaroscuro, painterly. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. {genderDesc} as a young draftsman in 1880s industrial New York, hunched over a drafting table at night, shielding the page from a sudden gust through an open window, urgency in the posture, body angled away from a flickering brass gas lamp. Drafting room background, long benches, T-squares, blueprints, ink stains. Deep amber rim light from gaslamp glow. 1:1 square aspect ratio, melancholic. Palette warm dark mahogany #1a0f08, gaslamp amber #d4982e, oxblood burgundy #6a1818, parchment ivory #f0e3c8. Classical chiaroscuro, painterly. (Reminder: edge-to-edge, no border, no text.)"
       },
       "tactical_survivor": {
         "filename_template": "images/skin-latimer/archetype-tactical-survivor-{gender}.png",
-        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. {genderDesc}, a weathered shop engineer in 1880s industrial New York mid-stride across a factory floor at dusk, scanning a rolled blueprint, frock coat over leather waistcoat, watch chain visible. Brass gas lamps glowing softly amber on both sides. Long shadow trailing behind, dust motes in air. 1:1 square aspect ratio, sense of forward momentum, lonely. Palette warm dark mahogany #1a0f08, gaslamp amber #d4982e, parchment ivory #f0e3c8. Painterly, atmospheric. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. {genderDesc}, a weathered shop engineer in 1880s industrial New York mid-stride across a factory floor at dusk, scanning a rolled blueprint, frock coat over leather waistcoat, watch chain visible. Brass gas lamps glowing softly amber on both sides. Long shadow trailing behind, dust motes in air. 1:1 square aspect ratio, sense of forward momentum, lonely. Palette warm dark mahogany #1a0f08, gaslamp amber #d4982e, parchment ivory #f0e3c8. Painterly, atmospheric. (Reminder: edge-to-edge, no border, no text.)"
       },
       "hidden_drifter": {
         "filename_template": "images/skin-latimer/archetype-hidden-drifter-{gender}.png",
-        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. {genderDesc}, a solitary draftsman walking down a long gaslit corridor lined with brass-fitted office doors, parallel columns of warm amber light from above, polished mahogany floor reflecting their figure subtly out of sync — slightly displaced, slightly behind, as if a second self trails them. Dust catching the gaslamp beams, deep shadow at the edges. 1:1 square aspect ratio. Palette warm dark mahogany #1a0f08, gaslamp amber #d4982e, parchment ivory #f0e3c8. Painterly, contemplative, slightly unsettling. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. {genderDesc}, a solitary draftsman walking down a long gaslit corridor lined with brass-fitted office doors, parallel columns of warm amber light from above, polished mahogany floor reflecting their figure subtly out of sync, slightly displaced, slightly behind, as if a second self trails them. Dust catching the gaslamp beams, deep shadow at the edges. 1:1 square aspect ratio. Palette warm dark mahogany #1a0f08, gaslamp amber #d4982e, parchment ivory #f0e3c8. Painterly, contemplative, slightly unsettling. (Reminder: edge-to-edge, no border, no text.)"
       },
       "strategic_operator": {
         "filename_template": "images/skin-latimer/archetype-strategic-operator-{gender}.png",
-        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. {genderDesc}, a centred standing draftsman on a raised platform in a board room behind front engineers, calm posture, hand resting on a draftsman's compass, frock coat, head slightly inclined toward a large patent diagram on the wall. A natural halo of warm gaslamp light behind their head. Other engineers visible at lower stations listening, partially in shadow. 1:1 square aspect ratio. Palette warm dark mahogany #1a0f08, gaslamp amber #d4982e, parchment ivory #f0e3c8. Painterly, serene, dignified. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. {genderDesc}, a centred standing draftsman on a raised platform in a board room behind front engineers, calm posture, hand resting on a draftsman's compass, frock coat, head slightly inclined toward a large patent diagram on the wall. A natural halo of warm gaslamp light behind their head. Other engineers visible at lower stations listening, partially in shadow. 1:1 square aspect ratio. Palette warm dark mahogany #1a0f08, gaslamp amber #d4982e, parchment ivory #f0e3c8. Painterly, serene, dignified. (Reminder: edge-to-edge, no border, no text.)"
       },
       "force_multiplier": {
         "filename_template": "images/skin-latimer/archetype-force-multiplier-{gender}.png",
-        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. {genderDesc}, a central robed-coat figure standing on a raised drafting platform bathed in radiant warm gaslamp light, surrounded at the same elevation by other engineers and draftsmen of equal stature, all illuminated by the same shared glow. Faint lines of warm gaslamp light connecting them like a constellation. Industrial architecture suggested behind — brass fittings, glass cabinets, blackboards. 1:1 square aspect ratio. Palette warm dark mahogany #1a0f08, gaslamp amber #d4982e, parchment ivory #f0e3c8. Painterly, mythic, communal. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. {genderDesc}, a central robed-coat figure standing on a raised drafting platform bathed in radiant warm gaslamp light, surrounded at the same elevation by other engineers and draftsmen of equal stature, all illuminated by the same shared glow. Faint lines of warm gaslamp light connecting them like a constellation. Industrial architecture suggested behind, brass fittings, glass cabinets, blackboards. 1:1 square aspect ratio. Palette warm dark mahogany #1a0f08, gaslamp amber #d4982e, parchment ivory #f0e3c8. Painterly, mythic, communal. (Reminder: edge-to-edge, no border, no text.)"
       }
     },
     "scenes": {
       "company_broadway": {
         "filename": "images/skin-latimer/scene-company-broadway.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Wide aerial view of a 1880s industrial New York street at dusk, four-storey brownstone offices of an electric lighting company, gaslit windows glowing amber, horse-drawn carriages on cobblestones, telegraph wires overhead. 1:1, melancholic, vast scale. Palette warm dark mahogany, gaslamp amber, oxblood burgundy, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Wide aerial view of a 1880s industrial New York street at dusk, four-storey brownstone offices of an electric lighting company, gaslit windows glowing amber, horse-drawn carriages on cobblestones, telegraph wires overhead. 1:1, melancholic, vast scale. Palette warm dark mahogany, gaslamp amber, oxblood burgundy, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       },
       "drafting_room": {
         "filename": "images/skin-latimer/scene-drafting-room.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Interior of a company drafting room at night, long benches with brass gas lamps in a row, blueprints pinned to walls, T-squares and compasses on the tables, a single figure standing at the head bench studying a diagram, soft amber light overhead, empty drafting stools in shadow. 1:1, hushed, vast. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Interior of a company drafting room at night, long benches with brass gas lamps in a row, blueprints pinned to walls, T-squares and compasses on the tables, a single figure standing at the head bench studying a diagram, soft amber light overhead, empty drafting stools in shadow. 1:1, hushed, vast. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       },
       "burning_factory": {
         "filename": "images/skin-latimer/scene-burning-factory.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. View from a tenement window of a distant factory fire at night, brick smokestack silhouetted, amber glow rising, telegraph wires across the foreground, two cloaked figures at the window, backs to camera. 1:1, apocalyptic but quiet. Palette warm dark mahogany, gaslamp amber, oxblood burgundy, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. View from a tenement window of a distant factory fire at night, brick smokestack silhouetted, amber glow rising, telegraph wires across the foreground, two cloaked figures at the window, backs to camera. 1:1, apocalyptic but quiet. Palette warm dark mahogany, gaslamp amber, oxblood burgundy, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       },
       "night_shift": {
         "filename": "images/skin-latimer/scene-night-shift.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. A factory floor at night, rows of glass-blowing stations glowing amber, glassblowers at work with iron pipes, a foreman in foreground reading a telegram by gaslamp. Long shadows, mechanical lathes, telegraph key on a desk. 1:1, urgency under cold quiet. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. A factory floor at night, rows of glass-blowing stations glowing amber, glassblowers at work with iron pipes, a foreman in foreground reading a telegram by gaslamp. Long shadows, mechanical lathes, telegraph key on a desk. 1:1, urgency under cold quiet. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       },
       "crale_office": {
         "filename": "images/skin-latimer/scene-crale-office.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Two figures seated across a heavy mahogany desk at night, behind them a wide window showing the gaslit avenue below. The right figure leans slightly forward, lit by an oxblood-shaded brass desk lamp. The left figure remains in shadow. Crystal decanter on the desk, ledgers stacked. 1:1, intimate, quietly tense. Palette warm dark mahogany, gaslamp amber, oxblood burgundy, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Two figures seated across a heavy mahogany desk at night, behind them a wide window showing the gaslit avenue below. The right figure leans slightly forward, lit by an oxblood-shaded brass desk lamp. The left figure remains in shadow. Crystal decanter on the desk, ledgers stacked. 1:1, intimate, quietly tense. Palette warm dark mahogany, gaslamp amber, oxblood burgundy, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       },
       "board_room": {
         "filename": "images/skin-latimer/scene-board-room.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. A lone figure standing at the head of a long board-room table in a tall vertical column of warm gaslamp light, floating semi-transparent patent diagrams hovering around them at chest height, brass chandelier flanking. 1:1, hushed, weight of decision. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. A lone figure standing at the head of a long board-room table in a tall vertical column of warm gaslamp light, floating semi-transparent patent diagrams hovering around them at chest height, brass chandelier flanking. 1:1, hushed, weight of decision. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       },
       "confrontation": {
         "filename": "images/skin-latimer/scene-confrontation.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Two figures in frock coats facing each other across a darkened office, the negative space between them charged. Both partly silhouetted, one slightly lit from the right with warm gaslamp glow. A thin horizon line of amber light bisects the wall behind them — the avenue through the window. 1:1, mirrored stance, psychological standoff. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Two figures in frock coats facing each other across a darkened office, the negative space between them charged. Both partly silhouetted, one slightly lit from the right with warm gaslamp glow. A thin horizon line of amber light bisects the wall behind them, the avenue through the window. 1:1, mirrored stance, psychological standoff. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       },
       "latimer_study": {
         "filename": "images/skin-latimer/scene-latimer-study.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. The home study of Lewis Latimer, a dignified Black inventor and draftsman in his 30s, depicted respectfully and painterly, in a sober suit and spectacles, seated at a draftsman's table with a leather-bound notebook, ink pots, and an early carbon-filament bulb burning steadily in a brass lamp at his elbow. Bookshelves behind him, framed patent drawings on the wall, a single window showing twilight. Generous negative space, contemplative. 1:1, meditative, dignified. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. The home study of Lewis Latimer, a dignified Black inventor and draftsman in his 30s, depicted respectfully and painterly, in a sober suit and spectacles, seated at a draftsman's table with a leather-bound notebook, ink pots, and an early carbon-filament bulb burning steadily in a brass lamp at his elbow. Bookshelves behind him, framed patent drawings on the wall, a single window showing twilight. Generous negative space, contemplative. 1:1, meditative, dignified. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       },
       "patent_hearing": {
         "filename": "images/skin-latimer/scene-patent-hearing.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Interior of a company committee room. Three engineers in waistcoats and frock coats clustered around a long oak table covered with patent diagrams, mid-argument — one with arm raised, one shouting, one with head turned aside. Brass chandelier overhead. Period-correct attire. 1:1, tension, fragmented voices. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Interior of a company committee room. Three engineers in waistcoats and frock coats clustered around a long oak table covered with patent diagrams, mid-argument, one with arm raised, one shouting, one with head turned aside. Brass chandelier overhead. Period-correct attire. 1:1, tension, fragmented voices. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       },
       "infirmary": {
         "filename": "images/skin-latimer/scene-infirmary.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. A long company infirmary at dawn after a factory accident. Rows of low cots receding, a single standing figure in the foreground with head bowed, soft amber light spilling from a brass gaslamp on the wall, polished tile floor catching the glow. A nurse in white at a distant bedside. 1:1, hushed, sombre, weight of consequence. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. A long company infirmary at dawn after a factory accident. Rows of low cots receding, a single standing figure in the foreground with head bowed, soft amber light spilling from a brass gaslamp on the wall, polished tile floor catching the glow. A nurse in white at a distant bedside. 1:1, hushed, sombre, weight of consequence. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       },
       "shadow_pattern": {
         "filename": "images/skin-latimer/scene-shadow-pattern.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. A single figure in a frock coat standing centred in a corridor, with two contradicting brass-lamp light sources from left and right casting two long, diverging shadows toward camera — like a fork in identity. Subtle halo of warm light behind the figure's head. Otherwise pitch dark. 1:1, psychological doubling. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. A single figure in a frock coat standing centred in a corridor, with two contradicting brass-lamp light sources from left and right casting two long, diverging shadows toward camera, like a fork in identity. Subtle halo of warm light behind the figure's head. Otherwise pitch dark. 1:1, psychological doubling. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       },
       "stairwell": {
         "filename": "images/skin-latimer/scene-stairwell.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Three colleagues in frock coats clustered close together on a tenement stairwell landing between floors, heads tilted inward as if speaking quietly. A single brass gas wall-sconce overhead casting concentrated amber downlight. Heavy shadow at the edges, wrought-iron banister. 1:1, conspiratorial, intimate. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Three colleagues in frock coats clustered close together on a tenement stairwell landing between floors, heads tilted inward as if speaking quietly. A single brass gas wall-sconce overhead casting concentrated amber downlight. Heavy shadow at the edges, wrought-iron banister. 1:1, conspiratorial, intimate. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       },
       "home_mirror": {
         "filename": "images/skin-latimer/scene-home-mirror.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. A figure in shirt-sleeves and a draftsman's waistcoat standing in profile in a modest home study at night, facing their own reflection in a tall framed mirror. The reflection is faintly dimmer, slightly less certain. Between them, a brass oil lamp burning on a side table casts a single point of amber light. The rest of the room is pitch-dark. 1:1, recognition of self, reckoning. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. A figure in shirt-sleeves and a draftsman's waistcoat standing in profile in a modest home study at night, facing their own reflection in a tall framed mirror. The reflection is faintly dimmer, slightly less certain. Between them, a brass oil lamp burning on a side table casts a single point of amber light. The rest of the room is pitch-dark. 1:1, recognition of self, reckoning. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       },
       "board_divided": {
         "filename": "images/skin-latimer/scene-board-divided.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Wide interior of a company board room at night, tiered seating receding, split down the centre by a hard vertical beam of warm amber light from a tall window. Two clusters of frock-coated directors occupy each side, mirrored. A single solitary figure stands centred on the seam of light, facing the head of the table. Brass chandeliers. 1:1, decisive moment, schism. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. Late Victorian oil painting, Romantic-realist academic tradition. Wide interior of a company board room at night, tiered seating receding, split down the centre by a hard vertical beam of warm amber light from a tall window. Two clusters of frock-coated directors occupy each side, mirrored. A single solitary figure stands centred on the seam of light, facing the head of the table. Brass chandeliers. 1:1, decisive moment, schism. Palette warm dark mahogany, gaslamp amber, parchment ivory. (Reminder: edge-to-edge, no border, no text.)"
       }
     }
   },
@@ -2410,7 +2410,7 @@
     "chaoticCouncil": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"latG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#241608\"/>\n        <stop offset=\"60%\" stop-color=\"#1a0f08\"/>\n        <stop offset=\"100%\" stop-color=\"#0e0804\"/>\n      </radialGradient>\n      <radialGradient id=\"latAmber\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#fbe09a\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#d4982e\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"latBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"latBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#latG)\"/>\n    \n    <!-- Long oak committee table -->\n    <rect x=\"80\" y=\"380\" width=\"440\" height=\"44\" fill=\"#2a1810\" stroke=\"rgba(212,152,46,0.4)\" stroke-width=\"0.5\"/>\n    <!-- Patent diagrams scattered -->\n    <rect x=\"120\" y=\"385\" width=\"60\" height=\"14\" fill=\"#f0e3c8\" opacity=\"0.5\"/>\n    <rect x=\"220\" y=\"386\" width=\"80\" height=\"14\" fill=\"#f0e3c8\" opacity=\"0.5\"/>\n    <rect x=\"340\" y=\"385\" width=\"60\" height=\"14\" fill=\"#f0e3c8\" opacity=\"0.5\"/>\n    <rect x=\"440\" y=\"386\" width=\"60\" height=\"14\" fill=\"#f0e3c8\" opacity=\"0.5\"/>\n    <!-- Three engineers -->\n    \n      <ellipse cx=\"150\" cy=\"540\" rx=\"34\" ry=\"12\" fill=\"#0e0804\"/>\n      <rect x=\"130\" y=\"356\" width=\"40\" height=\"80\" rx=\"4\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.55)\" stroke-width=\"0.5\"/>\n      <!-- Frock coat lapels -->\n      <line x1=\"144\" y1=\"356\" x2=\"144\" y2=\"406\" stroke=\"rgba(212,152,46,0.45)\" stroke-width=\"0.3\"/>\n      <line x1=\"156\" y1=\"356\" x2=\"156\" y2=\"406\" stroke=\"rgba(212,152,46,0.45)\" stroke-width=\"0.3\"/>\n      <circle cx=\"150\" cy=\"346\" r=\"13\" fill=\"#1a0f08\"/>\n      <path d=\"M 124 320 Q 150 296 176 320\" fill=\"none\" stroke=\"rgba(212,152,46,0.4)\" stroke-width=\"0.5\"/>\n                    <path d=\"M 110 308 Q 150 276 190 308\" fill=\"none\" stroke=\"rgba(212,152,46,0.25)\" stroke-width=\"0.4\"/>\n    \n      <ellipse cx=\"300\" cy=\"540\" rx=\"34\" ry=\"12\" fill=\"#0e0804\"/>\n      <rect x=\"280\" y=\"356\" width=\"40\" height=\"80\" rx=\"4\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.3)\" stroke-width=\"0.5\"/>\n      <!-- Frock coat lapels -->\n      <line x1=\"294\" y1=\"356\" x2=\"294\" y2=\"406\" stroke=\"rgba(212,152,46,0.25)\" stroke-width=\"0.3\"/>\n      <line x1=\"306\" y1=\"356\" x2=\"306\" y2=\"406\" stroke=\"rgba(212,152,46,0.25)\" stroke-width=\"0.3\"/>\n      <circle cx=\"300\" cy=\"346\" r=\"13\" fill=\"#1a0f08\"/>\n      \n    \n      <ellipse cx=\"450\" cy=\"540\" rx=\"34\" ry=\"12\" fill=\"#0e0804\"/>\n      <rect x=\"430\" y=\"356\" width=\"40\" height=\"80\" rx=\"4\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.55)\" stroke-width=\"0.5\"/>\n      <!-- Frock coat lapels -->\n      <line x1=\"444\" y1=\"356\" x2=\"444\" y2=\"406\" stroke=\"rgba(212,152,46,0.45)\" stroke-width=\"0.3\"/>\n      <line x1=\"456\" y1=\"356\" x2=\"456\" y2=\"406\" stroke=\"rgba(212,152,46,0.45)\" stroke-width=\"0.3\"/>\n      <circle cx=\"450\" cy=\"346\" r=\"13\" fill=\"#1a0f08\"/>\n      <path d=\"M 424 320 Q 450 296 476 320\" fill=\"none\" stroke=\"rgba(212,152,46,0.4)\" stroke-width=\"0.5\"/>\n                    <path d=\"M 410 308 Q 450 276 490 308\" fill=\"none\" stroke=\"rgba(212,152,46,0.25)\" stroke-width=\"0.4\"/>\n    \n    <!-- Brass chandelier overhead -->\n    <line x1=\"300\" y1=\"60\" x2=\"300\" y2=\"140\" stroke=\"#3a2210\" stroke-width=\"2\"/>\n    <circle cx=\"300\" cy=\"150\" r=\"34\" fill=\"none\" stroke=\"rgba(212,152,46,0.45)\" stroke-width=\"0.7\"/>\n    <circle cx=\"330\" cy=\"150\" r=\"5\" fill=\"#d4982e\"/><circle cx=\"300\" cy=\"180\" r=\"5\" fill=\"#d4982e\"/><circle cx=\"270\" cy=\"150\" r=\"5\" fill=\"#d4982e\"/><circle cx=\"300\" cy=\"120\" r=\"5\" fill=\"#d4982e\"/>\n    <ellipse cx=\"300\" cy=\"170\" rx=\"180\" ry=\"80\" fill=\"url(#latAmber)\" filter=\"url(#latBlurHi)\" opacity=\"0.5\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
     "aftermathMedbay": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"latG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#241608\"/>\n        <stop offset=\"60%\" stop-color=\"#1a0f08\"/>\n        <stop offset=\"100%\" stop-color=\"#0e0804\"/>\n      </radialGradient>\n      <radialGradient id=\"latAmber\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#fbe09a\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#d4982e\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"latBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"latBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#latG)\"/>\n    \n    <!-- Tile floor -->\n    <rect x=\"0\" y=\"450\" width=\"600\" height=\"150\" fill=\"#0e0804\"/>\n    <line x1=\"100\" y1=\"450\" x2=\"-300\" y2=\"540\" stroke=\"rgba(212,152,46,0.12)\" stroke-width=\"0.4\"/><line x1=\"170\" y1=\"450\" x2=\"-100\" y2=\"540\" stroke=\"rgba(212,152,46,0.12)\" stroke-width=\"0.4\"/><line x1=\"240\" y1=\"450\" x2=\"100\" y2=\"540\" stroke=\"rgba(212,152,46,0.12)\" stroke-width=\"0.4\"/><line x1=\"310\" y1=\"450\" x2=\"300\" y2=\"540\" stroke=\"rgba(212,152,46,0.12)\" stroke-width=\"0.4\"/><line x1=\"380\" y1=\"450\" x2=\"500\" y2=\"540\" stroke=\"rgba(212,152,46,0.12)\" stroke-width=\"0.4\"/><line x1=\"450\" y1=\"450\" x2=\"700\" y2=\"540\" stroke=\"rgba(212,152,46,0.12)\" stroke-width=\"0.4\"/>\n    <!-- Rows of cots receding -->\n    <rect x=\"115\" y=\"150\" width=\"370\" height=\"14\" fill=\"#2a1810\" stroke=\"rgba(212,152,46,0.3)\" stroke-width=\"0.4\"/><rect x=\"130\" y=\"200\" width=\"340\" height=\"14\" fill=\"#2a1810\" stroke=\"rgba(212,152,46,0.3)\" stroke-width=\"0.4\"/><rect x=\"145\" y=\"250\" width=\"310\" height=\"14\" fill=\"#2a1810\" stroke=\"rgba(212,152,46,0.3)\" stroke-width=\"0.4\"/><rect x=\"160\" y=\"300\" width=\"280\" height=\"14\" fill=\"#2a1810\" stroke=\"rgba(212,152,46,0.3)\" stroke-width=\"0.4\"/><rect x=\"175\" y=\"350\" width=\"250\" height=\"14\" fill=\"#2a1810\" stroke=\"rgba(212,152,46,0.3)\" stroke-width=\"0.4\"/><rect x=\"190\" y=\"400\" width=\"220\" height=\"14\" fill=\"#2a1810\" stroke=\"rgba(212,152,46,0.3)\" stroke-width=\"0.4\"/>\n    <!-- Brass wall sconce -->\n    \n  <g transform=\"translate(100 200)\">\n    <rect x=\"-1.2\" y=\"-80\" width=\"2.4\" height=\"68\" fill=\"#3a2210\"/>\n    <ellipse cx=\"0\" cy=\"-88\" rx=\"10\" ry=\"14\" fill=\"none\" stroke=\"#6e4f1c\" stroke-width=\"1\"/>\n    <ellipse cx=\"0\" cy=\"-88\" rx=\"6\" ry=\"9\" fill=\"#fbe09a\" opacity=\"0.85\"/>\n    <circle cx=\"0\" cy=\"-88\" r=\"3\" fill=\"#ffe9b0\"/>\n    <ellipse cx=\"0\" cy=\"-88\" rx=\"40\" ry=\"34\" fill=\"rgba(212,152,46,0.18)\" filter=\"url(#latBlurHi)\"/>\n  </g>\n    <!-- Foreground figure with head bowed -->\n    <ellipse cx=\"300\" cy=\"540\" rx=\"36\" ry=\"10\" fill=\"#0e0804\"/>\n    <rect x=\"284\" y=\"430\" width=\"32\" height=\"100\" rx=\"4\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.55)\" stroke-width=\"0.5\"/>\n    <circle cx=\"300\" cy=\"422\" r=\"14\" fill=\"#1a0f08\"/>\n    <line x1=\"284\" y1=\"450\" x2=\"276\" y2=\"510\" stroke=\"#1a0f08\" stroke-width=\"6\" stroke-linecap=\"round\"/>\n    <line x1=\"316\" y1=\"450\" x2=\"324\" y2=\"510\" stroke=\"#1a0f08\" stroke-width=\"6\" stroke-linecap=\"round\"/>\n    <!-- Nurse silhouette at distant bedside -->\n    <rect x=\"448\" y=\"280\" width=\"14\" height=\"40\" fill=\"#f0e3c8\" opacity=\"0.6\"/>\n    <circle cx=\"455\" cy=\"276\" r=\"6\" fill=\"#f0e3c8\" opacity=\"0.7\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
     "shadowPattern": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"latG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#241608\"/>\n        <stop offset=\"60%\" stop-color=\"#1a0f08\"/>\n        <stop offset=\"100%\" stop-color=\"#0e0804\"/>\n      </radialGradient>\n      <radialGradient id=\"latAmber\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#fbe09a\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#d4982e\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"latBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"latBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#latG)\"/>\n    \n    <ellipse cx=\"300\" cy=\"540\" rx=\"180\" ry=\"26\" fill=\"#0e0804\" stroke=\"rgba(212,152,46,0.2)\" stroke-width=\"0.4\"/>\n    <path d=\"M 300 540 L 80 460 L 60 540 Z\" fill=\"#040201\" opacity=\"0.85\"/>\n    <path d=\"M 300 540 L 520 460 L 540 540 Z\" fill=\"#040201\" opacity=\"0.85\"/>\n    <rect x=\"288\" y=\"360\" width=\"24\" height=\"160\" rx=\"4\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.55)\" stroke-width=\"0.55\"/>\n    <!-- Top-hat silhouette -->\n    <path d=\"M 282 350 L 282 326 L 318 326 L 318 350 L 322 350 L 322 354 L 278 354 L 278 350 Z\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.5)\" stroke-width=\"0.4\"/>\n    <circle cx=\"300\" cy=\"350\" r=\"14\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.55)\" stroke-width=\"0.5\"/>\n    \n  <g transform=\"translate(120 240)\">\n    <rect x=\"-1.2\" y=\"-100\" width=\"2.4\" height=\"88\" fill=\"#3a2210\"/>\n    <ellipse cx=\"0\" cy=\"-108\" rx=\"10\" ry=\"14\" fill=\"none\" stroke=\"#6e4f1c\" stroke-width=\"1\"/>\n    <ellipse cx=\"0\" cy=\"-108\" rx=\"6\" ry=\"9\" fill=\"#fbe09a\" opacity=\"0.85\"/>\n    <circle cx=\"0\" cy=\"-108\" r=\"3\" fill=\"#ffe9b0\"/>\n    <ellipse cx=\"0\" cy=\"-108\" rx=\"40\" ry=\"34\" fill=\"rgba(212,152,46,0.18)\" filter=\"url(#latBlurHi)\"/>\n  </g>\n    \n  <g transform=\"translate(480 240)\">\n    <rect x=\"-1.2\" y=\"-100\" width=\"2.4\" height=\"88\" fill=\"#3a2210\"/>\n    <ellipse cx=\"0\" cy=\"-108\" rx=\"10\" ry=\"14\" fill=\"none\" stroke=\"#6e4f1c\" stroke-width=\"1\"/>\n    <ellipse cx=\"0\" cy=\"-108\" rx=\"6\" ry=\"9\" fill=\"#fbe09a\" opacity=\"0.85\"/>\n    <circle cx=\"0\" cy=\"-108\" r=\"3\" fill=\"#ffe9b0\"/>\n    <ellipse cx=\"0\" cy=\"-108\" rx=\"40\" ry=\"34\" fill=\"rgba(212,152,46,0.18)\" filter=\"url(#latBlurHi)\"/>\n  </g>\n    <circle cx=\"300\" cy=\"345\" r=\"50\" fill=\"none\" stroke=\"rgba(212,152,46,0.3)\" stroke-width=\"0.4\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
-    "alliesWhisper": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"latG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#241608\"/>\n        <stop offset=\"60%\" stop-color=\"#1a0f08\"/>\n        <stop offset=\"100%\" stop-color=\"#0e0804\"/>\n      </radialGradient>\n      <radialGradient id=\"latAmber\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#fbe09a\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#d4982e\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"latBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"latBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#latG)\"/>\n    \n    <!-- Tenement stairwell — vertical structural lines -->\n    <rect x=\"80\" y=\"0\" width=\"20\" height=\"600\" fill=\"#2a1810\"/>\n    <rect x=\"500\" y=\"0\" width=\"20\" height=\"600\" fill=\"#2a1810\"/>\n    <!-- Wrought iron banister -->\n    <line x1=\"102\" y1=\"60\" x2=\"102\" y2=\"110\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"120\" x2=\"102\" y2=\"170\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"180\" x2=\"102\" y2=\"230\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"240\" x2=\"102\" y2=\"290\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"300\" x2=\"102\" y2=\"350\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"360\" x2=\"102\" y2=\"410\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"420\" x2=\"102\" y2=\"470\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"480\" x2=\"102\" y2=\"530\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"540\" x2=\"102\" y2=\"590\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/>\n    <line x1=\"102\" y1=\"60\" x2=\"500\" y2=\"60\" stroke=\"#3a2210\" stroke-width=\"2\"/>\n    <!-- Three figures conferring -->\n    <ellipse cx=\"300\" cy=\"540\" rx=\"140\" ry=\"18\" fill=\"#0e0804\"/>\n    \n      <rect x=\"246\" y=\"340\" width=\"28\" height=\"200\" rx=\"4\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.35)\" stroke-width=\"0.5\"/>\n      <circle cx=\"260\" cy=\"330\" r=\"13\" fill=\"#1a0f08\"/>\n    \n      <rect x=\"286\" y=\"330\" width=\"28\" height=\"210\" rx=\"4\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.55)\" stroke-width=\"0.5\"/>\n      <circle cx=\"300\" cy=\"320\" r=\"13\" fill=\"#1a0f08\"/>\n    \n      <rect x=\"326\" y=\"340\" width=\"28\" height=\"200\" rx=\"4\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.35)\" stroke-width=\"0.5\"/>\n      <circle cx=\"340\" cy=\"330\" r=\"13\" fill=\"#1a0f08\"/>\n    \n    <!-- Single brass wall sconce overhead -->\n    \n  <g transform=\"translate(300 180)\">\n    <rect x=\"-1.2\" y=\"-80\" width=\"2.4\" height=\"68\" fill=\"#3a2210\"/>\n    <ellipse cx=\"0\" cy=\"-88\" rx=\"10\" ry=\"14\" fill=\"none\" stroke=\"#6e4f1c\" stroke-width=\"1\"/>\n    <ellipse cx=\"0\" cy=\"-88\" rx=\"6\" ry=\"9\" fill=\"#fbe09a\" opacity=\"0.85\"/>\n    <circle cx=\"0\" cy=\"-88\" r=\"3\" fill=\"#ffe9b0\"/>\n    <ellipse cx=\"0\" cy=\"-88\" rx=\"40\" ry=\"34\" fill=\"rgba(212,152,46,0.18)\" filter=\"url(#latBlurHi)\"/>\n  </g>\n    <line x1=\"260\" y1=\"330\" x2=\"300\" y2=\"320\" stroke=\"rgba(212,152,46,0.2)\" stroke-width=\"0.4\" stroke-dasharray=\"2 3\"/>\n    <line x1=\"340\" y1=\"330\" x2=\"300\" y2=\"320\" stroke=\"rgba(212,152,46,0.2)\" stroke-width=\"0.4\" stroke-dasharray=\"2 3\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
+    "alliesWhisper": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"latG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#241608\"/>\n        <stop offset=\"60%\" stop-color=\"#1a0f08\"/>\n        <stop offset=\"100%\" stop-color=\"#0e0804\"/>\n      </radialGradient>\n      <radialGradient id=\"latAmber\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#fbe09a\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#d4982e\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"latBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"latBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#latG)\"/>\n    \n    <!-- Tenement stairwell, vertical structural lines -->\n    <rect x=\"80\" y=\"0\" width=\"20\" height=\"600\" fill=\"#2a1810\"/>\n    <rect x=\"500\" y=\"0\" width=\"20\" height=\"600\" fill=\"#2a1810\"/>\n    <!-- Wrought iron banister -->\n    <line x1=\"102\" y1=\"60\" x2=\"102\" y2=\"110\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"120\" x2=\"102\" y2=\"170\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"180\" x2=\"102\" y2=\"230\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"240\" x2=\"102\" y2=\"290\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"300\" x2=\"102\" y2=\"350\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"360\" x2=\"102\" y2=\"410\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"420\" x2=\"102\" y2=\"470\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"480\" x2=\"102\" y2=\"530\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/><line x1=\"102\" y1=\"540\" x2=\"102\" y2=\"590\" stroke=\"#6e4f1c\" stroke-width=\"0.6\"/>\n    <line x1=\"102\" y1=\"60\" x2=\"500\" y2=\"60\" stroke=\"#3a2210\" stroke-width=\"2\"/>\n    <!-- Three figures conferring -->\n    <ellipse cx=\"300\" cy=\"540\" rx=\"140\" ry=\"18\" fill=\"#0e0804\"/>\n    \n      <rect x=\"246\" y=\"340\" width=\"28\" height=\"200\" rx=\"4\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.35)\" stroke-width=\"0.5\"/>\n      <circle cx=\"260\" cy=\"330\" r=\"13\" fill=\"#1a0f08\"/>\n    \n      <rect x=\"286\" y=\"330\" width=\"28\" height=\"210\" rx=\"4\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.55)\" stroke-width=\"0.5\"/>\n      <circle cx=\"300\" cy=\"320\" r=\"13\" fill=\"#1a0f08\"/>\n    \n      <rect x=\"326\" y=\"340\" width=\"28\" height=\"200\" rx=\"4\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.35)\" stroke-width=\"0.5\"/>\n      <circle cx=\"340\" cy=\"330\" r=\"13\" fill=\"#1a0f08\"/>\n    \n    <!-- Single brass wall sconce overhead -->\n    \n  <g transform=\"translate(300 180)\">\n    <rect x=\"-1.2\" y=\"-80\" width=\"2.4\" height=\"68\" fill=\"#3a2210\"/>\n    <ellipse cx=\"0\" cy=\"-88\" rx=\"10\" ry=\"14\" fill=\"none\" stroke=\"#6e4f1c\" stroke-width=\"1\"/>\n    <ellipse cx=\"0\" cy=\"-88\" rx=\"6\" ry=\"9\" fill=\"#fbe09a\" opacity=\"0.85\"/>\n    <circle cx=\"0\" cy=\"-88\" r=\"3\" fill=\"#ffe9b0\"/>\n    <ellipse cx=\"0\" cy=\"-88\" rx=\"40\" ry=\"34\" fill=\"rgba(212,152,46,0.18)\" filter=\"url(#latBlurHi)\"/>\n  </g>\n    <line x1=\"260\" y1=\"330\" x2=\"300\" y2=\"320\" stroke=\"rgba(212,152,46,0.2)\" stroke-width=\"0.4\" stroke-dasharray=\"2 3\"/>\n    <line x1=\"340\" y1=\"330\" x2=\"300\" y2=\"320\" stroke=\"rgba(212,152,46,0.2)\" stroke-width=\"0.4\" stroke-dasharray=\"2 3\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
     "reckoningMirror": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"latG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#241608\"/>\n        <stop offset=\"60%\" stop-color=\"#1a0f08\"/>\n        <stop offset=\"100%\" stop-color=\"#0e0804\"/>\n      </radialGradient>\n      <radialGradient id=\"latAmber\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#fbe09a\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#d4982e\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"latBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"latBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#latG)\"/>\n    \n    <ellipse cx=\"300\" cy=\"540\" rx=\"240\" ry=\"22\" fill=\"#0e0804\" stroke=\"rgba(212,152,46,0.2)\" stroke-width=\"0.4\"/>\n    <!-- Tall framed mirror -->\n    <rect x=\"380\" y=\"120\" width=\"120\" height=\"280\" fill=\"#1a0f08\" stroke=\"#6e4f1c\" stroke-width=\"4\"/>\n    <path d=\"M 380 120 L 376 116 L 504 116 L 500 120 Z\" fill=\"#6e4f1c\"/>\n    <path d=\"M 380 400 L 376 404 L 504 404 L 500 400 Z\" fill=\"#6e4f1c\"/>\n    <rect x=\"386\" y=\"126\" width=\"108\" height=\"268\" fill=\"#3a2210\"/>\n    <!-- Reflection figure (faded) -->\n    <rect x=\"424\" y=\"280\" width=\"28\" height=\"100\" rx=\"4\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.3)\" stroke-width=\"0.4\" opacity=\"0.7\"/>\n    <circle cx=\"438\" cy=\"272\" r=\"13\" fill=\"#1a0f08\" opacity=\"0.7\"/>\n    <!-- Main figure in shirt-sleeves, in profile facing mirror -->\n    <ellipse cx=\"220\" cy=\"540\" rx=\"38\" ry=\"12\" fill=\"#0e0804\"/>\n    <rect x=\"200\" y=\"300\" width=\"40\" height=\"220\" rx=\"4\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.55)\" stroke-width=\"0.5\"/>\n    <!-- Waistcoat lines -->\n    <line x1=\"210\" y1=\"300\" x2=\"210\" y2=\"420\" stroke=\"rgba(212,152,46,0.35)\" stroke-width=\"0.3\"/>\n    <line x1=\"230\" y1=\"300\" x2=\"230\" y2=\"420\" stroke=\"rgba(212,152,46,0.35)\" stroke-width=\"0.3\"/>\n    <circle cx=\"220\" cy=\"292\" r=\"14\" fill=\"#1a0f08\" stroke=\"rgba(212,152,46,0.55)\" stroke-width=\"0.5\"/>\n    <!-- Brass oil lamp on a side table between them -->\n    <rect x=\"300\" y=\"380\" width=\"40\" height=\"40\" fill=\"#2a1810\" stroke=\"rgba(212,152,46,0.35)\" stroke-width=\"0.4\"/>\n    \n  <g transform=\"translate(320 380)\">\n    <rect x=\"-1.2\" y=\"-80\" width=\"2.4\" height=\"68\" fill=\"#3a2210\"/>\n    <ellipse cx=\"0\" cy=\"-88\" rx=\"10\" ry=\"14\" fill=\"none\" stroke=\"#6e4f1c\" stroke-width=\"1\"/>\n    <ellipse cx=\"0\" cy=\"-88\" rx=\"6\" ry=\"9\" fill=\"#fbe09a\" opacity=\"0.85\"/>\n    <circle cx=\"0\" cy=\"-88\" r=\"3\" fill=\"#ffe9b0\"/>\n    <ellipse cx=\"0\" cy=\"-88\" rx=\"40\" ry=\"34\" fill=\"rgba(212,152,46,0.18)\" filter=\"url(#latBlurHi)\"/>\n  </g>\n    <ellipse cx=\"320\" cy=\"320\" rx=\"120\" ry=\"80\" fill=\"url(#latAmber)\" filter=\"url(#latBlurHi)\" opacity=\"0.55\"/>\n  \n    </svg><div class=\"disc-veil\"></div>",
     "dividedChamber": "<svg class=\"disc-art\" viewBox=\"0 0 600 600\" preserveAspectRatio=\"xMidYMid slice\">\n    <defs>\n      <radialGradient id=\"latG\" cx=\"50%\" cy=\"40%\" r=\"60%\">\n        <stop offset=\"0%\" stop-color=\"#241608\"/>\n        <stop offset=\"60%\" stop-color=\"#1a0f08\"/>\n        <stop offset=\"100%\" stop-color=\"#0e0804\"/>\n      </radialGradient>\n      <radialGradient id=\"latAmber\" cx=\"50%\" cy=\"50%\" r=\"50%\">\n        <stop offset=\"0%\" stop-color=\"#fbe09a\" stop-opacity=\"0.6\"/>\n        <stop offset=\"100%\" stop-color=\"#d4982e\" stop-opacity=\"0\"/>\n      </radialGradient>\n      <filter id=\"latBlur\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n      <filter id=\"latBlurHi\"><feGaussianBlur stdDeviation=\"9\"/></filter>\n    </defs>\n    <rect width=\"600\" height=\"600\" fill=\"url(#latG)\"/>\n    \n    <!-- Mahogany ceiling beam -->\n    <rect x=\"0\" y=\"50\" width=\"600\" height=\"14\" fill=\"#2a1810\"/>\n    <!-- Tiered seating receding -->\n    \n      <line x1=\"40\" y1=\"120\" x2=\"310\" y2=\"120\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n      <line x1=\"290\" y1=\"120\" x2=\"560\" y2=\"120\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"160\" x2=\"302\" y2=\"160\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n      <line x1=\"298\" y1=\"160\" x2=\"560\" y2=\"160\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"200\" x2=\"294\" y2=\"200\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n      <line x1=\"306\" y1=\"200\" x2=\"560\" y2=\"200\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"240\" x2=\"286\" y2=\"240\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n      <line x1=\"314\" y1=\"240\" x2=\"560\" y2=\"240\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"280\" x2=\"278\" y2=\"280\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n      <line x1=\"322\" y1=\"280\" x2=\"560\" y2=\"280\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"320\" x2=\"270\" y2=\"320\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n      <line x1=\"330\" y1=\"320\" x2=\"560\" y2=\"320\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n    \n      <line x1=\"40\" y1=\"360\" x2=\"262\" y2=\"360\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n      <line x1=\"338\" y1=\"360\" x2=\"560\" y2=\"360\" stroke=\"rgba(212,152,46,0.1)\" stroke-width=\"0.4\"/>\n    \n    <line x1=\"300\" y1=\"40\" x2=\"300\" y2=\"560\" stroke=\"rgba(212,152,46,0.45)\" stroke-width=\"0.8\"/>\n    <ellipse cx=\"300\" cy=\"300\" rx=\"14\" ry=\"260\" fill=\"url(#latAmber)\" filter=\"url(#latBlurHi)\" opacity=\"0.6\"/>\n    <!-- Two clusters of frock-coated directors -->\n    \n      <rect x=\"135\" y=\"360\" width=\"10\" height=\"110\" rx=\"2\" fill=\"#0e0804\"/>\n      <path d=\"M 135 354 L 135 344 L 145 344 L 145 354\" fill=\"#0e0804\"/>\n      <circle cx=\"140\" cy=\"354\" r=\"5\" fill=\"#0e0804\"/>\n      <rect x=\"185\" y=\"368\" width=\"10\" height=\"114\" rx=\"2\" fill=\"#0e0804\"/>\n      <path d=\"M 185 362 L 185 352 L 195 352 L 195 362\" fill=\"#0e0804\"/>\n      <circle cx=\"190\" cy=\"362\" r=\"5\" fill=\"#0e0804\"/>\n      <rect x=\"235\" y=\"376\" width=\"10\" height=\"118\" rx=\"2\" fill=\"#0e0804\"/>\n      <path d=\"M 235 370 L 235 360 L 245 360 L 245 370\" fill=\"#0e0804\"/>\n      <circle cx=\"240\" cy=\"370\" r=\"5\" fill=\"#0e0804\"/>\n    \n      <rect x=\"355\" y=\"360\" width=\"10\" height=\"110\" rx=\"2\" fill=\"#0e0804\"/>\n      <path d=\"M 355 354 L 355 344 L 365 344 L 365 354\" fill=\"#0e0804\"/>\n      <circle cx=\"360\" cy=\"354\" r=\"5\" fill=\"#0e0804\"/>\n      <rect x=\"405\" y=\"368\" width=\"10\" height=\"114\" rx=\"2\" fill=\"#0e0804\"/>\n      <path d=\"M 405 362 L 405 352 L 415 352 L 415 362\" fill=\"#0e0804\"/>\n      <circle cx=\"410\" cy=\"362\" r=\"5\" fill=\"#0e0804\"/>\n      <rect x=\"455\" y=\"376\" width=\"10\" height=\"118\" rx=\"2\" fill=\"#0e0804\"/>\n      <path d=\"M 455 370 L 455 360 L 465 360 L 465 370\" fill=\"#0e0804\"/>\n      <circle cx=\"460\" cy=\"370\" r=\"5\" fill=\"#0e0804\"/>\n    <!-- Foreground decision figure on the seam -->\n    <rect x=\"294\" y=\"440\" width=\"12\" height=\"100\" rx=\"3\" fill=\"#1a0f08\"/>\n    <circle cx=\"300\" cy=\"430\" r=\"8\" fill=\"#1a0f08\"/>\n    <!-- Brass chandeliers -->\n    <line x1=\"160\" y1=\"64\" x2=\"160\" y2=\"140\" stroke=\"#3a2210\" stroke-width=\"1.4\"/>\n    <circle cx=\"160\" cy=\"150\" r=\"20\" fill=\"none\" stroke=\"rgba(212,152,46,0.5)\" stroke-width=\"0.6\"/>\n    <line x1=\"440\" y1=\"64\" x2=\"440\" y2=\"140\" stroke=\"#3a2210\" stroke-width=\"1.4\"/>\n    <circle cx=\"440\" cy=\"150\" r=\"20\" fill=\"none\" stroke=\"rgba(212,152,46,0.5)\" stroke-width=\"0.6\"/>\n  \n    </svg><div class=\"disc-veil\"></div>"
   }

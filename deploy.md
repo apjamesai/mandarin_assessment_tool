@@ -1,6 +1,6 @@
 # Deploying The Strategic Force Assessment
 
-Two short guides. Read them in order — generate the images first if you want them, then deploy.
+Two short guides. Read them in order, generate the images first if you want them, then deploy.
 
 ---
 
@@ -56,7 +56,7 @@ Open `strategic-force-assessment.html` in a browser. The page probes for the PNG
 
 - Free tier: ~1500 requests/day, rate-limited per minute.
 - The script paces requests with a ~1.2-second gap, so 22 images take ~30 seconds.
-- If you hit a quota error, wait a minute and rerun — already-generated files are skipped.
+- If you hit a quota error, wait a minute and rerun, already-generated files are skipped.
 
 ### A6. Rotate your key when done
 
@@ -68,7 +68,7 @@ In AI Studio: **API keys → … → Delete**. If the key has ever been pasted i
 
 Three increasingly automated paths. Pick one.
 
-### B1. Drag-and-drop deploy (fastest — 60 seconds)
+### B1. Drag-and-drop deploy (fastest, 60 seconds)
 
 1. Go to **https://app.netlify.com/drop**.
 2. Sign in (free).
@@ -93,7 +93,7 @@ First run will prompt you to authenticate in the browser and create a site. Afte
 
 1. `git init && git add . && git commit -m "Initial"` then push to GitHub.
 2. Netlify dashboard → **Add new site → Import existing project** → connect repo.
-3. Build settings: leave blank — this is a static site, no build step.
+3. Build settings: leave blank, this is a static site, no build step.
 4. Publish directory: `.` (root).
 
 Every push to the main branch redeploys.
@@ -102,34 +102,34 @@ Every push to the main branch redeploys.
 
 ## C. Important deployment notes
 
-### C1. The `images/` folder is gitignored by default — but you want it deployed
+### C1. The `images/` folder is gitignored by default, but you want it deployed
 If you generate the images then commit/push, **make sure `images/` is included** in the deploy. Drag-and-drop and `netlify deploy --dir=.` include it automatically. If you go the Git route, check your `.gitignore` does not exclude `images/`.
 
 ### C2. Don't deploy your API key
-The HTML never reads the key — it only reads PNGs from `./images/`. Image generation is a one-time local step. Do **not** put `GEMINI_API_KEY` in the deployed environment.
+The HTML never reads the key, it only reads PNGs from `./images/`. Image generation is a one-time local step. Do **not** put `GEMINI_API_KEY` in the deployed environment.
 
 ### C3. localStorage is per-browser
 The admin **Results** tab reads from this browser only. If you want centralised results storage, you'll need a small backend (Netlify Functions + a database). I can add a Supabase or Airtable adapter later if that becomes useful.
 
 ### C4. The admin is accessible to anyone who knows `?admin=1`
-There's no auth — admin presence is detected by URL flag. If you're hosting publicly and want it private, either:
+There's no auth, admin presence is detected by URL flag. If you're hosting publicly and want it private, either:
 - Generate a deploy-time secret URL (e.g. `?admin=$RANDOM_TOKEN`) and gate behind that.
-- Or add Netlify password protection: **Site settings → Visitor access → Password protection** (paid Pro feature) — or use Netlify Identity for free.
+- Or add Netlify password protection: **Site settings → Visitor access → Password protection** (paid Pro feature), or use Netlify Identity for free.
 
 ### C5. Performance
-The HTML is ~210 KB with SVG fallbacks. With all 22 generated PNGs at 1024×1024, expect ~5–10 MB total. Netlify will serve them from CDN — first load 2–3 s on a fresh device, cached afterwards.
+The HTML is ~210 KB with SVG fallbacks. With all 22 generated PNGs at 1024×1024, expect ~5–10 MB total. Netlify will serve them from CDN, first load 2–3 s on a fresh device, cached afterwards.
 
 ---
 
 ## D. Quick sanity checklist before sharing the URL
 
-- [ ] Visit the URL — landing scene loads, brand mark visible.
+- [ ] Visit the URL, landing scene loads, brand mark visible.
 - [ ] Enter test details, pick gender, run a few scenes.
 - [ ] Use the timer-ring "Skip" once to confirm.
-- [ ] Use the back button on a question, change your answer, continue — score should recompute, not double-count.
-- [ ] Reach the results page — wheel renders, secondary pattern (if triggered) shows under primary.
-- [ ] Visit `?admin=1` — switch to each archetype in turn, confirm portraits and copy.
-- [ ] Edit one piece of copy under Content, reload — change persists.
-- [ ] Take the assessment fully — confirm session appears under Results.
+- [ ] Use the back button on a question, change your answer, continue, score should recompute, not double-count.
+- [ ] Reach the results page, wheel renders, secondary pattern (if triggered) shows under primary.
+- [ ] Visit `?admin=1`, switch to each archetype in turn, confirm portraits and copy.
+- [ ] Edit one piece of copy under Content, reload, change persists.
+- [ ] Take the assessment fully, confirm session appears under Results.
 
 Done. You're live.

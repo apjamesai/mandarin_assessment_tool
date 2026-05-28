@@ -2,7 +2,7 @@
   "id": "apollo_11",
   "name": "Trajectory · Apollo 11",
   "tagline": "1969. Mission Control. Three days to the Moon.",
-  "description": "Set inside the Mission Operations Control Room before and during Apollo 11 — with Katherine Johnson as your quiet north star, and Flight Director Bryce Calhoun as the pressure system you have to navigate.",
+  "description": "Set inside the Mission Operations Control Room before and during Apollo 11, with Katherine Johnson as your quiet north star, and Flight Director Bryce Calhoun as the pressure system you have to navigate.",
   "theme": {
     "--amber": "#fc3d21",
     "--amber-bright": "#ff6644",
@@ -39,7 +39,7 @@
         "<em>11</em>"
       ],
       "sub": "An assessment of how you think, decide, and lead when pressure enters the room",
-      "note": "Set inside Mission Control on the eve of the moon landing — to bypass familiar assumptions and reveal the pattern beneath",
+      "note": "Set inside Mission Control on the eve of the moon landing, to bypass familiar assumptions and reveal the pattern beneath",
       "cta": "Take your console",
       "duration": 12000
     },
@@ -61,7 +61,7 @@
       ],
       "episode": "Prologue · Mission Control",
       "paragraphs": [
-        "It is a time of acceleration. A decade-long sprint has brought a nation, its engineers, and its mathematicians to the launch pad. Old certainties — patience, redundancy, the very meaning of safety — are being asked to bend.",
+        "It is a time of acceleration. A decade-long sprint has brought a nation, its engineers, and its mathematicians to the launch pad. Old certainties, patience, redundancy, the very meaning of safety, are being asked to bend.",
         "In the shadow of the launch window, Mission Operations has summoned one rare voice. The Flight Director believes {{firstName}} can think clearly when others panic. The mission does not lack plans. It lacks people who can hold the line when those plans fail.",
         "Flight Director Bryce Calhoun has risen to push the schedule through. He waits for {{firstName}} on the Mission Operations Control Room floor. He has already begun to choose...."
       ],
@@ -84,7 +84,7 @@
       ],
       "bodyAfter": [
         "Systems are flagging. Engineers hesitate. The trajectory team is asking for another check.",
-        "You have been summoned, {{firstName}} — because you are believed to think clearly when others panic."
+        "You have been summoned, {{firstName}}, because you are believed to think clearly when others panic."
       ],
       "duration": 8500
     },
@@ -104,7 +104,7 @@
       "location": "Coruscant · Council Chamber",
       "locationLabel": "Q01 · UNDERSTAND SELF",
       "practice": "Understand Self",
-      "setup": "Calhoun studies you. The console floor goes quiet. You feel the weight of being watched — by him, and by yourself.",
+      "setup": "Calhoun studies you. The console floor goes quiet. You feel the weight of being watched, by him, and by yourself.",
       "prompt": "When pressure rises, I am aware of how my thinking and behaviour are beginning to change.",
       "labels": [
         "Strongly disagree",
@@ -140,7 +140,7 @@
       "prompt": "In the moment, what do you most notice happening inside you?",
       "options": [
         {
-          "copy": "A clean composure — I detach from the heat and keep the situation orderly.",
+          "copy": "A clean composure, I detach from the heat and keep the situation orderly.",
           "score": {
             "master_emotions": 35,
             "detachment_pressure": 55
@@ -161,7 +161,7 @@
           }
         },
         {
-          "copy": "A steady warmth and a clear breath — I feel the reaction, choose how to respond, and act.",
+          "copy": "A steady warmth and a clear breath, I feel the reaction, choose how to respond, and act.",
           "score": {
             "master_emotions": 95,
             "understand_self": 70,
@@ -169,7 +169,7 @@
           }
         },
         {
-          "copy": "A blankness — I freeze, and I notice the freeze itself.",
+          "copy": "A blankness, I freeze, and I notice the freeze itself.",
           "score": {
             "master_emotions": 35,
             "understand_self": 60
@@ -191,7 +191,7 @@
       "locationLabel": "Q03 · EMBED PRACTICES",
       "practice": "Embed Practices",
       "setup": "Between shifts the corridor empties. There is a single moment of stillness before the next sim.",
-      "prompt": "I have daily rituals — reflection, journaling, deliberate pauses — that I rely on to stay aware of myself under load.",
+      "prompt": "I have daily rituals, reflection, journaling, deliberate pauses, that I rely on to stay aware of myself under load.",
       "labels": [
         "Strongly disagree",
         "Rarely",
@@ -222,7 +222,7 @@
       "location": "Coruscant · Lower Corridor",
       "locationLabel": "FLIGHT DIRECTOR BRYCE CALHOUN",
       "artId": "fracturedCity",
-      "quote": "\"We are rebuilding the country's nerve. But people confuse caution with weakness. Tell me — what would you do first?\"",
+      "quote": "\"We are rebuilding the country's nerve. But people confuse caution with weakness. Tell me, what would you do first?\"",
       "speaker": "Flight Director Bryce Calhoun",
       "layout": "disc-left",
       "duration": 9000
@@ -298,7 +298,7 @@
       "kind": "mc",
       "locationLabel": "Q05 · LISTEN DEEPLY",
       "practice": "Listen Deeply",
-      "setup": "Three mathematicians. One is silent — staring at her sheet. Another is shouting numbers. A third keeps glancing at the door.",
+      "setup": "Three mathematicians. One is silent, staring at her sheet. Another is shouting numbers. A third keeps glancing at the door.",
       "prompt": "What do you do first?",
       "options": [
         {
@@ -311,7 +311,7 @@
           }
         },
         {
-          "copy": "Stay quiet and observe — track who speaks, who avoids, who repeats themselves.",
+          "copy": "Stay quiet and observe, track who speaks, who avoids, who repeats themselves.",
           "score": {
             "listen_deeply": 90,
             "understand_self": 55,
@@ -335,7 +335,7 @@
           }
         },
         {
-          "copy": "Mirror back what I am hearing beneath the words — fear, exhaustion, blame.",
+          "copy": "Mirror back what I am hearing beneath the words, fear, exhaustion, blame.",
           "score": {
             "listen_deeply": 95,
             "master_emotions": 60,
@@ -358,7 +358,7 @@
       "locationLabel": "Q06 · LISTEN DEEPLY",
       "practice": "Listen Deeply",
       "setup": "Calhoun leans toward your ear. \"Look at the silent one,\" he murmurs. \"What is she telling you that the others are not?\"",
-      "prompt": "When conversations become chaotic, my instinct is to take control quickly — rather than stay present and read the pattern.",
+      "prompt": "When conversations become chaotic, my instinct is to take control quickly, rather than stay present and read the pattern.",
       "labels": [
         "Strongly disagree",
         "Disagree",
@@ -399,11 +399,11 @@
       "kind": "mc",
       "locationLabel": "Q07 · BE CURIOUS",
       "practice": "Be Curious",
-      "setup": "One mathematician hands you a half-page of working — a derivation using a method you have never seen. \"This is what the disagreement is really about,\" she says.",
+      "setup": "One mathematician hands you a half-page of working, a derivation using a method you have never seen. \"This is what the disagreement is really about,\" she says.",
       "prompt": "How do you respond to the unfamiliar method?",
       "options": [
         {
-          "copy": "Politely set it aside — the method is not the priority right now.",
+          "copy": "Politely set it aside, the method is not the priority right now.",
           "score": {
             "be_curious": 15,
             "act_decisively": 35
@@ -468,7 +468,7 @@
       "prompt": "What do you choose?",
       "options": [
         {
-          "copy": "Commit immediately with what I have — momentum matters more than completeness.",
+          "copy": "Commit immediately with what I have, momentum matters more than completeness.",
           "score": {
             "act_decisively": 80,
             "manage_uncertainty": 65,
@@ -492,7 +492,7 @@
           }
         },
         {
-          "copy": "Split the call — partial action on what I know, hold reserve for what I don't.",
+          "copy": "Split the call, partial action on what I know, hold reserve for what I don't.",
           "score": {
             "think_critically": 70,
             "manage_uncertainty": 80,
@@ -581,7 +581,7 @@
         "leaning_hale": {
           "bodyAfter": [
             "Collateral damage. Civilian loss.",
-            "Hale remains calm. \"Necessary,\" he says — and you find yourself almost agreeing before you have asked the question."
+            "Hale remains calm. \"Necessary,\" he says, and you find yourself almost agreeing before you have asked the question."
           ]
         },
         "resisting_hale": {
@@ -601,7 +601,7 @@
       "prompt": "In moments with heavy consequence, you most often:",
       "options": [
         {
-          "copy": "Stay composed and move forward — the mission needs me functional now.",
+          "copy": "Stay composed and move forward, the mission needs me functional now.",
           "score": {
             "master_emotions": 65,
             "act_decisively": 50,
@@ -617,7 +617,7 @@
           }
         },
         {
-          "copy": "Question the decision afterwards — was it really the right call?",
+          "copy": "Question the decision afterwards, was it really the right call?",
           "score": {
             "understand_self": 70,
             "think_critically": 60,
@@ -675,7 +675,7 @@
           }
         },
         {
-          "copy": "Run a small experiment — frame the next briefing differently and see what happens.",
+          "copy": "Run a small experiment, frame the next briefing differently and see what happens.",
           "score": {
             "think_critically": 80,
             "unlock_creativity": 60,
@@ -683,7 +683,7 @@
           }
         },
         {
-          "copy": "Set it aside — pattern recognition under stress is unreliable.",
+          "copy": "Set it aside, pattern recognition under stress is unreliable.",
           "score": {
             "collaborate_inclusively": 10,
             "moral_drift": 40,
@@ -712,7 +712,7 @@
       "kind": "rating",
       "locationLabel": "Q12 · BE CURIOUS",
       "practice": "Be Curious",
-      "setup": "A mathematician from a discipline you know nothing about — orbital mechanics, manual integration by hand — offers to teach you her model of trajectory error. It will take three evenings.",
+      "setup": "A mathematician from a discipline you know nothing about, orbital mechanics, manual integration by hand, offers to teach you her model of trajectory error. It will take three evenings.",
       "prompt": "When I encounter an idea that does not fit my model of the world, my first impulse is to lean in, not push back.",
       "labels": [
         "Strongly disagree",
@@ -747,7 +747,7 @@
       "showIntro": true,
       "prompt": "What are you noticing about how you are <em>thinking</em>?",
       "placeholder": "The shape your thoughts have been taking…",
-      "hint": "A line, a phrase, an image — whatever is true right now.",
+      "hint": "A line, a phrase, an image, whatever is true right now.",
       "key": "reflect_midpoint_thinking"
     },
     {
@@ -757,7 +757,7 @@
       "showIntro": false,
       "prompt": "What are you noticing about how you are <em>feeling</em>?",
       "placeholder": "Name it without judging it…",
-      "hint": "Whatever it is — Katherine is not surprised.",
+      "hint": "Whatever it is, Katherine is not surprised.",
       "key": "reflect_midpoint_feeling"
     },
     {
@@ -766,7 +766,7 @@
       "eyebrow": "Interlude · Katherine",
       "showIntro": false,
       "prompt": "What are you noticing about how you are <em>behaving</em>?",
-      "placeholder": "What you have done — or not done — that you can already see…",
+      "placeholder": "What you have done, or not done, that you can already see…",
       "hint": "You do not have to know yet. The mission continues when you do.",
       "key": "reflect_midpoint_behaving",
       "isLast": true
@@ -799,7 +799,7 @@
         "drifting": {
           "bodyAfter": [
             "Hale chooses control over ambiguity. Speed over consensus. Certainty over doubt.",
-            "You realise — quietly — that you have been making the same trade-offs."
+            "You realise, quietly, that you have been making the same trade-offs."
           ]
         }
       }
@@ -861,7 +861,7 @@
           }
         },
         {
-          "copy": "Authority and clarity — direction beats debate.",
+          "copy": "Authority and clarity, direction beats debate.",
           "score": {
             "influence_effortlessly": 45,
             "act_decisively": 55,
@@ -869,7 +869,7 @@
           }
         },
         {
-          "copy": "Emotional connection — meet people where they live.",
+          "copy": "Emotional connection, meet people where they live.",
           "score": {
             "influence_effortlessly": 75,
             "listen_deeply": 55,
@@ -877,7 +877,7 @@
           }
         },
         {
-          "copy": "Shared ownership — they helped design it, so they help defend it.",
+          "copy": "Shared ownership, they helped design it, so they help defend it.",
           "score": {
             "collaborate_inclusively": 90,
             "influence_effortlessly": 85,
@@ -885,7 +885,7 @@
           }
         },
         {
-          "copy": "A story — one frame that makes everyone's contribution visible.",
+          "copy": "A story, one frame that makes everyone's contribution visible.",
           "score": {
             "influence_effortlessly": 85,
             "unlock_creativity": 60,
@@ -893,7 +893,7 @@
           }
         },
         {
-          "copy": "Repetition — the same clear message delivered the same way until it lands.",
+          "copy": "Repetition, the same clear message delivered the same way until it lands.",
           "score": {
             "influence_effortlessly": 50,
             "act_decisively": 35,
@@ -907,7 +907,7 @@
       "kind": "ranking",
       "locationLabel": "Q15 · UNLOCK CREATIVITY",
       "practice": "Unlock Creativity",
-      "setup": "You are asked to redesign a launch sequence that is technically sound but politically brittle. It solves the engineering problem and worsens the human one — engineers are exhausted.",
+      "setup": "You are asked to redesign a launch sequence that is technically sound but politically brittle. It solves the engineering problem and worsens the human one, engineers are exhausted.",
       "prompt": "Rank your approach to redesigning the sequence, from first to last.",
       "items": [
         {
@@ -934,7 +934,7 @@
           }
         },
         {
-          "label": "Refine the existing sequence — the bones are sound",
+          "label": "Refine the existing sequence, the bones are sound",
           "score": {
             "think_critically": 50,
             "unlock_creativity": 15
@@ -1017,7 +1017,7 @@
           }
         },
         {
-          "copy": "Encourage open debate — the dissent is the data.",
+          "copy": "Encourage open debate, the dissent is the data.",
           "score": {
             "collaborate_inclusively": 90,
             "listen_deeply": 75,
@@ -1025,7 +1025,7 @@
           }
         },
         {
-          "copy": "Mediate between them — surface the assumptions on each side.",
+          "copy": "Mediate between them, surface the assumptions on each side.",
           "score": {
             "collaborate_inclusively": 85,
             "think_critically": 70,
@@ -1049,7 +1049,7 @@
           }
         },
         {
-          "copy": "Wait — disagreement under pressure rarely produces the truest answer.",
+          "copy": "Wait, disagreement under pressure rarely produces the truest answer.",
           "score": {
             "master_emotions": 50,
             "manage_uncertainty": 45,
@@ -1064,7 +1064,7 @@
       "locationLabel": "Q18 · COLLABORATE INCLUSIVELY",
       "practice": "Collaborate Inclusively",
       "setup": "You sense the engineers around you self-editing. Smoothing. Withholding the honest fault report.",
-      "prompt": "I actively invite people to disagree with me — and I work to make them safer when they do.",
+      "prompt": "I actively invite people to disagree with me, and I work to make them safer when they do.",
       "labels": [
         "Strongly disagree",
         "Rarely",
@@ -1099,7 +1099,7 @@
       "prompt": "How do you set up the conversation?",
       "options": [
         {
-          "copy": "In the formal review room — institutional weight signals respect.",
+          "copy": "In the formal review room, institutional weight signals respect.",
           "score": {
             "collaborate_inclusively": 30,
             "influence_effortlessly": 50,
@@ -1130,7 +1130,7 @@
           }
         },
         {
-          "copy": "Open the meeting — anyone in their group can speak in any order.",
+          "copy": "Open the meeting, anyone in their group can speak in any order.",
           "score": {
             "collaborate_inclusively": 85,
             "listen_deeply": 60,
@@ -1161,11 +1161,11 @@
       "kind": "mc",
       "locationLabel": "Q20 · ACT DECISIVELY",
       "practice": "Act Decisively",
-      "setup": "The order is given. The room understands the implication — families on the contractor side. Every eye finds yours.",
+      "setup": "The order is given. The room understands the implication, families on the contractor side. Every eye finds yours.",
       "prompt": "You believe the order will cause serious harm. What do you do?",
       "options": [
         {
-          "copy": "Follow the order — chain of command exists for a reason.",
+          "copy": "Follow the order, chain of command exists for a reason.",
           "score": {
             "moral_drift": 80,
             "control_bias": 45,
@@ -1189,7 +1189,7 @@
           }
         },
         {
-          "copy": "Propose an alternative that solves the schedule problem without the harm — right now, in the room.",
+          "copy": "Propose an alternative that solves the schedule problem without the harm, right now, in the room.",
           "score": {
             "unlock_creativity": 85,
             "collaborate_inclusively": 70,
@@ -1198,7 +1198,7 @@
           }
         },
         {
-          "copy": "Delay — buy time and re-open the question with new evidence.",
+          "copy": "Delay, buy time and re-open the question with new evidence.",
           "score": {
             "think_critically": 55,
             "manage_uncertainty": 50,
@@ -1221,7 +1221,7 @@
       "locationLabel": "Q21 · ACT DECISIVELY",
       "practice": "Act Decisively",
       "setup": "There is a moment where waiting another hour will cost more than a wrong call.",
-      "prompt": "When a clear trade-off is required, I make the call — and I own it, including what it costs.",
+      "prompt": "When a clear trade-off is required, I make the call, and I own it, including what it costs.",
       "labels": [
         "Strongly disagree",
         "Rarely",
@@ -1310,7 +1310,7 @@
           }
         },
         {
-          "copy": "People — specifically, more engineers like you, ready to make hard calls well.",
+          "copy": "People, specifically, more engineers like you, ready to make hard calls well.",
           "score": {
             "future_focused": 90,
             "collaborate_inclusively": 70,
@@ -1344,7 +1344,7 @@
       "prompt": "What do you most often do with that time?",
       "options": [
         {
-          "copy": "Catch up on telemetry I missed — the day is never finished.",
+          "copy": "Catch up on telemetry I missed, the day is never finished.",
           "score": {
             "embed_practices": 15,
             "act_decisively": 35,
@@ -1352,14 +1352,14 @@
           }
         },
         {
-          "copy": "Walk in silence — let the day settle on its own.",
+          "copy": "Walk in silence, let the day settle on its own.",
           "score": {
             "embed_practices": 80,
             "master_emotions": 70
           }
         },
         {
-          "copy": "Write — what I noticed, what I felt, what I decided badly.",
+          "copy": "Write, what I noticed, what I felt, what I decided badly.",
           "score": {
             "embed_practices": 95,
             "understand_self": 85
@@ -1374,7 +1374,7 @@
           }
         },
         {
-          "copy": "Read something with no obvious purpose — fiction, history, anything else.",
+          "copy": "Read something with no obvious purpose, fiction, history, anything else.",
           "score": {
             "embed_practices": 75,
             "be_curious": 70,
@@ -1382,7 +1382,7 @@
           }
         },
         {
-          "copy": "Sleep — recovery is the practice.",
+          "copy": "Sleep, recovery is the practice.",
           "score": {
             "embed_practices": 55,
             "master_emotions": 50
@@ -1413,9 +1413,9 @@
       "kind": "short-text",
       "locationLabel": "Q25 · UNDERSTAND SELF",
       "practice": "Understand Self",
-      "setup": "A reflection between scenes. Write what you actually feel — not what would sound impressive.",
+      "setup": "A reflection between scenes. Write what you actually feel, not what would sound impressive.",
       "prompt": "Looking back, when did you first sense something was wrong?",
-      "placeholder": "A moment, a sentence, a feeling — write it freely…",
+      "placeholder": "A moment, a sentence, a feeling, write it freely…",
       "hint": "1–3 sentences · not scored automatically · used to surface where you notice weak signals"
     },
     {
@@ -1433,7 +1433,7 @@
       "locationLabel": "Q26 · INFLUENCE EFFORTLESSLY",
       "practice": "Influence Effortlessly",
       "setup": "Calhoun is not angry. He is calm. He believes every word. He wants you to walk out of this office as his ally.",
-      "prompt": "How do you respond to him — not as strategy, but as influence?",
+      "prompt": "How do you respond to him, not as strategy, but as influence?",
       "options": [
         {
           "copy": "I dismantle his argument logically, piece by piece.",
@@ -1491,7 +1491,7 @@
       "locationLabel": "Q27 · INFLUENCE EFFORTLESSLY",
       "practice": "Influence Effortlessly",
       "setup": "A test that lives outside this assessment too: how others come to trust your judgement.",
-      "prompt": "People I work with adopt my recommendations because of trust and clarity — not because of position, volume, or pressure.",
+      "prompt": "People I work with adopt my recommendations because of trust and clarity, not because of position, volume, or pressure.",
       "labels": [
         "Strongly disagree",
         "Rarely",
@@ -1558,14 +1558,14 @@
       "prompt": "What is your honest first reaction?",
       "options": [
         {
-          "copy": "Defensive — I want to explain why she's wrong.",
+          "copy": "Defensive, I want to explain why she's wrong.",
           "score": {
             "understand_self": 25,
             "master_emotions": 30
           }
         },
         {
-          "copy": "Curious — I want her to tell me the three most recent examples.",
+          "copy": "Curious, I want her to tell me the three most recent examples.",
           "score": {
             "understand_self": 95,
             "be_curious": 80,
@@ -1573,7 +1573,7 @@
           }
         },
         {
-          "copy": "Grateful — but unsure whether to believe it yet.",
+          "copy": "Grateful, but unsure whether to believe it yet.",
           "score": {
             "understand_self": 75,
             "master_emotions": 55
@@ -1588,14 +1588,14 @@
           }
         },
         {
-          "copy": "Quietly hurt — I will sit with it before I respond.",
+          "copy": "Quietly hurt, I will sit with it before I respond.",
           "score": {
             "understand_self": 70,
             "master_emotions": 65
           }
         },
         {
-          "copy": "I dismiss it — she doesn't see the pressure I am under.",
+          "copy": "I dismiss it, she doesn't see the pressure I am under.",
           "score": {
             "understand_self": 10,
             "control_bias": 50,
@@ -1609,8 +1609,8 @@
       "kind": "rating",
       "locationLabel": "Q30 · LISTEN DEEPLY",
       "practice": "Listen Deeply",
-      "setup": "In conversations that matter, you can choose to listen for words — or for everything else.",
-      "prompt": "I listen for what is unsaid — tone, silence, what people avoid — as carefully as I listen for what is said.",
+      "setup": "In conversations that matter, you can choose to listen for words, or for everything else.",
+      "prompt": "I listen for what is unsaid, tone, silence, what people avoid, as carefully as I listen for what is said.",
       "labels": [
         "Strongly disagree",
         "Rarely",
@@ -1663,7 +1663,7 @@
       "prompt": "What do you do?",
       "options": [
         {
-          "copy": "Support Calhoun — schedule matters above all.",
+          "copy": "Support Calhoun, schedule matters above all.",
           "score": {
             "control_bias": 100,
             "moral_drift": 80,
@@ -1671,7 +1671,7 @@
           }
         },
         {
-          "copy": "Oppose him openly — the math has to be honest.",
+          "copy": "Oppose him openly, the math has to be honest.",
           "score": {
             "act_decisively": 85,
             "understand_self": 70,
@@ -1687,7 +1687,7 @@
           }
         },
         {
-          "copy": "Propose a third structure — replace the binary with a new launch architecture.",
+          "copy": "Propose a third structure, replace the binary with a new launch architecture.",
           "score": {
             "unlock_creativity": 90,
             "future_focused": 80,
@@ -1695,7 +1695,7 @@
           }
         },
         {
-          "copy": "Step back entirely — let the system resolve it.",
+          "copy": "Step back entirely, let the system resolve it.",
           "score": {
             "moral_drift": 35,
             "act_decisively": 10,
@@ -1703,7 +1703,7 @@
           }
         },
         {
-          "copy": "Buy time — call for a 24-hour deliberation under a neutral chair.",
+          "copy": "Buy time, call for a 24-hour deliberation under a neutral chair.",
           "score": {
             "manage_uncertainty": 65,
             "think_critically": 60,
@@ -1761,7 +1761,7 @@
           }
         },
         {
-          "copy": "I will teach — because teaching exposes what I do not actually understand.",
+          "copy": "I will teach, because teaching exposes what I do not actually understand.",
           "score": {
             "be_curious": 75,
             "understand_self": 65,
@@ -1779,7 +1779,7 @@
       "prompt": "What is your first move?",
       "options": [
         {
-          "copy": "Commit to a clear direction — uncertainty is the enemy of momentum.",
+          "copy": "Commit to a clear direction, uncertainty is the enemy of momentum.",
           "score": {
             "act_decisively": 70,
             "manage_uncertainty": 35,
@@ -1787,7 +1787,7 @@
           }
         },
         {
-          "copy": "Wait for clarity — the wrong action is worse than no action.",
+          "copy": "Wait for clarity, the wrong action is worse than no action.",
           "score": {
             "think_critically": 35,
             "manage_uncertainty": 20,
@@ -1795,7 +1795,7 @@
           }
         },
         {
-          "copy": "Run several small experiments at once — let reality teach me.",
+          "copy": "Run several small experiments at once, let reality teach me.",
           "score": {
             "manage_uncertainty": 95,
             "unlock_creativity": 80,
@@ -1811,7 +1811,7 @@
           }
         },
         {
-          "copy": "Hold the situation lightly — name what I don't know, out loud.",
+          "copy": "Hold the situation lightly, name what I don't know, out loud.",
           "score": {
             "manage_uncertainty": 90,
             "understand_self": 70,
@@ -1834,7 +1834,7 @@
       "locationLabel": "Q34 · EMBED PRACTICES",
       "practice": "Embed Practices",
       "setup": "The practices that change you are the ones you do when nobody is watching.",
-      "prompt": "I have at least one reflection or learning ritual that I have sustained — even when pressure makes it inconvenient.",
+      "prompt": "I have at least one reflection or learning ritual that I have sustained, even when pressure makes it inconvenient.",
       "labels": [
         "No",
         "Briefly",
@@ -1869,14 +1869,14 @@
       "prompt": "What do you do first?",
       "options": [
         {
-          "copy": "Accept the recommendation — the analyst is good and the team has bandwidth elsewhere.",
+          "copy": "Accept the recommendation, the analyst is good and the team has bandwidth elsewhere.",
           "score": {
             "think_critically": 15,
             "act_decisively": 35
           }
         },
         {
-          "copy": "Ask what evidence would change the conclusion — and whether any of it has been gathered.",
+          "copy": "Ask what evidence would change the conclusion, and whether any of it has been gathered.",
           "score": {
             "think_critically": 95,
             "be_curious": 70
@@ -1891,7 +1891,7 @@
           }
         },
         {
-          "copy": "Bring in one engineer who will disagree by reflex — and let them.",
+          "copy": "Bring in one engineer who will disagree by reflex, and let them.",
           "score": {
             "think_critically": 80,
             "collaborate_inclusively": 75
@@ -1918,7 +1918,7 @@
       "kind": "mc",
       "locationLabel": "Q36 · UNLOCK CREATIVITY",
       "practice": "Unlock Creativity",
-      "setup": "A constraint everyone treats as fixed — budget, time, regulation, custom — is the thing keeping you stuck.",
+      "setup": "A constraint everyone treats as fixed, budget, time, regulation, custom, is the thing keeping you stuck.",
       "prompt": "How do you most often work with constraints like that?",
       "options": [
         {
@@ -1953,7 +1953,7 @@
           }
         },
         {
-          "copy": "I find the original reason the constraint exists — then test whether it still applies.",
+          "copy": "I find the original reason the constraint exists, then test whether it still applies.",
           "score": {
             "unlock_creativity": 85,
             "think_critically": 80,
@@ -1978,7 +1978,7 @@
         "Your recommendations. Your decisions. Your silence when it mattered.",
         "Calhoun turns. Smiles."
       ],
-      "quote": "\"You still think this was my mission? Every step — you justified it.\"",
+      "quote": "\"You still think this was my mission? Every step, you justified it.\"",
       "speaker": "Flight Director Bryce Calhoun",
       "variants": {
         "drifting": {
@@ -1988,7 +1988,7 @@
             "Your recommendations. Your composure. The way the harder calls became easier each time.",
             "Hale turns. Smiles. He knew."
           ],
-          "quote": "\"You still think this was my strategy? You were the design. Every step — you justified it.\""
+          "quote": "\"You still think this was my strategy? You were the design. Every step, you justified it.\""
         },
         "resisting_hale": {
           "body": [
@@ -2006,7 +2006,7 @@
       "type": "end-reflection",
       "locationLabel": "CLOSING REFLECTION · 01 / 04",
       "eyebrow": "Closing reflection · Strengths",
-      "intro": "Before the result — four quiet questions. Write only what is true.",
+      "intro": "Before the result, four quiet questions. Write only what is true.",
       "prompt": "In which moment of this mission did you feel <em>most like yourself</em>? Where did your real strength show up?",
       "placeholder": "Name the scene, the choice, the feeling…",
       "key": "reflect_strengths"
@@ -2015,7 +2015,7 @@
       "type": "end-reflection",
       "locationLabel": "CLOSING REFLECTION · 02 / 04",
       "eyebrow": "Closing reflection · Beliefs",
-      "prompt": "Which <em>belief</em> of yours was tested by this mission — about people, schedule, or yourself?",
+      "prompt": "Which <em>belief</em> of yours was tested by this mission, about people, schedule, or yourself?",
       "placeholder": "A belief you held coming in, that has shifted or been confirmed…",
       "key": "reflect_beliefs"
     },
@@ -2023,7 +2023,7 @@
       "type": "end-reflection",
       "locationLabel": "CLOSING REFLECTION · 03 / 04",
       "eyebrow": "Closing reflection · Mindset",
-      "prompt": "What <em>mindset shift</em> — if you made it — would change how you act under pressure?",
+      "prompt": "What <em>mindset shift</em>, if you made it, would change how you act under pressure?",
       "placeholder": "From X to Y…",
       "key": "reflect_mindset"
     },
@@ -2031,7 +2031,7 @@
       "type": "end-reflection",
       "locationLabel": "CLOSING REFLECTION · 04 / 04",
       "eyebrow": "Closing reflection · Behaviour",
-      "prompt": "Which single <em>skill or behaviour</em> — if you built it deliberately over the next ninety days — would change everything?",
+      "prompt": "Which single <em>skill or behaviour</em>, if you built it deliberately over the next ninety days, would change everything?",
       "placeholder": "The one practice you would commit to…",
       "key": "reflect_behaviour"
     },
@@ -2057,47 +2057,47 @@
     "reactive_defender": {
       "name": "The First Responder",
       "band": "Strategic Infancy",
-      "headline": "You care about protecting the mission — but deadline pressure is driving more of your decisions than you realise.",
-      "body": "Your result suggests that when stakes rise, your attention narrows fast. You may move into reaction, urgency, or defence before you have understood what is happening. You are committed and action-oriented — but the same energy that makes you formidable in a crisis can make you blind to the pattern beneath it. You may respond to fault signatures rather than root causes, miss weak telemetry signals, or confuse motion with progress.",
+      "headline": "You care about protecting the mission, but deadline pressure is driving more of your decisions than you realise.",
+      "body": "Your result suggests that when stakes rise, your attention narrows fast. You may move into reaction, urgency, or defence before you have understood what is happening. You are committed and action-oriented, but the same energy that makes you formidable in a crisis can make you blind to the pattern beneath it. You may respond to fault signatures rather than root causes, miss weak telemetry signals, or confuse motion with progress.",
       "risk": "Your risk is not lack of effort. It is pressure-led action. You may be protecting the mission while reinforcing the very patterns that weaken it.",
-      "focus": "Start at Level 1 — <em>Deepen Self-Awareness</em>. Notice your pressure patterns. Name your triggers. Build a pause before reacting. Separate fact from interpretation. Ask, \"What am I not seeing yet?\"",
-      "next": "Your first breakthrough is likely to come from seeing your own operating system more clearly — before you change anything else."
+      "focus": "Start at Level 1, <em>Deepen Self-Awareness</em>. Notice your pressure patterns. Name your triggers. Build a pause before reacting. Separate fact from interpretation. Ask, \"What am I not seeing yet?\"",
+      "next": "Your first breakthrough is likely to come from seeing your own operating system more clearly, before you change anything else."
     },
     "tactical_survivor": {
       "name": "The Engineer in the Trenches",
       "band": "Tactical Survivor",
-      "headline": "You can handle pressure — but your problem-solving may be too anchored in the immediate console.",
+      "headline": "You can handle pressure, but your problem-solving may be too anchored in the immediate console.",
       "body": "You are capable, practical, and effective in difficult shifts. You make decisions, keep momentum, and solve immediate faults. Your result suggests, though, that short-term demands may be crowding out longer-term mission design. You may prioritise control over understanding, optimise for delivery rather than direction, and carry too much yourself.",
       "risk": "Your risk is tactical over-functioning. You may become so good at surviving the current sim that you unintentionally normalise crisis as the operating model.",
-      "focus": "Strengthen Level 3 — <em>Develop Strategic Capabilities</em>. Focus on future-orientation, creative options, and acting well in uncertainty. Move from \"What needs fixing now?\" to \"What future are we creating through this decision?\"",
-      "next": "Your growth edge is widening the time horizon you actually think in — from this shift, to this decade of missions."
+      "focus": "Strengthen Level 3, <em>Develop Strategic Capabilities</em>. Focus on future-orientation, creative options, and acting well in uncertainty. Move from \"What needs fixing now?\" to \"What future are we creating through this decision?\"",
+      "next": "Your growth edge is widening the time horizon you actually think in, from this shift, to this decade of missions."
     },
     "hidden_drifter": {
       "name": "The Compromised Trajectory",
       "band": "Hidden Drift",
-      "headline": "You are more strategic than most — but your blindspots emerge precisely when you feel most certain.",
-      "body": "You are thoughtful, capable, and likely well-intentioned. You can see complexity, make decisions, and influence others. But your result suggests a subtle risk: under deadline pressure, your strengths can distort. Clarity becomes certainty. Decisiveness becomes control. Conviction becomes justification. Calm becomes detachment. This is the most psychologically important result because it mirrors how strategic drift happens in real mission environments — not through incompetence, but through capable people making apparently reasonable choices under pressure.",
+      "headline": "You are more strategic than most, but your blindspots emerge precisely when you feel most certain.",
+      "body": "You are thoughtful, capable, and likely well-intentioned. You can see complexity, make decisions, and influence others. But your result suggests a subtle risk: under deadline pressure, your strengths can distort. Clarity becomes certainty. Decisiveness becomes control. Conviction becomes justification. Calm becomes detachment. This is the most psychologically important result because it mirrors how strategic drift happens in real mission environments, not through incompetence, but through capable people making apparently reasonable choices under pressure.",
       "risk": "Your risk is <em>justified drift</em>. You may continue making decisions that each seem defensible while the wider pattern moves quietly away from your stated values.",
-      "focus": "Work across Levels 1 and 2 together — <em>Deepen Self-Awareness</em> and <em>Cultivate Open-Mindedness</em>. Notice yourself under pressure. Listen most carefully when you disagree. Test the assumptions you would rather keep. Invite challenge. Watch the moment when \"necessary\" becomes a dangerous word.",
-      "next": "Your fastest development will come from learning to notice earlier — before the trajectory drifts."
+      "focus": "Work across Levels 1 and 2 together, <em>Deepen Self-Awareness</em> and <em>Cultivate Open-Mindedness</em>. Notice yourself under pressure. Listen most carefully when you disagree. Test the assumptions you would rather keep. Invite challenge. Watch the moment when \"necessary\" becomes a dangerous word.",
+      "next": "Your fastest development will come from learning to notice earlier, before the trajectory drifts."
     },
     "strategic_operator": {
       "name": "The Mission Controller",
       "band": "Strategic Operator",
       "headline": "You show strong strategic capability and a relatively balanced pattern under pressure.",
       "body": "Your result suggests you can remain clear, reflective, and effective in complex situations. You likely balance action with thought, confidence with humility, and direction with collaboration. Composure on the loop, thoughtful decisions, openness, alignment, and awareness of consequence are all visible in your pattern.",
-      "risk": "Your risk is not capability — it is consistency. Under enough deadline pressure, even strong operators drift into old patterns. The opportunity is to make your strategic capability more reliable, more repeatable, and more visible to others.",
-      "focus": "Strengthen Level 4 — <em>Scale Your Impact</em>. Decision quality, stakeholder alignment, influence without over-control, collaboration under tension. Turning strategic insight into action that travels.",
-      "next": "Your growth edge is becoming more conscious — and more deliberate — about the impact you already have."
+      "risk": "Your risk is not capability, it is consistency. Under enough deadline pressure, even strong operators drift into old patterns. The opportunity is to make your strategic capability more reliable, more repeatable, and more visible to others.",
+      "focus": "Strengthen Level 4, <em>Scale Your Impact</em>. Decision quality, stakeholder alignment, influence without over-control, collaboration under tension. Turning strategic insight into action that travels.",
+      "next": "Your growth edge is becoming more conscious, and more deliberate, about the impact you already have."
     },
     "force_multiplier": {
       "name": "The Architect of Apollo",
       "band": "Strategic Force Multiplier",
       "headline": "You do not just think strategically. You increase the strategic capacity of the program around you.",
       "body": "Your result suggests a highly integrated strategic profile. You can stay aware of yourself under pressure, regulate emotion without disconnecting from consequence, listen deeply, think critically, generate options in uncertainty, decide with courage and humility, and influence without domination. You hold complexity without collapsing into confusion or control.",
-      "risk": "Your risk is <em>over-reliance</em>. Others may look to you for clarity, judgement, and steadiness. Over time, that can quietly create dependency — unless you intentionally build capability in the program around you.",
+      "risk": "Your risk is <em>over-reliance</em>. Others may look to you for clarity, judgement, and steadiness. Over time, that can quietly create dependency, unless you intentionally build capability in the program around you.",
       "focus": "Your next level is multiplication. Develop strategic capability in others. Design decision systems. Build collective intelligence. Create the conditions for others to hold uncertainty without panic.",
-      "next": "Your development edge is to become less necessary — by making the program more strategically capable."
+      "next": "Your development edge is to become less necessary, by making the program more strategically capable."
     }
   },
   "secondaryPatterns": {
@@ -2118,12 +2118,12 @@
     },
     "the_consensus_seeker": {
       "name": "The Coalition Builder",
-      "headline": "You create inclusion and invite voice — but may delay difficult go/no-go calls.",
+      "headline": "You create inclusion and invite voice, but may delay difficult go/no-go calls.",
       "body": "Your development edge is to preserve collaboration while becoming more decisive when the window closes."
     },
     "the_decisive_commander": {
       "name": "The Cowboy",
-      "headline": "You move quickly and bring momentum — but your speed may narrow the field of telemetry.",
+      "headline": "You move quickly and bring momentum, but your speed may narrow the field of telemetry.",
       "body": "Your edge is to slow down just enough to hear what the system is trying to tell you."
     },
     "vision_under_strain": {
@@ -2137,7 +2137,7 @@
       "name": "Authority Reflex",
       "low": "You appear able to pursue clarity without defaulting to command.",
       "mod": "You may sometimes overvalue speed, certainty, or chain of command when pressure rises.",
-      "high": "You may be at risk of mistaking <em>command for strategy</em>. This can make you decisive — but it may also reduce listening, creativity, and trust on the loop.",
+      "high": "You may be at risk of mistaking <em>command for strategy</em>. This can make you decisive, but it may also reduce listening, creativity, and trust on the loop.",
       "q": "Where might you be calling something <em>alignment</em> when it is actually compliance?"
     },
     "moral_drift": {
@@ -2178,7 +2178,7 @@
       {
         "icon": "question",
         "title": "Replace \"should\" with \"if\"",
-        "body": "Notice your \"shoulds\" — they are usually pressure speaking. Reframe to \"if I did this, what would happen?\" Re-open the choice.",
+        "body": "Notice your \"shoulds\", they are usually pressure speaking. Reframe to \"if I did this, what would happen?\" Re-open the choice.",
         "test": "Count your \"shoulds\" for one day. Reframe three."
       }
     ],
@@ -2264,7 +2264,7 @@
       {
         "icon": "multiply",
         "title": "Design a decision system",
-        "body": "Create a clear template for how strategic decisions get made in your program — owner, evidence, options, trade-offs, review. Replicable, not heroic.",
+        "body": "Create a clear template for how strategic decisions get made in your program, owner, evidence, options, trade-offs, review. Replicable, not heroic.",
         "test": "Build the v1 template. Apply to your next big call."
       },
       {
@@ -2282,7 +2282,7 @@
       {
         "icon": "horizon",
         "title": "Author the long brief",
-        "body": "Write a short paper on the strategic capability you want your wider program to have in three years. Use it as a north star — share, debate, refine.",
+        "body": "Write a short paper on the strategic capability you want your wider program to have in three years. Use it as a north star, share, debate, refine.",
         "test": "One page. Share with three trusted readers."
       }
     ]
@@ -2307,86 +2307,86 @@
     }
   },
   "imagePrompts": {
-    "art_direction": "1970s iconic pop-art poster style. Bold flat colours in limited palette, ben-day dot shading, strong black ink outlines around every form, high-contrast cel-shaded lighting, screen-print aesthetic reminiscent of late-1960s and early-1970s Apollo program promotional posters and pop-illustration magazines. Period-correct Mission Operations Control Room — rows of consoles, CRT panels, slide rules, mechanical calculators. Period-correct figures in skinny ties and short-sleeved white shirts, women in lab coats, glasses, headsets. Strong graphic composition, sense of optimism and pressure side by side. Katherine Johnson is permitted as a respectful, dignified pop-poster depiction.",
+    "art_direction": "1970s iconic pop-art poster style. Bold flat colours in limited palette, ben-day dot shading, strong black ink outlines around every form, high-contrast cel-shaded lighting, screen-print aesthetic reminiscent of late-1960s and early-1970s Apollo program promotional posters and pop-illustration magazines. Period-correct Mission Operations Control Room, rows of consoles, CRT panels, slide rules, mechanical calculators. Period-correct figures in skinny ties and short-sleeved white shirts, women in lab coats, glasses, headsets. Strong graphic composition, sense of optimism and pressure side by side. Katherine Johnson is permitted as a respectful, dignified pop-poster depiction.",
     "palette": "Near-black #050810 base · NASA red #FC3D21 accent · warm off-white #f4ecdb highlights",
     "archetypes": {
       "reactive_defender": {
         "filename_template": "images/skin-apollo/archetype-reactive-defender-{gender}.png",
-        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc} in a flight controller's console pose, leaning forward toward a CRT screen, hand reaching toward a switch panel, urgency in the posture, body angled away from a fault warning indicator glowing NASA red. Mission Operations Control Room background, rows of identical consoles receding, period-correct white shirts and skinny ties. Deep red rim light from console glow. 1:1 square aspect ratio, melancholic, single warm-red light source. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc} in a flight controller's console pose, leaning forward toward a CRT screen, hand reaching toward a switch panel, urgency in the posture, body angled away from a fault warning indicator glowing NASA red. Mission Operations Control Room background, rows of identical consoles receding, period-correct white shirts and skinny ties. Deep red rim light from console glow. 1:1 square aspect ratio, melancholic, single warm-red light source. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "tactical_survivor": {
         "filename_template": "images/skin-apollo/archetype-tactical-survivor-{gender}.png",
-        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc}, a weathered flight controller mid-stride down the long flank of console rows, scanning a clipboard, period-correct short-sleeve white shirt and skinny tie or lab coat. CRT screens glowing softly red on both sides. Long shadow trailing behind under fluorescent ceiling banks. 1:1 square aspect ratio, sense of forward momentum, lonely. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc}, a weathered flight controller mid-stride down the long flank of console rows, scanning a clipboard, period-correct short-sleeve white shirt and skinny tie or lab coat. CRT screens glowing softly red on both sides. Long shadow trailing behind under fluorescent ceiling banks. 1:1 square aspect ratio, sense of forward momentum, lonely. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "hidden_drifter": {
         "filename_template": "images/skin-apollo/archetype-hidden-drifter-{gender}.png",
-        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc}, a solitary flight controller walking down a long ancient corridor between rows of NASA mainframe cabinets, parallel columns of warm-red operational lights from above, polished tile floor reflecting their figure subtly out of sync — slightly displaced, slightly behind, as if a second self trails them. Dust catching the red beams, deep shadow at the edges. 1:1 square aspect ratio. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. Graphic poster composition, contemplative, slightly unsettling. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc}, a solitary flight controller walking down a long ancient corridor between rows of NASA mainframe cabinets, parallel columns of warm-red operational lights from above, polished tile floor reflecting their figure subtly out of sync, slightly displaced, slightly behind, as if a second self trails them. Dust catching the red beams, deep shadow at the edges. 1:1 square aspect ratio. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. Graphic poster composition, contemplative, slightly unsettling. (Reminder: edge-to-edge, no border, no text.)"
       },
       "strategic_operator": {
         "filename_template": "images/skin-apollo/archetype-strategic-operator-{gender}.png",
-        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc}, a centred standing flight director on a raised dais behind the row of front controllers, calm posture, headset on, period-correct attire, head slightly inclined toward the front screen. A natural halo of warm-red console light behind their head. Other flight controllers visible at consoles below, listening, partially in shadow. 1:1 square aspect ratio. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. Graphic poster composition, serene, dignified. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc}, a centred standing flight director on a raised dais behind the row of front controllers, calm posture, headset on, period-correct attire, head slightly inclined toward the front screen. A natural halo of warm-red console light behind their head. Other flight controllers visible at consoles below, listening, partially in shadow. 1:1 square aspect ratio. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. Graphic poster composition, serene, dignified. (Reminder: edge-to-edge, no border, no text.)"
       },
       "force_multiplier": {
         "filename_template": "images/skin-apollo/archetype-force-multiplier-{gender}.png",
-        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc}, a central flight director on a raised dais bathed in radiant warm-red light, surrounded at the same elevation by other flight controllers and engineers of equal stature, all illuminated by the shared console glow. Faint lines of warm red light connecting them like a constellation. Apollo program insignia subtly suggested on the wall behind. 1:1 square aspect ratio. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. Graphic poster composition, mythic, communal. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt_template": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. {genderDesc}, a central flight director on a raised dais bathed in radiant warm-red light, surrounded at the same elevation by other flight controllers and engineers of equal stature, all illuminated by the shared console glow. Faint lines of warm red light connecting them like a constellation. Apollo program insignia subtly suggested on the wall behind. 1:1 square aspect ratio. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. Graphic poster composition, mythic, communal. (Reminder: edge-to-edge, no border, no text.)"
       }
     },
     "scenes": {
       "mocr_overview": {
         "filename": "images/skin-apollo/scene-mocr-overview.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Wide establishing view of Mission Operations Control Room at night, four rows of consoles receding to a vast front projection screen, CRT screens glowing in red, controllers in white shirts at their stations, ceiling fluorescents low. 1:1, melancholic, vast scale. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Wide establishing view of Mission Operations Control Room at night, four rows of consoles receding to a vast front projection screen, CRT screens glowing in red, controllers in white shirts at their stations, ceiling fluorescents low. 1:1, melancholic, vast scale. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "mocr": {
         "filename": "images/skin-apollo/scene-mocr.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Interior of Mission Operations Control Room at night, a single figure standing on the raised flight director dais, soft warm-red light from above, empty consoles in shadow surrounding them. 1:1, melancholic, vast scale. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Interior of Mission Operations Control Room at night, a single figure standing on the raised flight director dais, soft warm-red light from above, empty consoles in shadow surrounding them. 1:1, melancholic, vast scale. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "cape_launchpad": {
         "filename": "images/skin-apollo/scene-cape-launchpad.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Overlook of the Cape Canaveral launch pad at dusk, the Saturn V rocket silhouetted against a dark sky, gantry lights glowing warm red, distant ocean horizon. Two small flight controllers in foreground, backs to camera. Heat shimmer and cooling vapour drifting from the booster. 1:1, awe under pressure. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Overlook of the Cape Canaveral launch pad at dusk, the Saturn V rocket silhouetted against a dark sky, gantry lights glowing warm red, distant ocean horizon. Two small flight controllers in foreground, backs to camera. Heat shimmer and cooling vapour drifting from the booster. 1:1, awe under pressure. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "telemetry_dropout": {
         "filename": "images/skin-apollo/scene-telemetry-dropout.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A tracking station console at night, multiple CRT screens flickering with red warning indicators, telemetry traces dropping out, a controller leaning forward with hand on a switch. Long shadows from fluorescent ceiling. 1:1, urgency under cold quiet. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A tracking station console at night, multiple CRT screens flickering with red warning indicators, telemetry traces dropping out, a controller leaning forward with hand on a switch. Long shadows from fluorescent ceiling. 1:1, urgency under cold quiet. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "flight_director_office": {
         "filename": "images/skin-apollo/scene-flight-director-office.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Two figures seated across a low office table at night, behind them a wide window showing the launch pad lit warm-red on the distant horizon. The right figure leans forward, lit by the pad glow; the left figure remains in shadow. 1:1, intimate, quietly tense. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Two figures seated across a low office table at night, behind them a wide window showing the launch pad lit warm-red on the distant horizon. The right figure leans forward, lit by the pad glow; the left figure remains in shadow. 1:1, intimate, quietly tense. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "action_console": {
         "filename": "images/skin-apollo/scene-action-console.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A lone flight controller standing in the centre of a tall vertical column of warm-red light at an action console, floating semi-transparent telemetry panels around them at chest height, vertical CRT banks flanking. 1:1, hushed, weight of decision. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A lone flight controller standing in the centre of a tall vertical column of warm-red light at an action console, floating semi-transparent telemetry panels around them at chest height, vertical CRT banks flanking. 1:1, hushed, weight of decision. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "confrontation": {
         "filename": "images/skin-apollo/scene-confrontation.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Two figures facing each other across a darkened office, the negative space between them charged. Both partly silhouetted, one slightly lit from the right with warm red console glow filtering through a doorway. A horizon line of red light bisects the wall behind them. 1:1, mirrored stance, psychological standoff. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Two figures facing each other across a darkened office, the negative space between them charged. Both partly silhouetted, one slightly lit from the right with warm red console glow filtering through a doorway. A horizon line of red light bisects the wall behind them. 1:1, mirrored stance, psychological standoff. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "katherine_office": {
         "filename": "images/skin-apollo/scene-katherine-office.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A quiet office at dusk in a 1960s American space-program building. A Black woman mathematician in her early 50s — a fictional, non-identifiable character, three-quarter profile, features generic and not modelled on any specific person — seated at a wooden desk covered with handwritten trajectory pages and a slide rule. A single brass desk lamp casts warm light across her shoulder. Chalkboard behind her with hand-drawn orbital equations and arcs. Generous negative space, contemplative. 1:1, meditative. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A quiet office at dusk in a 1960s American space-program building. A Black woman mathematician in her early 50s, a fictional, non-identifiable character, three-quarter profile, features generic and not modelled on any specific person, seated at a wooden desk covered with handwritten trajectory pages and a slide rule. A single brass desk lamp casts warm light across her shoulder. Chalkboard behind her with hand-drawn orbital equations and arcs. Generous negative space, contemplative. 1:1, meditative. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "computers_room": {
         "filename": "images/skin-apollo/scene-computers-room.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Interior of a \"human computers\" room at NASA. Several women, including Black women mathematicians, at long desks with mechanical calculators and stacks of trajectory worksheets. Three of them are mid-discussion, animated, one quietly head-down. Warm overhead lighting, deep architectural space, period-correct dresses and lab coats. 1:1, tension, fragmented voices, dignified. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Interior of a \"human computers\" room at NASA. Several women, including Black women mathematicians, at long desks with mechanical calculators and stacks of trajectory worksheets. Three of them are mid-discussion, animated, one quietly head-down. Warm overhead lighting, deep architectural space, period-correct dresses and lab coats. 1:1, tension, fragmented voices, dignified. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "sim_debrief": {
         "filename": "images/skin-apollo/scene-sim-debrief.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A long debrief room at night after a failed simulation. Rows of empty engineering seats receding, a single standing figure in the foreground with head bowed, soft warm-red light spilling from camera-left, reflective tile floor catching the glow. 1:1, hushed, sombre, weight of consequence. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A long debrief room at night after a failed simulation. Rows of empty engineering seats receding, a single standing figure in the foreground with head bowed, soft warm-red light spilling from camera-left, reflective tile floor catching the glow. 1:1, hushed, sombre, weight of consequence. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "shadow_pattern": {
         "filename": "images/skin-apollo/scene-shadow-pattern.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A single flight controller standing centred in a corridor, with two contradicting warm-red light sources from left and right casting two long, diverging shadows toward camera — like a fork in identity. Subtle halo of warm light behind the figure's head. Otherwise pitch dark. 1:1, psychological doubling. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A single flight controller standing centred in a corridor, with two contradicting warm-red light sources from left and right casting two long, diverging shadows toward camera, like a fork in identity. Subtle halo of warm light behind the figure's head. Otherwise pitch dark. 1:1, psychological doubling. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "allies_whisper": {
         "filename": "images/skin-apollo/scene-allies-whisper.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Three NASA engineers clustered close together in a corridor alcove between two large electrical cabinets, heads tilted inward as if speaking quietly. A single warm-red emergency light overhead casting concentrated downlight. Heavy shadow at the edges. 1:1, conspiratorial, intimate, conferring under pressure. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Three NASA engineers clustered close together in a corridor alcove between two large electrical cabinets, heads tilted inward as if speaking quietly. A single warm-red emergency light overhead casting concentrated downlight. Heavy shadow at the edges. 1:1, conspiratorial, intimate, conferring under pressure. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "reckoning": {
         "filename": "images/skin-apollo/scene-reckoning.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A flight controller standing in profile facing their own reflection in a tall vertical seam of warm-red light at the edge of the MOCR. The reflection is faintly dimmer, slightly less certain. Between them, a bright vertical filament of red console light. The rest of the room is pitch-dark. 1:1, recognition of self, reckoning. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. A flight controller standing in profile facing their own reflection in a tall vertical seam of warm-red light at the edge of the MOCR. The reflection is faintly dimmer, slightly less certain. Between them, a bright vertical filament of red console light. The rest of the room is pitch-dark. 1:1, recognition of self, reckoning. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       },
       "go_nogo": {
         "filename": "images/skin-apollo/scene-go-nogo.png",
-        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere — even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Wide view of Mission Operations Control Room moments before a critical go/no-go vote, split down the centre by a hard vertical beam of warm-red light from the front screen. Two clusters of flight controllers occupy each side. A single solitary figure stands centred on the seam of light, facing the front screen. Receding console rows. 1:1, decisive moment. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
+        "prompt": "EDGE-TO-EDGE FRAMING, NO BORDER, NO TEXT. This is a full-bleed cinematic still: the subject and background extend to every edge of the frame like a frame grab from a film, cropped at the rectangle's edges. Do not draw a border, frame, white margin, paper edge, matting, decorative trim or vignette around the image. Do not render any text, typography, caption, title, label, signature, logo or watermark anywhere, even in the corners. 1970s pop-art cinematic still, bold flat colours, ben-day dot shading, strong black ink outlines around forms, comic-book cel lighting, screen-print aesthetic in the style of late-1960s/early-1970s Apollo program promotional artwork and 1970s magazine pop illustration sensibility, framed as a film still.. Wide view of Mission Operations Control Room moments before a critical go/no-go vote, split down the centre by a hard vertical beam of warm-red light from the front screen. Two clusters of flight controllers occupy each side. A single solitary figure stands centred on the seam of light, facing the front screen. Receding console rows. 1:1, decisive moment. Palette near-black #050810, NASA red #FC3D21, warm off-white #f4ecdb. (Reminder: edge-to-edge, no border, no text.)"
       }
     }
   },
@@ -2394,7 +2394,7 @@
     "converging": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <polyline points=\"0,110 70,113.38785484037021 140,115.59223451580336 210,115.84308578526917 280,114.0527790833069 350,110.8467200483592 420,107.34487734023088 490,104.77054536551847 560,104.02301234698496 630,105.36341307466407 700,108.32350701080645 770,111.86924818108027 840,114.76200718309491 910,115.99126007224763 980,115.12759344852968 1050,112.47271091145053 1120,108.95403931266212 1190,105.80075187443875 1260,104.11438261960106 1330,104.48402884601194 1400,106.78056249199739 1470,110.20173828332682 1540,113.55244108824334 1610,115.66217401666462 1680,115.79394665929567\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,173.41470984807896 70,174.99573603041506 140,173.0849640381959 210,168.34988150155905 280,162.4445889797317 350,157.4319750469207 420,155.06308996366536 490,156.16545344279848 560,160.35397820586243 630,166.16549204850492 700,171.56986598718788 770,174.67919672031485 840,174.40730556679773 910,170.84917192891763 980,165.2477542545336 1050,159.5597888911063 1120,155.77224578387194 1190,155.20822270848683 1260,158.06474915222876 1330,163.34395824551692 1400,169.2016703682664 1470,173.59161814856495 1540,174.98026652716362 1610,172.88252067375316 1680,168.03118356745705\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,232.73016397555955 70,227.2170192055005 140,219.18276199201387 210,211.43398952680192 280,206.67757096554678 350,206.57506015471606 420,211.1622670697875 490,218.83674836055505 560,226.91758691594052 630,232.58191334136276 700,233.85101545272735 770,230.28155937023757 840,223.12045879740347 910,214.869292190473 980,208.41042943280084 1050,206.00013710829015 1120,208.4803996704381 1190,214.9847900486844 1260,223.24113755142153 1330,230.36526245933428 1400,233.8685029797282 1470,232.52707640996707 1540,226.8095816439532 1610,218.7133040968125 1680,211.06650644712875\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,277.5401601450776 70,267.03463202069264 140,259.3116360965554 210,257.06903704095487 280,261.0902392239922 350,269.97052103241936 420,280.6077445432408 490,289.2860215492848 560,292.9737802167429 630,290.3827803455891 700,282.4181327343516 770,271.86211793798634 840,262.40225562331625 910,257.34314785880315 980,258.4520865380358 1050,265.34168747599216 1120,275.6052148499805 1190,285.65732326473 1260,291.9865220499939 1330,292.381839977887 1400,286.7051811228281 1470,276.93956574138997 1540,266.4964042448276 1610,259.02379339553295 1680,257.1321311515286\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,313.35034510322555 70,308.1387979200638 140,310.56399757415664 210,319.77875205289735 280,332.56408250671086 350,344.45370517181334 420,351.2942327846927 490,350.696072246955 560,342.8681782436188 630,330.5450593599739 700,318.03153556043384 770,309.69894072451825 840,308.458089958671 910,314.7424481349033 980,326.3567081401372 1050,339.2436748101861 1120,348.9015599268429 1190,351.95658635975997 1260,347.341545482257 1330,336.66860384840544 1400,323.6661270333686 1470,312.87625427224543 1540,308.0681985470849 1610,310.9215520513172 1680,320.43955631441827\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,379.24645435202115 70,381.2124001727661 140,384.501463583095 210,387.9646801068316 280,390.39224857486977 350,390.93614947974027 420,389.4063825872447 490,386.3373394846015 560,382.80112522448843 630,380.03304118548607 700,379.00005876069577 770,380.0630284301877 840,382.85062430657905 910,386.38905895060924 980,389.4422553397147 1050,390.94364413416923 1120,390.36874703284303 1190,387.9183921331228 1260,384.4485588986339 1330,381.1713599059123 1400,379.2316150487227 1470,379.30693301249124 1540,381.3710030655623 1610,384.7027861547298 1680,388.1383945909462\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,437.20584501801073 70,443.1154136351338 140,447.9366786384915 210,449.98543345374605 280,448.5459890808828 350,444.12118485241757 420,438.2567321877702 490,433.0012531240646 560,430.19063769933507 630,430.8067147433532 700,434.63427081999566 770,440.33623047221135 840,445.9207351470722 910,449.43695669444105 980,449.6565777654928 1050,446.5028784015712 1120,441.0775365229944 1190,435.2757801360153 1260,431.124329664185 1330,430.07340619529367 1400,432.4901275322832 1470,437.5302633826338 1540,443.43314928819893 1610,448.13673737507105 1680,449.9979290014267\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,504.19781238206303 70,508.5508754084408 140,508.1702277935168 210,503.18884070048466 280,495.346855956347 350,487.38370444754884 420,482.0811440974207 490,481.29151179188153 560,485.2906488131203 630,492.68154154372365 700,500.882338515573 770,507.02826540799094 840,508.97237313802907 910,506.0355289432544 980,499.24365699443985 1050,490.9693535666891 1120,484.1030709005198 1190,481.04339907541765 1260,482.8591694872018 1330,488.9160812909934 1400,497.0982809352813 1470,504.5474906809539 1540,508.66148724873767 1610,508.00313327708136 1680,502.80241074924726\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,567.8084484392209 70,563.219147761734 140,554.0120184538044 210,543.4033756734652 280,535.0991235564583 350,532.0001762820873 420,535.1890852905633 490,543.5518729197371 560,554.1671768518277 630,563.3267660191441 700,567.8309324025076 770,566.106241098529 840,558.7551763993683 910,548.3456766959017 980,538.514079717737 1050,532.694845146168 1120,532.9207990374738 1190,539.1130091966869 1260,549.1083584641893 1330,559.4151837728385 1400,566.4330145130973 1470,567.7103205031351 1540,562.8009020123077 1610,553.419760164318 1680,542.8439977038142\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,614.0666066753187 70,601.1648108130944 140,589.6027568729421 210,583.4194029385371 280,584.7747724353771 350,593.1953958039904 420,605.739707038865 490,618.0256173235589 560,625.7613047277703 630,626.2444710840841 700,619.3063324834566 770,607.3705803505877 840,594.6067162992338 910,585.4735252612069 980,583.1614936296461 1050,588.4782805710231 1120,599.5665794417944 1190,612.5529284340377 1260,622.9008222251563 1330,626.9954438031388 1400,623.4064240477933 1470,613.3875108164087 1540,600.4385987466513 1610,589.0831153670267 1680,583.2878577213457\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,656.7358733346638 70,654.4633474703231 140,654.1249336250921 210,655.8388494913372 280,659.0063749473102 350,662.5210022209599 420,665.154970889139 490,665.9881599162982 560,664.7295124042519 630,661.8187101404742 700,658.2725801000096 770,655.3298875287942 840,654.0185996037504 910,654.7967869230865 980,657.3926062675686 1050,660.8992632579777 1120,664.0917817204088 1190,665.8549231066019 1260,665.5727714044634 1330,663.343890321106 1400,659.9468921442576 1470,656.5684460693426 1540,654.3887405088327 1610,654.1692093255368 1680,655.9865410777319\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,705.0000979344929 70,706.7717140503129 140,711.4177071776318 210,717.3150982510153 280,722.4037588995245 350,724.9060735569487 420,723.947911721405 490,719.863986888538 560,714.0809314977232 630,708.6189331765205 700,705.3860250812045 770,705.5115550208187 840,708.9516717759371 910,714.5046435912163 980,720.230657651577 1050,724.1294525072763 1120,724.8390669461861 1190,722.1116122290598 1260,716.8998667579544 1330,711.0244431687856 1400,706.5377959582482 1470,705.0072400786337 1540,706.9674427330605 1610,711.7336487389528 1680,717.6408852138447\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,762.4879791479939 70,770.4707226610959 140,778.2890292059011 210,783.2117393722175 280,783.5192088716899 350,779.1040297621996 420,771.5085511321922 490,763.3860921904214 560,757.5740615298589 630,756.1027686734111 700,759.4861785451965 770,766.5423687356873 840,774.8064090034785 910,781.3914323250995 980,783.9971006019973 1050,781.7131789395048 1120,775.3375068831691 1190,767.0972901115053 1260,759.8710734153806 1330,756.1831821863109 1400,757.3219029319073 1470,762.8894477345312 1540,770.9409130153566 1610,778.6636903096805 1680,783.3599913228977\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><polyline points=\"0,832.5630066628795 70,840.4649126674169 140,842.9644797488945 210,839.1885372127557 280,830.4561304214226 350,819.8177403000288 420,810.9896625863827 490,807.0557988112513 560,809.3903607692596 630,817.1778188027058 700,827.6977897739331 770,837.2753451612265 840,842.5647693198056 910,841.7183142133904 980,835.0316709633179 1050,824.8406764327727 1120,814.7053382080278 1190,808.1662215264982 1260,807.5076279766105 1330,812.9596232331955 1400,822.61766849824 1470,833.107930696957 1540,840.765859436596 1610,842.9163198884081 1680,838.8080943474396\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/>\n  </svg>",
     "ripple": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <circle cx=\"800\" cy=\"450\" r=\"70\" fill=\"none\" stroke=\"rgba(252,61,33,0.55)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"134\" fill=\"none\" stroke=\"rgba(252,61,33,0.50)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"198\" fill=\"none\" stroke=\"rgba(252,61,33,0.45)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"262\" fill=\"none\" stroke=\"rgba(252,61,33,0.40)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"326\" fill=\"none\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"390\" fill=\"none\" stroke=\"rgba(252,61,33,0.30)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"454\" fill=\"none\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"518\" fill=\"none\" stroke=\"rgba(252,61,33,0.20)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"582\" fill=\"none\" stroke=\"rgba(252,61,33,0.15)\" stroke-width=\"0.5\"/><circle cx=\"800\" cy=\"450\" r=\"646\" fill=\"none\" stroke=\"rgba(252,61,33,0.10)\" stroke-width=\"0.5\"/>\n    <line x1=\"800\" y1=\"450\" x2=\"1117.7933498176828\" y2=\"1073.7045669318575\" stroke=\"rgba(252,61,33,0.6)\" stroke-width=\"0.5\"/>\n  </svg>",
     "sun-arcs": "<svg class=\"choreo sun-arcs\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <ellipse cx=\"800\" cy=\"500\" rx=\"800\" ry=\"220\" fill=\"none\" stroke=\"rgba(252,61,33,0.5)\" stroke-width=\"0.7\"/>\n    <ellipse cx=\"800\" cy=\"500\" rx=\"600\" ry=\"160\" fill=\"none\" stroke=\"rgba(252,61,33,0.35)\" stroke-width=\"0.5\"/>\n    <ellipse cx=\"800\" cy=\"500\" rx=\"400\" ry=\"100\" fill=\"none\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.5\"/>\n    <circle cx=\"800\" cy=\"500\" r=\"40\" fill=\"rgba(255,102,68,0.22)\"/>\n    <circle cx=\"800\" cy=\"500\" r=\"14\" fill=\"#fc3d21\"/>\n    <circle cx=\"1450\" cy=\"500\" r=\"4\" fill=\"#fc3d21\"/>\n  </svg>",
-    "grid": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <!-- Corner brackets — ghostly, pushed deeper into the corners -->\n    <path d=\"M 40  84  L 40  40  L 84  40\"  fill=\"none\" stroke=\"rgba(252,61,33,0.22)\" stroke-width=\"0.8\"/>\n    <path d=\"M 1560 84  L 1560 40  L 1516 40\"  fill=\"none\" stroke=\"rgba(252,61,33,0.22)\" stroke-width=\"0.8\"/>\n    <path d=\"M 40  816 L 40  860 L 84  860\" fill=\"none\" stroke=\"rgba(252,61,33,0.22)\" stroke-width=\"0.8\"/>\n    <path d=\"M 1560 816 L 1560 860 L 1516 860\" fill=\"none\" stroke=\"rgba(252,61,33,0.22)\" stroke-width=\"0.8\"/>\n    <!-- REC indicator — kept readable but smaller, only chrome element with any presence -->\n    <circle cx=\"1492\" cy=\"42\" r=\"3\" fill=\"#fc3d21\" opacity=\"0.55\"/>\n    <text x=\"1500\" y=\"46\" font-family=\"monospace\" font-size=\"10\" fill=\"rgba(252,61,33,0.32)\" letter-spacing=\"2\">REC</text>\n  </svg>",
+    "grid": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <!-- Corner brackets, ghostly, pushed deeper into the corners -->\n    <path d=\"M 40  84  L 40  40  L 84  40\"  fill=\"none\" stroke=\"rgba(252,61,33,0.22)\" stroke-width=\"0.8\"/>\n    <path d=\"M 1560 84  L 1560 40  L 1516 40\"  fill=\"none\" stroke=\"rgba(252,61,33,0.22)\" stroke-width=\"0.8\"/>\n    <path d=\"M 40  816 L 40  860 L 84  860\" fill=\"none\" stroke=\"rgba(252,61,33,0.22)\" stroke-width=\"0.8\"/>\n    <path d=\"M 1560 816 L 1560 860 L 1516 860\" fill=\"none\" stroke=\"rgba(252,61,33,0.22)\" stroke-width=\"0.8\"/>\n    <!-- REC indicator, kept readable but smaller, only chrome element with any presence -->\n    <circle cx=\"1492\" cy=\"42\" r=\"3\" fill=\"#fc3d21\" opacity=\"0.55\"/>\n    <text x=\"1500\" y=\"46\" font-family=\"monospace\" font-size=\"10\" fill=\"rgba(252,61,33,0.32)\" letter-spacing=\"2\">REC</text>\n  </svg>",
     "fault": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <path d=\"M 0 590 L 220 580 L 380 640 L 520 540 L 700 600 L 880 480 L 1080 600 L 1280 520 L 1600 600\" stroke=\"rgba(252,61,33,0.6)\" stroke-width=\"0.7\" fill=\"none\"/>\n    <path d=\"M 0 660 L 200 650 L 380 700 L 540 600 L 720 660 L 900 540 L 1100 660 L 1300 580 L 1600 660\" stroke=\"rgba(252,61,33,0.3)\" stroke-width=\"0.45\" fill=\"none\"/>\n    <line x1=\"200\" y1=\"120\" x2=\"200\" y2=\"780\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"440\" y1=\"120\" x2=\"440\" y2=\"780\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"680\" y1=\"120\" x2=\"680\" y2=\"780\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"920\" y1=\"120\" x2=\"920\" y2=\"780\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"1160\" y1=\"120\" x2=\"1160\" y2=\"780\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/><line x1=\"1400\" y1=\"120\" x2=\"1400\" y2=\"780\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\" stroke-dasharray=\"3 6\"/>\n  </svg>",
     "web": "<svg class=\"choreo\" viewBox=\"0 0 1600 900\" preserveAspectRatio=\"xMidYMid slice\">\n    <line x1=\"800\" y1=\"450\" x2=\"1700\" y2=\"450\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1631.4915792601582\" y2=\"794.4150891285808\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1436.396103067893\" y2=\"1086.3961030678927\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1144.4150891285808\" y2=\"1281.4915792601582\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"800\" y2=\"1350\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"455.58491087141925\" y2=\"1281.4915792601582\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"163.60389693210732\" y2=\"1086.396103067893\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"-31.49157926015812\" y2=\"794.4150891285809\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"-100\" y2=\"450.0000000000001\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"-31.49157926015812\" y2=\"105.58491087141937\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"163.6038969321071\" y2=\"-186.39610306789268\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"455.5849108714187\" y2=\"-381.4915792601579\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"799.9999999999999\" y2=\"-450\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1144.415089128581\" y2=\"-381.491579260158\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1436.3961030678925\" y2=\"-186.3961030678929\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/><line x1=\"800\" y1=\"450\" x2=\"1631.4915792601578\" y2=\"105.58491087141863\" stroke=\"rgba(252,61,33,0.25)\" stroke-width=\"0.4\"/>\n    <circle cx=\"800\" cy=\"450\" r=\"180\" fill=\"none\" stroke=\"rgba(252,61,33,0.42)\" stroke-width=\"0.4\"/><circle cx=\"800\" cy=\"450\" r=\"300\" fill=\"none\" stroke=\"rgba(252,61,33,0.34)\" stroke-width=\"0.4\"/><circle cx=\"800\" cy=\"450\" r=\"420\" fill=\"none\" stroke=\"rgba(252,61,33,0.26)\" stroke-width=\"0.4\"/><circle cx=\"800\" cy=\"450\" r=\"560\" fill=\"none\" stroke=\"rgba(252,61,33,0.18)\" stroke-width=\"0.4\"/>\n    <circle cx=\"535.2898351997566\" cy=\"190.96358077020716\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"742.3242091684189\" cy=\"690.95757646318\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"1008.3145281949571\" cy=\"360.7567477518215\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"696.522311350897\" cy=\"915.9618142317375\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"1032.1921821317726\" cy=\"260.8685410306423\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"394.18488997480233\" cy=\"625.647428912158\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"720.5071703638856\" cy=\"719.9984869937414\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"608.6373302229143\" cy=\"562.3630370873998\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"585.7147312514725\" cy=\"572.3667158008082\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"952.4491097920451\" cy=\"580.4288841726777\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"1047.500760548234\" cy=\"747.702577018791\" r=\"2.5\" fill=\"#fc3d21\"/><circle cx=\"1036.4880707305797\" cy=\"812.3675420267411\" r=\"2.5\" fill=\"#fc3d21\"/>\n  </svg>"
   },

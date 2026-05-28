@@ -1,11 +1,11 @@
-# Skin Spec — story-pluggable content for The Strategic Capability Assessment
+# Skin Spec, story-pluggable content for The Strategic Capability Assessment
 
-A *skin* is a JSON file that wraps the 12-practice assessment in a different story. The scoring rubric, the four levels, the eleven archetypes, and the results page structure stay identical across every skin — so a user's saved sessions are comparable whether they took the **Force Trial** skin or a future one.
+A *skin* is a JSON file that wraps the 12-practice assessment in a different story. The scoring rubric, the four levels, the eleven archetypes, and the results page structure stay identical across every skin, so a user's saved sessions are comparable whether they took the **Force Trial** skin or a future one.
 
 This document is the schema. The fastest way to author a new skin is:
 
 1. Open the admin panel (`?admin=1`) → **Skins** tab.
-2. Click **Export JSON** on *The Strategic Force Trial* — this dumps every editable field.
+2. Click **Export JSON** on *The Strategic Force Trial*, this dumps every editable field.
 3. Edit the JSON in your favourite editor.
 4. **Import** it back into the same Skins tab.
 5. **Activate**.
@@ -24,7 +24,7 @@ Below is the full shape with annotated fields.
   "description": "Set in a constitutional crisis…",
   "theme":       { /* see Theme */ },
   "characters":  { /* see Characters */ },
-  "scenes":      [ /* see Scenes — required, this is the longest block */ ],
+  "scenes":      [ /* see Scenes, required, this is the longest block */ ],
   "archetypes":  { /* see Archetypes */ },
   "secondaryPatterns": { /* see Secondary patterns */ },
   "riskCopy":    { /* see Risk copy */ },
@@ -33,7 +33,7 @@ Below is the full shape with annotated fields.
 }
 ```
 
-The only **required** fields for import to succeed are `id`, `name`, and a `scenes` array. Everything else falls back to the Force Trial defaults if omitted — useful for iterating.
+The only **required** fields for import to succeed are `id`, `name`, and a `scenes` array. Everything else falls back to the Force Trial defaults if omitted, useful for iterating.
 
 ---
 
@@ -55,7 +55,7 @@ CSS custom properties applied to `:root` when the skin is activated. The minimum
 }
 ```
 
-The variable names are misleadingly named *amber/orange/tangerine* because the default skin is Mandarin Orange — but for your skin, they're just **accent slots**. You can put any colour in.
+The variable names are misleadingly named *amber/orange/tangerine* because the default skin is Mandarin Orange, but for your skin, they're just **accent slots**. You can put any colour in.
 
 You can also override `--serif` and `--sans` font stacks if your skin loads different web fonts.
 
@@ -67,13 +67,13 @@ You can also override `--serif` and `--sans` font stacks if your skin loads diff
 { "commander": "Counsel Ferran", "mentor": "The Recluse" }
 ```
 
-Surfaced in the session record + admin Skins cards. The names you use here also need to appear in your `scenes` copy — the skin system doesn't auto-substitute. (Variables like `{{firstName}}` and `{{they}}` still work for the user.)
+Surfaced in the session record + admin Skins cards. The names you use here also need to appear in your `scenes` copy, the skin system doesn't auto-substitute. (Variables like `{{firstName}}` and `{{they}}` still work for the user.)
 
 ---
 
 ## Scenes
 
-The biggest block. Same shape as the default skin's `SCENES` array. There are 11 scene types — each renders differently. Order matters: scenes play top-to-bottom.
+The biggest block. Same shape as the default skin's `SCENES` array. There are 11 scene types, each renders differently. Order matters: scenes play top-to-bottom.
 
 ### Scene types
 
@@ -92,13 +92,13 @@ The biggest block. Same shape as the default skin's `SCENES` array. There are 11
 
 ### Question scoring
 
-**Scoring is fixed across skins.** When you author a question scene, copy the `scoring`, `options[].score`, `items[].score`, and `weights` from the equivalent question in the default skin. If you change the numbers, you break cross-skin comparability — sessions from your skin will land in different archetype bands than the same user would in another skin.
+**Scoring is fixed across skins.** When you author a question scene, copy the `scoring`, `options[].score`, `items[].score`, and `weights` from the equivalent question in the default skin. If you change the numbers, you break cross-skin comparability, sessions from your skin will land in different archetype bands than the same user would in another skin.
 
 Skin authors **CAN** safely change:
-- `setup` — the scenario before the prompt
-- `prompt` — the question itself (keeping the same practice meaning)
-- `options[].copy` — the answer text
-- `items[].label` — the rankable item text
+- `setup`, the scenario before the prompt
+- `prompt`, the question itself (keeping the same practice meaning)
+- `options[].copy`, the answer text
+- `items[].label`, the rankable item text
 - `placeholder`, `hint`
 
 Skin authors **MUST NOT** change:
@@ -137,10 +137,10 @@ Skin authors **MUST NOT** change:
   "reactive_defender": {
     "name":     "The Reactive Defender",
     "band":     "Strategic Infancy",
-    "headline": "You care about protecting what matters — but pressure drives more of your strategy than you realise.",
+    "headline": "You care about protecting what matters, but pressure drives more of your strategy than you realise.",
     "body":     "Long paragraph of pattern interpretation…",
     "risk":     "Your risk is not lack of effort…",
-    "focus":    "Start at Level 1 — <em>Deepen Self-Awareness</em>…",
+    "focus":    "Start at Level 1, <em>Deepen Self-Awareness</em>…",
     "next":     "Your first breakthrough is likely to come from…"
   },
   /* tactical_survivor, hidden_drifter, strategic_operator, force_multiplier */
@@ -153,7 +153,7 @@ The five keys are fixed. The copy can be re-themed entirely for your story.
 
 ## Secondary patterns
 
-Same shape as the default skin. The six keys (`architect_of_order`, `the_justifier`, etc.) are fixed; copy can be re-themed. Each has a `trigger` function in code that's **not** part of the skin — you can't change when each overlay fires, only what it says when it does.
+Same shape as the default skin. The six keys (`architect_of_order`, `the_justifier`, etc.) are fixed; copy can be re-themed. Each has a `trigger` function in code that's **not** part of the skin, you can't change when each overlay fires, only what it says when it does.
 
 ```json
 {
@@ -215,7 +215,7 @@ Available icons: `notice`, `pause`, `invite`, `reframe`, `horizon`, `decide`, `e
 
 The archetype portraits use the gender-suffix convention (`archetype-{key}-{gender}.png`) and are resolved automatically at runtime. If you set `imageMap.archetype` per skin, the assessment will read those filenames; if you don't, it falls back to the `images/archetype-{key}-{gender}.png` pattern.
 
-To prepare gender-aware portraits for a skin, use the same Image Studio (`image-studio.html`) — just edit `image-prompts.json` first with your skin's descriptions before running, then drop the output under `images/skin-<id>/` and adjust paths.
+To prepare gender-aware portraits for a skin, use the same Image Studio (`image-studio.html`), just edit `image-prompts.json` first with your skin's descriptions before running, then drop the output under `images/skin-<id>/` and adjust paths.
 
 ---
 
@@ -237,7 +237,7 @@ To prepare gender-aware portraits for a skin, use the same Image Studio (`image-
 
 ---
 
-## Comparability — what's preserved across skins
+## Comparability, what's preserved across skins
 
 A user who takes both your skin and the Force Trial will get:
 - The same 12 practice scores (0–100)
@@ -247,11 +247,11 @@ A user who takes both your skin and the Force Trial will get:
 - Potentially different *copy* describing those scores
 - Potentially different *secondary pattern* names
 
-That last point is intentional — the secondary patterns trigger from the same numeric thresholds, but each skin can rename them.
+That last point is intentional, the secondary patterns trigger from the same numeric thresholds, but each skin can rename them.
 
 Every saved session in localStorage carries:
 - `skin: "your_skin_id"` and `skin_name: "Your Story Title"`
 - The full numeric breakdown
 - The user's reflections (free text)
 
-Cross-skin comparison reports are possible because the scoring rubric is identical — you can pivot the CSV export by skin and see whether the same person scored differently in two stories.
+Cross-skin comparison reports are possible because the scoring rubric is identical, you can pivot the CSV export by skin and see whether the same person scored differently in two stories.
