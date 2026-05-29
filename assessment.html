@@ -15703,17 +15703,27 @@ function exitPreviewToAssessment() {
 // returnTo URL, swap the preview banner controls so "Back" goes to the
 // user's /me page rather than the admin overlay.
 function configurePreviewBannerForReturnTo() {
+  // ret values:
+  //   null / undefined  → preview launched without a viewer wrapper (legacy admin path)
+  //   'admin'           → admin clicked "View" on a stored session
+  //   any URL string    → magic-link / /me viewer; that URL is where "Back" goes
   const ret = window.__sessionViewerReturnTo;
   const banner = document.getElementById('previewBanner');
   if (!banner) return;
-  if (ret) {
-    banner.querySelector('span:nth-of-type(2)').textContent = 'VIEWING SAVED RESULT';
-    const buttons = banner.querySelectorAll('.exit-link');
+  const isUserViewer = !!ret && ret !== 'admin';
+  const isAdminViewer = ret === 'admin';
+  const label2 = banner.querySelector('span:nth-of-type(2)');
+  const buttons = banner.querySelectorAll('.exit-link');
+  if (isUserViewer) {
+    if (label2) label2.textContent = 'VIEWING SAVED RESULT';
     if (buttons[0]) { buttons[0].textContent = 'Back to my results'; buttons[0].onclick = function() { window.location.href = ret; }; }
     if (buttons[1]) buttons[1].style.display = 'none';
+  } else if (isAdminViewer) {
+    if (label2) label2.textContent = 'VIEWING SAVED RESULT';
+    if (buttons[0]) { buttons[0].textContent = 'Back to admin'; buttons[0].onclick = exitPreview; }
+    if (buttons[1]) buttons[1].style.display = 'none';
   } else {
-    banner.querySelector('span:nth-of-type(2)').textContent = 'PREVIEW · admin override';
-    const buttons = banner.querySelectorAll('.exit-link');
+    if (label2) label2.textContent = 'PREVIEW · admin override';
     if (buttons[0]) { buttons[0].textContent = 'Back to admin'; buttons[0].onclick = exitPreview; }
     if (buttons[1]) { buttons[1].style.display = ''; }
   }
