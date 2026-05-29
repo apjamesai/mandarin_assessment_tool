@@ -23,9 +23,20 @@
     if (saved) return;
     // First-time or cleared-storage visit. Send them to the brand landing.
     window.location.replace('/');
-  } catch (e) {
-    // If anything throws, fall through and load the assessment as usual.
-  }
+  } catch (e) {}
+})();
+
+// Suppress the cinematic-stage flash that would otherwise appear in the
+// brief window between page load and openAdmin() firing (entering admin),
+// and again briefly during the navigation away from admin (leaving admin).
+// Adds an `admin-mode` class on <html> as early as possible so a CSS rule
+// can hide #stage, the brand mark, the location tag, etc.
+(function() {
+  try {
+    if (new URLSearchParams(window.location.search).has('admin')) {
+      document.documentElement.classList.add('admin-mode');
+    }
+  } catch (e) {}
 })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -3716,6 +3727,31 @@ body.admin-open .progress-rail,
 body.admin-open .location-tag,
 body.admin-open #timerRing { display: none !important; }
 body.admin-open .logo-tr { display: none !important; }
+
+/* Suppress the assessment-stage flash on the brief windows when the user
+   is entering (page load → openAdmin) or leaving (closeAdmin → window
+   navigation) admin mode. Applied as soon as <html> is parsed, before
+   any of the cinematic CSS gets a chance to render. */
+html.admin-mode { background: #f4f0e8; }
+html.admin-mode body {
+  background: #f4f0e8 !important;
+  cursor: default !important;
+}
+html.admin-mode #stage,
+html.admin-mode #resultsStage,
+html.admin-mode .bl-stack,
+html.admin-mode .progress-rail,
+html.admin-mode .location-tag,
+html.admin-mode .back-button,
+html.admin-mode .logo-tr,
+html.admin-mode .grain,
+html.admin-mode .vignette,
+html.admin-mode .gradient-wash,
+html.admin-mode #particles,
+html.admin-mode .cursor,
+html.admin-mode .cursor-glow,
+html.admin-mode #timerRing,
+html.admin-mode .admin-link { display: none !important; }
 
 /* ─── Subtle back button ─── */
 .back-button {
@@ -15615,17 +15651,21 @@ function openAdmin() {
 
 function closeAdmin(opts) {
   opts = opts || {};
-  document.getElementById('adminPanel').classList.remove('open');
-  document.body.classList.remove('admin-open');
   // NOTE: do NOT clear STATE.adminForce* here, previewArchetype calls
   // closeAdmin() right before showResults() reads them. Overrides only
   // reset on restart() or via exitPreview().
-  // Default: navigating away from admin sends you back to the landing.
-  // previewArchetype passes { stay:true } so the results page can render
-  // here without bouncing.
   if (!opts.stay) {
+    // Default: navigating away from admin sends you back to the landing.
+    // Keep the admin panel rendered until navigation begins, otherwise
+    // the user briefly sees the cinematic assessment chrome between the
+    // class removal and the navigation paint. html.admin-mode stays on
+    // so the assessment chrome is still hidden too.
     try { window.location.href = '/'; } catch (e) {}
+    return;
   }
+  // preview path keeps the panel hidden but doesn't navigate
+  document.getElementById('adminPanel').classList.remove('open');
+  document.body.classList.remove('admin-open');
 }
 
 function exitPreview() {
@@ -15677,7 +15717,9 @@ function switchAdminTab(tab) {
   else if (tab === 'results') {
     body.innerHTML = renderAdminResults();
     setTimeout(adminLoadRecipients, 50);
-    // Cloud-first: auto-fetch the global archive when a token is already saved.
+    // Always paint the demo row immediately so the layout is testable even
+    // without a token. Real sessions are appended when adminFetchCloud runs.
+    setTimeout(() => renderCloudSessions([]), 60);
     if (getCloudToken()) setTimeout(adminFetchCloud, 80);
   }
   else if (tab === 'skins')   body.innerHTML = renderAdminSkins();
@@ -16293,8 +16335,8 @@ function renderAdminResults() {
   const mailerPanel = `
     <div class="admin-cloud-panel" style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:18px 20px;margin-bottom:18px;background:rgba(255,255,255,0.015)">
       <div style="font-family:var(--sans);font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:var(--amber);margin-bottom:8px">Admin email recipients</div>
-      <div style="font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink-soft);line-height:1.55;margin-bottom:14px">
-        Comma-separated list of addresses that receive a notification email each time a user completes the assessment. Each notification has the user's PDF attached. Requires <code style="font-family:monospace;font-style:normal;color:var(--ink)">RESEND_API_KEY</code> + <code style="font-family:monospace;font-style:normal;color:var(--ink)">EMAIL_FROM</code> env vars on the site.
+      <div style="font-family:"Inter",sans-serif;font-style:normal;font-size:14px;color:#1c1c1c;line-height:1.55;margin-bottom:14px">
+        Comma-separated list of addresses that receive a notification email each time a user completes the assessment. Each notification has the user's PDF attached. Requires <code style="font-family:monospace;font-style:normal;color:#0a0a0a;background:rgba(0,0,0,0.06);padding:1px 6px">RESEND_API_KEY</code> + <code style="font-family:monospace;font-style:normal;color:#0a0a0a;background:rgba(0,0,0,0.06);padding:1px 6px">EMAIL_FROM</code> env vars on the site.
       </div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px">
         <input id="adminRecipientsInput" type="text" placeholder="charlie@teammandarin.com, alex@teammandarin.com" style="flex:1;min-width:280px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);color:var(--ink);padding:8px 12px;font-family:monospace;font-size:12px;border-radius:3px"/>
@@ -16307,9 +16349,9 @@ function renderAdminResults() {
   const cloudPanel = `
     <div class="admin-cloud-panel" style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:18px 20px;margin-bottom:24px;background:rgba(255,255,255,0.015)">
       <div style="font-family:var(--sans);font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:var(--amber);margin-bottom:8px">Cloud sync</div>
-      <div style="font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink-soft);line-height:1.55;margin-bottom:14px">
-        Sessions completed on any device are POSTed to <code style="font-family:monospace;font-style:normal;color:var(--ink)">/api/sessions/submit</code> and stored in Netlify Blobs.
-        To read the cloud archive from here, paste the admin token below, it's the value of the <code style="font-family:monospace;font-style:normal;color:var(--ink)">ADMIN_API_TOKEN</code> env var on the Netlify site.
+      <div style="font-family:"Inter",sans-serif;font-style:normal;font-size:14px;color:#1c1c1c;line-height:1.55;margin-bottom:14px">
+        Sessions completed on any device are POSTed to <code style="font-family:monospace;font-style:normal;color:#0a0a0a;background:rgba(0,0,0,0.06);padding:1px 6px">/api/sessions/submit</code> and stored in Netlify Blobs.
+        To read the cloud archive from here, paste the admin token below, it's the value of the <code style="font-family:monospace;font-style:normal;color:#0a0a0a;background:rgba(0,0,0,0.06);padding:1px 6px">ADMIN_API_TOKEN</code> env var on the Netlify site.
       </div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px">
         <input id="adminCloudToken" type="password" placeholder="ADMIN_API_TOKEN" value="${escapeHTML(getCloudToken())}" style="flex:1;min-width:240px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);color:var(--ink);padding:8px 12px;font-family:monospace;font-size:12px;border-radius:3px"/>
@@ -16412,35 +16454,75 @@ async function adminFetchCloud() {
   renderCloudSessions(sessions);
 }
 
+// Synthetic demo session prepended to the cloud table so the layout can
+// be evaluated even when the archive is empty (or for testing PDF / magic
+// link buttons end-to-end without polluting the real data).
+function buildDemoSession() {
+  return {
+    id: 'demo-aida-yamamoto',
+    _demo: true,
+    completed_at: new Date(Date.now() - 36 * 60 * 60 * 1000).toISOString(),
+    skin: 'apollo_11',
+    skin_name: 'Trajectory · Apollo 11',
+    firstName: 'Aida',
+    lastName: 'Yamamoto',
+    email: 'demo@teammandarin.com',
+    gender: 'she',
+    archetype: 'strategic_operator',
+    archetype_name: 'The Strategic Operator',
+    secondary_pattern: 'architect_of_order',
+    secondary_name: 'The Architect of Order',
+    overall: 78,
+    levels: { L1: 74, L2: 80, L3: 78, L4: 79 },
+    practices: {
+      understand_self: 82, master_emotions: 70, embed_practices: 71,
+      be_curious: 84, listen_deeply: 78, think_critically: 79,
+      unlock_creativity: 73, manage_uncertainty: 80, future_focused: 81,
+      act_decisively: 82, collaborate_inclusively: 75, influence_effortlessly: 80
+    },
+    risks: { control_bias: 48, moral_drift: 22, detachment_pressure: 35 },
+    reflections: {
+      reflect_strengths: 'Pattern recognition under load. I see the second-order effects others miss.',
+      reflect_mindset:   'I tend to over-control when stakes climb. I am working on letting the room speak first.'
+    }
+  };
+}
+
 function renderCloudSessions(sessions) {
   const el = document.getElementById('adminCloudResults');
   if (!el) return;
-  if (!sessions.length) {
-    el.innerHTML = '<div class="admin-empty" style="margin:14px 0 0">No sessions in the cloud archive yet.</div>';
-    return;
-  }
-  // Stash on window so per-row buttons can resolve by index
-  window.__adminCloudCache = sessions;
-  const rows = sessions.map((s, i) => `
-    <tr>
-      <td>${new Date(s.completed_at).toLocaleString()}</td>
+  // Always prepend a demo session so the layout is testable; mark it _demo
+  // so per-row handlers (delete, magic-link) can refuse to act on it.
+  const display = [buildDemoSession()].concat(sessions || []);
+  window.__adminCloudCache = display;
+  const realCount = sessions.length;
+
+  const rows = display.map((s, i) => {
+    const isDemo = s._demo === true;
+    return `
+    <tr${isDemo ? ' style="background:#fff8eb"' : ''}>
+      <td>${new Date(s.completed_at).toLocaleString()}${isDemo ? '<br><span style="font-size:9px;font-weight:600;letter-spacing:0.2em;color:#ff481d;text-transform:uppercase">Demo</span>' : ''}</td>
       <td>${escapeHTML((s.firstName || '') + ' ' + (s.lastName || ''))}</td>
-      <td><a style="color:var(--ink-soft);text-decoration:none" href="mailto:${escapeHTML(s.email || '')}">${escapeHTML(s.email || '')}</a></td>
-      <td style="color:var(--ink-label);font-style:italic;font-family:var(--serif);font-size:13px">${escapeHTML(s.skin_name || s.skin || 'force_trial')}</td>
-      <td class="arch-cell">${escapeHTML(s.archetype_name || s.archetype || '')}${s.secondary_name ? `<br><span style="font-size:11px;font-style:italic;color:var(--amber)">+ ${s.secondary_name}</span>` : ''}</td>
+      <td><a style="color:#0a0a0a;text-decoration:none" href="mailto:${escapeHTML(s.email || '')}">${escapeHTML(s.email || '')}</a></td>
+      <td>${escapeHTML(s.skin_name || s.skin || 'force_trial')}</td>
+      <td class="arch-cell">${escapeHTML(s.archetype_name || s.archetype || '')}${s.secondary_name ? `<br><span style="font-size:11px;color:#ff481d">+ ${s.secondary_name}</span>` : ''}</td>
       <td class="score-cell">${s.overall != null ? s.overall : '-'}</td>
       <td><div class="actions">
         <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="viewCloudSession(${i})">View</button>
         <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="downloadCloudSessionPDF(${i})">PDF</button>
-        <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="adminCopyMagicLink('${escapeHTML(s.email || '')}')">Copy magic link</button>
-        <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="adminDeleteCloudSession(${i})">Delete</button>
+        ${isDemo ? '' : `<button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="adminCopyMagicLink('${escapeHTML(s.email || '')}')">Magic link</button>`}
+        ${isDemo ? '' : `<button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="adminDeleteCloudSession(${i})">Delete</button>`}
       </div></td>
-    </tr>
-  `).join('');
+    </tr>`;
+  }).join('');
+
   el.innerHTML = `
-    <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
-      <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="exportCloudJSON()">Export cloud as JSON</button>
-      <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="exportCloudCSV()">Export cloud as CSV</button>
+    <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center">
+      <div style="font-size:13px;color:#1c1c1c">${realCount === 0 ? 'No real sessions in the cloud archive yet. The demo row below shows you the layout.' : `${realCount} real session${realCount===1?'':'s'} on file, plus one demo row for layout reference.`}</div>
+      <div style="margin-left:auto;display:flex;gap:8px">
+        <button class="admin-btn ghost" style="padding:8px 14px;font-size:10px" onclick="exportCloudJSON()">Export JSON</button>
+        <button class="admin-btn ghost" style="padding:8px 14px;font-size:10px" onclick="exportCloudCSV()">Export CSV</button>
+      </div>
     </div>
     <table class="admin-results-table">
       <thead>
