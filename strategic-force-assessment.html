@@ -2211,8 +2211,10 @@ body.admin-open .cursor, body.admin-open .cursor-glow { display: none !important
     0 0 22px rgba(255, 107,   0, 0.55),
     0 0 48px rgba(255, 107,   0, 0.30);
   opacity: 0;
-  /* Starts the moment the title finishes receding (t=21s), no dead air. */
-  animation: crawl-up 33s linear 21s forwards;
+  /* Starts the moment the title finishes receding (default t=21s), no dead air.
+     Defaults can be overridden per-scene from the admin Pacing tab via the
+     --crawl-scroll-delay and --crawl-scroll-duration custom properties. */
+  animation: crawl-up var(--crawl-scroll-duration, 33s) linear var(--crawl-scroll-delay, 21s) forwards;
 }
 
 .crawl-text p { margin-bottom: 1.6em; }
@@ -3165,6 +3167,117 @@ body.previewing .results-stage { padding-top: 14vh; }
 
 @media (max-width: 800px) {
   .score-row { grid-template-columns: 1fr; }
+}
+
+/* Pacing tab */
+.pacing-skin-block {
+  margin-bottom: 32px;
+  padding: 18px 20px 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.015);
+}
+.pacing-skin-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.pacing-skin-name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 500;
+}
+.pacing-skin-active {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid var(--amber);
+  padding: 3px 8px;
+}
+.pacing-scene-block {
+  margin: 14px 0;
+  padding: 12px 4px;
+  border-top: 1px dashed rgba(255,255,255,0.05);
+}
+.pacing-scene-block:first-of-type { border-top: none; padding-top: 0; }
+.pacing-scene-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.pacing-scene-style {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.pacing-scene-loc {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.pacing-field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px 24px;
+}
+.pacing-field { display: flex; flex-direction: column; gap: 5px; }
+.pacing-field-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink-soft);
+  letter-spacing: 0.02em;
+}
+.pacing-field-tag {
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  padding: 1px 5px;
+}
+.pacing-field-input { display: flex; align-items: center; gap: 8px; }
+.pacing-field-input input {
+  width: 90px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  padding: 6px 8px;
+  outline: none;
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.pacing-field-input input:focus { color: var(--amber); border-color: rgba(255,255,255,0.18); }
+.pacing-field-input input.edited { color: var(--amber); }
+.pacing-field-input input.saved { color: #7dc97d; }
+.pacing-field-input input.err { color: #ff8080; border-color: #ff8080; }
+.pacing-field-unit {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+}
+.pacing-field-help {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--ink-mute);
+  line-height: 1.45;
 }
 
 .rules-grid {
@@ -10932,6 +11045,7 @@ body.has-back .location-tag { left: calc(4vw + 100px); }
       <button class="admin-tab active" data-tab="archetypes" onclick="switchAdminTab('archetypes')">Archetypes</button>
       <button class="admin-tab" data-tab="content"     onclick="switchAdminTab('content')">Content</button>
       <button class="admin-tab" data-tab="scoring"     onclick="switchAdminTab('scoring')">Scoring</button>
+      <button class="admin-tab" data-tab="pacing"      onclick="switchAdminTab('pacing')">Pacing</button>
       <button class="admin-tab" data-tab="rules"       onclick="switchAdminTab('rules')">Rules</button>
       <button class="admin-tab" data-tab="results"     onclick="switchAdminTab('results')">Results</button>
       <button class="admin-tab" data-tab="skins"       onclick="switchAdminTab('skins')">Skins</button>
@@ -12029,6 +12143,88 @@ const SKIN_FORCE_TRIAL = {
 
 const SKINS_LS_KEY = 'mandarin.assessment.currentSkin';
 const SKINS_REGISTRY_LS_KEY = 'mandarin.assessment.skinRegistry';
+const PACING_LS_KEY = 'mandarin.assessment.pacingOverrides';
+
+// Defaults the renderers fall back to when a crawl scene has no override.
+// Values in milliseconds. Exposed in the admin Pacing tab.
+const PACING_DEFAULTS = {
+  film:       { scrollStartDelay: 21000, scrollDuration: 33000 },
+  briefing:   { bodyStartDelay: 10000, bodyStagger: 8000 },
+  scroll:     { bodyStartDelay: 10000, bodyStagger: 8000 },
+  broadsheet: { bodyStartDelay: 5000,  bodyStagger: 8000 }
+};
+
+// Storage shape:
+//   { '<skin_id>': { '<scene_index>': { duration?, scrollStartDelay?, scrollDuration?,
+//                                       bodyStartDelay?, bodyStagger? } } }
+function loadPacingOverrides() {
+  try { return JSON.parse(localStorage.getItem(PACING_LS_KEY) || '{}') || {}; }
+  catch (e) { return {}; }
+}
+
+function persistPacingOverrides(obj) {
+  try { localStorage.setItem(PACING_LS_KEY, JSON.stringify(obj)); } catch (e) {}
+}
+
+// Mutate SCENES in place: overwrite pacing fields on crawl scenes where the
+// user has supplied overrides for the active skin.
+function applyPacingOverridesToScenes(skinId) {
+  const all = loadPacingOverrides();
+  const forSkin = all[skinId] || {};
+  for (let i = 0; i < SCENES.length; i++) {
+    const s = SCENES[i];
+    if (!s || s.type !== 'crawl') continue;
+    const o = forSkin[i];
+    if (!o) continue;
+    if (typeof o.duration === 'number') s.duration = o.duration;
+    if (typeof o.scrollStartDelay === 'number') s.scrollStartDelay = o.scrollStartDelay;
+    if (typeof o.scrollDuration === 'number') s.scrollDuration = o.scrollDuration;
+    if (typeof o.bodyStartDelay === 'number') s.bodyStartDelay = o.bodyStartDelay;
+    if (typeof o.bodyStagger === 'number') s.bodyStagger = o.bodyStagger;
+  }
+}
+
+// Convenience: write a single field override and re-apply if the active skin.
+function setPacingOverride(skinId, sceneIdx, field, value) {
+  const all = loadPacingOverrides();
+  if (!all[skinId]) all[skinId] = {};
+  if (!all[skinId][sceneIdx]) all[skinId][sceneIdx] = {};
+  if (value === null || value === undefined || Number.isNaN(value)) {
+    delete all[skinId][sceneIdx][field];
+    if (Object.keys(all[skinId][sceneIdx]).length === 0) delete all[skinId][sceneIdx];
+    if (Object.keys(all[skinId]).length === 0) delete all[skinId];
+  } else {
+    all[skinId][sceneIdx][field] = value;
+  }
+  persistPacingOverrides(all);
+  if (skinId === STATE.currentSkin) {
+    // Re-apply so the change takes effect immediately for re-rendered scenes.
+    applyPacingOverridesToScenes(skinId);
+  }
+}
+
+function resetPacingForScene(skinId, sceneIdx) {
+  const all = loadPacingOverrides();
+  if (all[skinId] && all[skinId][sceneIdx]) {
+    delete all[skinId][sceneIdx];
+    if (Object.keys(all[skinId]).length === 0) delete all[skinId];
+    persistPacingOverrides(all);
+  }
+  // Restore the scene's pacing fields from the original skin definition.
+  const skin = SKINS[skinId];
+  if (skin && Array.isArray(skin.scenes) && skin.scenes[sceneIdx]) {
+    const orig = skin.scenes[sceneIdx];
+    if (skinId === STATE.currentSkin && SCENES[sceneIdx]) {
+      const live = SCENES[sceneIdx];
+      // Restore (or delete) each tunable field
+      if (typeof orig.duration === 'number') live.duration = orig.duration;
+      ['scrollStartDelay','scrollDuration','bodyStartDelay','bodyStagger'].forEach(k => {
+        if (typeof orig[k] === 'number') live[k] = orig[k];
+        else delete live[k];
+      });
+    }
+  }
+}
 
 const SKINS = { force_trial: SKIN_FORCE_TRIAL };
 
@@ -12106,6 +12302,8 @@ function applySkin(skinId, opts) {
   if (Array.isArray(skin.scenes)) {
     SCENES.length = 0;
     skin.scenes.forEach(s => SCENES.push(s));
+    // Layer pacing overrides on top of the fresh scenes for this skin
+    applyPacingOverridesToScenes(skinId);
   }
 
   // 2. Swap object-based content (mutate in place, keep referential identity)
@@ -12921,8 +13119,13 @@ function renderCrawl(scene) {
 }
 
 function renderCrawlFilm(scene) {
+  // Pacing overrides, if set, drive the CSS animation timing via custom
+  // properties consumed by .crawl-text's animation declaration.
+  const startMs = (typeof scene.scrollStartDelay === 'number') ? scene.scrollStartDelay : PACING_DEFAULTS.film.scrollStartDelay;
+  const durMs   = (typeof scene.scrollDuration   === 'number') ? scene.scrollDuration   : PACING_DEFAULTS.film.scrollDuration;
+  const paceStyle = `--crawl-scroll-delay:${startMs}ms;--crawl-scroll-duration:${durMs}ms;`;
   return `
-    <div class="crawl-stars"></div>
+    <div class="crawl-stars" style="${paceStyle}"></div>
     <div class="crawl-preamble">${scene.preamble}</div>
     <div class="crawl-title-wrap">
       <div class="crawl-title-episode">${scene.episode}</div>
@@ -12930,8 +13133,8 @@ function renderCrawlFilm(scene) {
         ${scene.title.map(w => `<span>${w}</span>`).join('')}
       </div>
     </div>
-    <div class="crawl-viewport">
-      <div class="crawl-text">
+    <div class="crawl-viewport" style="${paceStyle}">
+      <div class="crawl-text" style="${paceStyle}">
         ${scene.paragraphs.map(p => `<p>${p}</p>`).join('')}
       </div>
     </div>
@@ -12961,16 +13164,20 @@ function renderCrawlBriefing(scene) {
       <div class="brief-mark">${scene.markSvg || defaultMark}</div>
       <h1 class="brief-title-main">${(scene.title || []).join(' ')}</h1>
     </div>
-    <div class="brief-cards">
-      ${paras.map((p, i) => `<div class="brief-card" style="animation-delay:${10 + i*8}s">
+    ${(() => {
+      const startSec = ((typeof scene.bodyStartDelay === 'number') ? scene.bodyStartDelay : PACING_DEFAULTS.briefing.bodyStartDelay) / 1000;
+      const stepSec  = ((typeof scene.bodyStagger    === 'number') ? scene.bodyStagger    : PACING_DEFAULTS.briefing.bodyStagger)    / 1000;
+      return `<div class="brief-cards">
+      ${paras.map((p, i) => `<div class="brief-card" style="animation-delay:${(startSec + i*stepSec).toFixed(2)}s">
         <div class="brief-card-num">${String(i+1).padStart(2,'0')} / ${paras.length.toString().padStart(2,'0')}</div>
         <div class="brief-card-body">${p}</div>
       </div>`).join('')}
-      <div class="brief-card brief-countdown" style="animation-delay:${10 + paras.length*8}s">
+      <div class="brief-card brief-countdown" style="animation-delay:${(startSec + paras.length*stepSec).toFixed(2)}s">
         <div class="brief-card-num">FINAL CHECK</div>
         <div class="brief-card-body" style="font-family:monospace;font-size:clamp(20px,2.4vw,30px);letter-spacing:0.1em">${countdown}</div>
       </div>
-    </div>
+    </div>`;
+    })()}
     <div class="brief-horizon"></div>
   `;
 }
@@ -12992,10 +13199,14 @@ function renderCrawlScroll(scene) {
       <div class="scroll-title">${(scene.title || []).join(' ')}</div>
       <div class="scroll-meta">${scene.episode || ''}</div>
       <div class="scroll-divider"></div>
-      <div class="scroll-verses">
-        ${verses.map((p, i) => `<div class="scroll-verse" style="animation-delay:${10 + i*8}s">${p}</div>`).join('')}
+      ${(() => {
+        const startSec = ((typeof scene.bodyStartDelay === 'number') ? scene.bodyStartDelay : PACING_DEFAULTS.scroll.bodyStartDelay) / 1000;
+        const stepSec  = ((typeof scene.bodyStagger    === 'number') ? scene.bodyStagger    : PACING_DEFAULTS.scroll.bodyStagger)    / 1000;
+        return `<div class="scroll-verses">
+        ${verses.map((p, i) => `<div class="scroll-verse" style="animation-delay:${(startSec + i*stepSec).toFixed(2)}s">${p}</div>`).join('')}
       </div>
-      <div class="scroll-footer" style="animation-delay:${10 + verses.length*8}s">${scene.countdown || ''}</div>
+      <div class="scroll-footer" style="animation-delay:${(startSec + verses.length*stepSec).toFixed(2)}s">${scene.countdown || ''}</div>`;
+      })()}
     </div>
     <div class="scroll-horizon"></div>
   `;
@@ -13023,13 +13234,17 @@ function renderCrawlBroadsheet(scene) {
         <div class="broad-rule"></div>
         <div class="broad-byline">${scene.episode || ''}</div>
       </div>
-      <div class="broad-columns">
-        ${paras.map((p, i) => `<div class="broad-column" style="animation-delay:${5 + i*8}s">
+      ${(() => {
+        const startSec = ((typeof scene.bodyStartDelay === 'number') ? scene.bodyStartDelay : PACING_DEFAULTS.broadsheet.bodyStartDelay) / 1000;
+        const stepSec  = ((typeof scene.bodyStagger    === 'number') ? scene.bodyStagger    : PACING_DEFAULTS.broadsheet.bodyStagger)    / 1000;
+        return `<div class="broad-columns">
+        ${paras.map((p, i) => `<div class="broad-column" style="animation-delay:${(startSec + i*stepSec).toFixed(2)}s">
           <div class="broad-column-no">No. ${String(i+1).padStart(2,'0')}</div>
           <div class="broad-leader">${p}</div>
         </div>`).join('')}
       </div>
-      <div class="broad-stamp" style="animation-delay:${5 + paras.length*8}s">${scene.countdown || ''}</div>
+      <div class="broad-stamp" style="animation-delay:${(startSec + paras.length*stepSec).toFixed(2)}s">${scene.countdown || ''}</div>`;
+      })()}
     </div>
     <div class="broad-horizon"></div>
   `;
@@ -14519,6 +14734,7 @@ function switchAdminTab(tab) {
   if (tab === 'archetypes') body.innerHTML = renderAdminArchetypes();
   else if (tab === 'content') body.innerHTML = renderAdminContent();
   else if (tab === 'scoring') body.innerHTML = renderAdminScoring();
+  else if (tab === 'pacing')  body.innerHTML = renderAdminPacing();
   else if (tab === 'rules')   body.innerHTML = renderAdminRules();
   else if (tab === 'results') body.innerHTML = renderAdminResults();
   else if (tab === 'skins')   body.innerHTML = renderAdminSkins();
@@ -15443,6 +15659,169 @@ function filterScoring(q) {
   document.querySelectorAll('.scoring-block').forEach(b => {
     b.style.display = (!q || b.textContent.toLowerCase().includes(q)) ? '' : 'none';
   });
+}
+
+// ────────────────────────────────────────────
+// ADMIN, OPENING-SCENE PACING EDITOR
+// ────────────────────────────────────────────
+// Lets the operator tune the timing of each skin's opening crawl/prologue,
+// scene duration plus the per-element delays inside the crawl. Changes
+// persist to localStorage and apply on every re-render of the active skin.
+function renderAdminPacing() {
+  const overrides = loadPacingOverrides();
+  let activeSkinAffected = false;
+  const blocks = Object.entries(SKINS).map(([skinId, skin]) => {
+    const sceneList = (skin && Array.isArray(skin.scenes)) ? skin.scenes : [];
+    const crawlScenes = [];
+    sceneList.forEach((s, i) => { if (s && s.type === 'crawl') crawlScenes.push({ s, i }); });
+    if (!crawlScenes.length) return '';
+    const isActive = STATE.currentSkin === skinId;
+    if (isActive) activeSkinAffected = true;
+    const themeAccent = skin.theme && skin.theme['--amber'] ? skin.theme['--amber'] : 'var(--amber)';
+
+    const sceneBlocks = crawlScenes.map(({ s, i }) => {
+      const style = s.crawlStyle || 'film';
+      const defaults = PACING_DEFAULTS[style] || {};
+      const o = (overrides[skinId] && overrides[skinId][i]) || {};
+      const has = (k) => Object.prototype.hasOwnProperty.call(o, k);
+      const liveOrDefault = (k) => has(k) ? o[k] : (typeof s[k] === 'number' ? s[k] : defaults[k]);
+      const styleLabel = ({ film: 'Film crawl', briefing: 'Briefing cards', scroll: 'Memorial scroll', broadsheet: 'Broadsheet columns' })[style] || style;
+
+      const tunables = [];
+      tunables.push({ key: 'duration',         label: 'Scene total',          defaultMs: s.duration || 0,            help: 'Wall-clock length of the scene, when it auto-advances to the next.' });
+      if (style === 'film') {
+        tunables.push({ key: 'scrollStartDelay', label: 'Scroll: start delay',  defaultMs: defaults.scrollStartDelay, help: 'When the receding-text scroll begins. Lower = scroll starts sooner.' });
+        tunables.push({ key: 'scrollDuration',   label: 'Scroll: total length', defaultMs: defaults.scrollDuration,   help: 'How long the scroll takes to fully pass through.' });
+      } else {
+        tunables.push({ key: 'bodyStartDelay', label: 'Body: first item delay', defaultMs: defaults.bodyStartDelay, help: 'Delay before the first paragraph or card appears.' });
+        tunables.push({ key: 'bodyStagger',    label: 'Body: per-item gap',     defaultMs: defaults.bodyStagger,    help: 'Gap between consecutive paragraphs or cards.' });
+      }
+
+      const fieldRows = tunables.map(t => {
+        const liveMs = (typeof o[t.key] === 'number') ? o[t.key] : (typeof s[t.key] === 'number' ? s[t.key] : t.defaultMs);
+        const valSec = (liveMs / 1000).toFixed(1);
+        const overridden = has(t.key);
+        return `
+          <div class="pacing-field">
+            <div class="pacing-field-head">
+              <span class="pacing-field-label">${t.label}</span>
+              ${overridden ? `<span class="pacing-field-tag" style="color:${themeAccent}">CUSTOM</span>` : ''}
+            </div>
+            <div class="pacing-field-input">
+              <input type="number" step="0.1" min="0" value="${valSec}"
+                     data-skin="${skinId}" data-scene="${i}" data-field="${t.key}"
+                     oninput="markPacingEdited(this)" onblur="savePacingField(this)"/>
+              <span class="pacing-field-unit">sec</span>
+            </div>
+            <div class="pacing-field-help">${escapeHTML(t.help)}</div>
+          </div>`;
+      }).join('');
+
+      const hasAnyOverride = Object.keys(o).length > 0;
+
+      return `
+        <div class="pacing-scene-block">
+          <div class="pacing-scene-head">
+            <div class="pacing-scene-style" style="color:${themeAccent}">${styleLabel}</div>
+            <div class="pacing-scene-loc">${escapeHTML(s.locationLabel || s.locationName || ('Scene ' + i))}</div>
+            ${hasAnyOverride ? `<button class="admin-btn ghost" style="padding:6px 10px;font-size:9px" onclick="resetPacingSceneFromAdmin('${skinId}', ${i})">Reset scene</button>` : ''}
+          </div>
+          <div class="pacing-field-grid">${fieldRows}</div>
+        </div>`;
+    }).join('');
+
+    return `
+      <div class="pacing-skin-block">
+        <div class="pacing-skin-head">
+          <div class="pacing-skin-name" style="color:${themeAccent}">${escapeHTML(skin.name)}</div>
+          ${isActive ? '<div class="pacing-skin-active">ACTIVE</div>' : ''}
+        </div>
+        ${sceneBlocks}
+      </div>`;
+  }).join('');
+
+  return `
+    <div class="admin-section-title">Opening scene pacing</div>
+    <div class="admin-section-sub">
+      Tune the per-element timing of each skin's opening prologue / crawl. Values are in seconds.
+      Changes save automatically when you tab or click out of a field, and take effect on the next scene render.<br>
+      <em style="color:var(--ink-mute)">Defaults: Film 21s start + 33s scroll, Briefing/Scroll 10s start + 8s stagger, Broadsheet 5s start + 8s stagger.</em>
+    </div>
+    <div class="admin-buttons">
+      <button class="admin-btn ghost" onclick="exportPacingOverrides()">Export overrides (JSON)</button>
+      <button class="admin-btn danger" onclick="resetAllPacing()">Reset all pacing to default</button>
+    </div>
+    <div id="adminPacingStatus" style="font-family:var(--sans);font-size:11px;color:var(--amber);min-height:14px;letter-spacing:0.02em;margin-bottom:18px"></div>
+    ${blocks || '<div class="admin-empty">No crawl/prologue scenes in any skin.</div>'}
+  `;
+}
+
+function markPacingEdited(el) { el.classList.add('edited'); }
+
+function savePacingField(el) {
+  const skinId   = el.dataset.skin;
+  const sceneIdx = Number(el.dataset.scene);
+  const field    = el.dataset.field;
+  const sec      = Number(el.value);
+  if (Number.isNaN(sec) || sec < 0) { el.classList.add('err'); return; }
+  el.classList.remove('err');
+
+  // Compare against the skin's original value so we don't store no-op overrides.
+  const skin = SKINS[skinId];
+  const origScene = (skin && Array.isArray(skin.scenes) && skin.scenes[sceneIdx]) ? skin.scenes[sceneIdx] : null;
+  const styleKey = (origScene && origScene.crawlStyle) || 'film';
+  const origVal = (origScene && typeof origScene[field] === 'number')
+    ? origScene[field]
+    : (PACING_DEFAULTS[styleKey] && PACING_DEFAULTS[styleKey][field]);
+  const ms = Math.round(sec * 1000);
+  setPacingOverride(skinId, sceneIdx, field, (ms === origVal) ? null : ms);
+
+  el.classList.remove('edited');
+  el.classList.add('saved');
+  setTimeout(() => el.classList.remove('saved'), 700);
+  setPacingStatus(skinId === STATE.currentSkin ? 'Saved. Active skin updated.' : 'Saved.');
+}
+
+function setPacingStatus(msg) {
+  const el = document.getElementById('adminPacingStatus');
+  if (el) el.textContent = msg;
+}
+
+function resetPacingSceneFromAdmin(skinId, sceneIdx) {
+  resetPacingForScene(skinId, sceneIdx);
+  switchAdminTab('pacing');
+  setPacingStatus('Scene reset to defaults.');
+}
+
+function resetAllPacing() {
+  if (!confirm('Reset every pacing override across every skin? This cannot be undone.')) return;
+  persistPacingOverrides({});
+  // Reapply (= clear overrides) on the active skin in place.
+  if (STATE.currentSkin) {
+    const skin = SKINS[STATE.currentSkin];
+    if (skin && Array.isArray(skin.scenes)) {
+      for (let i = 0; i < SCENES.length; i++) {
+        const orig = skin.scenes[i];
+        if (!orig || orig.type !== 'crawl') continue;
+        const live = SCENES[i];
+        if (typeof orig.duration === 'number') live.duration = orig.duration;
+        ['scrollStartDelay','scrollDuration','bodyStartDelay','bodyStagger'].forEach(k => {
+          if (typeof orig[k] === 'number') live[k] = orig[k];
+          else delete live[k];
+        });
+      }
+    }
+  }
+  switchAdminTab('pacing');
+  setPacingStatus('All pacing reset to defaults.');
+}
+
+function exportPacingOverrides() {
+  const blob = new Blob([JSON.stringify(loadPacingOverrides(), null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'pacing-overrides.json'; a.click();
+  URL.revokeObjectURL(url);
 }
 
 // ────────────────────────────────────────────
