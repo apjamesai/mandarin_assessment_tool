@@ -3759,6 +3759,13 @@ html.admin-mode .cursor-glow,
 html.admin-mode #timerRing,
 html.admin-mode .admin-link { display: none !important; }
 
+/* Viewer mode: we want the cinematic chrome hidden (no flash) but the
+   results stage MUST be visible. .session-viewer overrides admin-mode's
+   blanket hide for #resultsStage and the cursor effects that the results
+   page also relies on. */
+html.session-viewer #resultsStage { display: block !important; }
+html.session-viewer.admin-mode #resultsStage.active { display: block !important; }
+
 /* ─── Subtle back button ─── */
 .back-button {
   position: fixed;
@@ -15680,6 +15687,9 @@ function exitPreview() {
   STATE.adminForceArchetype = null;
   STATE.adminForceSecondary = null;
   STATE.adminMockR = null;
+  window.__sessionViewerReturnTo = null;
+  window.__sessionViewerLabel = null;
+  document.documentElement.classList.remove('session-viewer');
   hidePreviewBanner();
   // Return to the admin dashboard
   resultsStage.classList.remove('active');
@@ -16044,7 +16054,11 @@ function renderSessionResults(session, opts) {
   STATE.reflections = Object.assign({}, session.reflections || {});
   // We're being launched from admin (admin-open) or from a magic-link page
   // bootstrap (admin-mode but not admin-open). Either way, hide the chrome.
+  // session-viewer specifically tells the CSS to keep #resultsStage visible
+  // despite the admin-mode hide rule (which exists for the flash-prevention
+  // path, where #resultsStage SHOULD be hidden).
   document.documentElement.classList.add('admin-mode');
+  document.documentElement.classList.add('session-viewer');
   closeAdmin({ stay: true });
   document.getElementById('stage').style.display = 'none';
   // Note: opts.label and opts.returnTo become the preview-banner text +
