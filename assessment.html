@@ -14398,14 +14398,11 @@ function buildResultsPrintHTML(session) {
   return `<div id="pdfRoot"><style>${pageCSS}</style>${page1}${page2}</div>`;
 }
 
-async function downloadResultsPDF(session, opts) {
-  opts = opts || {};
-  try {
-    await loadPdfLibs();
-  } catch (e) {
-    alert('Could not load the PDF generator. Check your network and try again.');
-    return;
-  }
+// Build the jsPDF document for a session and return it. Shared by the
+// download path (which calls .save()) and the auto-email path (which
+// extracts the base64 bytes for upload).
+async function _buildSessionPDF(session) {
+  await loadPdfLibs();
   const html = buildResultsPrintHTML(session);
   const host = document.createElement('div');
   host.style.cssText = 'position:absolute;left:-99999px;top:0;opacity:0;pointer-events:none;background:#fff';
@@ -14422,13 +14419,53 @@ async function downloadResultsPDF(session, opts) {
       if (i > 0) pdf.addPage([794, 1123], 'portrait');
       pdf.addImage(imgData, 'PNG', 0, 0, 794, 1123, undefined, 'FAST');
     }
+    return pdf;
+  } finally {
+    document.body.removeChild(host);
+  }
+}
+
+async function downloadResultsPDF(session) {
+  try {
+    const pdf = await _buildSessionPDF(session);
     pdf.save(pdfFilenameForSession(session));
   } catch (e) {
     console.error('PDF render failed:', e);
     alert('PDF generation failed: ' + (e && e.message ? e.message : e));
-  } finally {
-    document.body.removeChild(host);
   }
+}
+
+// Returns the PDF as a base64 string (no data URI prefix), for upload to
+// the email function. Failure returns null and the email is sent without
+// the attachment, the user still gets HTML + magic link.
+async function getResultsPDFBase64(session) {
+  try {
+    const pdf = await _buildSessionPDF(session);
+    const dataUri = pdf.output('datauristring');
+    const comma = dataUri.indexOf(',');
+    return comma > -1 ? dataUri.slice(comma + 1) : dataUri;
+  } catch (e) {
+    console.warn('PDF base64 generation failed:', e);
+    return null;
+  }
+}
+
+// Fire-and-forget email send after results show. Failure is silent, the
+// user keeps using the page; we surface no error UI on purpose.
+function autoEmailResult(session) {
+  if (!session || !session.email) return;
+  // Generate the PDF in the background, then POST.
+  getResultsPDFBase64(session).then(pdfBase64 => {
+    return fetch('/api/email/result', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ session, pdfBase64: pdfBase64 || '' })
+    });
+  }).then(r => {
+    if (!r || !r.ok) console.warn('autoEmailResult: server returned', r && r.status);
+  }).catch(e => {
+    console.warn('autoEmailResult failed:', e);
+  });
 }
 
 // Build a "live results" session object from the current STATE, for the
@@ -15609,6 +15646,11 @@ function saveSessionToHistory(R, archKey, secondaryKey) {
   submitSessionToCloud(session).then(ok => {
     if (ok) markSessionSynced(session.id);
   });
+  // Fire-and-forget user (+admin) result email. Silent on failure: the
+  // results page works regardless and the user can still download the PDF
+  // manually. The email function is a no-op until RESEND_API_KEY + EMAIL_FROM
+  // are configured on the site.
+  autoEmailResult(session);
 }
 
 // ────────────────────────────────────────────
