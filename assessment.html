@@ -3760,11 +3760,23 @@ html.admin-mode #timerRing,
 html.admin-mode .admin-link { display: none !important; }
 
 /* Viewer mode: we want the cinematic chrome hidden (no flash) but the
-   results stage MUST be visible. .session-viewer overrides admin-mode's
-   blanket hide for #resultsStage and the cursor effects that the results
-   page also relies on. */
+   results page itself MUST render with the dark cinematic styling, not
+   the cream admin chrome. This block overrides admin-mode in the
+   specific ways the saved-result viewer needs:
+     1) restore the dark body background so the results page reads right
+     2) re-enable the atmospheric layers (grain, vignette, wash) that
+        the results page is designed against
+     3) keep #stage hidden (no cinematic landing flash)
+     4) reveal #resultsStage (admin-mode would otherwise hide it) */
+html.session-viewer { background: var(--bg) !important; }
+html.session-viewer body { background: var(--bg) !important; }
 html.session-viewer #resultsStage { display: block !important; }
 html.session-viewer.admin-mode #resultsStage.active { display: block !important; }
+html.session-viewer.admin-mode .grain,
+html.session-viewer.admin-mode .vignette,
+html.session-viewer.admin-mode .gradient-wash { display: block !important; }
+/* But never re-show the cinematic landing stage in viewer mode. */
+html.session-viewer #stage { display: none !important; }
 
 /* ─── Subtle back button ─── */
 .back-button {
