@@ -14179,6 +14179,308 @@ const NEXT_STEPS = {
   ]
 };
 
+// ────────────────────────────────────────────
+// PDF EXPORT, dedicated print template
+// ────────────────────────────────────────────
+// Two CDN libs lazy-loaded the first time the user requests a PDF:
+//   * html2canvas, renders a DOM subtree to a <canvas>
+//   * jsPDF, places the canvas image on a PDF page
+// We build a self-contained "print" version of the results, render each
+// page node off-screen, then assemble the PDF and trigger a download.
+const PDF_LIB_URLS = {
+  jspdf:       'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',
+  html2canvas: 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js'
+};
+let _pdfLibsPromise = null;
+function loadPdfLibs() {
+  if (window.jspdf && window.html2canvas) return Promise.resolve();
+  if (_pdfLibsPromise) return _pdfLibsPromise;
+  function loadScript(src) {
+    return new Promise((res, rej) => {
+      const s = document.createElement('script');
+      s.src = src; s.async = true;
+      s.onload = () => res();
+      s.onerror = () => rej(new Error('Failed to load ' + src));
+      document.head.appendChild(s);
+    });
+  }
+  _pdfLibsPromise = Promise.all([loadScript(PDF_LIB_URLS.jspdf), loadScript(PDF_LIB_URLS.html2canvas)]);
+  return _pdfLibsPromise;
+}
+
+// Map a session to a stable PDF filename.
+function pdfFilenameForSession(session) {
+  const safe = s => String(s || '').replace(/[^a-z0-9-]+/gi, '-').toLowerCase().replace(/^-+|-+$/g, '');
+  const date = (session.completed_at || new Date().toISOString()).slice(0, 10);
+  return `mandarin-${safe(session.firstName) || 'result'}-${safe(session.lastName) || ''}-${date}.pdf`.replace(/--+/g,'-');
+}
+
+// Resolve the archetype + secondary pattern + skin info for a session, with
+// graceful fallback when the session was taken on a skin no longer loaded.
+function resolveSessionRefs(session) {
+  const archKey = session.archetype;
+  const arch = (ARCHETYPES && ARCHETYPES[archKey]) || { name: session.archetype_name || archKey, band: '-', body: '', risk: '', focus: '', next: '' };
+  const secKey = session.secondary_pattern;
+  const sec = secKey && SECONDARY_PATTERNS && SECONDARY_PATTERNS[secKey] ? SECONDARY_PATTERNS[secKey] : null;
+  return { archKey, arch, secKey, sec };
+}
+
+// Render a horizontal score bar as plain HTML (html2canvas safe).
+function pdfScoreBar(score, max, color, label, rightText) {
+  const pct = Math.max(0, Math.min(100, Math.round((score / max) * 100)));
+  return `
+    <div style="display:block;margin-bottom:10px;font-family:Inter,Helvetica,Arial,sans-serif">
+      <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:500;color:#0a0a0a;letter-spacing:0.04em;margin-bottom:4px">
+        <span style="text-transform:uppercase">${escapeHTML(label)}</span>
+        <span style="color:${color};font-weight:700">${escapeHTML(rightText || (score + ''))}</span>
+      </div>
+      <div style="background:#e7e2d6;height:7px;border-radius:0">
+        <div style="background:${color};height:100%;width:${pct}%"></div>
+      </div>
+    </div>`;
+}
+
+// Risk band helper, low / moderate / high based on score.
+function riskBand(score) {
+  if (score < 35) return { name: 'LOW',      color: '#3b8d57' };
+  if (score < 65) return { name: 'MODERATE', color: '#c46a14' };
+  return                  { name: 'HIGH',     color: '#c33020' };
+}
+
+function buildResultsPrintHTML(session) {
+  const { arch, sec } = resolveSessionRefs(session);
+  const overall = session.overall != null ? session.overall : 0;
+  const date = new Date(session.completed_at || Date.now()).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+  const fullName = [session.firstName || '', session.lastName || ''].filter(Boolean).join(' ');
+  const levels = session.levels || {};
+  const practices = session.practices || {};
+  const risks = session.risks || {};
+  const reflections = session.reflections || {};
+
+  // Group the 12 practices by their level for the page-2 layout.
+  const levelLabels = (FRAMEWORK && FRAMEWORK.levels) || {
+    L1: { num: 'Level 01', name: 'Deepen Self-Awareness' },
+    L2: { num: 'Level 02', name: 'Cultivate Open-Mindedness' },
+    L3: { num: 'Level 03', name: 'Develop Strategic Capabilities' },
+    L4: { num: 'Level 04', name: 'Scale Your Impact' }
+  };
+  const practicesByLevel = { L1: [], L2: [], L3: [], L4: [] };
+  Object.entries(FRAMEWORK.practices).forEach(([key, def]) => {
+    if (practicesByLevel[def.level]) practicesByLevel[def.level].push({ key, name: def.name });
+  });
+
+  const pageCSS = `
+    .pdf-page { width:794px; min-height:1123px; background:#f4f0e8; color:#0a0a0a;
+      font-family:Inter,Helvetica,Arial,sans-serif; padding:56px 64px 48px;
+      box-sizing:border-box; page-break-after:always; }
+    .pdf-page:last-of-type { page-break-after:auto; }
+    .pdf-header { display:flex; align-items:center; justify-content:space-between;
+      padding-bottom:18px; border-bottom:1px solid #d8d2c5; margin-bottom:32px; }
+    .pdf-brand { display:flex; align-items:center; gap:10px; font-weight:500; font-size:18px; }
+    .pdf-brand svg { height:22px; width:auto; }
+    .pdf-eyebrow { font-size:10px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:#ff481d; }
+    .pdf-h1 { font-size:48px; font-weight:900; line-height:1.02; text-transform:uppercase; letter-spacing:-0.015em; margin:0 0 18px; }
+    .pdf-h2 { font-size:28px; font-weight:900; line-height:1.05; text-transform:uppercase; letter-spacing:-0.01em; margin:24px 0 14px; }
+    .pdf-h3 { font-size:14px; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; color:#0a0a0a; margin:0 0 12px; }
+    .pdf-prose { font-size:13px; line-height:1.6; color:#1c1c1c; }
+    .pdf-prose p { margin:0 0 10px; }
+    .pdf-meta { font-size:11px; color:#555048; letter-spacing:0.06em; }
+    .pdf-footer { position:absolute; bottom:32px; left:64px; right:64px; padding-top:18px;
+      border-top:1px solid #d8d2c5; font-size:10px; letter-spacing:0.06em; color:#807868;
+      display:flex; justify-content:space-between; }
+    .pdf-tile { background:#fff; border:1px solid #d8d2c5; padding:18px 20px; margin-bottom:14px; }
+    .pdf-tile-eyebrow { font-size:9px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:#ff481d; margin-bottom:6px; }
+    .pdf-overall { background:#0a0a0a; color:#f4f0e8; padding:24px 28px; display:flex; align-items:center; justify-content:space-between; }
+    .pdf-overall-label { font-size:10px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:#ff8a4a; }
+    .pdf-overall-num { font-size:56px; font-weight:900; line-height:1; }
+    .pdf-overall-band { font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:#ece5d7; }
+  `;
+
+  const brandSVG = `<svg viewBox="0 0 235 230" xmlns="http://www.w3.org/2000/svg"><polygon fill="#ff481d" points="139.43 0 92.31 35.2 85.37 100.69 67.33 84.92 34.93 109.09 27.89 154.91 27.88 154.9 16.66 141.62 0 154.03 19.87 210 61.46 193.17 67.63 155.12 96.45 202.36 131.35 188.28 133.23 119.37 170.1 195.5 232.37 170.25 139.43 0"/></svg>`;
+
+  // ─── Page 1: Cover + primary archetype reveal
+  const page1 = `
+    <div class="pdf-page">
+      <div class="pdf-header">
+        <div class="pdf-brand">${brandSVG}<span>mandarin</span></div>
+        <div class="pdf-eyebrow">Strategic Capability Assessment</div>
+      </div>
+      <div class="pdf-eyebrow" style="margin-bottom:18px">Personal Result</div>
+      <div class="pdf-h1">${escapeHTML(arch.name)}</div>
+      <div style="font-size:14px;font-style:italic;color:#555048;margin-bottom:24px">${escapeHTML(arch.band || '')}</div>
+
+      <div class="pdf-overall">
+        <div>
+          <div class="pdf-overall-label">Overall capability</div>
+          <div class="pdf-overall-num">${overall}<span style="font-size:24px;color:#ff8a4a">%</span></div>
+        </div>
+        <div style="text-align:right">
+          <div class="pdf-overall-band">For</div>
+          <div style="font-size:20px;font-weight:700;letter-spacing:0.02em">${escapeHTML(fullName)}</div>
+          <div class="pdf-meta" style="margin-top:6px">${escapeHTML(date)}${session.skin_name ? ` &middot; ${escapeHTML(session.skin_name)}` : ''}</div>
+        </div>
+      </div>
+
+      <div class="pdf-tile" style="margin-top:24px">
+        <div class="pdf-tile-eyebrow">What this means</div>
+        <div class="pdf-prose"><p>${escapeHTML(arch.headline || '')}</p><p>${escapeHTML((arch.body || '').replace(/<\/?[^>]+>/g, ''))}</p></div>
+      </div>
+
+      ${sec ? `<div class="pdf-tile">
+        <div class="pdf-tile-eyebrow">Secondary pattern &middot; ${escapeHTML(sec.name)}</div>
+        <div class="pdf-prose"><p>${escapeHTML(sec.headline || '')}</p><p>${escapeHTML((sec.body || '').replace(/<\/?[^>]+>/g, ''))}</p></div>
+      </div>` : ''}
+
+      <div class="pdf-footer">
+        <span>An assessment by Team Mandarin &middot; teammandarin.com</span>
+        <span>Page 1 / 2</span>
+      </div>
+    </div>
+  `;
+
+  // ─── Page 2: Practices, Levels, Risks, Recommendations
+  const practiceBlocks = ['L1','L2','L3','L4'].map(L => `
+    <div style="margin-bottom:16px">
+      <div class="pdf-h3" style="color:#ff481d">${escapeHTML(levelLabels[L].num)} &middot; ${escapeHTML(levelLabels[L].name)}</div>
+      <div style="font-size:11px;color:#555048;letter-spacing:0.1em;margin-bottom:8px">LEVEL SCORE &middot; ${(levels[L] != null ? levels[L] : 0)}%</div>
+      ${(practicesByLevel[L] || []).map(p => pdfScoreBar(practices[p.key] || 0, 100, '#ff481d', p.name, (practices[p.key] || 0) + '%')).join('')}
+    </div>
+  `).join('');
+
+  const riskOrder = ['control_bias', 'moral_drift', 'detachment_pressure'];
+  const riskNames = (RISK_COPY && Object.keys(RISK_COPY).length) ? RISK_COPY : {
+    control_bias:        { name: 'Control Bias' },
+    moral_drift:         { name: 'Moral Drift' },
+    detachment_pressure: { name: 'Detachment Under Pressure' }
+  };
+  const riskBlocks = riskOrder.map(k => {
+    const v = risks[k] || 0;
+    const b = riskBand(v);
+    return `
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff;border:1px solid #d8d2c5;margin-bottom:8px">
+        <div>
+          <div style="font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase">${escapeHTML(riskNames[k].name)}</div>
+          <div style="font-size:10px;color:#555048;letter-spacing:0.06em">RISK SCORE &middot; ${v}/100</div>
+        </div>
+        <div style="padding:5px 12px;background:${b.color};color:#fff;font-size:10px;font-weight:600;letter-spacing:0.2em">${b.name}</div>
+      </div>`;
+  }).join('');
+
+  const reflectionEntries = Object.entries(reflections).filter(([k,v]) => v && String(v).trim().length > 0);
+  const reflectionBlock = reflectionEntries.length ? `
+    <div style="margin-top:14px">
+      <div class="pdf-h3">Your reflections</div>
+      ${reflectionEntries.map(([k, v]) => `<div class="pdf-tile" style="padding:12px 14px"><div class="pdf-tile-eyebrow" style="margin-bottom:4px">${escapeHTML(k.replace(/_/g, ' '))}</div><div class="pdf-prose" style="font-size:12px">${escapeHTML(v)}</div></div>`).join('')}
+    </div>` : '';
+
+  const page2 = `
+    <div class="pdf-page">
+      <div class="pdf-header">
+        <div class="pdf-brand">${brandSVG}<span>mandarin</span></div>
+        <div class="pdf-eyebrow">${escapeHTML(fullName)} &middot; ${escapeHTML(date)}</div>
+      </div>
+
+      <div class="pdf-h2">Your scores across the framework</div>
+      ${practiceBlocks}
+
+      <div class="pdf-h2" style="margin-top:14px">Risks under pressure</div>
+      ${riskBlocks}
+
+      ${reflectionBlock}
+
+      <div class="pdf-footer">
+        <span>An assessment by Team Mandarin &middot; teammandarin.com</span>
+        <span>Page 2 / 2</span>
+      </div>
+    </div>
+  `;
+
+  return `<div id="pdfRoot"><style>${pageCSS}</style>${page1}${page2}</div>`;
+}
+
+async function downloadResultsPDF(session, opts) {
+  opts = opts || {};
+  try {
+    await loadPdfLibs();
+  } catch (e) {
+    alert('Could not load the PDF generator. Check your network and try again.');
+    return;
+  }
+  const html = buildResultsPrintHTML(session);
+  const host = document.createElement('div');
+  host.style.cssText = 'position:absolute;left:-99999px;top:0;opacity:0;pointer-events:none;background:#fff';
+  host.innerHTML = html;
+  document.body.appendChild(host);
+  try {
+    const pages = host.querySelectorAll('.pdf-page');
+    const jsPDFCtor = window.jspdf && window.jspdf.jsPDF;
+    if (!jsPDFCtor || !window.html2canvas) throw new Error('PDF libs missing');
+    const pdf = new jsPDFCtor({ orientation: 'portrait', unit: 'px', format: [794, 1123], hotfixes: ['px_scaling'] });
+    for (let i = 0; i < pages.length; i++) {
+      const canvas = await window.html2canvas(pages[i], { scale: 2, backgroundColor: '#f4f0e8', useCORS: true });
+      const imgData = canvas.toDataURL('image/png');
+      if (i > 0) pdf.addPage([794, 1123], 'portrait');
+      pdf.addImage(imgData, 'PNG', 0, 0, 794, 1123, undefined, 'FAST');
+    }
+    pdf.save(pdfFilenameForSession(session));
+  } catch (e) {
+    console.error('PDF render failed:', e);
+    alert('PDF generation failed: ' + (e && e.message ? e.message : e));
+  } finally {
+    document.body.removeChild(host);
+  }
+}
+
+// Build a "live results" session object from the current STATE, for the
+// download button on the just-completed results page. Mirrors the schema
+// produced by saveSessionToHistory().
+function buildLiveSessionForPDF(R, archKey, secondaryKey) {
+  return {
+    id: 'live',
+    completed_at: new Date().toISOString(),
+    skin: STATE.currentSkin,
+    skin_name: (getCurrentSkin() && getCurrentSkin().name) || STATE.currentSkin,
+    firstName: USER.firstName,
+    lastName:  USER.lastName,
+    email:     USER.email,
+    gender:    USER.gender,
+    archetype: archKey,
+    archetype_name: (ARCHETYPES[archKey] && ARCHETYPES[archKey].name) || archKey,
+    secondary_pattern: secondaryKey,
+    secondary_name:    secondaryKey ? (SECONDARY_PATTERNS[secondaryKey] && SECONDARY_PATTERNS[secondaryKey].name) : null,
+    overall: R.overall,
+    levels: R.levels,
+    practices: R.practices,
+    risks: R.risks,
+    reflections: { ...STATE.reflections }
+  };
+}
+
+function downloadCurrentResultsPDF() {
+  // Read the snapshot stashed by showResults().
+  const R = window.__R;
+  const archKey = window.__archKey;
+  const secondaryKey = window.__secondaryKey;
+  if (!R || !archKey) {
+    alert('No results loaded.');
+    return;
+  }
+  downloadResultsPDF(buildLiveSessionForPDF(R, archKey, secondaryKey));
+}
+
+function downloadStoredSessionPDF(idx) {
+  const hist = loadHistory();
+  const s = hist[idx];
+  if (!s) { alert('Session not found.'); return; }
+  downloadResultsPDF(s);
+}
+
+function downloadCloudSessionPDF(idx) {
+  const s = (window.__adminCloudCache || [])[idx];
+  if (!s) { alert('Session not found.'); return; }
+  downloadResultsPDF(s);
+}
+
 function showResults(isPreview) {
   // Hide stage
   stage.style.display = 'none';
@@ -14219,9 +14521,11 @@ function showResults(isPreview) {
   const top = sortedP[0];
   const bottom = sortedP[sortedP.length - 1];
 
-  // ─── Stash data on window for interactive wheel ───
+  // ─── Stash data on window for interactive wheel + PDF download ───
   window.__R = R;
   window.__arch = arch;
+  window.__archKey = archKey;
+  window.__secondaryKey = secondaryKey;
 
   // ─── Build the interactive wheel SVG ───
   // 12 practices arranged clockwise from 12 o'clock; 4 quadrants by level
@@ -14535,7 +14839,8 @@ function showResults(isPreview) {
       <div class="cta-block">
         <div class="cta-line">Strategic capability is not fixed. It can be developed. Your result is a mirror, not a verdict.</div>
         <a class="cta-btn" onclick="restart()">Retake the assessment</a>
-        <a class="cta-btn ghost" onclick="downloadJSON()">Download your profile</a>
+        <a class="cta-btn ghost" onclick="downloadCurrentResultsPDF()">Download PDF report</a>
+        <a class="cta-btn ghost" onclick="downloadJSON()">Download JSON profile</a>
       </div>
 
     </div>
@@ -15420,6 +15725,7 @@ function renderAdminResults() {
       <td style="text-align:center;font-family:var(--sans);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:${s.cloudSynced ? 'var(--ink-mute)' : 'var(--amber-bright)'}">${s.cloudSynced ? 'Synced' : 'Local only'}</td>
       <td><div class="actions">
         <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="viewSession(${hist.length - 1 - i})">View</button>
+        <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="downloadStoredSessionPDF(${hist.length - 1 - i})">PDF</button>
         <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="deleteSession(${hist.length - 1 - i})">Delete</button>
       </div></td>
     </tr>
@@ -15504,6 +15810,7 @@ function renderCloudSessions(sessions) {
       <td class="score-cell">${s.overall != null ? s.overall : '-'}</td>
       <td><div class="actions">
         <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="viewCloudSession(${i})">View</button>
+        <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="downloadCloudSessionPDF(${i})">PDF</button>
         <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="adminDeleteCloudSession(${i})">Delete</button>
       </div></td>
     </tr>
