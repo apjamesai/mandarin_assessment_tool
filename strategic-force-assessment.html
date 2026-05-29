@@ -15811,6 +15811,7 @@ function renderCloudSessions(sessions) {
       <td><div class="actions">
         <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="viewCloudSession(${i})">View</button>
         <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="downloadCloudSessionPDF(${i})">PDF</button>
+        <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="adminCopyMagicLink('${escapeHTML(s.email || '')}')">Copy magic link</button>
         <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="adminDeleteCloudSession(${i})">Delete</button>
       </div></td>
     </tr>
@@ -15849,6 +15850,36 @@ async function adminDeleteCloudSession(i) {
     setCloudStatus('Deleted.');
   } else {
     setCloudStatus('Delete failed (' + res.status + '): ' + ((res.body && res.body.error) || ''), 'var(--amber-bright)');
+  }
+}
+
+async function adminCopyMagicLink(email) {
+  if (!email) { setCloudStatus('No email on this session.', 'var(--amber-bright)'); return; }
+  setCloudStatus('Minting magic link for ' + email + '…');
+  let res;
+  try {
+    const r = await fetch('/api/magic-link/issue', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', ...adminAuthHeaders() },
+      body: JSON.stringify({ email, ttlDays: 30 })
+    });
+    res = { ok: r.ok, status: r.status, body: await r.json().catch(() => ({})) };
+  } catch (e) {
+    setCloudStatus('Network error: ' + e.message, 'var(--amber-bright)');
+    return;
+  }
+  if (!res.ok) {
+    setCloudStatus('Failed (' + res.status + '): ' + (res.body.error || 'unknown error'), 'var(--amber-bright)');
+    return;
+  }
+  const url = window.location.origin + '/me?token=' + encodeURIComponent(res.body.token);
+  try {
+    await navigator.clipboard.writeText(url);
+    setCloudStatus('Magic link for ' + email + ' copied to clipboard. Expires ' + new Date(res.body.expires_at).toLocaleDateString() + '.');
+  } catch (e) {
+    // Fallback: show the URL so admin can copy it manually.
+    prompt('Magic link (clipboard blocked, copy manually):', url);
+    setCloudStatus('Magic link issued. Clipboard blocked, see prompt.');
   }
 }
 
