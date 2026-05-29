@@ -175,32 +175,68 @@ a { color: inherit; text-decoration: none; }
 </footer>
 
 <script>
-// Practice and level labels — kept in sync with the assessment's FRAMEWORK
-const FRAMEWORK_LEVELS = {
-  L1: { num: 'Level 01', name: 'Deepen Self-Awareness' },
-  L2: { num: 'Level 02', name: 'Cultivate Open-Mindedness' },
-  L3: { num: 'Level 03', name: 'Develop Strategic Capabilities' },
-  L4: { num: 'Level 04', name: 'Scale Your Impact' }
+// Reference data, fetched once on load from /reference.json (extracted from
+// assessment.html so the PDF builder here renders the same content + depth
+// as the assessment's "Download PDF" button does at completion time).
+let REF = null;
+const FALLBACK_FRAMEWORK_LEVELS = {
+  L1: { num: 'Level 01', name: 'Deepen Self-Awareness', short: 'Self-Awareness' },
+  L2: { num: 'Level 02', name: 'Cultivate Open-Mindedness', short: 'Open-Mindedness' },
+  L3: { num: 'Level 03', name: 'Develop Strategic Capabilities', short: 'Strategic Capabilities' },
+  L4: { num: 'Level 04', name: 'Scale Your Impact', short: 'Impact' }
 };
-const FRAMEWORK_PRACTICES = {
-  understand_self:         { level: 'L1', name: 'Understand Self' },
-  master_emotions:         { level: 'L1', name: 'Master Emotions' },
-  embed_practices:         { level: 'L1', name: 'Embed Practices' },
-  be_curious:              { level: 'L2', name: 'Be Curious' },
-  listen_deeply:           { level: 'L2', name: 'Listen Deeply' },
-  think_critically:        { level: 'L2', name: 'Think Critically' },
-  unlock_creativity:       { level: 'L3', name: 'Unlock Creativity' },
-  manage_uncertainty:      { level: 'L3', name: 'Manage Uncertainty' },
-  future_focused:          { level: 'L3', name: 'Be Future-Focused' },
-  act_decisively:          { level: 'L4', name: 'Act Decisively' },
-  collaborate_inclusively: { level: 'L4', name: 'Collaborate Inclusively' },
-  influence_effortlessly:  { level: 'L4', name: 'Influence Effortlessly' }
+const FALLBACK_FRAMEWORK_PRACTICES = {
+  understand_self:         { level: 'L1', name: 'Understand Self', high: '', low: '' },
+  master_emotions:         { level: 'L1', name: 'Master Emotions', high: '', low: '' },
+  embed_practices:         { level: 'L1', name: 'Embed Practices', high: '', low: '' },
+  be_curious:              { level: 'L2', name: 'Be Curious', high: '', low: '' },
+  listen_deeply:           { level: 'L2', name: 'Listen Deeply', high: '', low: '' },
+  think_critically:        { level: 'L2', name: 'Think Critically', high: '', low: '' },
+  unlock_creativity:       { level: 'L3', name: 'Unlock Creativity', high: '', low: '' },
+  manage_uncertainty:      { level: 'L3', name: 'Manage Uncertainty', high: '', low: '' },
+  future_focused:          { level: 'L3', name: 'Be Future-Focused', high: '', low: '' },
+  act_decisively:          { level: 'L4', name: 'Act Decisively', high: '', low: '' },
+  collaborate_inclusively: { level: 'L4', name: 'Collaborate Inclusively', high: '', low: '' },
+  influence_effortlessly:  { level: 'L4', name: 'Influence Effortlessly', high: '', low: '' }
 };
-const RISK_NAMES = {
-  control_bias:        'Control Bias',
-  moral_drift:         'Moral Drift',
-  detachment_pressure: 'Detachment Under Pressure'
+const FALLBACK_RISK_COPY = {
+  control_bias:        { name: 'Control Bias',              low: '', mod: '', high: '', q: '' },
+  moral_drift:         { name: 'Moral Drift',               low: '', mod: '', high: '', q: '' },
+  detachment_pressure: { name: 'Detachment Under Pressure', low: '', mod: '', high: '', q: '' }
 };
+// Aliases that the PDF builder uses by global name. Repointed once REF
+// is loaded so the builder reads from the freshly-fetched reference.
+let FRAMEWORK          = { levels: FALLBACK_FRAMEWORK_LEVELS, practices: FALLBACK_FRAMEWORK_PRACTICES, risks: {} };
+let ARCHETYPES         = {};
+let SECONDARY_PATTERNS = {};
+let RISK_COPY          = FALLBACK_RISK_COPY;
+let NEXT_STEPS         = {};
+// Band thresholds, mirror RULE_DEFAULTS in assessment.html.
+const REF_RULES = {
+  band_infancy_max: 40, band_tactical_max: 60, band_drift_max: 75, band_operator_max: 88,
+  risk_low_max: 30, risk_mod_max: 60,
+  practice_underdeveloped_max: 30, practice_emerging_max: 50,
+  practice_capable_max: 70, practice_strong_max: 85
+};
+function overallBand(score) {
+  if (score <= REF_RULES.band_infancy_max)  return 'Strategic Infancy';
+  if (score <= REF_RULES.band_tactical_max) return 'Tactical Survivor';
+  if (score <= REF_RULES.band_drift_max)    return 'Hidden Drift';
+  if (score <= REF_RULES.band_operator_max) return 'Strategic Operator';
+  return 'Strategic Force Multiplier';
+}
+function practiceBand(score) {
+  if (score <= REF_RULES.practice_underdeveloped_max) return 'Underdeveloped';
+  if (score <= REF_RULES.practice_emerging_max)       return 'Emerging';
+  if (score <= REF_RULES.practice_capable_max)        return 'Capable but inconsistent';
+  if (score <= REF_RULES.practice_strong_max)         return 'Strong';
+  return 'Highly developed';
+}
+
+// Legacy aliases (the rest of the file still references these by name)
+const FRAMEWORK_LEVELS = FALLBACK_FRAMEWORK_LEVELS;
+const FRAMEWORK_PRACTICES = FALLBACK_FRAMEWORK_PRACTICES;
+const RISK_NAMES = { control_bias: 'Control Bias', moral_drift: 'Moral Drift', detachment_pressure: 'Detachment Under Pressure' };
 function riskBand(score) {
   if (score < 35) return { name: 'LOW', cls: 'low' };
   if (score < 65) return { name: 'MODERATE', cls: 'mod' };
@@ -373,6 +409,7 @@ function loadPdfLibs() {
 
 async function downloadPDF(i) {
   // Re-fetch fresh data to be safe.
+  await loadReference();
   const token = getToken();
   if (!token) { alert('Missing magic link token.'); return; }
   const r = await fetch('/api/user/sessions?token=' + encodeURIComponent(token));
@@ -406,125 +443,341 @@ async function downloadPDF(i) {
   }
 }
 
-// Print template (mirrors buildResultsPrintHTML in assessment.html so this
-// page can render a PDF locally without depending on the assessment bundle).
+// Rich 7-page PDF builder, mirrors buildResultsPrintHTML in assessment.html
+// so /me's Download PDF produces the same comprehensive report as the email
+// attachment + the in-assessment "Download PDF report" button.
 function buildResultsPrintHTML(session) {
+  const { arch, sec } = resolveSessionRefs(session);
   const overall = session.overall != null ? session.overall : 0;
   const date = new Date(session.completed_at || Date.now()).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
   const fullName = [session.firstName || '', session.lastName || ''].filter(Boolean).join(' ');
-  const archetypeName = session.archetype_name || session.archetype || '';
-  const secondaryName = session.secondary_name || '';
   const levels = session.levels || {};
   const practices = session.practices || {};
   const risks = session.risks || {};
   const reflections = session.reflections || {};
+  const archKey = session.archetype;
+  const overallBandName = overallBand(overall);
 
-  const practicesByLevel = { L1:[], L2:[], L3:[], L4:[] };
-  Object.entries(FRAMEWORK_PRACTICES).forEach(([k, def]) => practicesByLevel[def.level].push({ key: k, name: def.name }));
+  const levelLabels = (FRAMEWORK && FRAMEWORK.levels) || FALLBACK_FRAMEWORK_LEVELS;
+  const practicesByLevel = { L1: [], L2: [], L3: [], L4: [] };
+  Object.entries(FRAMEWORK.practices || FALLBACK_FRAMEWORK_PRACTICES).forEach(([key, def]) => {
+    if (practicesByLevel[def.level]) practicesByLevel[def.level].push({ key, def });
+  });
+  const stepsForArch = (NEXT_STEPS && NEXT_STEPS[archKey]) ? NEXT_STEPS[archKey] : [];
 
-  function bar(score, max, color, label, right) {
-    const pct = Math.max(0, Math.min(100, Math.round((score / max) * 100)));
-    return `<div style="margin-bottom:10px;font-family:Inter,Helvetica,Arial,sans-serif">
-      <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:500;color:#0a0a0a;letter-spacing:0.04em;margin-bottom:4px">
-        <span style="text-transform:uppercase">${esc(label)}</span>
-        <span style="color:${color};font-weight:700">${esc(right)}</span>
-      </div>
-      <div style="background:#e7e2d6;height:7px"><div style="background:${color};height:100%;width:${pct}%"></div></div>
-    </div>`;
-  }
+  function stripTags(s) { return String(s || '').replace(/<\/?[^>]+>/g, ''); }
 
-  const css = `
-    .pdf-page { width:794px; min-height:1123px; background:#f4f0e8; color:#0a0a0a; font-family:Inter,Helvetica,Arial,sans-serif; padding:56px 64px 48px; box-sizing:border-box; page-break-after:always; position:relative; }
-    .pdf-header { display:flex; align-items:center; justify-content:space-between; padding-bottom:18px; border-bottom:1px solid #d8d2c5; margin-bottom:32px; }
-    .pdf-brand { display:flex; align-items:center; gap:10px; font-weight:500; font-size:18px; }
-    .pdf-brand svg { height:22px; width:auto; }
-    .pdf-eyebrow { font-size:10px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:#ff481d; }
-    .pdf-h1 { font-size:48px; font-weight:900; line-height:1.02; text-transform:uppercase; letter-spacing:-0.015em; margin:0 0 18px; }
-    .pdf-h2 { font-size:28px; font-weight:900; line-height:1.05; text-transform:uppercase; letter-spacing:-0.01em; margin:24px 0 14px; }
-    .pdf-h3 { font-size:14px; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; color:#0a0a0a; margin:0 0 12px; }
-    .pdf-prose { font-size:13px; line-height:1.6; color:#1c1c1c; }
-    .pdf-meta { font-size:11px; color:#555048; letter-spacing:0.06em; }
-    .pdf-footer { position:absolute; bottom:32px; left:64px; right:64px; padding-top:18px; border-top:1px solid #d8d2c5; font-size:10px; letter-spacing:0.06em; color:#807868; display:flex; justify-content:space-between; }
-    .pdf-tile { background:#fff; border:1px solid #d8d2c5; padding:18px 20px; margin-bottom:14px; }
-    .pdf-tile-eyebrow { font-size:9px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:#ff481d; margin-bottom:6px; }
-    .pdf-overall { background:#0a0a0a; color:#f4f0e8; padding:24px 28px; display:flex; align-items:center; justify-content:space-between; }
-    .pdf-overall-label { font-size:10px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:#ff8a4a; }
-    .pdf-overall-num { font-size:56px; font-weight:900; line-height:1; }
+  const pageCSS = `
+    .pdf-page { width:794px; height:1123px; background:#f4f0e8; color:#0a0a0a;
+      font-family:Inter,Helvetica,Arial,sans-serif; padding:48px 56px 56px;
+      box-sizing:border-box; page-break-after:always; position:relative; overflow:hidden; }
+    .pdf-page:last-of-type { page-break-after:auto; }
+    .pdf-header { display:flex; align-items:center; justify-content:space-between;
+      padding-bottom:14px; border-bottom:1px solid #d8d2c5; margin-bottom:24px; }
+    .pdf-brand { display:flex; align-items:center; gap:10px; font-weight:500; font-size:16px; }
+    .pdf-brand svg { height:20px; width:auto; }
+    .pdf-eyebrow { font-size:9px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:#ff481d; }
+    .pdf-h1 { font-size:54px; font-weight:900; line-height:1.0; text-transform:uppercase; letter-spacing:-0.02em; margin:0 0 16px; }
+    .pdf-h2 { font-size:24px; font-weight:900; line-height:1.05; text-transform:uppercase; letter-spacing:-0.01em; margin:0 0 12px; }
+    .pdf-h3 { font-size:11px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:#0a0a0a; margin:0 0 10px; }
+    .pdf-prose { font-size:12px; line-height:1.55; color:#1c1c1c; }
+    .pdf-prose p { margin:0 0 8px; }
+    .pdf-prose em { font-style:italic; color:#0a0a0a; }
+    .pdf-meta { font-size:10px; color:#555048; letter-spacing:0.06em; }
+    .pdf-footer { position:absolute; bottom:32px; left:56px; right:56px; padding-top:14px;
+      border-top:1px solid #d8d2c5; font-size:9px; letter-spacing:0.06em; color:#807868;
+      display:flex; justify-content:space-between; }
+    .pdf-tile { background:#fff; border:1px solid #d8d2c5; padding:14px 16px; margin-bottom:10px; }
+    .pdf-tile-eyebrow { font-size:8px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:#ff481d; margin-bottom:5px; }
+    .pdf-overall { background:#0a0a0a; color:#f4f0e8; padding:22px 24px; display:flex; align-items:center; justify-content:space-between; }
+    .pdf-overall-label { font-size:9px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:#ff8a4a; }
+    .pdf-overall-num { font-size:60px; font-weight:900; line-height:1; }
+    .pdf-overall-band { font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:#ece5d7; }
+    .pdf-practice { padding:9px 0; border-bottom:1px solid #e7e2d6; }
+    .pdf-practice:last-child { border-bottom:none; }
+    .pdf-practice-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:3px; }
+    .pdf-practice-name { font-size:12px; font-weight:600; letter-spacing:0.02em; color:#0a0a0a; }
+    .pdf-practice-score { font-size:13px; font-weight:800; color:#0a0a0a; }
+    .pdf-practice-band { font-size:8px; letter-spacing:0.25em; text-transform:uppercase; color:#ff481d; margin-bottom:3px; font-weight:600; }
+    .pdf-practice-bar { background:#e7e2d6; height:4px; margin-bottom:6px; }
+    .pdf-practice-bar-fill { background:#ff481d; height:100%; }
+    .pdf-practice-body { font-size:10.5px; line-height:1.5; color:#3a352e; }
+    .pdf-level-block { background:#fff; border:1px solid #d8d2c5; padding:14px 16px; margin-bottom:10px; }
+    .pdf-level-row { display:flex; align-items:baseline; gap:10px; margin-bottom:6px; }
+    .pdf-level-num { font-size:9px; font-weight:600; letter-spacing:0.3em; color:#ff481d; }
+    .pdf-level-name { font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:-0.005em; color:#0a0a0a; }
+    .pdf-level-score { font-size:24px; font-weight:900; color:#0a0a0a; margin-left:auto; }
+    .pdf-level-body { font-size:11px; line-height:1.55; color:#3a352e; }
+    .pdf-risk-tile { background:#fff; border:1px solid #d8d2c5; padding:14px 16px; margin-bottom:10px; }
+    .pdf-risk-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+    .pdf-risk-name { font-size:13px; font-weight:700; letter-spacing:-0.005em; color:#0a0a0a; }
+    .pdf-risk-pill { padding:3px 10px; font-size:8px; font-weight:700; letter-spacing:0.25em; color:#fff; }
+    .pdf-risk-body { font-size:11px; line-height:1.55; color:#3a352e; margin-bottom:7px; }
+    .pdf-risk-q { font-size:11px; font-style:italic; color:#0a0a0a; padding-top:7px; border-top:1px dashed #d8d2c5; }
+    .pdf-step { background:#fff; border:1px solid #d8d2c5; padding:14px 16px; margin-bottom:10px; }
+    .pdf-step-head { display:flex; align-items:baseline; gap:10px; margin-bottom:5px; }
+    .pdf-step-num { font-size:9px; font-weight:600; letter-spacing:0.3em; color:#ff481d; }
+    .pdf-step-title { font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:-0.005em; color:#0a0a0a; }
+    .pdf-step-body { font-size:11px; line-height:1.55; color:#3a352e; margin-bottom:6px; }
+    .pdf-step-test { font-size:10px; font-style:italic; color:#ff481d; letter-spacing:0.01em; }
   `;
+
   const brandSVG = `<svg viewBox="0 0 235 230" xmlns="http://www.w3.org/2000/svg"><polygon fill="#ff481d" points="139.43 0 92.31 35.2 85.37 100.69 67.33 84.92 34.93 109.09 27.89 154.91 27.88 154.9 16.66 141.62 0 154.03 19.87 210 61.46 193.17 67.63 155.12 96.45 202.36 131.35 188.28 133.23 119.37 170.1 195.5 232.37 170.25 139.43 0"/></svg>`;
 
+  function pageHeader(rightText) {
+    return `<div class="pdf-header">
+      <div class="pdf-brand">${brandSVG}<span>mandarin</span></div>
+      <div class="pdf-eyebrow">${escapeHTML(rightText || 'Strategic Capability Assessment')}</div>
+    </div>`;
+  }
+  function pageFooter(n, total) {
+    return `<div class="pdf-footer">
+      <span>${escapeHTML(fullName)} &middot; ${escapeHTML(date)} &middot; An assessment by Team Mandarin</span>
+      <span>Page ${n} / ${total}</span>
+    </div>`;
+  }
+  function riskBandPill(v) {
+    if (v < 35) return { name: 'LOW',      color: '#3b8d57', copyKey: 'low' };
+    if (v < 65) return { name: 'MODERATE', color: '#c46a14', copyKey: 'mod' };
+    return                  { name: 'HIGH', color: '#c33020', copyKey: 'high' };
+  }
+  const totalPages = 7;
+
+  // ─── PAGE 1: Cover ───
   const page1 = `
     <div class="pdf-page">
-      <div class="pdf-header">
-        <div class="pdf-brand">${brandSVG}<span>mandarin</span></div>
-        <div class="pdf-eyebrow">Strategic Capability Assessment</div>
-      </div>
-      <div class="pdf-eyebrow" style="margin-bottom:18px">Personal Result</div>
-      <div class="pdf-h1">${esc(archetypeName)}</div>
-      <div style="font-size:14px;font-style:italic;color:#555048;margin-bottom:24px">${esc(session.skin_name || session.skin || '')}</div>
+      ${pageHeader('Strategic Capability Assessment')}
+      <div class="pdf-eyebrow" style="margin-bottom:14px">Personal result</div>
+      <div class="pdf-h1">${escapeHTML(arch.name || archKey || '')}</div>
+      <div style="font-size:14px;font-style:italic;color:#555048;margin-bottom:8px">${escapeHTML(arch.band || overallBandName)}</div>
+      <div style="font-size:14px;color:#1c1c1c;line-height:1.55;max-width:600px;margin-bottom:24px">${escapeHTML(stripTags(arch.headline || ''))}</div>
       <div class="pdf-overall">
         <div>
           <div class="pdf-overall-label">Overall capability</div>
           <div class="pdf-overall-num">${overall}<span style="font-size:24px;color:#ff8a4a">%</span></div>
+          <div class="pdf-overall-band" style="margin-top:2px">${escapeHTML(overallBandName)}</div>
         </div>
         <div style="text-align:right">
           <div class="pdf-overall-label" style="color:#ece5d7">For</div>
-          <div style="font-size:20px;font-weight:700;letter-spacing:0.02em">${esc(fullName)}</div>
-          <div class="pdf-meta" style="margin-top:6px;color:#ece5d7">${esc(date)}</div>
+          <div style="font-size:18px;font-weight:700;letter-spacing:0.02em">${escapeHTML(fullName)}</div>
+          <div class="pdf-meta" style="margin-top:6px;color:#ece5d7">${escapeHTML(date)}${session.skin_name ? ` &middot; ${escapeHTML(session.skin_name)}` : ''}</div>
         </div>
       </div>
-      ${secondaryName ? `<div class="pdf-tile" style="margin-top:24px">
-        <div class="pdf-tile-eyebrow">Secondary pattern &middot; ${esc(secondaryName)}</div>
-      </div>` : ''}
-      <div class="pdf-footer"><span>An assessment by Team Mandarin &middot; teammandarin.com</span><span>Page 1 / 2</span></div>
-    </div>
-  `;
-
-  const practiceBlocks = ['L1','L2','L3','L4'].map(L => `
-    <div style="margin-bottom:16px">
-      <div class="pdf-h3" style="color:#ff481d">${esc(FRAMEWORK_LEVELS[L].num)} &middot; ${esc(FRAMEWORK_LEVELS[L].name)}</div>
-      <div style="font-size:11px;color:#555048;letter-spacing:0.1em;margin-bottom:8px">LEVEL SCORE &middot; ${(levels[L] != null ? levels[L] : 0)}%</div>
-      ${(practicesByLevel[L] || []).map(p => bar(practices[p.key] || 0, 100, '#ff481d', p.name, (practices[p.key] || 0) + '%')).join('')}
-    </div>
-  `).join('');
-
-  const riskRows = ['control_bias','moral_drift','detachment_pressure'].map(k => {
-    const v = risks[k] || 0;
-    const b = riskBand(v);
-    const color = b.cls === 'low' ? '#3b8d57' : b.cls === 'mod' ? '#c46a14' : '#c33020';
-    return `<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff;border:1px solid #d8d2c5;margin-bottom:8px">
-      <div>
-        <div style="font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase">${esc(RISK_NAMES[k])}</div>
-        <div style="font-size:10px;color:#555048;letter-spacing:0.06em">RISK SCORE &middot; ${v}/100</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:22px">
+        ${['L1','L2','L3','L4'].map(L => {
+          const v = levels[L] != null ? levels[L] : 0;
+          return `<div style="background:#fff;border:1px solid #d8d2c5;padding:12px 14px;text-align:center">
+            <div style="font-size:8px;font-weight:600;letter-spacing:0.3em;color:#ff481d;text-transform:uppercase">${escapeHTML(levelLabels[L].num)}</div>
+            <div style="font-size:11px;color:#1c1c1c;margin:4px 0">${escapeHTML(levelLabels[L].short || levelLabels[L].name)}</div>
+            <div style="font-size:28px;font-weight:900;color:#0a0a0a;line-height:1">${v}<span style="font-size:11px;color:#807868">%</span></div>
+          </div>`;
+        }).join('')}
       </div>
-      <div style="padding:5px 12px;background:${color};color:#fff;font-size:10px;font-weight:600;letter-spacing:0.2em">${b.name}</div>
+      ${sec ? `<div class="pdf-tile" style="margin-top:18px">
+        <div class="pdf-tile-eyebrow">Secondary pattern &middot; ${escapeHTML(sec.name)}</div>
+        <div class="pdf-prose"><p>${escapeHTML(stripTags(sec.headline || ''))}</p></div>
+      </div>` : ''}
+      <div style="margin-top:auto;padding-top:24px;font-size:11px;line-height:1.6;color:#3a352e;max-width:640px">
+        This report is calibrated against the <strong>Be More Strategic</strong> framework by Charlie Curson: the same 12-Practice Strategic Mastery model used inside global organisations to build the capability to think clearly, decide well, and act with intent when it matters most. Each page that follows expands one face of the result.
+      </div>
+      ${pageFooter(1, totalPages)}
     </div>`;
-  }).join('');
-
-  const refEntries = Object.entries(reflections).filter(([k,v]) => v && String(v).trim().length);
-  const refBlock = refEntries.length ? `
-    <div style="margin-top:14px">
-      <div class="pdf-h3">Your reflections</div>
-      ${refEntries.map(([k, v]) => `<div class="pdf-tile" style="padding:12px 14px"><div class="pdf-tile-eyebrow" style="margin-bottom:4px">${esc(k.replace(/_/g, ' '))}</div><div class="pdf-prose" style="font-size:12px">${esc(v)}</div></div>`).join('')}
-    </div>` : '';
 
   const page2 = `
     <div class="pdf-page">
-      <div class="pdf-header">
-        <div class="pdf-brand">${brandSVG}<span>mandarin</span></div>
-        <div class="pdf-eyebrow">${esc(fullName)} &middot; ${esc(date)}</div>
+      ${pageHeader('Your pattern')}
+      <div class="pdf-eyebrow" style="margin-bottom:10px">The pattern beneath your result</div>
+      <div class="pdf-h2">${escapeHTML(arch.name || '')}</div>
+      <div style="font-size:13px;font-style:italic;color:#555048;margin-bottom:14px">${escapeHTML(arch.band || '')}</div>
+      ${arch.headline ? `<div class="pdf-prose" style="font-size:14px;font-weight:500;color:#0a0a0a;margin-bottom:14px">${escapeHTML(stripTags(arch.headline))}</div>` : ''}
+      <div class="pdf-prose">
+        ${stripTags(arch.body || '').split(/\n\n+/).map(p => `<p>${escapeHTML(p.trim())}</p>`).join('')}
       </div>
-      <div class="pdf-h2">Your scores across the framework</div>
-      ${practiceBlocks}
-      <div class="pdf-h2" style="margin-top:14px">Risks under pressure</div>
-      ${riskRows}
-      ${refBlock}
-      <div class="pdf-footer"><span>An assessment by Team Mandarin &middot; teammandarin.com</span><span>Page 2 / 2</span></div>
+      ${arch.risk ? `<div style="background:#fff;border-left:3px solid #ff481d;padding:14px 18px;margin-top:18px">
+        <div class="pdf-tile-eyebrow" style="margin-bottom:6px">Where this pattern leaks under pressure</div>
+        <div class="pdf-prose">${escapeHTML(stripTags(arch.risk))}</div>
+      </div>` : ''}
+      ${sec ? `<div style="margin-top:22px;padding-top:20px;border-top:1px solid #d8d2c5">
+        <div class="pdf-eyebrow" style="margin-bottom:10px">Secondary pattern overlay</div>
+        <div class="pdf-h2" style="font-size:20px">${escapeHTML(sec.name)}</div>
+        ${sec.headline ? `<div class="pdf-prose" style="font-weight:500;color:#0a0a0a;margin-bottom:10px">${escapeHTML(stripTags(sec.headline))}</div>` : ''}
+        <div class="pdf-prose">${escapeHTML(stripTags(sec.body || ''))}</div>
+      </div>` : ''}
+      ${pageFooter(2, totalPages)}
+    </div>`;
+
+  function practiceList(L) {
+    const items = practicesByLevel[L] || [];
+    return items.map(({ key, def }) => {
+      const v = practices[key] != null ? practices[key] : 0;
+      const band = bandFor(v);
+      const copy = v >= 65 ? def.high : def.low;
+      return `<div class="pdf-practice">
+        <div class="pdf-practice-head">
+          <span class="pdf-practice-name">${escapeHTML(def.name)}</span>
+          <span class="pdf-practice-score">${v}<span style="font-size:9px;font-weight:500;color:#807868">/100</span></span>
+        </div>
+        <div class="pdf-practice-band">${escapeHTML(band)}</div>
+        <div class="pdf-practice-bar"><div class="pdf-practice-bar-fill" style="width:${v}%"></div></div>
+        <div class="pdf-practice-body">${escapeHTML(stripTags(copy || ''))}</div>
+      </div>`;
+    }).join('');
+  }
+  function levelGroup(L) {
+    const score = levels[L] != null ? levels[L] : 0;
+    return `<div class="pdf-level-block">
+      <div class="pdf-level-row">
+        <span class="pdf-level-num">${escapeHTML(levelLabels[L].num)}</span>
+        <span class="pdf-level-name">${escapeHTML(levelLabels[L].name)}</span>
+        <span class="pdf-level-score">${score}<span style="font-size:11px;color:#807868">%</span></span>
+      </div>
+      ${practiceList(L)}
+    </div>`;
+  }
+
+  const page3 = `
+    <div class="pdf-page">
+      ${pageHeader('Your twelve practices · 1 / 2')}
+      <div class="pdf-eyebrow" style="margin-bottom:10px">Levels one and two</div>
+      <div class="pdf-h2">Foundations: self-awareness and open-mindedness</div>
+      <div class="pdf-prose" style="margin-bottom:16px">The first two levels of the framework cover the inner work: how clearly you see yourself in the moment, and how genuinely you stay open to information that contradicts your default story.</div>
+      ${levelGroup('L1')}
+      ${levelGroup('L2')}
+      ${pageFooter(3, totalPages)}
+    </div>`;
+
+  const page4 = `
+    <div class="pdf-page">
+      ${pageHeader('Your twelve practices · 2 / 2')}
+      <div class="pdf-eyebrow" style="margin-bottom:10px">Levels three and four</div>
+      <div class="pdf-h2">Capability: strategic moves and scaled impact</div>
+      <div class="pdf-prose" style="margin-bottom:16px">The second half of the framework covers how you actually move: the strategic moves that turn understanding into decision, and the way your impact compounds when others are pulled into it.</div>
+      ${levelGroup('L3')}
+      ${levelGroup('L4')}
+      ${pageFooter(4, totalPages)}
+    </div>`;
+
+  const riskBlocks = ['control_bias','moral_drift','detachment_pressure'].map(k => {
+    const v = risks[k] != null ? risks[k] : 0;
+    const b = riskBandPill(v);
+    const rc = (RISK_COPY && RISK_COPY[k]) || { name: k, low: '', mod: '', high: '', q: '' };
+    const copy = rc[b.copyKey] || '';
+    return `<div class="pdf-risk-tile">
+      <div class="pdf-risk-head">
+        <div>
+          <div class="pdf-risk-name">${escapeHTML(rc.name || k)}</div>
+          <div style="font-size:9px;color:#807868;letter-spacing:0.1em">RISK SCORE &middot; ${v}/100</div>
+        </div>
+        <div class="pdf-risk-pill" style="background:${b.color}">${b.name}</div>
+      </div>
+      <div class="pdf-risk-body">${escapeHTML(stripTags(copy))}</div>
+      ${rc.q ? `<div class="pdf-risk-q">${escapeHTML(stripTags(rc.q))}</div>` : ''}
+    </div>`;
+  }).join('');
+
+  const page5 = `
+    <div class="pdf-page">
+      ${pageHeader('Risks under pressure')}
+      <div class="pdf-eyebrow" style="margin-bottom:10px">Where the pattern leaks</div>
+      <div class="pdf-h2">Your three watchouts</div>
+      <div class="pdf-prose" style="margin-bottom:18px">Three interpretive overlays that don't change your archetype but tell you where your default pattern is most likely to bend under pressure. The question at the bottom of each tile is the one to carry into your next big decision.</div>
+      ${riskBlocks}
+      ${pageFooter(5, totalPages)}
+    </div>`;
+
+  const stepsHTML = stepsForArch.slice(0, 4).map((step, i) => `
+    <div class="pdf-step">
+      <div class="pdf-step-head">
+        <span class="pdf-step-num">No. ${String(i+1).padStart(2,'0')}</span>
+        <span class="pdf-step-title">${escapeHTML(step.title || '')}</span>
+      </div>
+      <div class="pdf-step-body">${escapeHTML(stripTags(step.body || ''))}</div>
+      ${step.test ? `<div class="pdf-step-test">${escapeHTML(stripTags(step.test))}</div>` : ''}
     </div>
-  `;
-  return `<div><style>${css}</style>${page1}${page2}</div>`;
+  `).join('');
+
+  const page6 = `
+    <div class="pdf-page">
+      ${pageHeader('Your development focus')}
+      <div class="pdf-eyebrow" style="margin-bottom:10px">Where the next gain comes from</div>
+      <div class="pdf-h2">Focus and follow-through</div>
+      ${arch.focus ? `<div style="background:#fff;border:1px solid #d8d2c5;padding:16px 18px;margin-bottom:14px">
+        <div class="pdf-tile-eyebrow">Focus</div>
+        <div class="pdf-prose">${escapeHTML(stripTags(arch.focus))}</div>
+      </div>` : ''}
+      ${arch.next ? `<div style="background:#fff;border:1px solid #d8d2c5;padding:16px 18px;margin-bottom:18px">
+        <div class="pdf-tile-eyebrow">Your first breakthrough</div>
+        <div class="pdf-prose">${escapeHTML(stripTags(arch.next))}</div>
+      </div>` : ''}
+      <div class="pdf-eyebrow" style="margin:14px 0 10px">Practices to test and trial</div>
+      ${stepsHTML || `<div class="pdf-prose" style="color:#807868;font-style:italic">No next-step prompts configured for this archetype yet.</div>`}
+      ${pageFooter(6, totalPages)}
+    </div>`;
+
+  const refEntries = Object.entries(reflections).filter(([k, v]) => v && String(v).trim().length > 0);
+  const reflectionBlock = refEntries.length ? refEntries.map(([k, v]) => `
+    <div class="pdf-tile">
+      <div class="pdf-tile-eyebrow">${escapeHTML(k.replace(/^reflect_/, '').replace(/_/g, ' '))}</div>
+      <div class="pdf-prose" style="font-style:italic">${escapeHTML(stripTags(v))}</div>
+    </div>
+  `).join('') : `<div class="pdf-prose" style="color:#807868;font-style:italic">No free-text reflections were captured during this session.</div>`;
+
+  const page7 = `
+    <div class="pdf-page">
+      ${pageHeader('Your reflections')}
+      <div class="pdf-eyebrow" style="margin-bottom:10px">What you wrote, returned to you</div>
+      <div class="pdf-h2">Your own words</div>
+      <div class="pdf-prose" style="margin-bottom:18px">Returned without commentary. The point of these is to make your own pattern legible to you, not to score the writing.</div>
+      ${reflectionBlock}
+      <div style="margin-top:32px;padding-top:24px;border-top:1px solid #d8d2c5">
+        <div class="pdf-eyebrow" style="margin-bottom:10px">A closing note</div>
+        <div class="pdf-prose">
+          <p>Strategic capability is not fixed. It can be developed, deliberately, by anyone willing to notice their own pattern under pressure and choose differently inside it. Your result is a mirror, not a verdict.</p>
+          <p>The 12-Practice framework, the four levels, and the archetype model are described in full in Charlie Curson's <em>Be More Strategic</em>. The assessment you completed is the diagnostic that maps your current position against that framework.</p>
+        </div>
+      </div>
+      ${pageFooter(7, totalPages)}
+    </div>`;
+
+  return `<div id="pdfRoot"><style>${pageCSS}</style>${page1}${page2}${page3}${page4}${page5}${page6}${page7}</div>`;
 }
 
+
+// Fetch the reference bundle in parallel with sessions, so the rich PDF
+// builder has FRAMEWORK / ARCHETYPES / SECONDARY_PATTERNS / RISK_COPY /
+// NEXT_STEPS to draw from. The PDF still renders if the fetch fails,
+// just with the lighter fallback content.
+let _refPromise = null;
+function loadReference() {
+  if (_refPromise) return _refPromise;
+  _refPromise = (async () => {
+    try {
+      const r = await fetch('/reference.json', { cache: 'force-cache' });
+      if (r.ok) {
+        REF = await r.json();
+        if (REF.FRAMEWORK)          FRAMEWORK = REF.FRAMEWORK;
+        if (REF.ARCHETYPES)         ARCHETYPES = REF.ARCHETYPES;
+        if (REF.SECONDARY_PATTERNS) SECONDARY_PATTERNS = REF.SECONDARY_PATTERNS;
+        if (REF.RISK_COPY)          RISK_COPY = REF.RISK_COPY;
+        if (REF.NEXT_STEPS)         NEXT_STEPS = REF.NEXT_STEPS;
+      }
+    } catch (e) { console.warn('reference.json fetch failed:', e); }
+  })();
+  return _refPromise;
+}
+
+// Aliases consumed by the rich PDF builder (mirrors function names in assessment.html)
+const escapeHTML = esc;
+const bandFor = practiceBand;
+function resolveSessionRefs(session) {
+  const archKey = session.archetype;
+  const arch = (ARCHETYPES && ARCHETYPES[archKey]) || { name: session.archetype_name || archKey, band: '-', body: '', risk: '', focus: '', next: '', headline: '' };
+  const secKey = session.secondary_pattern;
+  const sec = secKey && SECONDARY_PATTERNS && SECONDARY_PATTERNS[secKey] ? SECONDARY_PATTERNS[secKey] : null;
+  return { archKey, arch, secKey, sec };
+}
+
+loadReference();
 loadSessions();
 </script>
 </body>
