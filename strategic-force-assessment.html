@@ -2129,7 +2129,7 @@ body.admin-open .cursor, body.admin-open .cursor-glow { display: none !important
   width: min(86vw, 900px);
   line-height: 1.5;
   text-shadow: 0 0 22px rgba(236, 229, 215, 0.18);
-  animation: preamble-in 1.8s ease-out 1s forwards,
+  animation: preamble-in 1.8s ease-out var(--film-preamble-delay, 1s) forwards,
              preamble-out 2.2s ease-in 7s forwards;
 }
 
@@ -2149,7 +2149,7 @@ body.admin-open .cursor, body.admin-open .cursor-glow { display: none !important
   z-index: 4;
   opacity: 0;
   width: min(86vw, 1100px);
-  animation: title-recede 11s ease-out 10s forwards;
+  animation: title-recede 11s ease-out var(--film-title-delay, 10s) forwards;
   transform-origin: center;
   text-shadow: 0 0 30px rgba(255, 72, 29, 0.32);
 }
@@ -2368,7 +2368,7 @@ body.skin-petals .petal-layer { display: block; }
   text-align: center;
   z-index: 5; opacity: 0;
   width: min(90vw, 720px); line-height: 1.4;
-  animation: brief-preamble-in 1.6s ease-out 1.2s forwards,
+  animation: brief-preamble-in 1.6s ease-out var(--brief-preamble-delay, 1.2s) forwards,
              brief-preamble-out 1.6s ease-in 8s forwards;
 }
 @keyframes brief-preamble-in  { to { opacity: 1; } }
@@ -2380,7 +2380,7 @@ body.skin-petals .petal-layer { display: block; }
   transform: translate(-50%, -50%);
   display: flex; flex-direction: column; align-items: center; gap: 22px;
   z-index: 4; opacity: 0;
-  animation: brief-title-in 1.6s ease-out 5.5s forwards,
+  animation: brief-title-in 1.6s ease-out var(--brief-title-delay, 5.5s) forwards,
              brief-title-out 1.4s ease-in 9.5s forwards;
 }
 @keyframes brief-title-in  { from { opacity: 0; transform: translate(-50%, -45%); } to { opacity: 1; transform: translate(-50%, -50%); } }
@@ -2497,7 +2497,7 @@ body.skin-petals .petal-layer { display: block; }
   color: var(--ink-soft);
   text-align: center;
   z-index: 5; opacity: 0;
-  animation: scroll-preamble-in 1.8s ease-out 1.4s forwards;
+  animation: scroll-preamble-in 1.8s ease-out var(--scroll-preamble-delay, 1.4s) forwards;
 }
 @keyframes scroll-preamble-in { to { opacity: 1; } }
 
@@ -2521,7 +2521,7 @@ body.skin-petals .petal-layer { display: block; }
     inset -6px 0 0 0 rgba(26, 18, 12, 0.8),
     inset 0 0 60px rgba(181, 53, 54, 0.1);
   opacity: 0;
-  animation: scroll-frame-in 2s cubic-bezier(.5,0,.2,1) 3s forwards;
+  animation: scroll-frame-in 2s cubic-bezier(.5,0,.2,1) var(--scroll-frame-delay, 3s) forwards;
 }
 @keyframes scroll-frame-in {
   from { opacity: 0; max-height: 0; }
@@ -2658,7 +2658,7 @@ body.skin-petals .petal-layer { display: block; }
     inset 0 0 0 4px rgba(20, 14, 8, 0.7),
     inset 0 0 80px rgba(212, 152, 46, 0.06);
   opacity: 0;
-  animation: broad-frame-in 1.6s ease-out 1s forwards;
+  animation: broad-frame-in 1.6s ease-out var(--broad-frame-delay, 1s) forwards;
 }
 @keyframes broad-frame-in { to { opacity: 1; } }
 
@@ -12146,10 +12146,28 @@ const PACING_LS_KEY = 'mandarin.assessment.pacingOverrides';
 // Defaults the renderers fall back to when a crawl scene has no override.
 // Values in milliseconds. Exposed in the admin Pacing tab.
 const PACING_DEFAULTS = {
-  film:       { scrollStartDelay: 21000, scrollDuration: 33000 },
-  briefing:   { bodyStartDelay: 10000, bodyStagger: 8000 },
-  scroll:     { bodyStartDelay: 10000, bodyStagger: 8000 },
-  broadsheet: { bodyStartDelay: 5000,  bodyStagger: 8000 }
+  film:       { preambleDelay: 1000,  titleDelay: 10000, scrollStartDelay: 21000, scrollDuration: 33000 },
+  briefing:   { preambleDelay: 1200,  titleDelay: 5500,  bodyStartDelay: 10000, bodyStagger: 8000 },
+  scroll:     { preambleDelay: 1400,  frameDelay: 3000,  bodyStartDelay: 10000, bodyStagger: 8000 },
+  broadsheet: { frameDelay: 1000,     bodyStartDelay: 5000,  bodyStagger: 8000 }
+};
+
+// Map field names to the CSS custom-property names they set per crawl style.
+// Only keys present here are wired to CSS, scene-duration / scroll / body
+// values are handled in the JS renderers directly.
+const PACING_CSS_VARS = {
+  film:       { preambleDelay: '--film-preamble-delay',     titleDelay: '--film-title-delay' },
+  briefing:   { preambleDelay: '--brief-preamble-delay',    titleDelay: '--brief-title-delay' },
+  scroll:     { preambleDelay: '--scroll-preamble-delay',   frameDelay: '--scroll-frame-delay' },
+  broadsheet: { frameDelay:    '--broad-frame-delay' }
+};
+
+// All tunable fields per style (used by the admin UI + reset paths).
+const PACING_ALL_FIELDS = {
+  film:       ['duration', 'preambleDelay', 'titleDelay', 'scrollStartDelay', 'scrollDuration'],
+  briefing:   ['duration', 'preambleDelay', 'titleDelay', 'bodyStartDelay', 'bodyStagger'],
+  scroll:     ['duration', 'preambleDelay', 'frameDelay', 'bodyStartDelay', 'bodyStagger'],
+  broadsheet: ['duration', 'frameDelay', 'bodyStartDelay', 'bodyStagger']
 };
 
 // Storage shape:
@@ -12174,12 +12192,33 @@ function applyPacingOverridesToScenes(skinId) {
     if (!s || s.type !== 'crawl') continue;
     const o = forSkin[i];
     if (!o) continue;
-    if (typeof o.duration === 'number') s.duration = o.duration;
-    if (typeof o.scrollStartDelay === 'number') s.scrollStartDelay = o.scrollStartDelay;
-    if (typeof o.scrollDuration === 'number') s.scrollDuration = o.scrollDuration;
-    if (typeof o.bodyStartDelay === 'number') s.bodyStartDelay = o.bodyStartDelay;
-    if (typeof o.bodyStagger === 'number') s.bodyStagger = o.bodyStagger;
+    const style = s.crawlStyle || 'film';
+    const fields = PACING_ALL_FIELDS[style] || [];
+    fields.forEach(f => {
+      if (typeof o[f] === 'number') s[f] = o[f];
+    });
   }
+}
+
+// Build the CSS-var inline-style string for a crawl scene, picking the field
+// values from either the scene's pacing-overridden field or the style default.
+function buildCrawlPacingStyle(scene) {
+  const style = scene.crawlStyle || 'film';
+  const vars = PACING_CSS_VARS[style] || {};
+  const defaults = PACING_DEFAULTS[style] || {};
+  const parts = [];
+  Object.entries(vars).forEach(([field, cssVar]) => {
+    const ms = (typeof scene[field] === 'number') ? scene[field] : defaults[field];
+    if (typeof ms === 'number') parts.push(`${cssVar}:${ms}ms`);
+  });
+  // Film-only: scroll timing too (kept here so renderCrawlFilm only writes one string)
+  if (style === 'film') {
+    const startMs = (typeof scene.scrollStartDelay === 'number') ? scene.scrollStartDelay : defaults.scrollStartDelay;
+    const durMs   = (typeof scene.scrollDuration   === 'number') ? scene.scrollDuration   : defaults.scrollDuration;
+    parts.push(`--crawl-scroll-delay:${startMs}ms`);
+    parts.push(`--crawl-scroll-duration:${durMs}ms`);
+  }
+  return parts.join(';');
 }
 
 // Convenience: write a single field override and re-apply if the active skin.
@@ -12214,9 +12253,9 @@ function resetPacingForScene(skinId, sceneIdx) {
     const orig = skin.scenes[sceneIdx];
     if (skinId === STATE.currentSkin && SCENES[sceneIdx]) {
       const live = SCENES[sceneIdx];
-      // Restore (or delete) each tunable field
-      if (typeof orig.duration === 'number') live.duration = orig.duration;
-      ['scrollStartDelay','scrollDuration','bodyStartDelay','bodyStagger'].forEach(k => {
+      const style = orig.crawlStyle || 'film';
+      // Restore (or delete) every tunable field for this style.
+      (PACING_ALL_FIELDS[style] || []).forEach(k => {
         if (typeof orig[k] === 'number') live[k] = orig[k];
         else delete live[k];
       });
@@ -13117,15 +13156,13 @@ function renderCrawl(scene) {
 }
 
 function renderCrawlFilm(scene) {
-  // Pacing overrides, if set, drive the CSS animation timing via custom
-  // properties consumed by .crawl-text's animation declaration.
-  const startMs = (typeof scene.scrollStartDelay === 'number') ? scene.scrollStartDelay : PACING_DEFAULTS.film.scrollStartDelay;
-  const durMs   = (typeof scene.scrollDuration   === 'number') ? scene.scrollDuration   : PACING_DEFAULTS.film.scrollDuration;
-  const paceStyle = `--crawl-scroll-delay:${startMs}ms;--crawl-scroll-duration:${durMs}ms;`;
+  // Pacing overrides, if set, drive CSS animation timing via custom properties
+  // applied to the scene container. CSS rules read them with var() fallbacks.
+  const paceStyle = buildCrawlPacingStyle(scene);
   return `
-    <div class="crawl-stars" style="${paceStyle}"></div>
-    <div class="crawl-preamble">${scene.preamble}</div>
-    <div class="crawl-title-wrap">
+    <div class="crawl-stars"></div>
+    <div class="crawl-preamble" style="${paceStyle}">${scene.preamble}</div>
+    <div class="crawl-title-wrap" style="${paceStyle}">
       <div class="crawl-title-episode">${scene.episode}</div>
       <div class="crawl-title-main">
         ${scene.title.map(w => `<span>${w}</span>`).join('')}
@@ -13154,10 +13191,11 @@ function renderCrawlBriefing(scene) {
     <circle cx="100" cy="100" r="6" fill="currentColor"/>
     <circle cx="100" cy="100" r="68" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 4"/>
   </svg>`;
+  const paceStyle = buildCrawlPacingStyle(scene);
   return `
     <div class="brief-scanlines"></div>
-    <div class="brief-preamble">${scene.preamble || ''}</div>
-    <div class="brief-title">
+    <div class="brief-preamble" style="${paceStyle}">${scene.preamble || ''}</div>
+    <div class="brief-title" style="${paceStyle}">
       <div class="brief-meta">${scene.episode || 'Prologue'}</div>
       <div class="brief-mark">${scene.markSvg || defaultMark}</div>
       <h1 class="brief-title-main">${(scene.title || []).join(' ')}</h1>
@@ -13189,10 +13227,11 @@ function renderCrawlScroll(scene) {
     <rect x="40" y="40" width="120" height="120" fill="#b53536" stroke="#7a1818" stroke-width="2"/>
     <text x="100" y="125" text-anchor="middle" font-family="serif" font-size="80" fill="#f1e6cb" font-weight="700">忠</text>
   </svg>`;
+  const paceStyle = buildCrawlPacingStyle(scene);
   return `
     <div class="scroll-paper"></div>
-    <div class="scroll-preamble">${scene.preamble || ''}</div>
-    <div class="scroll-frame">
+    <div class="scroll-preamble" style="${paceStyle}">${scene.preamble || ''}</div>
+    <div class="scroll-frame" style="${paceStyle}">
       <div class="scroll-seal">${scene.markSvg || defaultMark}</div>
       <div class="scroll-title">${(scene.title || []).join(' ')}</div>
       <div class="scroll-meta">${scene.episode || ''}</div>
@@ -13221,9 +13260,10 @@ function renderCrawlBroadsheet(scene) {
     <ellipse cx="100" cy="98" rx="22" ry="32" fill="none" stroke="currentColor" stroke-width="1.4"/>
     <path d="M 88 110 Q 100 80 112 110" fill="none" stroke="currentColor" stroke-width="0.9"/>
   </svg>`;
+  const paceStyle = buildCrawlPacingStyle(scene);
   return `
     <div class="broad-paper"></div>
-    <div class="broad-frame">
+    <div class="broad-frame" style="${paceStyle}">
       <div class="broad-dateline">${scene.preamble || ''}</div>
       <div class="broad-mast">
         <div class="broad-rule"></div>
@@ -15721,13 +15761,26 @@ function renderAdminPacing() {
       const styleLabel = ({ film: 'Film crawl', briefing: 'Briefing cards', scroll: 'Memorial scroll', broadsheet: 'Broadsheet columns' })[style] || style;
 
       const tunables = [];
-      tunables.push({ key: 'duration',         label: 'Scene total',          defaultMs: s.duration || 0,            help: 'Wall-clock length of the scene, when it auto-advances to the next.' });
+      tunables.push({ key: 'duration', label: 'Scene total', defaultMs: s.duration || 0, help: 'Wall-clock length of the scene, when it auto-advances to the next.' });
       if (style === 'film') {
+        tunables.push({ key: 'preambleDelay',    label: 'Preamble: appear at',  defaultMs: defaults.preambleDelay,    help: 'When the "A long time ago..." preamble fades in.' });
+        tunables.push({ key: 'titleDelay',       label: 'Title: appear at',     defaultMs: defaults.titleDelay,       help: 'When the title slate begins its receding-into-distance flight.' });
         tunables.push({ key: 'scrollStartDelay', label: 'Scroll: start delay',  defaultMs: defaults.scrollStartDelay, help: 'When the receding-text scroll begins. Lower = scroll starts sooner.' });
         tunables.push({ key: 'scrollDuration',   label: 'Scroll: total length', defaultMs: defaults.scrollDuration,   help: 'How long the scroll takes to fully pass through.' });
-      } else {
+      } else if (style === 'briefing') {
+        tunables.push({ key: 'preambleDelay',  label: 'Preamble: appear at',    defaultMs: defaults.preambleDelay,  help: 'When the channel-open preamble fades in.' });
+        tunables.push({ key: 'titleDelay',     label: 'Title: appear at',       defaultMs: defaults.titleDelay,     help: 'When the central title slate flashes in.' });
         tunables.push({ key: 'bodyStartDelay', label: 'Body: first item delay', defaultMs: defaults.bodyStartDelay, help: 'Delay before the first paragraph or card appears.' });
         tunables.push({ key: 'bodyStagger',    label: 'Body: per-item gap',     defaultMs: defaults.bodyStagger,    help: 'Gap between consecutive paragraphs or cards.' });
+      } else if (style === 'scroll') {
+        tunables.push({ key: 'preambleDelay',  label: 'Preamble: appear at',    defaultMs: defaults.preambleDelay,  help: 'When the royal-dispatch preamble fades in.' });
+        tunables.push({ key: 'frameDelay',     label: 'Scroll: unfurl at',      defaultMs: defaults.frameDelay,     help: 'When the seal + title scroll slides into view.' });
+        tunables.push({ key: 'bodyStartDelay', label: 'Body: first item delay', defaultMs: defaults.bodyStartDelay, help: 'Delay before the first verse appears.' });
+        tunables.push({ key: 'bodyStagger',    label: 'Body: per-item gap',     defaultMs: defaults.bodyStagger,    help: 'Gap between consecutive verses.' });
+      } else if (style === 'broadsheet') {
+        tunables.push({ key: 'frameDelay',     label: 'Masthead: appear at',    defaultMs: defaults.frameDelay,     help: 'When the broadsheet masthead and title appear.' });
+        tunables.push({ key: 'bodyStartDelay', label: 'Body: first item delay', defaultMs: defaults.bodyStartDelay, help: 'Delay before the first leader column appears.' });
+        tunables.push({ key: 'bodyStagger',    label: 'Body: per-item gap',     defaultMs: defaults.bodyStagger,    help: 'Gap between consecutive leader columns.' });
       }
 
       const fieldRows = tunables.map(t => {
@@ -15778,7 +15831,7 @@ function renderAdminPacing() {
     <div class="admin-section-sub">
       Tune the per-element timing of each skin's opening prologue / crawl. Values are in seconds.
       Changes save automatically when you tab or click out of a field, and take effect on the next scene render.<br>
-      <em style="color:var(--ink-mute)">Defaults: Film 21s start + 33s scroll, Briefing/Scroll 10s start + 8s stagger, Broadsheet 5s start + 8s stagger.</em>
+      <em style="color:var(--ink-mute)">Each crawl style exposes its scene total, the keyframe entrance delays (preamble / title or frame), and either the scroll timing (film) or body item delay + per-item gap (briefing / scroll / broadsheet).</em>
     </div>
     <div class="admin-buttons">
       <button class="admin-btn ghost" onclick="exportPacingOverrides()">Export overrides (JSON)</button>
@@ -15837,8 +15890,8 @@ function resetAllPacing() {
         const orig = skin.scenes[i];
         if (!orig || orig.type !== 'crawl') continue;
         const live = SCENES[i];
-        if (typeof orig.duration === 'number') live.duration = orig.duration;
-        ['scrollStartDelay','scrollDuration','bodyStartDelay','bodyStagger'].forEach(k => {
+        const style = orig.crawlStyle || 'film';
+        (PACING_ALL_FIELDS[style] || []).forEach(k => {
           if (typeof orig[k] === 'number') live[k] = orig[k];
           else delete live[k];
         });
