@@ -15151,7 +15151,7 @@ function switchAdminTab(tab) {
   else if (tab === 'scoring') body.innerHTML = renderAdminScoring();
   else if (tab === 'pacing')  body.innerHTML = renderAdminPacing();
   else if (tab === 'rules')   body.innerHTML = renderAdminRules();
-  else if (tab === 'results') body.innerHTML = renderAdminResults();
+  else if (tab === 'results') { body.innerHTML = renderAdminResults(); setTimeout(adminLoadRecipients, 50); }
   else if (tab === 'skins')   body.innerHTML = renderAdminSkins();
 }
 
@@ -15727,6 +15727,20 @@ function renderAdminResults() {
   const unsynced = hist.filter(s => s && !s.cloudSynced).length;
   const tokenSet = !!getCloudToken();
 
+  const mailerPanel = `
+    <div class="admin-cloud-panel" style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:18px 20px;margin-bottom:18px;background:rgba(255,255,255,0.015)">
+      <div style="font-family:var(--sans);font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:var(--amber);margin-bottom:8px">Admin email recipients</div>
+      <div style="font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink-soft);line-height:1.55;margin-bottom:14px">
+        Comma-separated list of addresses that receive a notification email each time a user completes the assessment. Each notification has the user's PDF attached. Requires <code style="font-family:monospace;font-style:normal;color:var(--ink)">RESEND_API_KEY</code> + <code style="font-family:monospace;font-style:normal;color:var(--ink)">EMAIL_FROM</code> env vars on the site.
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px">
+        <input id="adminRecipientsInput" type="text" placeholder="charlie@teammandarin.com, alex@teammandarin.com" style="flex:1;min-width:280px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);color:var(--ink);padding:8px 12px;font-family:monospace;font-size:12px;border-radius:3px"/>
+        <button class="admin-btn" style="padding:8px 14px;font-size:10px" onclick="adminSaveRecipients()">Save recipients</button>
+      </div>
+      <div id="adminRecipientsStatus" style="font-family:var(--sans);font-size:11px;color:var(--ink-mute);min-height:14px;letter-spacing:0.02em"></div>
+    </div>
+  `;
+
   const cloudPanel = `
     <div class="admin-cloud-panel" style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:18px 20px;margin-bottom:24px;background:rgba(255,255,255,0.015)">
       <div style="font-family:var(--sans);font-size:10px;letter-spacing:0.35em;text-transform:uppercase;color:var(--amber);margin-bottom:8px">Cloud sync</div>
@@ -15751,7 +15765,8 @@ function renderAdminResults() {
     return `
       <div class="admin-section-title">Completed assessments</div>
       <div class="admin-section-sub">Sessions completed in this browser are stored locally <em>and</em> POSTed to the cloud archive. Use the Cloud sync panel below to read the full archive across all devices.</div>
-      ${cloudPanel}
+      ${mailerPanel}
+    ${cloudPanel}
       <div class="admin-empty">No sessions completed on this device yet.<br><br><span style="font-size:13px;color:var(--ink-dim);font-style:normal;font-family:var(--sans);letter-spacing:0.05em">Take the assessment end-to-end and the result will be saved here and synced to the cloud.</span></div>
     `;
   }
@@ -15778,6 +15793,7 @@ function renderAdminResults() {
       ${hist.length} session${hist.length===1?'':'s'} stored locally on this device, across all skins.
       Each session also auto-uploads to the cloud archive; ${unsynced > 0 ? `<strong style="color:var(--amber-bright);font-weight:400">${unsynced} on this device ${unsynced===1?'has':'have'} not yet synced</strong> (retry below).` : 'all local sessions are synced.'}
     </div>
+    ${mailerPanel}
     ${cloudPanel}
     <div class="admin-buttons">
       <button class="admin-btn ghost" onclick="exportResultsCSV()">Export local as CSV</button>
@@ -15892,6 +15908,49 @@ async function adminDeleteCloudSession(i) {
     setCloudStatus('Deleted.');
   } else {
     setCloudStatus('Delete failed (' + res.status + '): ' + ((res.body && res.body.error) || ''), 'var(--amber-bright)');
+  }
+}
+
+async function adminLoadRecipients() {
+  const tokenSet = !!getCloudToken();
+  if (!tokenSet) {
+    setRecipientsStatus('Paste your admin token below first, then reload.');
+    return;
+  }
+  try {
+    const r = await fetch('/api/admin/config/emails', { headers: adminAuthHeaders() });
+    const j = await r.json();
+    if (!r.ok) { setRecipientsStatus('Failed (' + r.status + '): ' + (j.error || ''), 'var(--amber-bright)'); return; }
+    const list = j.recipients || [];
+    const input = document.getElementById('adminRecipientsInput');
+    if (input) input.value = list.join(', ');
+    setRecipientsStatus(list.length === 0 ? 'No recipients configured yet.' : `${list.length} recipient${list.length===1?'':'s'} on file.${j.updated_at ? ' Updated ' + new Date(j.updated_at).toLocaleString() + '.' : ''}`);
+  } catch (e) {
+    setRecipientsStatus('Network error: ' + e.message, 'var(--amber-bright)');
+  }
+}
+
+function setRecipientsStatus(msg, color) {
+  const el = document.getElementById('adminRecipientsStatus');
+  if (el) { el.textContent = msg; el.style.color = color || 'var(--ink-mute)'; }
+}
+
+async function adminSaveRecipients() {
+  const input = document.getElementById('adminRecipientsInput');
+  if (!input) return;
+  const recipients = input.value.split(/[,\n]+/).map(s => s.trim()).filter(Boolean);
+  setRecipientsStatus('Saving…');
+  try {
+    const r = await fetch('/api/admin/config/emails', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', ...adminAuthHeaders() },
+      body: JSON.stringify({ recipients })
+    });
+    const j = await r.json();
+    if (!r.ok) { setRecipientsStatus('Failed (' + r.status + '): ' + (j.error || ''), 'var(--amber-bright)'); return; }
+    setRecipientsStatus(`${j.recipients.length} recipient${j.recipients.length===1?'':'s'} saved.`);
+  } catch (e) {
+    setRecipientsStatus('Network error: ' + e.message, 'var(--amber-bright)');
   }
 }
 
