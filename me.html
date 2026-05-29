@@ -372,6 +372,7 @@ function renderSessionCard(s, i) {
           <div class="session-score">${overall}<sub>%</sub></div>
         </div>
         <div class="session-actions">
+          <button class="session-btn" onclick="viewResults(${i})">View results page</button>
           <button class="session-btn primary" onclick="downloadPDF(${i})">Download PDF</button>
         </div>
       </div>
@@ -405,6 +406,14 @@ function loadPdfLibs() {
     load('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js')
   ]);
   return _pdfLibsPromise;
+}
+
+async function viewResults(i) {
+  const token = getToken();
+  const sessions = (await fetch('/api/user/sessions?token=' + encodeURIComponent(token)).then(r => r.json())).sessions || [];
+  const session = sessions[i];
+  if (!session) { alert('Session not found.'); return; }
+  window.location.href = '/assessment.html?view-session=' + encodeURIComponent(session.id) + '&token=' + encodeURIComponent(token);
 }
 
 async function downloadPDF(i) {

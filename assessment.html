@@ -13,6 +13,9 @@
   try {
     var params = new URLSearchParams(window.location.search);
     if (params.has('admin')) return;
+    // ?view-session=<id>&token=<magic-token> deep-links into someone's own
+    // stored results page from /me. Bypass the brand-landing redirect.
+    if (params.has('view-session')) return;
     var deepSkin = params.get('skin');
     if (deepSkin) {
       try { localStorage.setItem('mandarin.assessment.currentSkin', deepSkin); } catch (e) {}
@@ -33,7 +36,10 @@
 // can hide #stage, the brand mark, the location tag, etc.
 (function() {
   try {
-    if (new URLSearchParams(window.location.search).has('admin')) {
+    var qs = new URLSearchParams(window.location.search);
+    if (qs.has('admin') || qs.has('view-session')) {
+      // Suppress the cinematic chrome for the brief window before either
+      // the admin panel opens or the stored-session results page renders.
       document.documentElement.classList.add('admin-mode');
     }
   } catch (e) {}
@@ -13678,10 +13684,12 @@ function renderLanding(scene) {
         </h1>
         <div class="landing-sub reveal-word" style="transition-delay:1400ms">${scene.sub}</div>
         <div class="framing-note reveal-word" style="transition-delay:1800ms; margin-top:48px;">${scene.note}</div>
-        <button class="landing-cta reveal-word" style="transition-delay:2200ms" onclick="next()">
-          <span>${scene.cta}</span>
-          <span class="arrow"></span>
-        </button>
+        <div style="display:block;margin-top:40px">
+          <button class="landing-cta reveal-word" style="transition-delay:2200ms;margin-top:0" onclick="next()">
+            <span>${scene.cta}</span>
+            <span class="arrow"></span>
+          </button>
+        </div>
       </div>
     </div>
     <div class="landing-meta">est. 20 minutes · 36 questions · 4 closing reflections</div>
@@ -15691,7 +15699,28 @@ function exitPreviewToAssessment() {
   renderCurrent();
 }
 
+// Magic-link viewer: when STATE was set via renderSessionResults with a
+// returnTo URL, swap the preview banner controls so "Back" goes to the
+// user's /me page rather than the admin overlay.
+function configurePreviewBannerForReturnTo() {
+  const ret = window.__sessionViewerReturnTo;
+  const banner = document.getElementById('previewBanner');
+  if (!banner) return;
+  if (ret) {
+    banner.querySelector('span:nth-of-type(2)').textContent = 'VIEWING SAVED RESULT';
+    const buttons = banner.querySelectorAll('.exit-link');
+    if (buttons[0]) { buttons[0].textContent = 'Back to my results'; buttons[0].onclick = function() { window.location.href = ret; }; }
+    if (buttons[1]) buttons[1].style.display = 'none';
+  } else {
+    banner.querySelector('span:nth-of-type(2)').textContent = 'PREVIEW · admin override';
+    const buttons = banner.querySelectorAll('.exit-link');
+    if (buttons[0]) { buttons[0].textContent = 'Back to admin'; buttons[0].onclick = exitPreview; }
+    if (buttons[1]) { buttons[1].style.display = ''; }
+  }
+}
+
 function showPreviewBanner(label) {
+  configurePreviewBannerForReturnTo();
   const b = document.getElementById('previewBanner');
   if (!b) return;
   document.getElementById('previewName').textContent = label;
@@ -15965,6 +15994,53 @@ function previewArchetype(primary, secondary) {
   if (!USER.firstName) { USER.firstName = 'Citizen'; USER.lastName = 'Preview'; USER.email = 'preview@local'; USER.gender = USER.gender || 'they'; }
   closeAdmin({ stay: true });
   document.getElementById('stage').style.display = 'none';
+  showResults(true);
+}
+
+// Render the full cinematic results page from a stored session object.
+// Used by:
+//   - admin "View" buttons (local + cloud) to inspect what a user saw
+//   - /me view-results deep link (?view-session=<id>&token=<token>) so a
+//     user can return to their own completed results page
+// Sets the admin-force state so showResults() reads our injected R + arch
+// rather than recomputing from the (empty) answers; switches the active
+// skin to the one the session was taken on so all copy + theming match.
+function renderSessionResults(session, opts) {
+  opts = opts || {};
+  if (!session || !session.archetype) {
+    alert('Session is missing the data needed to render results.');
+    return;
+  }
+  // Switch to the session's original skin so copy / theme / NEXT_STEPS line up.
+  if (session.skin && SKINS && SKINS[session.skin] && STATE.currentSkin !== session.skin) {
+    try { applySkin(session.skin, { skipRender: true }); } catch (e) {}
+  }
+  // Build the results structure showResults expects.
+  const R = {
+    practices: Object.assign({}, session.practices || {}),
+    levels:    Object.assign({}, session.levels || {}),
+    risks:     Object.assign({}, session.risks || {}),
+    overall:   session.overall != null ? session.overall : 0
+  };
+  STATE.adminForceArchetype = session.archetype;
+  STATE.adminForceSecondary = session.secondary_pattern || null;
+  STATE.adminMockR = R;
+  // Populate USER for personalisation tokens in the rendered prose.
+  USER.firstName = session.firstName || USER.firstName || 'You';
+  USER.lastName  = session.lastName  || USER.lastName  || '';
+  USER.email     = session.email     || USER.email     || '';
+  USER.gender    = session.gender    || USER.gender    || 'they';
+  // Restore reflections so the "Your reflections" section shows the user's own words.
+  STATE.reflections = Object.assign({}, session.reflections || {});
+  // We're being launched from admin (admin-open) or from a magic-link page
+  // bootstrap (admin-mode but not admin-open). Either way, hide the chrome.
+  document.documentElement.classList.add('admin-mode');
+  closeAdmin({ stay: true });
+  document.getElementById('stage').style.display = 'none';
+  // Note: opts.label and opts.returnTo become the preview-banner text +
+  // back link, set on window so the banner can find them later.
+  window.__sessionViewerReturnTo = opts.returnTo || null;
+  window.__sessionViewerLabel = opts.label || null;
   showResults(true);
 }
 
@@ -16535,9 +16611,7 @@ function renderCloudSessions(sessions) {
 function viewCloudSession(i) {
   const s = (window.__adminCloudCache || [])[i];
   if (!s) return;
-  const json = JSON.stringify(s, null, 2);
-  const w = window.open('', '_blank');
-  w.document.write(`<pre style="background:#0a0908;color:#ece5d7;padding:24px;font-family:monospace;font-size:13px;line-height:1.5">${escapeHTML(json)}</pre>`);
+  renderSessionResults(s, { returnTo: 'admin', label: `${s.firstName || ''} ${s.lastName || ''}`.trim() + (s._demo ? ' · DEMO' : ' · cloud') });
 }
 
 async function adminDeleteCloudSession(i) {
@@ -17167,8 +17241,17 @@ function resetAllRules() {
 
 function viewSession(i) {
   const s = loadHistory()[i];
+  if (!s) return;
+  renderSessionResults(s, { returnTo: 'admin', label: `${s.firstName || ''} ${s.lastName || ''}`.trim() + ' · local' });
+}
+
+// JSON debug-dump (the previous behaviour of viewSession). Kept for admins
+// who want to inspect the raw record rather than the rendered results page.
+function dumpSessionJSON(s) {
+  if (!s) return;
   const json = JSON.stringify(s, null, 2);
   const w = window.open('', '_blank');
+  if (!w) { alert('Popup blocked. Allow popups to view session JSON.'); return; }
   w.document.write(`<pre style="background:#0a0908;color:#ece5d7;padding:24px;font-family:monospace;font-size:13px;line-height:1.5">${escapeHTML(json)}</pre>`);
 }
 
@@ -17266,10 +17349,40 @@ if (isAdminEnabled()) {
   setTimeout(() => openAdmin(), 600);
 }
 
-// Probe images first so any present PNGs are detected before first render
-probeAllImages().finally(() => {
-  renderCurrent();
-});
+// ?view-session=<id>&token=<magic-link-token>
+// Fetch the user's own session via the token-gated read endpoint and render
+// the cinematic results page from it. Skip the normal probeAllImages + render
+// path; we don't want the assessment chrome appearing at all.
+(function() {
+  try {
+    var qs = new URLSearchParams(window.location.search);
+    var sid = qs.get('view-session');
+    var tok = qs.get('token');
+    if (!sid || !tok) return;
+    fetch('/api/user/session?token=' + encodeURIComponent(tok) + '&id=' + encodeURIComponent(sid))
+      .then(r => r.json())
+      .then(j => {
+        if (!j || !j.session) throw new Error(j && j.error ? j.error : 'Session not found');
+        const back = '/me?token=' + encodeURIComponent(tok);
+        renderSessionResults(j.session, { returnTo: back, label: (j.session.firstName || 'Your') + ' result' });
+      })
+      .catch(e => {
+        document.documentElement.classList.remove('admin-mode');
+        document.body.innerHTML = '<div style="font-family:Inter,sans-serif;padding:60px;color:#0a0a0a;background:#f4f0e8;min-height:100vh"><h1 style="font-weight:900;text-transform:uppercase;letter-spacing:-0.01em">Could not load that result</h1><p style="margin-top:14px;font-size:15px;color:#555048">' + escapeHTML(e.message || 'Unknown error') + '. <a style="color:#ff481d;text-decoration:underline" href="/me?token=' + encodeURIComponent(tok) + '">Back to your results</a> or <a style="color:#ff481d;text-decoration:underline" href="/">return to the landing page</a>.</p></div>';
+      });
+  } catch (e) {}
+})();
+
+// Probe images first so any present PNGs are detected before first render.
+// Skip if we're showing a stored-session view; renderSessionResults handles
+// it directly and we don't want a brief flash of the cinematic landing.
+(function() {
+  var qs = new URLSearchParams(window.location.search);
+  if (qs.has('view-session')) return;
+  probeAllImages().finally(() => {
+    renderCurrent();
+  });
+})();
 
 </script>
 </body>
