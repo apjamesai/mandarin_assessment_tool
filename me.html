@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Your Strategic Capability Assessment results, across every assessment you've completed." />
+<title>Your results | Mandarin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #f4f0e8;
+  --cream-soft: #ece5d7;
+  --ink: #0a0a0a;
+  --ink-soft: #1c1c1c;
+  --ink-mute: #555048;
+  --ink-dim: #807868;
+  --rule: #d8d2c5;
+  --rule-soft: #e7e2d6;
+  --orange: #ff481d;
+  --orange-bright: #ff6b00;
+  --orange-deep: #c93a16;
+  --black: #000;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: inherit; text-decoration: none; }
+
+/* Top nav (matches index.html) */
+.topnav { background: var(--black); color: #fff; position: sticky; top: 0; z-index: 50; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.topnav-inner { max-width: 1480px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 36px; gap: 24px; }
+.topnav-logo { display: flex; align-items: center; gap: 10px; }
+.topnav-logo svg { height: 26px; width: auto; }
+.topnav-logo-text { font-weight: 500; font-size: 22px; letter-spacing: 0.005em; color: #fff; }
+.topnav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.topnav-links a { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #fff; opacity: 0.85; transition: opacity 0.2s ease; }
+.topnav-links a:hover { opacity: 1; }
+.topnav-cta { border: 1px solid #fff; padding: 12px 18px; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #fff !important; opacity: 1 !important; transition: background 0.2s ease, color 0.2s ease; }
+.topnav-cta:hover { background: #fff; color: var(--black) !important; }
+@media (max-width: 980px) { .topnav-links { display: none; } .topnav-inner { padding: 14px 20px; } }
+
+/* Page header */
+.page-head { background: var(--cream); padding: 80px 36px 48px; }
+.page-head-inner { max-width: 1240px; margin: 0 auto; }
+.page-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+.page-eyebrow::before { content: ""; display: inline-block; width: 28px; height: 1px; background: var(--orange); vertical-align: middle; margin-right: 12px; transform: translateY(-2px); }
+.page-head h1 { font-size: clamp(34px, 4.5vw, 60px); font-weight: 900; line-height: 1.05; letter-spacing: -0.015em; text-transform: uppercase; color: var(--ink); margin-bottom: 14px; }
+.page-head .lede { font-size: 17px; line-height: 1.55; color: var(--ink-soft); max-width: 720px; }
+.page-head .lede strong { font-weight: 600; color: var(--ink); }
+
+/* Sessions list */
+.sessions-section { padding: 24px 36px 80px; background: var(--cream); }
+.sessions-inner { max-width: 1240px; margin: 0 auto; }
+.sessions-empty { background: #fff; border: 1px solid var(--rule); padding: 60px 40px; text-align: center; color: var(--ink-mute); font-style: italic; font-size: 17px; }
+.sessions-empty a { color: var(--orange); font-weight: 600; text-decoration: underline; }
+
+.session-card { background: #fff; border: 1px solid var(--rule); margin-bottom: 18px; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.session-card:hover { border-color: var(--ink); box-shadow: 0 12px 28px -18px rgba(0,0,0,0.2); }
+.session-card.open { border-color: var(--orange); box-shadow: 0 18px 40px -20px rgba(255,72,29,0.35); }
+.session-row { display: grid; grid-template-columns: 1.4fr 1.6fr 0.8fr auto; gap: 20px; padding: 22px 26px; align-items: center; cursor: pointer; }
+@media (max-width: 880px) { .session-row { grid-template-columns: 1fr; gap: 10px; } }
+.session-cell-label { font-size: 9px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 4px; }
+.session-when { font-size: 16px; font-weight: 500; color: var(--ink); }
+.session-when-skin { font-size: 12px; color: var(--ink-mute); margin-top: 2px; font-style: italic; }
+.session-archetype { font-size: 17px; font-weight: 700; color: var(--ink); }
+.session-archetype-sec { font-size: 12px; color: var(--orange); margin-top: 4px; font-weight: 500; }
+.session-score { font-size: 28px; font-weight: 900; color: var(--ink); line-height: 1; letter-spacing: -0.02em; }
+.session-score sub { font-size: 12px; font-weight: 500; color: var(--ink-mute); }
+.session-actions { display: flex; gap: 8px; align-items: center; }
+.session-btn { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); background: transparent; border: 1px solid var(--rule); padding: 9px 14px; cursor: pointer; transition: all 0.2s ease; }
+.session-btn:hover { border-color: var(--ink); background: var(--cream-soft); }
+.session-btn.primary { background: var(--black); color: #fff; border-color: var(--black); }
+.session-btn.primary:hover { background: var(--orange); border-color: var(--orange); }
+
+/* Expanded detail */
+.session-detail { display: none; padding: 0 26px 26px; }
+.session-card.open .session-detail { display: block; }
+.detail-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; padding-top: 22px; border-top: 1px solid var(--rule-soft); }
+@media (max-width: 880px) { .detail-grid { grid-template-columns: 1fr; gap: 24px; } }
+.detail-h3 { font-size: 11px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--orange); margin: 0 0 10px; }
+.detail-prose { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 16px; }
+
+.level-row, .practice-row { display: grid; grid-template-columns: 110px 1fr 44px; gap: 12px; align-items: center; padding: 6px 0; font-size: 13px; }
+.level-row .name, .practice-row .name { color: var(--ink); }
+.level-row .num, .practice-row .num { font-weight: 700; color: var(--ink); text-align: right; }
+.bar-track { background: var(--rule-soft); height: 6px; }
+.bar-fill { background: var(--orange); height: 100%; }
+
+.risk-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; font-size: 13px; }
+.risk-row .name { color: var(--ink); }
+.risk-pill { padding: 3px 10px; font-size: 9px; font-weight: 700; letter-spacing: 0.2em; color: #fff; }
+.risk-pill.low { background: #3b8d57; }
+.risk-pill.mod { background: #c46a14; }
+.risk-pill.high { background: #c33020; }
+
+/* Footer */
+.footer { background: var(--black); color: var(--cream-soft); padding: 56px 36px 36px; }
+.footer-inner { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
+.footer-mark { display: flex; align-items: center; gap: 12px; }
+.footer-mark svg { height: 28px; width: auto; }
+.footer-mark-text { font-size: 16px; font-weight: 500; color: var(--cream); }
+.footer-meta { text-align: right; font-size: 12px; color: var(--ink-dim); line-height: 1.6; }
+.footer-meta a { color: var(--cream-soft); text-decoration: underline; text-underline-offset: 3px; }
+@media (max-width: 700px) { .footer-inner { grid-template-columns: 1fr; text-align: center; } .footer-mark { justify-content: center; } .footer-meta { text-align: center; } }
+
+.error-card { background: #fff; border: 1px solid var(--rule); padding: 48px 36px; max-width: 720px; }
+.error-card h2 { font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 14px; }
+.error-card p { font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 14px; }
+.error-card a { color: var(--orange); text-decoration: underline; font-weight: 600; }
+
+.loading { padding: 40px; text-align: center; color: var(--ink-mute); font-style: italic; }
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="topnav-inner">
+    <a class="topnav-logo" href="https://www.teammandarin.com/" aria-label="Mandarin home">
+      <svg viewBox="0 0 235 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polygon fill="#ff481d" points="139.43 0 92.31 35.2 85.37 100.69 67.33 84.92 34.93 109.09 27.89 154.91 27.88 154.9 16.66 141.62 0 154.03 19.87 210 61.46 193.17 67.63 155.12 96.45 202.36 131.35 188.28 133.23 119.37 170.1 195.5 232.37 170.25 139.43 0"/>
+      </svg>
+      <span class="topnav-logo-text">mandarin</span>
+    </a>
+    <nav>
+      <ul class="topnav-links">
+        <li><a href="https://www.teammandarin.com/strategic-capability-accelerator">Programme</a></li>
+        <li><a href="https://www.teammandarin.com/be-more-strategic-book">Book</a></li>
+        <li><a href="https://www.teammandarin.com/resources">Resources</a></li>
+        <li><a href="https://www.teammandarin.com/contact">Contact</a></li>
+        <li><a class="topnav-cta" href="/">Take the assessment</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="page-head-inner">
+    <div class="page-eyebrow">Your results</div>
+    <h1 id="pageH1">Loading your results</h1>
+    <p class="lede" id="pageLede">Hold on, fetching your strategic capability profile.</p>
+  </div>
+</section>
+
+<section class="sessions-section">
+  <div class="sessions-inner" id="mainArea">
+    <div class="loading">Loading sessions.</div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-mark">
+      <svg viewBox="0 0 235 230" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <polygon fill="#ff481d" points="139.43 0 92.31 35.2 85.37 100.69 67.33 84.92 34.93 109.09 27.89 154.91 27.88 154.9 16.66 141.62 0 154.03 19.87 210 61.46 193.17 67.63 155.12 96.45 202.36 131.35 188.28 133.23 119.37 170.1 195.5 232.37 170.25 139.43 0"/>
+      </svg>
+      <div class="footer-mark-text">mandarin</div>
+    </div>
+    <div class="footer-meta">
+      An assessment by <a href="https://www.teammandarin.com/">Team Mandarin</a>.<br>
+      Built on the <a href="https://www.teammandarin.com/be-more-strategic-book">Be More Strategic</a> framework by Charlie Curson.<br>
+      &copy; Mandarin Business Associates Limited 2026
+    </div>
+  </div>
+</footer>
+
+<script>
+// Practice and level labels — kept in sync with the assessment's FRAMEWORK
+const FRAMEWORK_LEVELS = {
+  L1: { num: 'Level 01', name: 'Deepen Self-Awareness' },
+  L2: { num: 'Level 02', name: 'Cultivate Open-Mindedness' },
+  L3: { num: 'Level 03', name: 'Develop Strategic Capabilities' },
+  L4: { num: 'Level 04', name: 'Scale Your Impact' }
+};
+const FRAMEWORK_PRACTICES = {
+  understand_self:         { level: 'L1', name: 'Understand Self' },
+  master_emotions:         { level: 'L1', name: 'Master Emotions' },
+  embed_practices:         { level: 'L1', name: 'Embed Practices' },
+  be_curious:              { level: 'L2', name: 'Be Curious' },
+  listen_deeply:           { level: 'L2', name: 'Listen Deeply' },
+  think_critically:        { level: 'L2', name: 'Think Critically' },
+  unlock_creativity:       { level: 'L3', name: 'Unlock Creativity' },
+  manage_uncertainty:      { level: 'L3', name: 'Manage Uncertainty' },
+  future_focused:          { level: 'L3', name: 'Be Future-Focused' },
+  act_decisively:          { level: 'L4', name: 'Act Decisively' },
+  collaborate_inclusively: { level: 'L4', name: 'Collaborate Inclusively' },
+  influence_effortlessly:  { level: 'L4', name: 'Influence Effortlessly' }
+};
+const RISK_NAMES = {
+  control_bias:        'Control Bias',
+  moral_drift:         'Moral Drift',
+  detachment_pressure: 'Detachment Under Pressure'
+};
+function riskBand(score) {
+  if (score < 35) return { name: 'LOW', cls: 'low' };
+  if (score < 65) return { name: 'MODERATE', cls: 'mod' };
+  return                  { name: 'HIGH', cls: 'high' };
+}
+
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function showError(title, msg) {
+  document.getElementById('pageH1').textContent = title;
+  document.getElementById('pageLede').textContent = '';
+  document.getElementById('mainArea').innerHTML = `
+    <div class="error-card">
+      <h2>${esc(title)}</h2>
+      <p>${msg}</p>
+      <p>Or <a href="/">take a new assessment</a> from scratch.</p>
+    </div>`;
+}
+
+function getToken() {
+  try { return new URLSearchParams(window.location.search).get('token') || ''; }
+  catch { return ''; }
+}
+
+async function loadSessions() {
+  const token = getToken();
+  if (!token) {
+    showError('No magic link', 'This page needs a magic link from your assessment email to show your results. If you have lost the email, contact <a href="https://www.teammandarin.com/contact">Team Mandarin</a> and we will reissue it.');
+    return;
+  }
+  let payload;
+  try {
+    const r = await fetch('/api/user/sessions?token=' + encodeURIComponent(token));
+    payload = await r.json();
+    if (!r.ok) {
+      const err = payload && payload.error ? payload.error : ('HTTP ' + r.status);
+      const isExpired = /expired/i.test(err);
+      showError(isExpired ? 'Your link has expired' : 'Could not load your results', `${esc(err)}. Magic links are valid for 30 days. Please request a fresh link from the assessment.`);
+      return;
+    }
+  } catch (e) {
+    showError('Network error', 'Could not reach the server. Please retry, or check your connection.');
+    return;
+  }
+  renderSessions(payload);
+}
+
+function renderSessions(payload) {
+  const sessions = payload.sessions || [];
+  const email = payload.email || '';
+  const firstName = sessions[0] && sessions[0].firstName ? sessions[0].firstName : '';
+  document.getElementById('pageH1').textContent = firstName
+    ? `Welcome back, ${firstName}.`
+    : 'Your strategic capability profile';
+  const lede = document.getElementById('pageLede');
+  if (sessions.length === 0) {
+    lede.innerHTML = `We don't have any completed assessments for <strong>${esc(email)}</strong> yet.`;
+    document.getElementById('mainArea').innerHTML = `
+      <div class="sessions-empty">
+        Nothing on file for this email yet. <a href="/">Take the assessment</a> and your result will appear here.
+      </div>`;
+    return;
+  }
+  lede.innerHTML = `${sessions.length} assessment${sessions.length === 1 ? '' : 's'} on file for <strong>${esc(email)}</strong>. The most recent is at the top. Click any row to expand the details, or <strong>Download PDF</strong> for a printable report.`;
+
+  document.getElementById('mainArea').innerHTML = sessions.map((s, i) => renderSessionCard(s, i)).join('');
+
+  // Wire up clicks
+  document.querySelectorAll('.session-card').forEach((card) => {
+    const row = card.querySelector('.session-row');
+    row.addEventListener('click', e => {
+      // Buttons handle themselves
+      if (e.target.closest('.session-btn')) return;
+      card.classList.toggle('open');
+    });
+  });
+}
+
+function renderSessionCard(s, i) {
+  const date = new Date(s.completed_at || Date.now()).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+  const sec = s.secondary_name || '';
+  const overall = s.overall != null ? s.overall : 0;
+  const skin = s.skin_name || s.skin || '';
+
+  const levelBlocks = ['L1','L2','L3','L4'].map(L => {
+    const lvl = (s.levels && s.levels[L]) != null ? s.levels[L] : 0;
+    return `<div class="level-row"><span class="name">${esc(FRAMEWORK_LEVELS[L].name)}</span>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(0, Math.min(100, lvl))}%"></div></div>
+      <span class="num">${lvl}%</span></div>`;
+  }).join('');
+
+  const practiceRowsByLevel = ['L1','L2','L3','L4'].map(L => {
+    const ps = Object.entries(FRAMEWORK_PRACTICES).filter(([k, def]) => def.level === L);
+    return `<div style="margin-bottom:12px">
+      <div class="detail-h3" style="color:var(--orange)">${esc(FRAMEWORK_LEVELS[L].num)} &middot; ${esc(FRAMEWORK_LEVELS[L].name)}</div>
+      ${ps.map(([k, def]) => {
+        const v = s.practices && s.practices[k] != null ? s.practices[k] : 0;
+        return `<div class="practice-row"><span class="name">${esc(def.name)}</span>
+          <div class="bar-track"><div class="bar-fill" style="width:${Math.max(0, Math.min(100, v))}%"></div></div>
+          <span class="num">${v}%</span></div>`;
+      }).join('')}
+    </div>`;
+  }).join('');
+
+  const riskRows = ['control_bias','moral_drift','detachment_pressure'].map(k => {
+    const v = s.risks && s.risks[k] != null ? s.risks[k] : 0;
+    const b = riskBand(v);
+    return `<div class="risk-row"><span class="name">${esc(RISK_NAMES[k])}</span><span class="risk-pill ${b.cls}">${b.name} &middot; ${v}/100</span></div>`;
+  }).join('');
+
+  const reflectionEntries = Object.entries(s.reflections || {}).filter(([k,v]) => v && String(v).trim().length);
+  const reflectionBlock = reflectionEntries.length ? `
+    <div style="margin-top:18px">
+      <div class="detail-h3">Your reflections</div>
+      ${reflectionEntries.map(([k, v]) => `<div style="margin-bottom:10px;font-size:13px"><strong style="display:block;font-weight:600;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:3px">${esc(k.replace(/_/g, ' '))}</strong>${esc(v)}</div>`).join('')}
+    </div>` : '';
+
+  return `
+    <div class="session-card" data-i="${i}">
+      <div class="session-row">
+        <div>
+          <div class="session-cell-label">Completed</div>
+          <div class="session-when">${esc(date)}</div>
+          ${skin ? `<div class="session-when-skin">${esc(skin)}</div>` : ''}
+        </div>
+        <div>
+          <div class="session-cell-label">Result</div>
+          <div class="session-archetype">${esc(s.archetype_name || s.archetype || '')}</div>
+          ${sec ? `<div class="session-archetype-sec">+ ${esc(sec)}</div>` : ''}
+        </div>
+        <div>
+          <div class="session-cell-label">Overall</div>
+          <div class="session-score">${overall}<sub>%</sub></div>
+        </div>
+        <div class="session-actions">
+          <button class="session-btn primary" onclick="downloadPDF(${i})">Download PDF</button>
+        </div>
+      </div>
+      <div class="session-detail">
+        <div class="detail-grid">
+          <div>
+            <div class="detail-h3">By level</div>
+            ${levelBlocks}
+            <div style="margin-top:24px">
+              <div class="detail-h3">Risks under pressure</div>
+              ${riskRows}
+            </div>
+            ${reflectionBlock}
+          </div>
+          <div>
+            ${practiceRowsByLevel}
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+// PDF download, lazy-load the same libs used inside the assessment.
+let _pdfLibsPromise = null;
+function loadPdfLibs() {
+  if (window.jspdf && window.html2canvas) return Promise.resolve();
+  if (_pdfLibsPromise) return _pdfLibsPromise;
+  function load(src) { return new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = () => rej(new Error('Failed to load ' + src)); document.head.appendChild(s); }); }
+  _pdfLibsPromise = Promise.all([
+    load('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'),
+    load('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js')
+  ]);
+  return _pdfLibsPromise;
+}
+
+async function downloadPDF(i) {
+  // Re-fetch fresh data to be safe.
+  const token = getToken();
+  if (!token) { alert('Missing magic link token.'); return; }
+  const r = await fetch('/api/user/sessions?token=' + encodeURIComponent(token));
+  const j = await r.json();
+  const session = (j.sessions || [])[i];
+  if (!session) { alert('Session not found.'); return; }
+
+  await loadPdfLibs();
+  const html = buildResultsPrintHTML(session);
+  const host = document.createElement('div');
+  host.style.cssText = 'position:absolute;left:-99999px;top:0;opacity:0;pointer-events:none;background:#fff';
+  host.innerHTML = html;
+  document.body.appendChild(host);
+  try {
+    const pages = host.querySelectorAll('.pdf-page');
+    const jsPDFCtor = window.jspdf && window.jspdf.jsPDF;
+    const pdf = new jsPDFCtor({ orientation: 'portrait', unit: 'px', format: [794, 1123], hotfixes: ['px_scaling'] });
+    for (let p = 0; p < pages.length; p++) {
+      const canvas = await window.html2canvas(pages[p], { scale: 2, backgroundColor: '#f4f0e8', useCORS: true });
+      const imgData = canvas.toDataURL('image/png');
+      if (p > 0) pdf.addPage([794, 1123], 'portrait');
+      pdf.addImage(imgData, 'PNG', 0, 0, 794, 1123, undefined, 'FAST');
+    }
+    const safe = x => String(x || '').replace(/[^a-z0-9-]+/gi, '-').toLowerCase().replace(/^-+|-+$/g, '');
+    const date = (session.completed_at || new Date().toISOString()).slice(0, 10);
+    pdf.save(`mandarin-${safe(session.firstName) || 'result'}-${safe(session.lastName)}-${date}.pdf`.replace(/--+/g,'-'));
+  } catch (e) {
+    alert('PDF generation failed: ' + e.message);
+  } finally {
+    document.body.removeChild(host);
+  }
+}
+
+// Print template (mirrors buildResultsPrintHTML in assessment.html so this
+// page can render a PDF locally without depending on the assessment bundle).
+function buildResultsPrintHTML(session) {
+  const overall = session.overall != null ? session.overall : 0;
+  const date = new Date(session.completed_at || Date.now()).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+  const fullName = [session.firstName || '', session.lastName || ''].filter(Boolean).join(' ');
+  const archetypeName = session.archetype_name || session.archetype || '';
+  const secondaryName = session.secondary_name || '';
+  const levels = session.levels || {};
+  const practices = session.practices || {};
+  const risks = session.risks || {};
+  const reflections = session.reflections || {};
+
+  const practicesByLevel = { L1:[], L2:[], L3:[], L4:[] };
+  Object.entries(FRAMEWORK_PRACTICES).forEach(([k, def]) => practicesByLevel[def.level].push({ key: k, name: def.name }));
+
+  function bar(score, max, color, label, right) {
+    const pct = Math.max(0, Math.min(100, Math.round((score / max) * 100)));
+    return `<div style="margin-bottom:10px;font-family:Inter,Helvetica,Arial,sans-serif">
+      <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:500;color:#0a0a0a;letter-spacing:0.04em;margin-bottom:4px">
+        <span style="text-transform:uppercase">${esc(label)}</span>
+        <span style="color:${color};font-weight:700">${esc(right)}</span>
+      </div>
+      <div style="background:#e7e2d6;height:7px"><div style="background:${color};height:100%;width:${pct}%"></div></div>
+    </div>`;
+  }
+
+  const css = `
+    .pdf-page { width:794px; min-height:1123px; background:#f4f0e8; color:#0a0a0a; font-family:Inter,Helvetica,Arial,sans-serif; padding:56px 64px 48px; box-sizing:border-box; page-break-after:always; position:relative; }
+    .pdf-header { display:flex; align-items:center; justify-content:space-between; padding-bottom:18px; border-bottom:1px solid #d8d2c5; margin-bottom:32px; }
+    .pdf-brand { display:flex; align-items:center; gap:10px; font-weight:500; font-size:18px; }
+    .pdf-brand svg { height:22px; width:auto; }
+    .pdf-eyebrow { font-size:10px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:#ff481d; }
+    .pdf-h1 { font-size:48px; font-weight:900; line-height:1.02; text-transform:uppercase; letter-spacing:-0.015em; margin:0 0 18px; }
+    .pdf-h2 { font-size:28px; font-weight:900; line-height:1.05; text-transform:uppercase; letter-spacing:-0.01em; margin:24px 0 14px; }
+    .pdf-h3 { font-size:14px; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; color:#0a0a0a; margin:0 0 12px; }
+    .pdf-prose { font-size:13px; line-height:1.6; color:#1c1c1c; }
+    .pdf-meta { font-size:11px; color:#555048; letter-spacing:0.06em; }
+    .pdf-footer { position:absolute; bottom:32px; left:64px; right:64px; padding-top:18px; border-top:1px solid #d8d2c5; font-size:10px; letter-spacing:0.06em; color:#807868; display:flex; justify-content:space-between; }
+    .pdf-tile { background:#fff; border:1px solid #d8d2c5; padding:18px 20px; margin-bottom:14px; }
+    .pdf-tile-eyebrow { font-size:9px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:#ff481d; margin-bottom:6px; }
+    .pdf-overall { background:#0a0a0a; color:#f4f0e8; padding:24px 28px; display:flex; align-items:center; justify-content:space-between; }
+    .pdf-overall-label { font-size:10px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:#ff8a4a; }
+    .pdf-overall-num { font-size:56px; font-weight:900; line-height:1; }
+  `;
+  const brandSVG = `<svg viewBox="0 0 235 230" xmlns="http://www.w3.org/2000/svg"><polygon fill="#ff481d" points="139.43 0 92.31 35.2 85.37 100.69 67.33 84.92 34.93 109.09 27.89 154.91 27.88 154.9 16.66 141.62 0 154.03 19.87 210 61.46 193.17 67.63 155.12 96.45 202.36 131.35 188.28 133.23 119.37 170.1 195.5 232.37 170.25 139.43 0"/></svg>`;
+
+  const page1 = `
+    <div class="pdf-page">
+      <div class="pdf-header">
+        <div class="pdf-brand">${brandSVG}<span>mandarin</span></div>
+        <div class="pdf-eyebrow">Strategic Capability Assessment</div>
+      </div>
+      <div class="pdf-eyebrow" style="margin-bottom:18px">Personal Result</div>
+      <div class="pdf-h1">${esc(archetypeName)}</div>
+      <div style="font-size:14px;font-style:italic;color:#555048;margin-bottom:24px">${esc(session.skin_name || session.skin || '')}</div>
+      <div class="pdf-overall">
+        <div>
+          <div class="pdf-overall-label">Overall capability</div>
+          <div class="pdf-overall-num">${overall}<span style="font-size:24px;color:#ff8a4a">%</span></div>
+        </div>
+        <div style="text-align:right">
+          <div class="pdf-overall-label" style="color:#ece5d7">For</div>
+          <div style="font-size:20px;font-weight:700;letter-spacing:0.02em">${esc(fullName)}</div>
+          <div class="pdf-meta" style="margin-top:6px;color:#ece5d7">${esc(date)}</div>
+        </div>
+      </div>
+      ${secondaryName ? `<div class="pdf-tile" style="margin-top:24px">
+        <div class="pdf-tile-eyebrow">Secondary pattern &middot; ${esc(secondaryName)}</div>
+      </div>` : ''}
+      <div class="pdf-footer"><span>An assessment by Team Mandarin &middot; teammandarin.com</span><span>Page 1 / 2</span></div>
+    </div>
+  `;
+
+  const practiceBlocks = ['L1','L2','L3','L4'].map(L => `
+    <div style="margin-bottom:16px">
+      <div class="pdf-h3" style="color:#ff481d">${esc(FRAMEWORK_LEVELS[L].num)} &middot; ${esc(FRAMEWORK_LEVELS[L].name)}</div>
+      <div style="font-size:11px;color:#555048;letter-spacing:0.1em;margin-bottom:8px">LEVEL SCORE &middot; ${(levels[L] != null ? levels[L] : 0)}%</div>
+      ${(practicesByLevel[L] || []).map(p => bar(practices[p.key] || 0, 100, '#ff481d', p.name, (practices[p.key] || 0) + '%')).join('')}
+    </div>
+  `).join('');
+
+  const riskRows = ['control_bias','moral_drift','detachment_pressure'].map(k => {
+    const v = risks[k] || 0;
+    const b = riskBand(v);
+    const color = b.cls === 'low' ? '#3b8d57' : b.cls === 'mod' ? '#c46a14' : '#c33020';
+    return `<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#fff;border:1px solid #d8d2c5;margin-bottom:8px">
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase">${esc(RISK_NAMES[k])}</div>
+        <div style="font-size:10px;color:#555048;letter-spacing:0.06em">RISK SCORE &middot; ${v}/100</div>
+      </div>
+      <div style="padding:5px 12px;background:${color};color:#fff;font-size:10px;font-weight:600;letter-spacing:0.2em">${b.name}</div>
+    </div>`;
+  }).join('');
+
+  const refEntries = Object.entries(reflections).filter(([k,v]) => v && String(v).trim().length);
+  const refBlock = refEntries.length ? `
+    <div style="margin-top:14px">
+      <div class="pdf-h3">Your reflections</div>
+      ${refEntries.map(([k, v]) => `<div class="pdf-tile" style="padding:12px 14px"><div class="pdf-tile-eyebrow" style="margin-bottom:4px">${esc(k.replace(/_/g, ' '))}</div><div class="pdf-prose" style="font-size:12px">${esc(v)}</div></div>`).join('')}
+    </div>` : '';
+
+  const page2 = `
+    <div class="pdf-page">
+      <div class="pdf-header">
+        <div class="pdf-brand">${brandSVG}<span>mandarin</span></div>
+        <div class="pdf-eyebrow">${esc(fullName)} &middot; ${esc(date)}</div>
+      </div>
+      <div class="pdf-h2">Your scores across the framework</div>
+      ${practiceBlocks}
+      <div class="pdf-h2" style="margin-top:14px">Risks under pressure</div>
+      ${riskRows}
+      ${refBlock}
+      <div class="pdf-footer"><span>An assessment by Team Mandarin &middot; teammandarin.com</span><span>Page 2 / 2</span></div>
+    </div>
+  `;
+  return `<div><style>${css}</style>${page1}${page2}</div>`;
+}
+
+loadSessions();
+</script>
+</body>
+</html>
