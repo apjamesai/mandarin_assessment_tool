@@ -11023,8 +11023,6 @@ body.has-back .location-tag { left: calc(4vw + 100px); }
 }
 </script>
 
-<a class="admin-link" id="adminLink" onclick="openAdmin()">Admin</a>
-
 <div class="preview-banner" id="previewBanner">
   <span class="dot"></span>
   <span>PREVIEW · admin override</span>
@@ -13329,27 +13327,33 @@ function renderIntake(scene) {
 
 function selectGender(key) {
   USER.gender = key;
-  document.querySelectorAll('.intake-gender-opt').forEach(el => {
+  currentSceneScope().querySelectorAll('.intake-gender-opt').forEach(el => {
     el.classList.toggle('selected', el.dataset.gender === key);
   });
   validateIntake();
 }
 
 function validateIntake() {
-  const first = document.getElementById('intakeFirst').value.trim();
-  const last  = document.getElementById('intakeLast').value.trim();
-  const email = document.getElementById('intakeEmail').value.trim();
+  const scope = currentSceneScope();
+  const get = id => { const el = scope.querySelector('#' + id); return el ? el.value.trim() : ''; };
+  const first = get('intakeFirst');
+  const last  = get('intakeLast');
+  const email = get('intakeEmail');
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const ready = first.length >= 1 && last.length >= 1 && emailOk && USER.gender;
-  document.getElementById('qAdvance').classList.toggle('ready', !!ready);
-  document.getElementById('intakeError').textContent = '';
+  const adv = scope.querySelector('#qAdvance');
+  if (adv) adv.classList.toggle('ready', !!ready);
+  const err = scope.querySelector('#intakeError');
+  if (err) err.textContent = '';
   return ready;
 }
 
 function submitIntake() {
-  const first = document.getElementById('intakeFirst').value.trim();
-  const last  = document.getElementById('intakeLast').value.trim();
-  const email = document.getElementById('intakeEmail').value.trim();
+  const scope = currentSceneScope();
+  const get = id => { const el = scope.querySelector('#' + id); return el ? el.value.trim() : ''; };
+  const first = get('intakeFirst');
+  const last  = get('intakeLast');
+  const email = get('intakeEmail');
   const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!first) return showIntakeErr('First name is required.');
   if (!last)  return showIntakeErr('Last name is required.');
@@ -13362,7 +13366,8 @@ function submitIntake() {
 }
 
 function showIntakeErr(msg) {
-  document.getElementById('intakeError').textContent = msg;
+  const err = currentSceneScope().querySelector('#intakeError');
+  if (err) err.textContent = msg;
 }
 
 function renderNarrative(scene) {
@@ -13503,11 +13508,13 @@ function renderMidpoint(scene) {
 
 function textChangedMidpoint() {
   // Midpoint accepts empty (optional), button always ready
-  document.getElementById('qAdvance').classList.add('ready');
+  const adv = currentSceneScope().querySelector('#qAdvance');
+  if (adv) adv.classList.add('ready');
 }
 
 function submitMidpoint(key, isLast) {
-  const val = document.getElementById('qInput').value.trim();
+  const input = currentSceneScope().querySelector('#qInput');
+  const val = input ? input.value.trim() : '';
   STATE.reflections[key] = val;
   next();
 }
@@ -13634,6 +13641,16 @@ function renderCurrent() {
     node.remove();
   });
   const existing = stage.querySelector('.scene.active');
+  // Mark this scene as the "current" target IMMEDIATELY (before append) so all
+  // question-handler queries (selectMC, selectScale, etc.) resolve against the
+  // incoming scene rather than the outgoing one. Without this, clicks during
+  // the 1.6s fade-in mutate the old scene's #qAdvance / .q-option elements
+  // (returned first by document-wide queries), and the new scene visually
+  // looks "inert", the option doesn't highlight, Continue stays disabled.
+  Array.from(stage.querySelectorAll('.scene.current-scene')).forEach(n => n.classList.remove('current-scene'));
+  div.classList.add('current-scene');
+  // Also expose as STATE for handlers that want a direct reference.
+  STATE.currentSceneEl = div;
   stage.appendChild(div);
 
   if (existing) {
@@ -13764,20 +13781,33 @@ function shouldShowBack(scene) {
 }
 
 // ─────────── INPUT HANDLERS
+// Scope every question-handler DOM query to the incoming scene element. This
+// is the fix for the "answer button is inert" bug, document-wide queries
+// would return the outgoing (still-fading) scene's #qAdvance / .q-option when
+// the user clicked an option during the 1.6s scene transition. See
+// renderCurrent() for where `.current-scene` is applied (before fade-in).
+function currentSceneScope() {
+  return STATE.currentSceneEl || document.querySelector('.scene.current-scene') || document;
+}
+
 function selectScale(idx) {
-  const items = document.querySelectorAll('.q-scale-item');
+  const scope = currentSceneScope();
+  const items = scope.querySelectorAll('.q-scale-item');
   items.forEach(i => i.classList.remove('selected'));
-  items[idx].classList.add('selected');
+  if (items[idx]) items[idx].classList.add('selected');
   STATE.pendingAnswer = idx;
-  document.getElementById('qAdvance').classList.add('ready');
+  const adv = scope.querySelector('#qAdvance');
+  if (adv) adv.classList.add('ready');
 }
 
 function selectMC(idx) {
-  const items = document.querySelectorAll('.q-option');
+  const scope = currentSceneScope();
+  const items = scope.querySelectorAll('.q-option');
   items.forEach(i => i.classList.remove('selected'));
-  items[idx].classList.add('selected');
+  if (items[idx]) items[idx].classList.add('selected');
   STATE.pendingAnswer = idx;
-  document.getElementById('qAdvance').classList.add('ready');
+  const adv = scope.querySelector('#qAdvance');
+  if (adv) adv.classList.add('ready');
 }
 
 function rankItem(idx) {
@@ -13788,33 +13818,35 @@ function rankItem(idx) {
     STATE.ranking.push(idx);
   }
   // Update display
-  const items = document.querySelectorAll('.q-ranking-item');
+  const scope = currentSceneScope();
+  const items = scope.querySelectorAll('.q-ranking-item');
   items.forEach((el, i) => {
     el.classList.remove('assigned');
-    const rankEl = document.getElementById(`rank-${i}`);
-    rankEl.classList.add('empty');
-    rankEl.textContent = '-';
+    const rankEl = scope.querySelector(`#rank-${i}`);
+    if (rankEl) { rankEl.classList.add('empty'); rankEl.textContent = '-'; }
   });
   STATE.ranking.forEach((sel, pos) => {
-    const el = document.querySelector(`.q-ranking-item[data-value="${sel}"]`);
-    el.classList.add('assigned');
-    const rankEl = document.getElementById(`rank-${sel}`);
-    rankEl.classList.remove('empty');
-    rankEl.textContent = ['1st','2nd','3rd','4th'][pos] || (pos+1);
+    const el = scope.querySelector(`.q-ranking-item[data-value="${sel}"]`);
+    if (el) el.classList.add('assigned');
+    const rankEl = scope.querySelector(`#rank-${sel}`);
+    if (rankEl) { rankEl.classList.remove('empty'); rankEl.textContent = ['1st','2nd','3rd','4th'][pos] || (pos+1); }
   });
   const scene = SCENES[STATE.current];
   if (STATE.ranking.length === scene.items.length) {
-    document.getElementById('qAdvance').classList.add('ready');
+    const adv = scope.querySelector('#qAdvance');
+    if (adv) adv.classList.add('ready');
   }
 }
 
 function textChanged() {
-  const val = document.getElementById('qInput').value.trim();
-  if (val.length >= 3) {
-    document.getElementById('qAdvance').classList.add('ready');
-  } else {
-    document.getElementById('qAdvance').classList.remove('ready');
-  }
+  const scope = currentSceneScope();
+  const input = scope.querySelector('#qInput');
+  if (!input) return;
+  const val = input.value.trim();
+  const adv = scope.querySelector('#qAdvance');
+  if (!adv) return;
+  if (val.length >= 3) adv.classList.add('ready');
+  else adv.classList.remove('ready');
 }
 
 function submitAnswer() {
@@ -13835,14 +13867,15 @@ function submitAnswer() {
     rebuildScoresFromAnswers();
     next();
   } else if (scene.kind === 'short-text') {
-    const val = document.getElementById('qInput').value.trim();
-    STATE.reflections['midtext_' + STATE.current] = val;
+    const input = currentSceneScope().querySelector('#qInput');
+    STATE.reflections['midtext_' + STATE.current] = input ? input.value.trim() : '';
     next();
   }
 }
 
 function submitReflection(key) {
-  const val = document.getElementById('qInput').value.trim();
+  const input = currentSceneScope().querySelector('#qInput');
+  const val = input ? input.value.trim() : '';
   STATE.reflections[key] = val;
   next();
 }
@@ -16088,9 +16121,12 @@ try {
   }
 } catch (e) {}
 
-// Show admin link if ?admin=1
+// Auto-open the admin panel when ?admin=1 is in the URL. The floating
+// bottom-right admin link is gone, the only public entry point now is the
+// "Admin" item in the landing-page footer (also gated by ?admin=1), which
+// navigates here with the flag set.
 if (isAdminEnabled()) {
-  setTimeout(() => document.getElementById('adminLink').classList.add('visible'), 800);
+  setTimeout(() => openAdmin(), 600);
 }
 
 // Probe images first so any present PNGs are detected before first render
