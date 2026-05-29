@@ -3374,6 +3374,349 @@ body.previewing .results-stage { padding-top: 14vh; }
   .admin-tab { padding: 8px 12px; font-size: 9px; letter-spacing: 0.25em; }
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+   BRAND-STYLED ADMIN OVERLAY
+   Re-skins the admin panel to use the landing-page UI/UX: cream background,
+   black ink, heavy uppercase Inter headlines, white cards. Scoped to
+   .admin-panel so nothing else on the site is affected.
+   ───────────────────────────────────────────────────────────────────────── */
+.admin-panel {
+  background: #f4f0e8;
+  color: #0a0a0a;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.admin-panel * { box-sizing: border-box; }
+
+.admin-panel .admin-topbar {
+  background: #000;
+  border-bottom: none;
+  padding: 18px 36px;
+  color: #fff;
+}
+.admin-panel .admin-brand {
+  color: rgba(255,255,255,0.7);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+}
+.admin-panel .admin-brand .dot { background: #ff481d; box-shadow: 0 0 8px rgba(255,72,29,0.6); }
+.admin-panel .admin-brand .label {
+  font-family: "Inter", sans-serif !important;
+  font-style: normal !important;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+.admin-panel .admin-tabs { gap: 4px; }
+.admin-panel .admin-tab {
+  color: rgba(255,255,255,0.6);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  padding: 10px 14px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.admin-panel .admin-tab:hover { color: #fff; }
+.admin-panel .admin-tab.active {
+  color: #ff8a4a;
+  border-bottom-color: #ff481d;
+}
+
+.admin-panel .admin-close {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  padding: 10px 16px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.admin-panel .admin-close:hover {
+  background: #fff;
+  color: #0a0a0a;
+  border-color: #fff;
+}
+
+.admin-panel .admin-body {
+  background: #f4f0e8;
+  color: #0a0a0a;
+  padding: 56px 56px 80px;
+}
+
+.admin-panel .admin-section-title {
+  font-family: "Inter", sans-serif !important;
+  font-style: normal !important;
+  font-weight: 900;
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  margin-bottom: 12px;
+}
+.admin-panel .admin-section-sub {
+  color: #555048;
+  font-size: 15px;
+  line-height: 1.55;
+  margin-bottom: 32px;
+  max-width: 780px;
+}
+.admin-panel .admin-section-sub em { color: #ff481d; font-style: normal; font-weight: 600; }
+.admin-panel .admin-section-sub strong { color: #0a0a0a; font-weight: 600; }
+.admin-panel .admin-section-sub code,
+.admin-panel code { background: rgba(0,0,0,0.04); color: #0a0a0a; padding: 1px 6px; }
+
+.admin-panel .admin-empty {
+  background: #fff;
+  border: 1px solid #d8d2c5;
+  color: #555048;
+  font-style: italic;
+  font-size: 16px;
+  padding: 40px;
+  text-align: center;
+}
+
+/* Buttons */
+.admin-panel .admin-btn {
+  background: #0a0a0a;
+  color: #fff;
+  border: 1px solid #0a0a0a;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 11px 18px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.admin-panel .admin-btn:hover { background: #ff481d; border-color: #ff481d; }
+.admin-panel .admin-btn.ghost {
+  background: transparent;
+  color: #0a0a0a;
+  border-color: #d8d2c5;
+}
+.admin-panel .admin-btn.ghost:hover { background: #fff; border-color: #0a0a0a; color: #0a0a0a; }
+.admin-panel .admin-btn.danger {
+  background: transparent;
+  color: #c33020;
+  border-color: rgba(195,48,32,0.45);
+}
+.admin-panel .admin-btn.danger:hover { background: #c33020; color: #fff; border-color: #c33020; }
+.admin-panel .admin-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+
+/* Cards / archetype grid */
+.admin-panel .admin-arch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+.admin-panel .admin-arch-card {
+  background: #fff;
+  border: 1px solid #d8d2c5;
+  border-radius: 0;
+  padding: 22px 22px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.admin-panel .admin-arch-card:hover {
+  background: #fff;
+  border-color: #0a0a0a;
+  box-shadow: 0 14px 30px -20px rgba(0,0,0,0.18);
+  transform: translateY(-2px);
+}
+.admin-panel .admin-arch-card .tag {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #ff481d;
+  margin-bottom: 4px;
+}
+.admin-panel .admin-arch-card .name {
+  font-family: "Inter", sans-serif !important;
+  font-style: normal !important;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1.15;
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  color: #0a0a0a;
+}
+.admin-panel .admin-arch-card .head {
+  font-size: 13px;
+  line-height: 1.55;
+  color: #555048;
+  margin-bottom: 6px;
+}
+.admin-panel .admin-arch-card .cta {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+}
+
+/* Inputs */
+.admin-panel input[type="text"],
+.admin-panel input[type="email"],
+.admin-panel input[type="number"],
+.admin-panel input[type="password"],
+.admin-panel textarea,
+.admin-panel select {
+  background: #fff;
+  border: 1px solid #d8d2c5;
+  color: #0a0a0a;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  padding: 10px 12px;
+  outline: none;
+  border-radius: 0;
+  transition: border-color 0.2s ease;
+}
+.admin-panel input:focus, .admin-panel textarea:focus, .admin-panel select:focus { border-color: #0a0a0a; }
+.admin-panel input.edited { color: #ff481d; border-color: rgba(255,72,29,0.4); }
+.admin-panel input.saved { color: #3b8d57; border-color: rgba(59,141,87,0.4); }
+.admin-panel input.err { color: #c33020; border-color: rgba(195,48,32,0.6); }
+
+/* Tables */
+.admin-panel .admin-results-table {
+  background: #fff;
+  border: 1px solid #d8d2c5;
+  width: 100%;
+  border-collapse: collapse;
+}
+.admin-panel .admin-results-table th {
+  background: #fff;
+  color: #ff481d;
+  border-bottom: 1px solid #d8d2c5;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 14px 16px;
+  text-align: left;
+}
+.admin-panel .admin-results-table td {
+  color: #0a0a0a;
+  border-bottom: 1px solid #ece5d7;
+  padding: 14px 16px;
+  font-size: 13px;
+  vertical-align: middle;
+}
+.admin-panel .admin-results-table tbody tr:hover { background: #faf6ee; }
+.admin-panel .admin-results-table .arch-cell { color: #0a0a0a; }
+
+/* Inner panels (cloud sync, mailer config, etc.) */
+.admin-panel .admin-cloud-panel {
+  background: #fff !important;
+  border: 1px solid #d8d2c5 !important;
+  border-radius: 0 !important;
+  padding: 22px 24px !important;
+  color: #0a0a0a;
+}
+.admin-panel .admin-cloud-panel > div[style*="color:var(--amber)"] { color: #ff481d !important; }
+.admin-panel .admin-cloud-panel code { background: rgba(0,0,0,0.04); color: #0a0a0a; padding: 1px 6px; }
+
+/* Scoring / pacing blocks */
+.admin-panel .scoring-block,
+.admin-panel .pacing-skin-block {
+  background: #fff;
+  border: 1px solid #d8d2c5;
+  padding: 20px 22px;
+  margin-bottom: 16px;
+}
+.admin-panel .scoring-tag,
+.admin-panel .pacing-skin-name { color: #ff481d; font-weight: 600; }
+.admin-panel .pacing-skin-name {
+  font-family: "Inter", sans-serif !important;
+  font-style: normal !important;
+  font-weight: 800;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.admin-panel .pacing-skin-active {
+  background: #0a0a0a; color: #fff; border-color: #0a0a0a;
+}
+.admin-panel .pacing-scene-block { border-top-color: #ece5d7; }
+.admin-panel .pacing-field-help,
+.admin-panel .pacing-field-label,
+.admin-panel .pacing-field-unit { color: #555048; }
+.admin-panel .pacing-field-help { font-family: "Inter", sans-serif; font-style: normal; }
+
+/* Edit rows (Content tab) */
+.admin-panel .admin-edit-row {
+  background: #fff;
+  border: 1px solid #d8d2c5;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+}
+.admin-panel .admin-content-search {
+  margin: 18px 0;
+}
+.admin-panel .admin-content-search input { width: 100%; padding: 12px 14px; font-size: 14px; }
+
+/* Preview banner (admin override mode) */
+body.previewing .preview-banner {
+  background: #0a0a0a; color: #fff;
+}
+
+/* Content-tab skin switcher */
+.admin-panel .admin-skin-switcher {
+  background: #fff;
+  border: 1px solid #d8d2c5;
+  padding: 16px 20px;
+  margin-bottom: 22px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.admin-panel .admin-skin-switcher-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #ff481d;
+}
+.admin-panel .admin-skin-switcher-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.admin-panel .admin-skin-pill {
+  background: transparent;
+  border: 1px solid #d8d2c5;
+  color: #1c1c1c;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.admin-panel .admin-skin-pill:hover { border-color: #0a0a0a; }
+.admin-panel .admin-skin-pill.active {
+  background: #0a0a0a;
+  color: #fff;
+  border-color: #0a0a0a;
+}
+
+/* Hide site chrome behind admin */
+body.admin-open .admin-link { display: none !important; }
+body.admin-open .back-button,
+body.admin-open .bl-stack,
+body.admin-open .progress-rail,
+body.admin-open .location-tag,
+body.admin-open #timerRing { display: none !important; }
+body.admin-open .logo-tr { display: none !important; }
+
 /* ─── Subtle back button ─── */
 .back-button {
   position: fixed;
@@ -15270,12 +15613,19 @@ function openAdmin() {
   switchAdminTab('archetypes');
 }
 
-function closeAdmin() {
+function closeAdmin(opts) {
+  opts = opts || {};
   document.getElementById('adminPanel').classList.remove('open');
   document.body.classList.remove('admin-open');
   // NOTE: do NOT clear STATE.adminForce* here, previewArchetype calls
   // closeAdmin() right before showResults() reads them. Overrides only
   // reset on restart() or via exitPreview().
+  // Default: navigating away from admin sends you back to the landing.
+  // previewArchetype passes { stay:true } so the results page can render
+  // here without bouncing.
+  if (!opts.stay) {
+    try { window.location.href = '/'; } catch (e) {}
+  }
 }
 
 function exitPreview() {
@@ -15324,7 +15674,12 @@ function switchAdminTab(tab) {
   else if (tab === 'scoring') body.innerHTML = renderAdminScoring();
   else if (tab === 'pacing')  body.innerHTML = renderAdminPacing();
   else if (tab === 'rules')   body.innerHTML = renderAdminRules();
-  else if (tab === 'results') { body.innerHTML = renderAdminResults(); setTimeout(adminLoadRecipients, 50); }
+  else if (tab === 'results') {
+    body.innerHTML = renderAdminResults();
+    setTimeout(adminLoadRecipients, 50);
+    // Cloud-first: auto-fetch the global archive when a token is already saved.
+    if (getCloudToken()) setTimeout(adminFetchCloud, 80);
+  }
   else if (tab === 'skins')   body.innerHTML = renderAdminSkins();
 }
 
@@ -15356,6 +15711,14 @@ function renderAdminSkins() {
     </div>
 
     <div class="admin-arch-grid">${cards}</div>
+
+    <div style="font-family:var(--sans);font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--amber);margin:32px 0 12px">Image studio</div>
+    <div style="background:#fff;border:1px solid #d8d2c5;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-bottom:24px">
+      <div style="font-size:14px;line-height:1.55;color:#1c1c1c;max-width:560px">
+        Open the image studio to generate or sync archetype portraits and scene art for any skin via the Gemini API, then push to Netlify without leaving the browser.
+      </div>
+      <a class="admin-btn" href="/image-studio.html" target="_blank" rel="noopener" style="text-decoration:none">Open image studio</a>
+    </div>
 
     <div style="font-family:var(--sans);font-size:10px;letter-spacing:0.4em;text-transform:uppercase;color:var(--amber);margin:32px 0 12px">Import a new skin</div>
     <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:24px">
@@ -15558,7 +15921,7 @@ function previewArchetype(primary, secondary) {
   STATE.adminMockR = secondary ? mockSecondary(secondary, primary) : MOCK_PROFILES[primary];
   // Ensure user has at least a name for the personalisation
   if (!USER.firstName) { USER.firstName = 'Citizen'; USER.lastName = 'Preview'; USER.email = 'preview@local'; USER.gender = USER.gender || 'they'; }
-  closeAdmin();
+  closeAdmin({ stay: true });
   document.getElementById('stage').style.display = 'none';
   showResults(true);
 }
@@ -15660,12 +16023,26 @@ function renderAdminContent() {
     </div>`;
   }).join('');
 
+  // Per-skin switcher so admin can hop between skins without leaving the
+  // Content tab. Editing copy targets the CURRENTLY-ACTIVE skin via the
+  // existing edits system, so changing skin here changes what's editable.
+  const skinPills = Object.entries(SKINS).map(([id, s]) => {
+    const active = STATE.currentSkin === id;
+    return `<button class="admin-skin-pill${active ? ' active' : ''}" onclick="adminEditSkin('${id}')" title="${escapeHTML(s.name)}">${escapeHTML(s.name)}</button>`;
+  }).join('');
+
   return `
-    <div class="admin-section-title">All editable content</div>
+    <div class="admin-section-title">Editable content</div>
     <div class="admin-section-sub">
-      Edit any string and click <em style="font-style:italic;color:var(--amber)">Save</em>. Changes persist locally to this browser via <code>localStorage</code> under <code>${ADMIN_LS_EDITS}</code> and are applied on every load.<br>
-      <strong style="color:var(--ink-soft);font-weight:400">${editedCount}</strong> override${editedCount===1?'':'s'} currently active.
+      Pick the skin you want to edit, then change any string and click <em style="color:var(--amber)">Save</em>. Edits persist to this browser via <code>localStorage</code> and apply on every load.<br>
+      <strong style="color:var(--ink-soft);font-weight:400">${editedCount}</strong> override${editedCount===1?'':'s'} active. Currently editing <em style="color:var(--amber)">${escapeHTML(getCurrentSkin().name)}</em>.
     </div>
+
+    <div class="admin-skin-switcher">
+      <div class="admin-skin-switcher-label">Editing skin</div>
+      <div class="admin-skin-switcher-pills">${skinPills}</div>
+    </div>
+
     <div class="admin-content-search">
       <input id="adminContentSearch" type="text" placeholder="Search any field, scene index, archetype, or key, e.g. understand_self · q03 · Hale" oninput="filterContent(this.value)"/>
     </div>
@@ -15677,6 +16054,15 @@ function renderAdminContent() {
     </div>
     <div id="adminContentBody">${groupHTML}</div>
   `;
+}
+
+// Activate a skin from the Content tab and re-render so the editor targets
+// that skin's scenes / archetypes / framework copy.
+function adminEditSkin(skinId) {
+  if (skinId === STATE.currentSkin) return;
+  if (applySkin(skinId, { skipRender: true })) {
+    switchAdminTab('content');
+  }
 }
 
 function filterContent(q) {
@@ -15899,6 +16285,10 @@ function renderAdminResults() {
   const hist = loadHistory();
   const unsynced = hist.filter(s => s && !s.cloudSynced).length;
   const tokenSet = !!getCloudToken();
+  const localCount = hist.length;
+  // Localised cloud-first view, the main table is the global cloud archive
+  // (all users, all devices). The on-this-device list is moved to a
+  // secondary, collapsed panel further down.
 
   const mailerPanel = `
     <div class="admin-cloud-panel" style="border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:18px 20px;margin-bottom:18px;background:rgba(255,255,255,0.015)">
@@ -15934,25 +16324,16 @@ function renderAdminResults() {
     </div>
   `;
 
-  if (!hist.length) {
-    return `
-      <div class="admin-section-title">Completed assessments</div>
-      <div class="admin-section-sub">Sessions completed in this browser are stored locally <em>and</em> POSTed to the cloud archive. Use the Cloud sync panel below to read the full archive across all devices.</div>
-      ${mailerPanel}
-    ${cloudPanel}
-      <div class="admin-empty">No sessions completed on this device yet.<br><br><span style="font-size:13px;color:var(--ink-dim);font-style:normal;font-family:var(--sans);letter-spacing:0.05em">Take the assessment end-to-end and the result will be saved here and synced to the cloud.</span></div>
-    `;
-  }
-  const rows = hist.slice().reverse().map((s, i) => `
+  // Build the on-this-device sub-panel (hidden by default behind <details>).
+  const localRows = hist.slice().reverse().map((s, i) => `
     <tr>
       <td>${new Date(s.completed_at).toLocaleString()}</td>
       <td>${escapeHTML(s.firstName + ' ' + s.lastName)}</td>
-      <td><a style="color:var(--ink-soft);text-decoration:none" href="mailto:${escapeHTML(s.email)}">${escapeHTML(s.email)}</a></td>
-      <td style="color:var(--ink-label);font-style:italic;font-family:var(--serif);font-size:13px">${escapeHTML(s.skin_name || s.skin || 'force_trial')}</td>
-      <td style="color:var(--ink-mute)">${escapeHTML(s.gender || '-')}</td>
-      <td class="arch-cell">${escapeHTML(s.archetype_name || s.archetype)}${s.secondary_name ? `<br><span style="font-size:11px;font-style:italic;color:var(--amber)">+ ${s.secondary_name}</span>` : ''}</td>
-      <td class="score-cell">${s.overall}<span style="font-size:12px;color:var(--ink-mute);font-family:var(--sans);letter-spacing:0.15em;margin-left:4px;font-style:normal">%</span></td>
-      <td style="text-align:center;font-family:var(--sans);font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:${s.cloudSynced ? 'var(--ink-mute)' : 'var(--amber-bright)'}">${s.cloudSynced ? 'Synced' : 'Local only'}</td>
+      <td>${escapeHTML(s.email)}</td>
+      <td>${escapeHTML(s.skin_name || s.skin || 'force_trial')}</td>
+      <td class="arch-cell">${escapeHTML(s.archetype_name || s.archetype)}${s.secondary_name ? `<br><span style="font-size:11px;color:var(--amber)">+ ${s.secondary_name}</span>` : ''}</td>
+      <td class="score-cell">${s.overall}<span style="font-size:11px;color:var(--ink-mute);margin-left:3px">%</span></td>
+      <td style="text-align:center;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:${s.cloudSynced ? 'var(--ink-mute)' : 'var(--amber-bright)'}">${s.cloudSynced ? 'Synced' : 'Local only'}</td>
       <td><div class="actions">
         <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="viewSession(${hist.length - 1 - i})">View</button>
         <button class="admin-btn ghost" style="padding:6px 12px;font-size:9px" onclick="downloadStoredSessionPDF(${hist.length - 1 - i})">PDF</button>
@@ -15960,25 +16341,34 @@ function renderAdminResults() {
       </div></td>
     </tr>
   `).join('');
+
+  const localPanel = localCount === 0 ? '' : `
+    <details class="admin-local-panel" style="margin-top:32px">
+      <summary style="cursor:pointer;font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#ff481d;margin-bottom:12px;list-style:none;outline:none">On this device only · ${localCount} session${localCount===1?'':'s'} ${unsynced > 0 ? `· ${unsynced} not synced` : ''}</summary>
+      <div style="margin-top:14px;font-size:13px;color:#555048;line-height:1.55">
+        Sessions completed in this browser are also stored locally (in <code>localStorage</code>) as a fallback. They auto-upload to the cloud archive above; this panel is only here for diagnostics + 'retry failed upload' flows.
+      </div>
+      <div class="admin-buttons" style="margin-top:14px">
+        <button class="admin-btn ghost" onclick="exportResultsCSV()">Export local as CSV</button>
+        <button class="admin-btn ghost" onclick="exportResultsJSON()">Export local as JSON</button>
+        ${unsynced > 0 ? `<button class="admin-btn" onclick="adminRetryUnsynced()">Retry ${unsynced} failed upload${unsynced===1?'':'s'}</button>` : ''}
+        <button class="admin-btn danger" onclick="clearAllHistory()">Clear local sessions</button>
+      </div>
+      <table class="admin-results-table" style="margin-top:14px">
+        <thead><tr><th>When</th><th>Name</th><th>Email</th><th>Skin</th><th>Archetype</th><th>Score</th><th>Sync</th><th>Actions</th></tr></thead>
+        <tbody>${localRows}</tbody>
+      </table>
+    </details>
+  `;
+
   return `
-    <div class="admin-section-title">Completed assessments</div>
+    <div class="admin-section-title">All completed assessments</div>
     <div class="admin-section-sub">
-      ${hist.length} session${hist.length===1?'':'s'} stored locally on this device, across all skins.
-      Each session also auto-uploads to the cloud archive; ${unsynced > 0 ? `<strong style="color:var(--amber-bright);font-weight:400">${unsynced} on this device ${unsynced===1?'has':'have'} not yet synced</strong> (retry below).` : 'all local sessions are synced.'}
+      Every session POSTed by any user across every device, fetched from the Netlify Blobs archive on this tab. Paste your <code>ADMIN_API_TOKEN</code> below if you haven't yet, then hit <em>Fetch cloud sessions</em>.
     </div>
     ${mailerPanel}
     ${cloudPanel}
-    <div class="admin-buttons">
-      <button class="admin-btn ghost" onclick="exportResultsCSV()">Export local as CSV</button>
-      <button class="admin-btn ghost" onclick="exportResultsJSON()">Export local as JSON</button>
-      <button class="admin-btn danger" onclick="clearAllHistory()">Clear local sessions</button>
-    </div>
-    <table class="admin-results-table">
-      <thead>
-        <tr><th>When</th><th>Name</th><th>Email</th><th>Skin</th><th>Gender</th><th>Archetype</th><th>Score</th><th>Sync</th><th>Actions</th></tr>
-      </thead>
-      <tbody>${rows}</tbody>
-    </table>
+    ${localPanel}
   `;
 }
 
