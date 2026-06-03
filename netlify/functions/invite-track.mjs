@@ -82,7 +82,13 @@ export default async (req) => {
   const now = new Date().toISOString();
   let changed = false;
   if (event === "opened" && !rec.first_opened_at) { rec.first_opened_at = now; changed = true; }
-  if (event === "started" && !rec.first_started_at) { rec.first_started_at = now; changed = true; }
+  if (event === "started") {
+    // Starting implies opening — stamp both if missing. This makes the
+    // funnel resilient to a race where opened and started arrive in close
+    // succession and one of them sees the other's pre-write state.
+    if (!rec.first_started_at) { rec.first_started_at = now; changed = true; }
+    if (!rec.first_opened_at)  { rec.first_opened_at  = now; changed = true; }
+  }
   rec.event_counts = rec.event_counts || {};
   rec.event_counts[event] = (rec.event_counts[event] || 0) + 1;
   changed = true;
