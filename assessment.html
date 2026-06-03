@@ -17112,6 +17112,7 @@ function renderInvitesTable(invites) {
         <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end">
           <button class="admin-btn ghost" style="padding:6px 12px;font-size:10px" onclick="adminCopyInviteUrl(${i})">Copy URL</button>
           <button class="admin-btn ghost" style="padding:6px 12px;font-size:10px" onclick="adminResendInvite(${i})">Resend</button>
+          <button class="admin-btn ghost" style="padding:6px 12px;font-size:10px" onclick="adminDeleteInvite(${i})">Delete</button>
         </div>
       </td>
     </tr>`;
@@ -17177,6 +17178,26 @@ async function adminResendInvite(i) {
     if (!resp.ok) { setAdminInviteStatus(j.error || ('Failed (' + resp.status + ')'), 'error'); return; }
     setAdminInviteStatus(`Resent to ${inv.email}.`, 'success');
     if (j.url) { try { await navigator.clipboard.writeText(j.url); } catch (e) {} }
+    adminFetchInvites();
+  } catch (e) {
+    setAdminInviteStatus('Network error: ' + e.message, 'error');
+  }
+}
+
+async function adminDeleteInvite(i) {
+  const cache = window.__adminInvitesCache || [];
+  const inv = cache[i];
+  if (!inv) return;
+  if (!confirm(`Remove ${inv.email} from the Invites list?\n\nThis only clears the bookkeeping row. Their existing invite link will still work if they have it. Completed assessments are kept.`)) return;
+  setAdminInviteStatus(`Removing ${inv.email}…`, '');
+  try {
+    const resp = await fetch('/api/admin/invites?email=' + encodeURIComponent(inv.email), {
+      method: 'DELETE',
+      headers: adminAuthHeaders()
+    });
+    const j = await resp.json().catch(() => ({}));
+    if (!resp.ok) { setAdminInviteStatus(j.error || ('Failed (' + resp.status + ')'), 'error'); return; }
+    setAdminInviteStatus(`${inv.email} removed.`, 'success');
     adminFetchInvites();
   } catch (e) {
     setAdminInviteStatus('Network error: ' + e.message, 'error');

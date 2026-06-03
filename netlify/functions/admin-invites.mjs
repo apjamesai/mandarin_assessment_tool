@@ -165,6 +165,27 @@ export default async (req) => {
     }, 200);
   }
 
+  if (req.method === "DELETE") {
+    // Remove an invite record. Does NOT cascade to user sessions — those
+    // stay archived. The invitee's existing invite token still works (we
+    // can't revoke HMAC-signed tokens without rotating the secret); this
+    // only clears the bookkeeping row from Charlie's Invites table.
+    let email;
+    try {
+      const url = new URL(req.url);
+      email = normaliseEmail(url.searchParams.get("email") || "");
+    } catch { return jsonResponse({ error: "Bad URL" }, 400); }
+    if (!email) return jsonResponse({ error: "Missing email" }, 400);
+    const key = inviteIndexKey(email);
+    try {
+      await store.delete(key);
+      return jsonResponse({ ok: true, email }, 200);
+    } catch (e) {
+      console.error("admin-invites DELETE failed:", e);
+      return jsonResponse({ error: "Storage delete failed" }, 500);
+    }
+  }
+
   return jsonResponse({ error: "Method not allowed" }, 405);
 };
 
