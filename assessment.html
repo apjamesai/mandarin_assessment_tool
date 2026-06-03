@@ -3423,295 +3423,292 @@ body.previewing .results-stage { padding-top: 14vh; }
   font-size: 18px; color: var(--ink-mute);
 }
 
-/* ─── Invites tab ─── */
-.invites-shell {
-  display: flex; flex-direction: column; gap: 32px;
+/* ─── Invites tab (scoped to .admin-panel cream theme) ─── */
+.admin-panel .invites-shell {
+  display: flex; flex-direction: column; gap: 36px;
   max-width: 1100px;
 }
-.invites-hero { display: flex; flex-direction: column; gap: 6px; }
-.invites-eyebrow {
-  font-family: var(--sans);
-  font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--amber);
+.admin-panel .invites-hero { display: flex; flex-direction: column; }
+.admin-panel .invites-eyebrow {
+  font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: #ff481d;
   font-weight: 600;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
-.invites-hero .admin-section-title { margin-bottom: 14px; }
-.invites-hero .admin-section-sub { margin-bottom: 0; max-width: 760px; }
+.admin-panel .invites-eyebrow::before {
+  content: ""; display: inline-block;
+  width: 28px; height: 1px;
+  background: #ff481d;
+  vertical-align: middle;
+  margin-right: 12px;
+  transform: translateY(-2px);
+}
+.admin-panel .invites-hero .admin-section-title { margin-bottom: 18px; }
+.admin-panel .invites-hero .admin-section-sub { margin-bottom: 0; max-width: 780px; }
 
-.invites-card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-left: 3px solid var(--amber);
-  padding: 26px 30px 24px;
-  display: flex; flex-direction: column;
-  gap: 18px;
+.admin-panel .invites-card {
+  background: #ffffff;
+  border: 1px solid #d8d2c5;
+  border-top: 3px solid #ff481d;
+  padding: 32px 36px 28px;
+  display: flex; flex-direction: column; gap: 20px;
 }
-.invites-card-step {
-  font-family: var(--sans);
-  font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase;
-  color: var(--amber);
+.admin-panel .invites-card-step {
+  font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: #ff481d;
   font-weight: 700;
 }
-.invites-card-title {
-  font-family: var(--serif); font-style: italic;
-  font-size: 22px; color: var(--ink);
-  margin-top: 4px;
-}
-.invites-card-sub {
-  font-family: var(--sans);
-  font-size: 13px; line-height: 1.6;
-  color: var(--ink-soft);
-  max-width: 720px;
+.admin-panel .invites-card-title {
+  font-weight: 900;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: #0a0a0a;
   margin-top: 6px;
+  line-height: 1.1;
 }
-.invites-card-sub em { color: var(--ink); font-style: normal; font-weight: 600; }
-.invites-card-head { display: flex; flex-direction: column; gap: 0; }
+.admin-panel .invites-card-sub {
+  font-size: 14px; line-height: 1.6;
+  color: #555048;
+  max-width: 720px;
+  margin-top: 8px;
+}
+.admin-panel .invites-card-sub em {
+  color: #0a0a0a; font-style: normal; font-weight: 600;
+}
+.admin-panel .invites-card-head { display: flex; flex-direction: column; }
 
-.invites-form {
-  display: flex; flex-wrap: wrap; gap: 10px;
-  align-items: center;
+.admin-panel .invites-form {
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: stretch;
 }
-.invites-input {
-  flex: 1; min-width: 260px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: var(--ink);
-  padding: 14px 16px;
-  font-family: var(--sans);
-  font-size: 14px;
-  border-radius: 3px;
-  transition: border-color 0.15s ease;
+.admin-panel .invites-input {
+  flex: 1; min-width: 280px;
+  background: #fbf8f1;
+  border: 1px solid #d8d2c5;
+  color: #0a0a0a;
+  padding: 16px 18px;
+  font-family: inherit;
+  font-size: 15px;
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
-.invites-input:focus {
+.admin-panel .invites-input:focus {
   outline: none;
-  border-color: var(--amber);
+  border-color: #0a0a0a;
+  background: #fff;
 }
-.invites-input::placeholder { color: var(--ink-dim); }
-.invites-send {
-  font-family: var(--sans);
+.admin-panel .invites-input::placeholder { color: #807868; }
+.admin-panel .invites-send {
+  font-family: inherit;
   font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #0a0a0a;
-  background: var(--amber);
-  border: 1px solid var(--amber);
-  padding: 14px 24px;
+  color: #ffffff;
+  background: #0a0a0a;
+  border: 1px solid #0a0a0a;
+  padding: 0 26px;
+  min-height: 52px;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
 }
-.invites-send:hover:not(:disabled) {
+.admin-panel .invites-send:hover:not(:disabled) {
+  background: #ff481d; border-color: #ff481d; color: #ffffff;
+}
+.admin-panel .invites-send:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.admin-panel .invites-status {
+  font-size: 13px; line-height: 1.5;
+  color: #555048;
+  min-height: 20px;
+}
+.admin-panel .invites-status.success { color: #2e7a4a; font-weight: 500; }
+.admin-panel .invites-status.error { color: #c93a16; font-weight: 500; }
+
+.admin-panel .invites-warn {
   background: #fff;
-  border-color: #fff;
+  border: 1px solid #ff481d;
+  border-left-width: 4px;
+  padding: 16px 20px;
+  font-size: 13px; line-height: 1.55;
   color: #0a0a0a;
 }
-.invites-send:disabled { opacity: 0.5; cursor: not-allowed; }
+.admin-panel .invites-warn strong { color: #ff481d; }
 
-.invites-status {
-  font-family: var(--sans);
-  font-size: 12px; line-height: 1.5;
-  color: var(--ink-mute);
-  min-height: 18px;
-  margin-top: 0;
-}
-.invites-status.success { color: #7ed4a2; }
-.invites-status.error { color: #ff8a4a; }
+.admin-panel .invites-list-head { display: flex; flex-direction: column; }
 
-.invites-warn {
-  background: rgba(255, 90, 44, 0.08);
-  border: 1px solid rgba(255, 90, 44, 0.3);
-  padding: 14px 18px;
-  font-family: var(--sans);
-  font-size: 13px; line-height: 1.5;
-  color: var(--ink);
-}
-.invites-warn strong { color: var(--amber); }
-
-.invites-list-head {
-  display: flex; flex-direction: column; gap: 6px;
-}
-
-.invites-stats {
+.admin-panel .invites-stats {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 0;
-  background: rgba(0, 0, 0, 0.32);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #ffffff;
+  border: 1px solid #d8d2c5;
+  margin-top: 4px;
 }
-.invites-stat {
-  padding: 18px 22px;
-  border-right: 1px solid rgba(255, 255, 255, 0.04);
+.admin-panel .invites-stat {
+  padding: 22px 24px;
+  border-right: 1px solid #ece5d7;
 }
-.invites-stat:last-child { border-right: none; }
-.invites-stat-num {
-  font-family: var(--serif); font-style: italic;
-  font-size: 30px;
-  color: var(--ink);
+.admin-panel .invites-stat:last-child { border-right: none; }
+.admin-panel .invites-stat-num {
+  font-weight: 900;
+  font-size: 34px;
   line-height: 1;
+  letter-spacing: -0.02em;
+  color: #0a0a0a;
 }
-.invites-stat-label {
-  font-family: var(--sans);
+.admin-panel .invites-stat-label {
   font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--ink-mute);
+  color: #807868;
   margin-top: 10px;
   font-weight: 600;
 }
 
-.invites-table {
+.admin-panel .invites-table {
   width: 100%;
   border-collapse: collapse;
-  background: rgba(0, 0, 0, 0.28);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #ffffff;
+  border: 1px solid #d8d2c5;
   margin-top: 18px;
 }
-.invites-table th {
+.admin-panel .invites-table th {
   text-align: left;
-  padding: 14px 18px;
-  font-family: var(--sans);
+  padding: 14px 20px;
   font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
-  color: var(--amber);
+  color: #ff481d;
   font-weight: 700;
-  background: rgba(255, 90, 44, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: #fbf6ec;
+  border-bottom: 1px solid #d8d2c5;
 }
-.invites-table th.th-actions { text-align: right; }
-.invites-table td {
-  padding: 18px 18px;
+.admin-panel .invites-table th.th-actions { text-align: right; }
+.admin-panel .invites-table td {
+  padding: 20px;
   vertical-align: top;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  font-family: var(--sans);
+  border-bottom: 1px solid #ece5d7;
 }
-.invites-table tr:last-child td { border-bottom: none; }
-.invites-table tr:hover td { background: rgba(255, 255, 255, 0.02); }
+.admin-panel .invites-table tr:last-child td { border-bottom: none; }
+.admin-panel .invites-table tr:hover td { background: #fbf8f1; }
 
-.invites-email {
-  font-family: var(--sans);
-  font-size: 14px;
-  color: var(--ink);
+.admin-panel .invites-email {
+  font-size: 15px;
+  color: #0a0a0a;
   font-weight: 600;
   letter-spacing: 0.005em;
   word-break: break-word;
 }
-.invites-meta {
-  font-family: var(--sans);
+.admin-panel .invites-meta {
   font-size: 11px;
-  color: var(--ink-mute);
+  color: #807868;
   margin-top: 6px;
   line-height: 1.5;
 }
 
-.invites-funnel {
+.admin-panel .invites-funnel {
   display: flex; flex-wrap: wrap; gap: 8px;
 }
-.invites-pip {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 6px 12px;
-  font-family: var(--sans);
+.admin-panel .invites-pip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.02em;
   border-radius: 999px;
   white-space: nowrap;
 }
-.invites-pip::before {
+.admin-panel .invites-pip::before {
   content: "";
   display: inline-block;
   width: 8px; height: 8px;
   border-radius: 50%;
   background: currentColor;
-  opacity: 0.5;
 }
-.invites-pip.on::before { opacity: 1; }
-.invites-pip.off {
-  color: var(--ink-dim);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+.admin-panel .invites-pip.off {
+  color: #b3a994;
+  background: #f4f0e8;
+  border: 1px solid #ece5d7;
 }
-.invites-pip.on.amber {
-  color: var(--amber);
-  background: rgba(255, 90, 44, 0.12);
-  border: 1px solid rgba(255, 90, 44, 0.3);
+.admin-panel .invites-pip.on.amber {
+  color: #ff481d;
+  background: #ffe9e2;
+  border: 1px solid #ffb59c;
 }
-.invites-pip.on.green {
-  color: #7ed4a2;
-  background: rgba(126, 212, 162, 0.1);
-  border: 1px solid rgba(126, 212, 162, 0.25);
+.admin-panel .invites-pip.on.green {
+  color: #1f6b3c;
+  background: #e0f1e6;
+  border: 1px solid #9ec7ad;
 }
-.invites-funnel-times {
+.admin-panel .invites-funnel-times {
   display: flex; flex-direction: column; gap: 3px;
   margin-top: 10px;
-  font-family: var(--sans);
   font-size: 10px;
-  color: var(--ink-dim);
+  color: #807868;
   line-height: 1.5;
 }
 
-.cell-actions { text-align: right; }
-.invites-actions {
+.admin-panel .cell-actions { text-align: right; }
+.admin-panel .invites-actions {
   display: flex; flex-wrap: wrap; gap: 8px;
   justify-content: flex-end;
 }
-.invites-action-btn {
-  font-family: var(--sans);
-  font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+.admin-panel .invites-action-btn {
+  font-family: inherit;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ink);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 8px 14px;
+  color: #0a0a0a;
+  background: #ffffff;
+  border: 1px solid #0a0a0a;
+  padding: 9px 14px;
   cursor: pointer;
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   white-space: nowrap;
 }
-.invites-action-btn:hover {
-  background: var(--amber);
-  border-color: var(--amber);
-  color: #0a0a0a;
+.admin-panel .invites-action-btn:hover {
+  background: #0a0a0a; color: #ffffff;
 }
-.invites-action-btn.ghost {
-  color: var(--ink-dim);
-  background: transparent;
-  border-color: rgba(255, 255, 255, 0.06);
+.admin-panel .invites-action-btn.ghost {
+  color: #807868;
+  border-color: #d8d2c5;
 }
-.invites-action-btn.ghost:hover {
-  color: #ff5555;
-  background: rgba(255, 85, 85, 0.08);
-  border-color: rgba(255, 85, 85, 0.3);
+.admin-panel .invites-action-btn.ghost:hover {
+  color: #ffffff;
+  background: #c93a16;
+  border-color: #c93a16;
 }
 
-.invites-empty {
-  padding: 56px 30px;
+.admin-panel .invites-empty {
+  padding: 64px 30px;
   text-align: center;
-  background: rgba(0, 0, 0, 0.22);
-  border: 1px dashed rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px dashed #d8d2c5;
 }
-.invites-empty-title {
-  font-family: var(--serif); font-style: italic;
-  font-size: 22px;
-  color: var(--ink);
-  margin-bottom: 8px;
+.admin-panel .invites-empty-title {
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  margin-bottom: 10px;
 }
-.invites-empty-sub {
-  font-family: var(--sans);
+.admin-panel .invites-empty-sub {
+  font-size: 14px;
+  color: #555048;
+  line-height: 1.55;
+  max-width: 460px;
+  margin: 0 auto;
+}
+.admin-panel .invites-empty-sub em { color: #0a0a0a; font-style: normal; font-weight: 600; }
+.admin-panel .invites-loading {
   font-size: 13px;
-  color: var(--ink-mute);
-  line-height: 1.5;
+  color: #807868;
+  padding: 20px 4px;
 }
-.invites-empty-sub em { color: var(--ink); font-style: normal; font-weight: 600; }
-.invites-loading {
-  font-family: var(--sans);
-  font-size: 12px;
-  color: var(--ink-mute);
-  padding: 18px;
-}
-.invites-dim { color: var(--ink-dim); }
+.admin-panel .invites-dim { color: #b3a994; }
 
 @media (max-width: 900px) {
-  .invites-stats { grid-template-columns: repeat(2, 1fr); }
-  .invites-stat { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
-  .invites-table thead { display: none; }
-  .invites-table tr { display: block; padding: 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
-  .invites-table td { display: block; padding: 12px 0; border-bottom: none; }
-  .invites-actions { justify-content: flex-start; }
+  .admin-panel .invites-stats { grid-template-columns: repeat(2, 1fr); }
+  .admin-panel .invites-stat { border-right: none; border-bottom: 1px solid #ece5d7; }
+  .admin-panel .invites-stat:nth-last-child(-n+1) { border-bottom: none; }
+  .admin-panel .invites-table thead { display: none; }
+  .admin-panel .invites-table tr { display: block; border-bottom: 1px solid #ece5d7; }
+  .admin-panel .invites-table td { display: block; padding: 14px 18px; border-bottom: none; }
+  .admin-panel .invites-actions { justify-content: flex-start; }
+  .admin-panel .invites-card { padding: 24px 22px; }
 }
 
 /* Admin link in main UI */
