@@ -11,6 +11,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 
 export const TOKEN_ISSUER = "mandarin-assessment";
 export const USER_INDEX_PEPPER = "mandarin-user-index-v1";
+export const INVITE_INDEX_PEPPER = "mandarin-invite-index-v1";
 
 // Hardcoded admin allowlist. Adding/removing admins is a code change on
 // purpose — admin access is rare and high-trust, and we don't want a
@@ -69,6 +70,15 @@ export function userIndexKey(email) {
   return `users/${hex}.json`;
 }
 
+// Separate hash space from userIndexKey so a leak of one doesn't expose the
+// other. Invites are stored at invites/{hash(email)}.json.
+export function inviteIndexKey(email) {
+  const norm = normaliseEmail(email);
+  if (!norm) return null;
+  const hex = createHmac("sha256", INVITE_INDEX_PEPPER).update(norm).digest("hex");
+  return `invites/${hex}.json`;
+}
+
 export function mintUserMagicToken(email, secret, ttlDays = 30) {
   const exp = Date.now() + ttlDays * 24 * 60 * 60 * 1000;
   return signToken({ iss: TOKEN_ISSUER, sub: "user", email: normaliseEmail(email), exp }, secret);
@@ -77,6 +87,15 @@ export function mintUserMagicToken(email, secret, ttlDays = 30) {
 export function mintAdminMagicToken(email, secret, ttlDays = 30) {
   const exp = Date.now() + ttlDays * 24 * 60 * 60 * 1000;
   return signToken({ iss: TOKEN_ISSUER, sub: "admin", email: normaliseEmail(email), exp }, secret);
+}
+
+// Invite tokens live longer (90 days default) and carry the invitee's email
+// so completions can be attributed back to the invite even if the user
+// types a slightly different email at intake (we don't enforce match — we
+// just attribute the funnel for that token).
+export function mintInviteToken(email, secret, ttlDays = 90) {
+  const exp = Date.now() + ttlDays * 24 * 60 * 60 * 1000;
+  return signToken({ iss: TOKEN_ISSUER, sub: "invite", email: normaliseEmail(email), exp }, secret);
 }
 
 export function requireMagicLinkSecret() {

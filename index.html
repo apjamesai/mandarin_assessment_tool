@@ -5,6 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Strategic Capability Assessment, a short, story-driven diagnostic that reveals how you think, decide, and lead under pressure. Built on the 12-Practice Strategic Mastery framework." />
 <title>Strategic Capability Assessment | Mandarin</title>
+<script>
+// ─── INVITE GATE ───
+// The app is invite-only for existing customers. The brand landing is locked
+// behind an invite token. Admins (anyone with a cloud token) bypass the gate
+// automatically so QC and walkthroughs work.
+(function() {
+  var INVITE_LS_KEY = 'mandarin.assessment.inviteToken';
+  var ADMIN_TOKEN_LS_KEY = 'mandarin.assessment.cloudToken';
+  function getQuery() { try { return new URLSearchParams(window.location.search); } catch (e) { return new URLSearchParams(''); } }
+  function getLS(k) { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } }
+  function setLS(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+
+  // Token expiry check WITHOUT verifying the signature (server still validates
+  // on each tracked event — this client-side check is just to skip obviously
+  // dead tokens before redirecting).
+  function tokenIsLive(t) {
+    try {
+      var body = t.split('.')[0];
+      // base64url decode
+      var pad = body.replace(/-/g, '+').replace(/_/g, '/');
+      while (pad.length % 4) pad += '=';
+      var json = atob(pad);
+      var payload = JSON.parse(json);
+      if (payload.sub !== 'invite') return false;
+      if (payload.exp && Date.now() > payload.exp) return false;
+      return true;
+    } catch (e) { return false; }
+  }
+
+  var qs = getQuery();
+  var fromUrl = qs.get('invite');
+  if (fromUrl && tokenIsLive(fromUrl)) {
+    setLS(INVITE_LS_KEY, fromUrl);
+    // Fire-and-forget tell the server this invite was opened (first-touch
+    // funnel beacon). The server stamps `first_opened_at` idempotently.
+    try {
+      fetch('/api/invite/track', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ token: fromUrl, event: 'opened' })
+      });
+    } catch (e) {}
+    // Strip ?invite=… from the URL so the token doesn't sit in history.
+    try {
+      qs.delete('invite');
+      var clean = window.location.pathname + (qs.toString() ? ('?' + qs.toString()) : '') + window.location.hash;
+      window.history.replaceState({}, '', clean);
+    } catch (e) {}
+    return;
+  }
+
+  // No fresh URL invite. Check localStorage and admin bypass.
+  if (getLS(ADMIN_TOKEN_LS_KEY)) return; // admin bypass
+  var stored = getLS(INVITE_LS_KEY);
+  if (stored && tokenIsLive(stored)) return;
+
+  // Locked. Send the visitor to the invite-required page.
+  window.location.replace('/invite-required.html');
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">

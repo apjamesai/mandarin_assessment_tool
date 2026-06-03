@@ -5,6 +5,49 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Strategic Force Assessment</title>
 <script>
+// ─── INVITE GATE ───
+// The assessment URL is invite-only. Same logic as index.html: if the
+// localStorage invite token is present + live, allow. Admin/admin-magic-link
+// + ?view-session= magic-link viewers bypass.
+(function() {
+  try {
+    var qs = new URLSearchParams(window.location.search);
+    if (qs.has('admin') || qs.has('view-session')) return; // admin + /me magic-link viewers
+    function tokenIsLive(t) {
+      try {
+        var body = t.split('.')[0];
+        var pad = body.replace(/-/g, '+').replace(/_/g, '/');
+        while (pad.length % 4) pad += '=';
+        var payload = JSON.parse(atob(pad));
+        if (payload.sub !== 'invite') return false;
+        if (payload.exp && Date.now() > payload.exp) return false;
+        return true;
+      } catch (e) { return false; }
+    }
+    var fromUrl = qs.get('invite');
+    if (fromUrl && tokenIsLive(fromUrl)) {
+      try { localStorage.setItem('mandarin.assessment.inviteToken', fromUrl); } catch (e) {}
+      try {
+        fetch('/api/invite/track', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ token: fromUrl, event: 'opened' })
+        });
+      } catch (e) {}
+      try {
+        qs.delete('invite');
+        var clean = window.location.pathname + (qs.toString() ? ('?' + qs.toString()) : '') + window.location.hash;
+        window.history.replaceState({}, '', clean);
+      } catch (e) {}
+      return;
+    }
+    if (localStorage.getItem('mandarin.assessment.cloudToken')) return; // admin bypass
+    var stored = localStorage.getItem('mandarin.assessment.inviteToken') || '';
+    if (stored && tokenIsLive(stored)) return;
+    window.location.replace('/invite-required.html');
+  } catch (e) {}
+})();
+
 // Gate the cinematic assessment behind the brand landing.
 // If the user hasn't picked a story yet, send them back to /
 // (the brand landing). Bypassed by ?admin=1, ?skin=<id> deep links,
@@ -11472,6 +11515,7 @@ body.has-back .location-tag { left: calc(4vw + 100px); }
       <button class="admin-tab" data-tab="scoring"     onclick="switchAdminTab('scoring')">Scoring</button>
       <button class="admin-tab" data-tab="pacing"      onclick="switchAdminTab('pacing')">Pacing</button>
       <button class="admin-tab" data-tab="rules"       onclick="switchAdminTab('rules')">Rules</button>
+      <button class="admin-tab" data-tab="invites"     onclick="switchAdminTab('invites')">Invites</button>
       <button class="admin-tab" data-tab="results"     onclick="switchAdminTab('results')">Results</button>
       <button class="admin-tab" data-tab="skins"       onclick="switchAdminTab('skins')">Skins</button>
     </div>
@@ -15141,6 +15185,23 @@ function renderResultsLaunch() {
 }
 
 // ─────────── Scene mounting
+// Fire the invite "started" beacon ONCE per browser when the user reaches
+// the first question. Server stamps `first_started_at` idempotently — extra
+// calls are cheap and harmless.
+function fireInviteStartedOnce() {
+  try {
+    if (window.__inviteStartedFired) return;
+    window.__inviteStartedFired = true;
+    var t = localStorage.getItem('mandarin.assessment.inviteToken') || '';
+    if (!t) return;
+    fetch('/api/invite/track', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ token: t, event: 'started' })
+    }).catch(function() {});
+  } catch (e) {}
+}
+
 function renderCurrent() {
   let scene = SCENES[STATE.current];
   if (!scene) return;
@@ -15154,7 +15215,7 @@ function renderCurrent() {
     case 'crawl':           div.innerHTML = renderCrawl(scene); div.classList.add('crawl-scene'); break;
     case 'narrative':       div.innerHTML = renderNarrative(scene); break;
     case 'narrative-scene': div.innerHTML = renderNarrativeScene(scene); break;
-    case 'question':        div.innerHTML = renderQuestion(scene, STATE.current); break;
+    case 'question':        fireInviteStartedOnce(); div.innerHTML = renderQuestion(scene, STATE.current); break;
     case 'midpoint':        div.innerHTML = renderMidpoint(scene); break;
     case 'twist':           div.innerHTML = renderTwist(scene); break;
     case 'end-reflection':  div.innerHTML = renderEndReflection(scene); break;
@@ -16968,7 +17029,176 @@ function switchAdminTab(tab) {
     setTimeout(() => renderCloudSessions([]), 60);
     if (getCloudToken()) setTimeout(adminFetchCloud, 80);
   }
+  else if (tab === 'invites') {
+    body.innerHTML = renderAdminInvites();
+    if (getCloudToken()) setTimeout(adminFetchInvites, 60);
+  }
   else if (tab === 'skins')   body.innerHTML = renderAdminSkins();
+}
+
+// ─── Invites tab ───
+// Charlie's flow:
+//   1. Type an invitee email + click "Send invite"
+//   2. They get an email with a 90-day invite link
+//   3. (Optional) hit "Copy URL" to share via Slack / DM instead
+//   4. Table below shows everyone invited, their funnel status, and lets him resend
+function renderAdminInvites() {
+  const tokenSet = !!getCloudToken();
+  return `
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div style="font-family:var(--sans);color:var(--ink-soft);font-size:13px;line-height:1.55;max-width:760px">
+        Add an existing customer's email below and send them an invitation to take the assessment. They will receive a personalised invite link, valid for 90 days. You can also copy the link to share it through another channel. Resend any invite later from the row's <em>Resend</em> button. Funnel columns update automatically as invitees open the link, begin the assessment, and complete it.
+      </div>
+
+      <div style="background:rgba(0,0,0,0.32);border:1px solid rgba(255,255,255,0.06);padding:18px 18px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+        <label for="adminInviteEmail" style="font-family:var(--sans);font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;margin-right:6px">Invitee email</label>
+        <input id="adminInviteEmail" type="email" placeholder="name@company.com" autocapitalize="off" spellcheck="false" style="flex:1;min-width:240px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);color:var(--ink);padding:10px 14px;font-family:var(--sans);font-size:13px;border-radius:3px"/>
+        <button class="admin-btn" onclick="adminSendInvite()" style="padding:10px 18px;font-size:11px">Send invite</button>
+        <div id="adminInviteStatus" style="flex-basis:100%;font-size:12px;color:var(--ink-mute);margin-top:6px;min-height:14px"></div>
+      </div>
+
+      ${tokenSet ? '' : `<div style="font-family:var(--sans);font-size:12px;color:var(--amber);padding:10px 14px;background:rgba(255,90,44,0.08);border:1px solid rgba(255,90,44,0.2)">Sign in via the admin magic link first to load the invite list and send invitations.</div>`}
+
+      <div id="adminInvitesList">
+        ${tokenSet ? `<div style="font-family:var(--sans);font-size:12px;color:var(--ink-mute)">Loading invites…</div>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+async function adminFetchInvites() {
+  const el = document.getElementById('adminInvitesList');
+  if (!el) return;
+  try {
+    const resp = await fetch('/api/admin/invites', { headers: adminAuthHeaders() });
+    const j = await resp.json().catch(() => ({}));
+    if (!resp.ok) {
+      el.innerHTML = `<div style="font-family:var(--sans);font-size:12px;color:var(--amber)">Could not load invites: ${escapeHTML(j.error || resp.statusText)}</div>`;
+      return;
+    }
+    renderInvitesTable(j.invites || []);
+  } catch (e) {
+    el.innerHTML = `<div style="font-family:var(--sans);font-size:12px;color:var(--amber)">Could not load invites: ${escapeHTML(e.message)}</div>`;
+  }
+}
+
+function renderInvitesTable(invites) {
+  const el = document.getElementById('adminInvitesList');
+  if (!el) return;
+  if (!invites.length) {
+    el.innerHTML = `<div style="font-family:var(--sans);font-size:12px;color:var(--ink-mute);padding:18px;border:1px dashed rgba(255,255,255,0.08)">No invites yet. Add one above.</div>`;
+    return;
+  }
+  const fmt = (iso) => {
+    if (!iso) return '<span style="color:var(--ink-dim)">—</span>';
+    try { return new Date(iso).toLocaleString('en-GB', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }); }
+    catch (e) { return iso; }
+  };
+  const rows = invites.map((inv, i) => {
+    const opened = !!inv.opened_at;
+    const started = !!inv.started_at;
+    const completed = (inv.completions || 0) > 0;
+    return `<tr>
+      <td style="padding:12px 14px;border-top:1px solid rgba(255,255,255,0.05);vertical-align:top">
+        <div style="font-family:var(--sans);font-size:13px;color:var(--ink);font-weight:500">${escapeHTML(inv.email)}</div>
+        <div style="font-family:var(--sans);font-size:10px;color:var(--ink-dim);margin-top:2px">Sent ${inv.send_count}× · last ${fmt(inv.last_sent_at)}</div>
+      </td>
+      <td style="padding:12px 14px;border-top:1px solid rgba(255,255,255,0.05);vertical-align:top;font-family:var(--sans);font-size:11px;color:var(--ink-soft)">
+        <div title="${escapeHTML(inv.opened_at || '')}">${opened ? '<span style="color:var(--amber)">●</span> Opened' : '<span style="color:var(--ink-dim)">○</span> Not opened'}</div>
+        <div style="margin-top:4px" title="${escapeHTML(inv.started_at || '')}">${started ? '<span style="color:var(--amber)">●</span> Started' : '<span style="color:var(--ink-dim)">○</span> Not started'}</div>
+        <div style="margin-top:4px" title="${escapeHTML(inv.last_completed_at || '')}">${completed ? `<span style="color:#7ed4a2">●</span> Completed ${inv.completions}×` : '<span style="color:var(--ink-dim)">○</span> Not completed'}</div>
+      </td>
+      <td style="padding:12px 14px;border-top:1px solid rgba(255,255,255,0.05);vertical-align:top;text-align:right">
+        <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end">
+          <button class="admin-btn ghost" style="padding:6px 12px;font-size:10px" onclick="adminCopyInviteUrl(${i})">Copy URL</button>
+          <button class="admin-btn ghost" style="padding:6px 12px;font-size:10px" onclick="adminResendInvite(${i})">Resend</button>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+  window.__adminInvitesCache = invites;
+  el.innerHTML = `
+    <div style="font-family:var(--sans);font-size:12px;color:var(--ink-mute);margin-bottom:8px">${invites.length} invite${invites.length === 1 ? '' : 's'}</div>
+    <table style="width:100%;border-collapse:collapse;background:rgba(0,0,0,0.28);border:1px solid rgba(255,255,255,0.06)">
+      <thead>
+        <tr style="background:rgba(0,0,0,0.4)">
+          <th style="text-align:left;padding:10px 14px;font-family:var(--sans);font-size:10px;color:var(--ink-mute);letter-spacing:0.2em;text-transform:uppercase;font-weight:600">Email · history</th>
+          <th style="text-align:left;padding:10px 14px;font-family:var(--sans);font-size:10px;color:var(--ink-mute);letter-spacing:0.2em;text-transform:uppercase;font-weight:600">Funnel</th>
+          <th style="text-align:right;padding:10px 14px;font-family:var(--sans);font-size:10px;color:var(--ink-mute);letter-spacing:0.2em;text-transform:uppercase;font-weight:600">Actions</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+function setAdminInviteStatus(text, kind) {
+  const el = document.getElementById('adminInviteStatus');
+  if (!el) return;
+  el.textContent = text || '';
+  el.style.color = kind === 'error' ? 'var(--amber)' : (kind === 'success' ? '#7ed4a2' : 'var(--ink-mute)');
+}
+
+async function adminSendInvite() {
+  const input = document.getElementById('adminInviteEmail');
+  if (!input) return;
+  const email = (input.value || '').trim();
+  if (!email) { setAdminInviteStatus('Enter an email address.', 'error'); return; }
+  setAdminInviteStatus('Sending invite…', '');
+  try {
+    const resp = await fetch('/api/admin/invites', {
+      method: 'POST',
+      headers: Object.assign({ 'content-type': 'application/json' }, adminAuthHeaders()),
+      body: JSON.stringify({ email })
+    });
+    const j = await resp.json().catch(() => ({}));
+    if (!resp.ok) { setAdminInviteStatus(j.error || ('Failed (' + resp.status + ')'), 'error'); return; }
+    setAdminInviteStatus(`Sent to ${email}. Link copied to clipboard for sharing.`, 'success');
+    input.value = '';
+    if (j.url) { try { await navigator.clipboard.writeText(j.url); } catch (e) {} }
+    adminFetchInvites();
+  } catch (e) {
+    setAdminInviteStatus('Network error: ' + e.message, 'error');
+  }
+}
+
+async function adminResendInvite(i) {
+  const cache = window.__adminInvitesCache || [];
+  const inv = cache[i];
+  if (!inv) return;
+  if (!confirm(`Resend invite to ${inv.email}?`)) return;
+  setAdminInviteStatus(`Resending to ${inv.email}…`, '');
+  try {
+    const resp = await fetch('/api/admin/invites', {
+      method: 'POST',
+      headers: Object.assign({ 'content-type': 'application/json' }, adminAuthHeaders()),
+      body: JSON.stringify({ email: inv.email })
+    });
+    const j = await resp.json().catch(() => ({}));
+    if (!resp.ok) { setAdminInviteStatus(j.error || ('Failed (' + resp.status + ')'), 'error'); return; }
+    setAdminInviteStatus(`Resent to ${inv.email}.`, 'success');
+    if (j.url) { try { await navigator.clipboard.writeText(j.url); } catch (e) {} }
+    adminFetchInvites();
+  } catch (e) {
+    setAdminInviteStatus('Network error: ' + e.message, 'error');
+  }
+}
+
+async function adminCopyInviteUrl(i) {
+  const cache = window.__adminInvitesCache || [];
+  const inv = cache[i];
+  if (!inv) return;
+  // We don't store the FULL invite URL on the GET response unless it was set
+  // at the last send. If absent, regenerate by hitting POST (which sends a
+  // fresh email AND returns the URL). Charlie may not want the email blast,
+  // so prefer copying the cached URL if available.
+  if (inv.invite_url) {
+    try { await navigator.clipboard.writeText(inv.invite_url); setAdminInviteStatus(`Copied invite URL for ${inv.email}.`, 'success'); }
+    catch (e) { setAdminInviteStatus('Clipboard blocked. URL: ' + inv.invite_url, 'error'); }
+    return;
+  }
+  // No cached URL — ask the user before triggering a fresh send.
+  if (!confirm(`No cached URL for ${inv.email}. Send a fresh invite (and copy that URL)?`)) return;
+  await adminResendInvite(i);
 }
 
 // ─── Skins tab ───
