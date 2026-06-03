@@ -3423,6 +3423,297 @@ body.previewing .results-stage { padding-top: 14vh; }
   font-size: 18px; color: var(--ink-mute);
 }
 
+/* ─── Invites tab ─── */
+.invites-shell {
+  display: flex; flex-direction: column; gap: 32px;
+  max-width: 1100px;
+}
+.invites-hero { display: flex; flex-direction: column; gap: 6px; }
+.invites-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.invites-hero .admin-section-title { margin-bottom: 14px; }
+.invites-hero .admin-section-sub { margin-bottom: 0; max-width: 760px; }
+
+.invites-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--amber);
+  padding: 26px 30px 24px;
+  display: flex; flex-direction: column;
+  gap: 18px;
+}
+.invites-card-step {
+  font-family: var(--sans);
+  font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 700;
+}
+.invites-card-title {
+  font-family: var(--serif); font-style: italic;
+  font-size: 22px; color: var(--ink);
+  margin-top: 4px;
+}
+.invites-card-sub {
+  font-family: var(--sans);
+  font-size: 13px; line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin-top: 6px;
+}
+.invites-card-sub em { color: var(--ink); font-style: normal; font-weight: 600; }
+.invites-card-head { display: flex; flex-direction: column; gap: 0; }
+
+.invites-form {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  align-items: center;
+}
+.invites-input {
+  flex: 1; min-width: 260px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--ink);
+  padding: 14px 16px;
+  font-family: var(--sans);
+  font-size: 14px;
+  border-radius: 3px;
+  transition: border-color 0.15s ease;
+}
+.invites-input:focus {
+  outline: none;
+  border-color: var(--amber);
+}
+.invites-input::placeholder { color: var(--ink-dim); }
+.invites-send {
+  font-family: var(--sans);
+  font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #0a0a0a;
+  background: var(--amber);
+  border: 1px solid var(--amber);
+  padding: 14px 24px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.invites-send:hover:not(:disabled) {
+  background: #fff;
+  border-color: #fff;
+  color: #0a0a0a;
+}
+.invites-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.invites-status {
+  font-family: var(--sans);
+  font-size: 12px; line-height: 1.5;
+  color: var(--ink-mute);
+  min-height: 18px;
+  margin-top: 0;
+}
+.invites-status.success { color: #7ed4a2; }
+.invites-status.error { color: #ff8a4a; }
+
+.invites-warn {
+  background: rgba(255, 90, 44, 0.08);
+  border: 1px solid rgba(255, 90, 44, 0.3);
+  padding: 14px 18px;
+  font-family: var(--sans);
+  font-size: 13px; line-height: 1.5;
+  color: var(--ink);
+}
+.invites-warn strong { color: var(--amber); }
+
+.invites-list-head {
+  display: flex; flex-direction: column; gap: 6px;
+}
+
+.invites-stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  background: rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.invites-stat {
+  padding: 18px 22px;
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+.invites-stat:last-child { border-right: none; }
+.invites-stat-num {
+  font-family: var(--serif); font-style: italic;
+  font-size: 30px;
+  color: var(--ink);
+  line-height: 1;
+}
+.invites-stat-label {
+  font-family: var(--sans);
+  font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.invites-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: 18px;
+}
+.invites-table th {
+  text-align: left;
+  padding: 14px 18px;
+  font-family: var(--sans);
+  font-size: 9px; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 700;
+  background: rgba(255, 90, 44, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.invites-table th.th-actions { text-align: right; }
+.invites-table td {
+  padding: 18px 18px;
+  vertical-align: top;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-family: var(--sans);
+}
+.invites-table tr:last-child td { border-bottom: none; }
+.invites-table tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+.invites-email {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  word-break: break-word;
+}
+.invites-meta {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink-mute);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.invites-funnel {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.invites-pip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.invites-pip::before {
+  content: "";
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+.invites-pip.on::before { opacity: 1; }
+.invites-pip.off {
+  color: var(--ink-dim);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.invites-pip.on.amber {
+  color: var(--amber);
+  background: rgba(255, 90, 44, 0.12);
+  border: 1px solid rgba(255, 90, 44, 0.3);
+}
+.invites-pip.on.green {
+  color: #7ed4a2;
+  background: rgba(126, 212, 162, 0.1);
+  border: 1px solid rgba(126, 212, 162, 0.25);
+}
+.invites-funnel-times {
+  display: flex; flex-direction: column; gap: 3px;
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 10px;
+  color: var(--ink-dim);
+  line-height: 1.5;
+}
+
+.cell-actions { text-align: right; }
+.invites-actions {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  justify-content: flex-end;
+}
+.invites-action-btn {
+  font-family: var(--sans);
+  font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+.invites-action-btn:hover {
+  background: var(--amber);
+  border-color: var(--amber);
+  color: #0a0a0a;
+}
+.invites-action-btn.ghost {
+  color: var(--ink-dim);
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+.invites-action-btn.ghost:hover {
+  color: #ff5555;
+  background: rgba(255, 85, 85, 0.08);
+  border-color: rgba(255, 85, 85, 0.3);
+}
+
+.invites-empty {
+  padding: 56px 30px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+}
+.invites-empty-title {
+  font-family: var(--serif); font-style: italic;
+  font-size: 22px;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.invites-empty-sub {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-mute);
+  line-height: 1.5;
+}
+.invites-empty-sub em { color: var(--ink); font-style: normal; font-weight: 600; }
+.invites-loading {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--ink-mute);
+  padding: 18px;
+}
+.invites-dim { color: var(--ink-dim); }
+
+@media (max-width: 900px) {
+  .invites-stats { grid-template-columns: repeat(2, 1fr); }
+  .invites-stat { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+  .invites-table thead { display: none; }
+  .invites-table tr { display: block; padding: 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+  .invites-table td { display: block; padding: 12px 0; border-bottom: none; }
+  .invites-actions { justify-content: flex-start; }
+}
+
 /* Admin link in main UI */
 .admin-link {
   position: fixed;
@@ -11510,14 +11801,14 @@ body.has-back .location-tag { left: calc(4vw + 100px); }
       <span class="label">The Strategic Force Assessment</span>
     </div>
     <div class="admin-tabs">
-      <button class="admin-tab active" data-tab="archetypes" onclick="switchAdminTab('archetypes')">Archetypes</button>
-      <button class="admin-tab" data-tab="content"     onclick="switchAdminTab('content')">Content</button>
-      <button class="admin-tab" data-tab="scoring"     onclick="switchAdminTab('scoring')">Scoring</button>
-      <button class="admin-tab" data-tab="pacing"      onclick="switchAdminTab('pacing')">Pacing</button>
-      <button class="admin-tab" data-tab="rules"       onclick="switchAdminTab('rules')">Rules</button>
-      <button class="admin-tab" data-tab="invites"     onclick="switchAdminTab('invites')">Invites</button>
-      <button class="admin-tab" data-tab="results"     onclick="switchAdminTab('results')">Results</button>
-      <button class="admin-tab" data-tab="skins"       onclick="switchAdminTab('skins')">Skins</button>
+      <button class="admin-tab active" data-tab="invites" onclick="switchAdminTab('invites')">Invites</button>
+      <button class="admin-tab" data-tab="results"    onclick="switchAdminTab('results')">Results</button>
+      <button class="admin-tab" data-tab="archetypes" onclick="switchAdminTab('archetypes')">Archetypes</button>
+      <button class="admin-tab" data-tab="content"    onclick="switchAdminTab('content')">Content</button>
+      <button class="admin-tab" data-tab="scoring"    onclick="switchAdminTab('scoring')">Scoring</button>
+      <button class="admin-tab" data-tab="pacing"     onclick="switchAdminTab('pacing')">Pacing</button>
+      <button class="admin-tab" data-tab="rules"      onclick="switchAdminTab('rules')">Rules</button>
+      <button class="admin-tab" data-tab="skins"      onclick="switchAdminTab('skins')">Skins</button>
     </div>
     <button class="admin-close" onclick="closeAdmin()">Close · ESC</button>
   </div>
@@ -16916,10 +17207,15 @@ function isAdminEnabled() {
   return params.has('admin') || window.location.hash === '#admin';
 }
 
+// Default tab on admin entry. Invites is the most-used surface for Charlie
+// (he's adding/inviting customers daily), so it lands there. Results is
+// second because it's the next thing he'll want after a fresh completion.
+const DEFAULT_ADMIN_TAB = 'invites';
+
 function openAdmin() {
   document.getElementById('adminPanel').classList.add('open');
   document.body.classList.add('admin-open');
-  switchAdminTab('archetypes');
+  switchAdminTab(DEFAULT_ADMIN_TAB);
 }
 
 function closeAdmin(opts) {
@@ -17037,30 +17333,47 @@ function switchAdminTab(tab) {
 }
 
 // ─── Invites tab ───
-// Charlie's flow:
-//   1. Type an invitee email + click "Send invite"
-//   2. They get an email with a 90-day invite link
-//   3. (Optional) hit "Copy URL" to share via Slack / DM instead
-//   4. Table below shows everyone invited, their funnel status, and lets him resend
+// Charlie's main workspace. Hero explains the flow. Big form card sends the
+// invite + auto-copies the URL. Below: clean table of every invitee with the
+// funnel state called out in colour.
 function renderAdminInvites() {
   const tokenSet = !!getCloudToken();
   return `
-    <div style="display:flex;flex-direction:column;gap:18px">
-      <div style="font-family:var(--sans);color:var(--ink-soft);font-size:13px;line-height:1.55;max-width:760px">
-        Add an existing customer's email below and send them an invitation to take the assessment. They will receive a personalised invite link, valid for 90 days. You can also copy the link to share it through another channel. Resend any invite later from the row's <em>Resend</em> button. Funnel columns update automatically as invitees open the link, begin the assessment, and complete it.
+    <div class="invites-shell">
+      <div class="invites-hero">
+        <div class="invites-eyebrow">Invites · existing customers only</div>
+        <div class="admin-section-title">Invite a customer to take the assessment.</div>
+        <div class="admin-section-sub">
+          Mandarin's Strategic Capability Assessment is available by invitation. Add an existing customer's email below and an invitation will be sent to them with a personalised 90-day link. You can also copy that link to share via another channel. As they open the link, begin the assessment, and complete it, the funnel below fills out so you can see exactly who's progressing.
+        </div>
       </div>
 
-      <div style="background:rgba(0,0,0,0.32);border:1px solid rgba(255,255,255,0.06);padding:18px 18px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center">
-        <label for="adminInviteEmail" style="font-family:var(--sans);font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;margin-right:6px">Invitee email</label>
-        <input id="adminInviteEmail" type="email" placeholder="name@company.com" autocapitalize="off" spellcheck="false" style="flex:1;min-width:240px;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);color:var(--ink);padding:10px 14px;font-family:var(--sans);font-size:13px;border-radius:3px"/>
-        <button class="admin-btn" onclick="adminSendInvite()" style="padding:10px 18px;font-size:11px">Send invite</button>
-        <div id="adminInviteStatus" style="flex-basis:100%;font-size:12px;color:var(--ink-mute);margin-top:6px;min-height:14px"></div>
+      <div class="invites-card">
+        <div class="invites-card-head">
+          <div class="invites-card-step">Step 1</div>
+          <div class="invites-card-title">Add an invitee</div>
+          <div class="invites-card-sub">Enter the email address of the customer you'd like to invite. They'll receive the assessment link straight after you send it. The link is automatically copied to your clipboard too, in case you'd rather share it via Slack, WhatsApp, or another channel.</div>
+        </div>
+        <div class="invites-form">
+          <input id="adminInviteEmail" type="email" placeholder="name@company.com" autocapitalize="off" spellcheck="false" class="invites-input" onkeydown="if(event.key==='Enter'){event.preventDefault();adminSendInvite();}"/>
+          <button class="invites-send" onclick="adminSendInvite()">Send invite &amp; copy link</button>
+        </div>
+        <div id="adminInviteStatus" class="invites-status" role="status" aria-live="polite"></div>
       </div>
 
-      ${tokenSet ? '' : `<div style="font-family:var(--sans);font-size:12px;color:var(--amber);padding:10px 14px;background:rgba(255,90,44,0.08);border:1px solid rgba(255,90,44,0.2)">Sign in via the admin magic link first to load the invite list and send invitations.</div>`}
+      ${tokenSet ? '' : `
+      <div class="invites-warn">
+        <strong>You're not signed in yet.</strong> Open the admin sign-in link Charlie emailed you and re-open this panel to load the invite list and send invitations.
+      </div>`}
+
+      <div class="invites-list-head">
+        <div class="invites-card-step">Step 2</div>
+        <div class="invites-card-title">Everyone you've invited</div>
+        <div class="invites-card-sub">Each row shows the invitee, how many times you've sent them the link, and where they are in the funnel. Use <em>Resend</em> to re-issue the invitation, <em>Copy URL</em> to grab the link without firing a new email, and <em>Delete</em> to clean up records you no longer need. Completed runs are counted automatically as they finish the assessment.</div>
+      </div>
 
       <div id="adminInvitesList">
-        ${tokenSet ? `<div style="font-family:var(--sans);font-size:12px;color:var(--ink-mute)">Loading invites…</div>` : ''}
+        ${tokenSet ? `<div class="invites-loading">Loading invites…</div>` : ''}
       </div>
     </div>
   `;
@@ -17085,47 +17398,86 @@ async function adminFetchInvites() {
 function renderInvitesTable(invites) {
   const el = document.getElementById('adminInvitesList');
   if (!el) return;
+  window.__adminInvitesCache = invites;
   if (!invites.length) {
-    el.innerHTML = `<div style="font-family:var(--sans);font-size:12px;color:var(--ink-mute);padding:18px;border:1px dashed rgba(255,255,255,0.08)">No invites yet. Add one above.</div>`;
+    el.innerHTML = `
+      <div class="invites-empty">
+        <div class="invites-empty-title">No invitations sent yet</div>
+        <div class="invites-empty-sub">Add an email above and hit <em>Send invite</em> to get started. Each invitation appears here with its funnel progress.</div>
+      </div>`;
     return;
   }
   const fmt = (iso) => {
-    if (!iso) return '<span style="color:var(--ink-dim)">—</span>';
+    if (!iso) return '<span class="invites-dim">—</span>';
     try { return new Date(iso).toLocaleString('en-GB', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' }); }
     catch (e) { return iso; }
   };
+  const totals = {
+    invited: invites.length,
+    opened: invites.filter(i => !!i.opened_at).length,
+    started: invites.filter(i => !!i.started_at).length,
+    completed: invites.filter(i => (i.completions || 0) > 0).length,
+    totalRuns: invites.reduce((s, i) => s + (i.completions || 0), 0)
+  };
+
+  const stat = (label, value) => `
+    <div class="invites-stat">
+      <div class="invites-stat-num">${value}</div>
+      <div class="invites-stat-label">${label}</div>
+    </div>`;
+
+  const pip = (label, on, tone) => {
+    const cls = on ? `invites-pip on ${tone || ''}` : 'invites-pip off';
+    return `<span class="${cls}">${label}</span>`;
+  };
+
   const rows = invites.map((inv, i) => {
     const opened = !!inv.opened_at;
     const started = !!inv.started_at;
-    const completed = (inv.completions || 0) > 0;
-    return `<tr>
-      <td style="padding:12px 14px;border-top:1px solid rgba(255,255,255,0.05);vertical-align:top">
-        <div style="font-family:var(--sans);font-size:13px;color:var(--ink);font-weight:500">${escapeHTML(inv.email)}</div>
-        <div style="font-family:var(--sans);font-size:10px;color:var(--ink-dim);margin-top:2px">Sent ${inv.send_count}× · last ${fmt(inv.last_sent_at)}</div>
-      </td>
-      <td style="padding:12px 14px;border-top:1px solid rgba(255,255,255,0.05);vertical-align:top;font-family:var(--sans);font-size:11px;color:var(--ink-soft)">
-        <div title="${escapeHTML(inv.opened_at || '')}">${opened ? '<span style="color:var(--amber)">●</span> Opened' : '<span style="color:var(--ink-dim)">○</span> Not opened'}</div>
-        <div style="margin-top:4px" title="${escapeHTML(inv.started_at || '')}">${started ? '<span style="color:var(--amber)">●</span> Started' : '<span style="color:var(--ink-dim)">○</span> Not started'}</div>
-        <div style="margin-top:4px" title="${escapeHTML(inv.last_completed_at || '')}">${completed ? `<span style="color:#7ed4a2">●</span> Completed ${inv.completions}×` : '<span style="color:var(--ink-dim)">○</span> Not completed'}</div>
-      </td>
-      <td style="padding:12px 14px;border-top:1px solid rgba(255,255,255,0.05);vertical-align:top;text-align:right">
-        <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end">
-          <button class="admin-btn ghost" style="padding:6px 12px;font-size:10px" onclick="adminCopyInviteUrl(${i})">Copy URL</button>
-          <button class="admin-btn ghost" style="padding:6px 12px;font-size:10px" onclick="adminResendInvite(${i})">Resend</button>
-          <button class="admin-btn ghost" style="padding:6px 12px;font-size:10px" onclick="adminDeleteInvite(${i})">Delete</button>
-        </div>
-      </td>
-    </tr>`;
+    const completedCount = inv.completions || 0;
+    const completed = completedCount > 0;
+    return `
+      <tr>
+        <td class="cell-email">
+          <div class="invites-email">${escapeHTML(inv.email)}</div>
+          <div class="invites-meta">Sent ${inv.send_count || 0}× · last ${fmt(inv.last_sent_at)}${inv.invited_by ? ` · by ${escapeHTML(inv.invited_by)}` : ''}</div>
+        </td>
+        <td class="cell-funnel">
+          <div class="invites-funnel">
+            ${pip(opened ? 'Opened' : 'Not opened', opened, 'amber')}
+            ${pip(started ? 'Started' : 'Not started', started, 'amber')}
+            ${pip(completed ? `Completed ${completedCount}×` : 'Not completed', completed, 'green')}
+          </div>
+          <div class="invites-funnel-times">
+            ${opened ? `<span>Opened ${fmt(inv.opened_at)}</span>` : ''}
+            ${started ? `<span>Started ${fmt(inv.started_at)}</span>` : ''}
+            ${completed ? `<span>Last completed ${fmt(inv.last_completed_at)}</span>` : ''}
+          </div>
+        </td>
+        <td class="cell-actions">
+          <div class="invites-actions">
+            <button class="invites-action-btn" onclick="adminCopyInviteUrl(${i})">Copy URL</button>
+            <button class="invites-action-btn" onclick="adminResendInvite(${i})">Resend</button>
+            <button class="invites-action-btn ghost" onclick="adminDeleteInvite(${i})">Delete</button>
+          </div>
+        </td>
+      </tr>`;
   }).join('');
-  window.__adminInvitesCache = invites;
+
   el.innerHTML = `
-    <div style="font-family:var(--sans);font-size:12px;color:var(--ink-mute);margin-bottom:8px">${invites.length} invite${invites.length === 1 ? '' : 's'}</div>
-    <table style="width:100%;border-collapse:collapse;background:rgba(0,0,0,0.28);border:1px solid rgba(255,255,255,0.06)">
+    <div class="invites-stats">
+      ${stat('Invited', totals.invited)}
+      ${stat('Opened', totals.opened)}
+      ${stat('Started', totals.started)}
+      ${stat('Completed', totals.completed)}
+      ${stat('Total runs', totals.totalRuns)}
+    </div>
+    <table class="invites-table">
       <thead>
-        <tr style="background:rgba(0,0,0,0.4)">
-          <th style="text-align:left;padding:10px 14px;font-family:var(--sans);font-size:10px;color:var(--ink-mute);letter-spacing:0.2em;text-transform:uppercase;font-weight:600">Email · history</th>
-          <th style="text-align:left;padding:10px 14px;font-family:var(--sans);font-size:10px;color:var(--ink-mute);letter-spacing:0.2em;text-transform:uppercase;font-weight:600">Funnel</th>
-          <th style="text-align:right;padding:10px 14px;font-family:var(--sans);font-size:10px;color:var(--ink-mute);letter-spacing:0.2em;text-transform:uppercase;font-weight:600">Actions</th>
+        <tr>
+          <th>Invitee</th>
+          <th>Funnel progress</th>
+          <th class="th-actions">Actions</th>
         </tr>
       </thead>
       <tbody>${rows}</tbody>
@@ -17136,7 +17488,9 @@ function setAdminInviteStatus(text, kind) {
   const el = document.getElementById('adminInviteStatus');
   if (!el) return;
   el.textContent = text || '';
-  el.style.color = kind === 'error' ? 'var(--amber)' : (kind === 'success' ? '#7ed4a2' : 'var(--ink-mute)');
+  // Re-apply the base class plus the success/error modifier so the styles
+  // defined in CSS take over (rather than inline overrides that fight specificity).
+  el.className = 'invites-status' + (kind ? ' ' + kind : '');
 }
 
 async function adminSendInvite() {
