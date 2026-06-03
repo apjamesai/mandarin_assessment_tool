@@ -12,6 +12,11 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 export const TOKEN_ISSUER = "mandarin-assessment";
 export const USER_INDEX_PEPPER = "mandarin-user-index-v1";
 export const INVITE_INDEX_PEPPER = "mandarin-invite-index-v1";
+// Separate pepper for the user-facing invite CODE (printed in invite emails
+// and entered on the lock page as a fallback when the URL doesn't work).
+// Deterministic per-email so existing invitees already have a code we can
+// compute on demand without any data migration.
+export const INVITE_CODE_PEPPER = "mandarin-invite-code-v1";
 
 // Hardcoded admin allowlist. Adding/removing admins is a code change on
 // purpose — admin access is rare and high-trust, and we don't want a
@@ -77,6 +82,58 @@ export function inviteIndexKey(email) {
   if (!norm) return null;
   const hex = createHmac("sha256", INVITE_INDEX_PEPPER).update(norm).digest("hex");
   return `invites/${hex}.json`;
+}
+
+// Crockford base32 (no I, L, O, U — they're easy to confuse). We deliberately
+// avoid lower case so codes are easy to read out over the phone and to type.
+const CROCKFORD_B32 = "0123456789ABCDEFGHJKMNPQRSTVWXYZ";
+
+// Deterministic typeable code per email. Same email → same code, forever, so
+// every existing invitee automatically has a code we can compute on demand
+// (no data migration). 12 chars / 60 bits of entropy in the printed form;
+// formatted as XXXX-XXXX-XXXX for readability.
+//
+// To redeem, the server iterates the small invite list and matches in
+// constant time. Codes never leave the server unless they're shown to an
+// admin or printed in an invitation email — they're effectively credentials
+// for the invite, the same trust level as the URL.
+export function inviteCodeForEmail(email) {
+  const norm = normaliseEmail(email);
+  if (!norm) return null;
+  const buf = createHmac("sha256", INVITE_CODE_PEPPER).update(norm).digest();
+  let out = "";
+  for (let i = 0; i < 12; i++) {
+    // Take a byte and mod-down to 32. Slight bias is fine — we only need
+    // unguessability, not perfect uniformity.
+    out += CROCKFORD_B32[buf[i] & 31];
+  }
+  return out.slice(0, 4) + "-" + out.slice(4, 8) + "-" + out.slice(8, 12);
+}
+
+// Strip whitespace/hyphens and uppercase the input, then map common
+// look-alike characters back to their canonical form so the user can type
+// `O0L1IU` etc. without the system rejecting the code.
+export function normaliseInviteCode(input) {
+  return String(input || "")
+    .replace(/\s+/g, "")
+    .replace(/-/g, "")
+    .toUpperCase()
+    .replace(/O/g, "0")
+    .replace(/I/g, "1")
+    .replace(/L/g, "1")
+    .replace(/U/g, "V");
+}
+
+// Compare two codes constant-time so a timing attack can't be used to map
+// out which codes are close to valid. Both inputs are normalised first.
+export function inviteCodesEqual(a, b) {
+  const na = normaliseInviteCode(a);
+  const nb = normaliseInviteCode(b);
+  if (na.length !== nb.length || na.length === 0) return false;
+  const bufA = Buffer.from(na, "utf8");
+  const bufB = Buffer.from(nb, "utf8");
+  try { return timingSafeEqual(bufA, bufB); }
+  catch { return false; }
 }
 
 export function mintUserMagicToken(email, secret, ttlDays = 30) {

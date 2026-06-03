@@ -12,7 +12,8 @@ import {
   mintInviteToken,
   requireMagicLinkSecret,
   inviteIndexKey,
-  userIndexKey
+  userIndexKey,
+  inviteCodeForEmail
 } from "../lib/auth.mjs";
 import { buildInviteEmailHTML } from "../lib/email-template.mjs";
 
@@ -85,7 +86,8 @@ export default async (req) => {
             started_at: rec.first_started_at || null,
             completions: comp.count,
             last_completed_at: comp.last_at,
-            invite_url: rec.last_invite_url || null
+            invite_url: rec.last_invite_url || null,
+            invite_code: inviteCodeForEmail(rec.email)
           });
         } catch (_) { /* skip malformed records */ }
       }
@@ -144,22 +146,24 @@ export default async (req) => {
     if (!resendKey || !from) {
       return jsonResponse({ error: "Email sending not configured", url: inviteUrl }, 500);
     }
+    const inviteCode = inviteCodeForEmail(email);
     const result = await sendResend(resendKey, {
       from,
       to: [email],
       subject: "You're invited · Mandarin Strategic Capability Assessment",
-      html: buildInviteEmailHTML(email, inviteUrl),
-      text: `You've been invited to take Mandarin's Strategic Capability Assessment.\n\nBegin here: ${inviteUrl}\n\nThe link is valid for 90 days.`
+      html: buildInviteEmailHTML(email, inviteUrl, inviteCode),
+      text: `You've been invited to take Mandarin's Strategic Capability Assessment.\n\nBegin here: ${inviteUrl}\n\nIf the link doesn't work, enter this code at https://assessment.teammandarin.com/invite-required.html:\n\n  ${inviteCode}\n\nThe link is valid for 90 days.`
     });
     if (!result.ok) {
       console.error(`admin-invites POST: Resend returned ${result.status}`);
-      return jsonResponse({ error: "Failed to send invite email", url: inviteUrl }, 502);
+      return jsonResponse({ error: "Failed to send invite email", url: inviteUrl, code: inviteCode }, 502);
     }
 
     return jsonResponse({
       ok: true,
       email,
       url: inviteUrl,
+      code: inviteCode,
       send_count: rec.send_history.length,
       last_sent_at: now
     }, 200);

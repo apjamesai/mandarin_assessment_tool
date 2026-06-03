@@ -145,7 +145,13 @@ export function buildAdminEmailHTML(session, magicLinkUrl) {
   `);
 }
 
-export function buildInviteEmailHTML(email, inviteUrl) {
+export function buildInviteEmailHTML(email, inviteUrl, inviteCode) {
+  const codeBlock = inviteCode ? `
+    <div style="background:#0a0a0a;color:#f4f0e8;padding:18px 20px;margin:22px 0 6px;text-align:center">
+      <div style="font-size:10px;font-weight:600;letter-spacing:0.32em;text-transform:uppercase;color:#ff8a4a;margin-bottom:8px">Or use this code</div>
+      <div style="font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:26px;font-weight:800;letter-spacing:0.18em;color:#ffffff">${esc(inviteCode)}</div>
+      <div style="font-size:11px;color:#d6cdb9;margin-top:8px;line-height:1.5">If the button or the link above don't work, enter this 12-character code on <a href="https://assessment.teammandarin.com/invite-required.html" style="color:#ff8a4a;text-decoration:underline">assessment.teammandarin.com</a>.</div>
+    </div>` : "";
   return shellHTML(`
     <div style="font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#ff481d;margin-bottom:14px">You're invited</div>
     <h1 style="font-size:30px;font-weight:900;line-height:1.05;letter-spacing:-0.015em;text-transform:uppercase;color:#0a0a0a;margin:0 0 14px">Take the Strategic Capability Assessment</h1>
@@ -153,6 +159,7 @@ export function buildInviteEmailHTML(email, inviteUrl) {
     <p style="font-size:15px;line-height:1.6;color:#1c1c1c;margin:0 0 22px">It takes around 20 minutes. Your result includes your strategic archetype, your scores across the 12 essential practices, and the patterns most likely to drift under pressure.</p>
     <div style="margin:8px 0 22px">${ctaButton("Begin the assessment", inviteUrl)}</div>
     <p style="font-size:12px;line-height:1.5;color:#555048;margin:12px 0 0">If the button doesn't work, paste this link into your browser:<br><span style="font-family:monospace;font-size:11px;color:#1c1c1c;word-break:break-all">${esc(inviteUrl)}</span></p>
+    ${codeBlock}
     <p style="font-size:12px;line-height:1.5;color:#807868;margin:16px 0 0">This invitation is for <strong style="color:#1c1c1c">${esc(email)}</strong> and is valid for 90 days. If you didn't expect this, you can ignore it.</p>
   `);
 }

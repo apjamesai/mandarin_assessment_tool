@@ -3598,6 +3598,19 @@ body.previewing .results-stage { padding-top: 14vh; }
   margin-top: 6px;
   line-height: 1.5;
 }
+.admin-panel .invites-code {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 10px;
+  font-family: "Inter", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  color: #0a0a0a;
+  background: #fbf6ec;
+  border: 1px solid #d8d2c5;
+  user-select: all;
+}
 
 .admin-panel .invites-funnel {
   display: flex; flex-wrap: wrap; gap: 8px;
@@ -17440,6 +17453,7 @@ function renderInvitesTable(invites) {
         <td class="cell-email">
           <div class="invites-email">${escapeHTML(inv.email)}</div>
           <div class="invites-meta">Sent ${inv.send_count || 0}× · last ${fmt(inv.last_sent_at)}${inv.invited_by ? ` · by ${escapeHTML(inv.invited_by)}` : ''}</div>
+          ${inv.invite_code ? `<div class="invites-code" title="Fallback code · enter on /invite-required.html if the link fails">${escapeHTML(inv.invite_code)}</div>` : ''}
         </td>
         <td class="cell-funnel">
           <div class="invites-funnel">
@@ -17456,6 +17470,7 @@ function renderInvitesTable(invites) {
         <td class="cell-actions">
           <div class="invites-actions">
             <button class="invites-action-btn" onclick="adminCopyInviteUrl(${i})">Copy URL</button>
+            ${inv.invite_code ? `<button class="invites-action-btn" onclick="adminCopyInviteCode(${i})">Copy code</button>` : ''}
             <button class="invites-action-btn" onclick="adminResendInvite(${i})">Resend</button>
             <button class="invites-action-btn ghost" onclick="adminDeleteInvite(${i})">Delete</button>
           </div>
@@ -17514,7 +17529,8 @@ function optimisticUpsertInvite(serverResp, email) {
     started_at: existing ? existing.started_at : null,
     completions: existing ? existing.completions : 0,
     last_completed_at: existing ? existing.last_completed_at : null,
-    invite_url: (serverResp && serverResp.url) || (existing && existing.invite_url) || null
+    invite_url: (serverResp && serverResp.url) || (existing && existing.invite_url) || null,
+    invite_code: (serverResp && serverResp.code) || (existing && existing.invite_code) || null
   };
   if (idx >= 0) cache.splice(idx, 1);
   cache.unshift(next); // most recent at the top, matches server sort order
@@ -17594,6 +17610,14 @@ async function adminDeleteInvite(i) {
   } catch (e) {
     setAdminInviteStatus('Network error: ' + e.message, 'error');
   }
+}
+
+async function adminCopyInviteCode(i) {
+  const cache = window.__adminInvitesCache || [];
+  const inv = cache[i];
+  if (!inv || !inv.invite_code) return;
+  try { await navigator.clipboard.writeText(inv.invite_code); setAdminInviteStatus(`Copied invitation code for ${inv.email}.`, 'success'); }
+  catch (e) { setAdminInviteStatus('Clipboard blocked. Code: ' + inv.invite_code, 'error'); }
 }
 
 async function adminCopyInviteUrl(i) {

@@ -33,6 +33,19 @@ h1 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 900; line-height: 1.05; l
 p { font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 16px; }
 .btn-outline { display: inline-block; margin-top: 14px; padding: 14px 22px; font-size: 11px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--ink); transition: background 0.2s ease, color 0.2s ease; }
 .btn-outline:hover { background: var(--ink); color: #fff; }
+.code-card { margin-top: 32px; border-top: 1px solid var(--rule); padding-top: 24px; }
+.code-card .eyebrow { margin-bottom: 12px; }
+.code-card h2 { font-size: 18px; font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 8px; line-height: 1.1; }
+.code-card p { font-size: 13px; color: var(--ink-mute); margin-bottom: 14px; line-height: 1.55; }
+.code-input { width: 100%; font-family: "Inter", monospace; font-size: 18px; letter-spacing: 0.12em; padding: 14px 16px; background: #fbf8f1; border: 1px solid var(--rule); color: var(--ink); text-transform: uppercase; text-align: center; }
+.code-input:focus { outline: none; border-color: var(--ink); background: #fff; }
+.code-input::placeholder { color: #b3a994; letter-spacing: 0.12em; font-weight: 400; }
+.code-btn { width: 100%; margin-top: 10px; font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: #fff; background: var(--ink); border: none; padding: 14px 22px; cursor: pointer; transition: background 0.2s ease; }
+.code-btn:hover:not(:disabled) { background: var(--orange); }
+.code-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.code-msg { margin-top: 14px; font-size: 13px; line-height: 1.5; padding: 12px 14px; border: 1px solid var(--rule); display: none; }
+.code-msg.error { color: #8b1f12; background: #fbeae7; border-color: #cc3a2a; display: block; }
+.code-msg.success { color: #1c5232; background: #e8f4ec; border-color: #2e7a4a; display: block; }
 .footer { background: #000; color: #d6cdb9; padding: 28px 36px; font-size: 11px; }
 .footer a { color: #d6cdb9; text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 640px) {
@@ -57,8 +70,75 @@ p { font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 16
     <p>The Mandarin Strategic Capability Assessment is currently offered to existing customers and invited participants. If you've been told you should be on the list, ask the person who introduced you to share their invite link with you.</p>
     <p>If you'd like to learn more about Mandarin's work first, visit <a style="color:var(--orange);text-decoration:underline" href="https://www.teammandarin.com/">teammandarin.com</a>.</p>
     <a class="btn-outline" href="https://www.teammandarin.com/contact">Get in touch</a>
+
+    <div class="code-card">
+      <div class="eyebrow">Have an invitation code?</div>
+      <h2>Enter your 12-character code</h2>
+      <p>If you were given an invitation but the link in your email doesn't work, type the 12-character code from that email below. You can include or skip the hyphens, the system will accept either.</p>
+      <form id="redeemForm" autocomplete="off" novalidate>
+        <input id="codeInput" class="code-input" type="text" inputmode="text" maxlength="14" placeholder="XXXX-XXXX-XXXX" autocapitalize="characters" spellcheck="false">
+        <button class="code-btn" type="submit" id="redeemBtn">Open the assessment</button>
+      </form>
+      <div id="codeMsg" class="code-msg" role="status" aria-live="polite"></div>
+    </div>
   </section>
 </main>
+
+<script>
+(function() {
+  var form = document.getElementById('redeemForm');
+  var input = document.getElementById('codeInput');
+  var btn = document.getElementById('redeemBtn');
+  var msg = document.getElementById('codeMsg');
+
+  function setMsg(text, kind) {
+    msg.textContent = text;
+    msg.className = 'code-msg ' + (kind || '');
+  }
+
+  // Auto-format as the user types: insert hyphens after the 4th and 8th
+  // alphanumeric character so the typed input mirrors the printed XXXX-XXXX-XXXX.
+  input.addEventListener('input', function() {
+    var raw = input.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+    if (raw.length > 12) raw = raw.slice(0, 12);
+    var parts = [];
+    if (raw.length > 0) parts.push(raw.slice(0, 4));
+    if (raw.length > 4) parts.push(raw.slice(4, 8));
+    if (raw.length > 8) parts.push(raw.slice(8, 12));
+    input.value = parts.join('-');
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var code = (input.value || '').trim();
+    if (!code) { setMsg('Enter the 12-character code from your invitation email.', 'error'); return; }
+    btn.disabled = true; btn.textContent = 'Checking...';
+    setMsg('', '');
+
+    fetch('/api/invite/redeem', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ code: code })
+    }).then(function(r) {
+      return r.json().then(function(b) { return { ok: r.ok, status: r.status, body: b }; });
+    }).then(function(res) {
+      btn.disabled = false; btn.textContent = 'Open the assessment';
+      if (res.ok && res.body && res.body.token) {
+        // Store the freshly-minted invite token the same way the URL gate
+        // stores tokens harvested from ?invite=… on the brand landing.
+        try { localStorage.setItem('mandarin.assessment.inviteToken', res.body.token); } catch (e) {}
+        setMsg('Code accepted. Opening your invitation now...', 'success');
+        setTimeout(function() { window.location.href = '/'; }, 700);
+      } else {
+        setMsg((res.body && res.body.error) || 'That code wasn\'t recognised. Double-check it and try again.', 'error');
+      }
+    }).catch(function(err) {
+      btn.disabled = false; btn.textContent = 'Open the assessment';
+      setMsg('Network error. Please try again.', 'error');
+    });
+  });
+})();
+</script>
 
 <footer class="footer">
   An assessment by <a href="https://www.teammandarin.com/">Team Mandarin</a>.
