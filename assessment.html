@@ -4757,13 +4757,13 @@ body.has-back .location-tag { left: calc(4vw + 100px); }
         "leaning_hale": {
           "bodyAfter": [
             "Collateral damage. Civilian loss.",
-            "Hale remains calm. \"Necessary,\" he says, and you find yourself almost agreeing before you have asked the question."
+            "Calhoun remains calm. \"Necessary,\" he says, and you find yourself almost agreeing before you have asked the question."
           ]
         },
         "resisting_hale": {
           "bodyAfter": [
             "Collateral damage. Civilian loss.",
-            "Hale remains calm. \"Necessary,\" he says. You do not look away from him."
+            "Calhoun remains calm. \"Necessary,\" he says. You do not look away from him."
           ]
         }
       }
@@ -4970,13 +4970,13 @@ body.has-back .location-tag { left: calc(4vw + 100px); }
       "variants": {
         "staying_curious": {
           "bodyAfter": [
-            "Hale chooses control over ambiguity. Speed over consensus. Certainty over doubt.",
+            "Calhoun chooses control over ambiguity. Speed over consensus. Certainty over doubt.",
             "You had already half-seen this. Now you can name it."
           ]
         },
         "drifting": {
           "bodyAfter": [
-            "Hale chooses control over ambiguity. Speed over consensus. Certainty over doubt.",
+            "Calhoun chooses control over ambiguity. Speed over consensus. Certainty over doubt.",
             "You realise, quietly, that you have been making the same trade-offs."
           ]
         }
@@ -15376,6 +15376,22 @@ function selectMC(idx) {
   if (adv) adv.classList.add('ready');
 }
 
+// English ordinal label, e.g. ordinalLabel(1) === '1st', ordinalLabel(11) === '11th',
+// ordinalLabel(22) === '22nd'. Used by the ranking question renderer to label
+// the user's chosen positions consistently regardless of how many items the
+// question has.
+function ordinalLabel(n) {
+  n = Math.floor(n);
+  const v = n % 100;
+  if (v >= 11 && v <= 13) return n + 'th';
+  switch (n % 10) {
+    case 1: return n + 'st';
+    case 2: return n + 'nd';
+    case 3: return n + 'rd';
+    default: return n + 'th';
+  }
+}
+
 function rankItem(idx) {
   STATE.ranking = STATE.ranking || [];
   if (STATE.ranking.includes(idx)) {
@@ -15395,7 +15411,7 @@ function rankItem(idx) {
     const el = scope.querySelector(`.q-ranking-item[data-value="${sel}"]`);
     if (el) el.classList.add('assigned');
     const rankEl = scope.querySelector(`#rank-${sel}`);
-    if (rankEl) { rankEl.classList.remove('empty'); rankEl.textContent = ['1st','2nd','3rd','4th'][pos] || (pos+1); }
+    if (rankEl) { rankEl.classList.remove('empty'); rankEl.textContent = ordinalLabel(pos + 1); }
   });
   const scene = SCENES[STATE.current];
   if (STATE.ranking.length === scene.items.length) {
