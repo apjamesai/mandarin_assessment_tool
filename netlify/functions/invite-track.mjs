@@ -54,16 +54,19 @@ export default async (req) => {
   // before falling back. We do NOT create a fresh record on miss — that
   // could clobber a concurrent admin record. Instead we fail-soft: the open
   // beacon is lost, the next one (or the admin's next POST) will catch up.
+  // Backoff probe: 0ms, 1s, 3s, 6s. Total budget ~10s. This call is
+  // fire-and-forget on the client so the user doesn't wait. In practice
+  // real-world latency between admin send and invitee click is many
+  // seconds to days; the retry only matters for synthetic test bursts.
   async function readRecWithRetry() {
-    try {
-      const r = await store.get(key, { type: "json" });
-      if (r && typeof r === "object") return r;
-    } catch (_) {}
-    await new Promise((res) => setTimeout(res, 1200));
-    try {
-      const r = await store.get(key, { type: "json" });
-      if (r && typeof r === "object") return r;
-    } catch (_) {}
+    const waits = [0, 1000, 2000, 3000];
+    for (const w of waits) {
+      if (w) await new Promise((res) => setTimeout(res, w));
+      try {
+        const r = await store.get(key, { type: "json" });
+        if (r && typeof r === "object") return r;
+      } catch (_) {}
+    }
     return null;
   }
 
