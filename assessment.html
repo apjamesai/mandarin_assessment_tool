@@ -42,6 +42,21 @@
       // the admin panel opens or the stored-session results page renders.
       document.documentElement.classList.add('admin-mode');
     }
+    // Admin magic-link landing: ?admin=1&token=<jwt>
+    // Stash the token under the cloud-token key so adminAuthHeaders() picks
+    // it up, then strip ?token from the URL so it doesn't sit in history.
+    if (qs.has('admin') && qs.get('token')) {
+      var adminToken = qs.get('token');
+      if (adminToken) {
+        try { localStorage.setItem('mandarin.assessment.cloudToken', adminToken); } catch (e) {}
+        // Remove token from the visible URL — keep ?admin=1 so the panel still opens.
+        try {
+          qs.delete('token');
+          var clean = window.location.pathname + (qs.toString() ? ('?' + qs.toString()) : '') + window.location.hash;
+          window.history.replaceState({}, '', clean);
+        } catch (e) {}
+      }
+    }
   } catch (e) {}
 })();
 </script>
@@ -16152,6 +16167,53 @@ function autoEmailResult(session) {
   });
 }
 
+// Walk SCENES + STATE.answers and produce a self-describing snapshot of
+// every question the user answered. Used by the admin email so admins can
+// see exactly what was asked and what the user chose, even if the SCENES
+// data is edited later. Keys live entirely on the snapshot — no SCENES
+// lookup is required server-side.
+function buildAnswerBreakdown() {
+  var out = [];
+  if (!Array.isArray(SCENES)) return out;
+  for (var i = 0; i < SCENES.length; i++) {
+    var sc = SCENES[i];
+    if (!sc || sc.type !== 'question') continue;
+    var rec = {
+      scene_index: i,
+      kind: sc.kind || '',
+      practice: sc.practice || '',
+      location: sc.locationLabel || sc.location || '',
+      prompt: sc.prompt || ''
+    };
+    var raw = STATE.answers ? STATE.answers[i] : undefined;
+    if (sc.kind === 'rating') {
+      if (typeof raw === 'number' && Array.isArray(sc.labels) && sc.labels[raw] != null) {
+        rec.selected_index = raw;
+        rec.selected_text = sc.labels[raw];
+      }
+    } else if (sc.kind === 'mc') {
+      if (typeof raw === 'number' && Array.isArray(sc.options) && sc.options[raw] != null) {
+        rec.selected_index = raw;
+        rec.selected_text = sc.options[raw].copy || sc.options[raw].label || '';
+      }
+    } else if (sc.kind === 'ranking') {
+      if (Array.isArray(raw) && Array.isArray(sc.items)) {
+        rec.selected_ranking = raw.slice();
+        rec.selected_ranking_text = raw.map(function(idx) {
+          return (sc.items[idx] && sc.items[idx].label) || '';
+        });
+      }
+    } else if (sc.kind === 'short-text') {
+      var textKey = 'midtext_' + i;
+      if (STATE.reflections && STATE.reflections[textKey]) {
+        rec.selected_text = STATE.reflections[textKey];
+      }
+    }
+    out.push(rec);
+  }
+  return out;
+}
+
 // Build a "live results" session object from the current STATE, for the
 // download button on the just-completed results page. Mirrors the schema
 // produced by saveSessionToHistory().
@@ -16173,7 +16235,9 @@ function buildLiveSessionForPDF(R, archKey, secondaryKey) {
     levels: R.levels,
     practices: R.practices,
     risks: R.risks,
-    reflections: { ...STATE.reflections }
+    reflections: { ...STATE.reflections },
+    answers: { ...STATE.answers },
+    answer_breakdown: buildAnswerBreakdown()
   };
 }
 
@@ -17452,6 +17516,8 @@ function saveSessionToHistory(R, archKey, secondaryKey) {
     practices: R.practices,
     risks: R.risks,
     reflections: { ...STATE.reflections },
+    answers: { ...STATE.answers },
+    answer_breakdown: buildAnswerBreakdown(),
     cloudSynced: false
   };
   const hist = loadHistory();

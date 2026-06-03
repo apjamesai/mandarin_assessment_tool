@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin sign in · Mandarin Strategic Capability Assessment</title>
+<meta name="robots" content="noindex,nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #f4f0e8;
+  --cream-soft: #ece5d7;
+  --ink: #0a0a0a;
+  --ink-soft: #1c1c1c;
+  --ink-mute: #555048;
+  --ink-dim: #807868;
+  --rule: #d8d2c5;
+  --orange: #ff481d;
+  --orange-deep: #c93a16;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--cream); color: var(--ink); font-family: var(--sans); min-height: 100%; }
+body { display: flex; flex-direction: column; min-height: 100vh; }
+a { color: inherit; text-decoration: none; }
+
+.topnav { background: #000; color: #fff; }
+.topnav-inner { max-width: 1480px; margin: 0 auto; padding: 18px 36px; display: flex; align-items: center; gap: 24px; }
+.topnav-logo-img { height: 30px; width: auto; display: block; }
+.topnav-cta { margin-left: auto; border: 1px solid #fff; padding: 12px 18px; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #fff !important; transition: background 0.2s ease, color 0.2s ease; }
+.topnav-cta:hover { background: #fff; color: #000 !important; }
+
+main { flex: 1; padding: 80px 22px; display: flex; align-items: flex-start; justify-content: center; }
+.card { background: #fff; border: 1px solid var(--rule); max-width: 520px; width: 100%; padding: 56px 56px 52px; }
+.eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--orange); margin-bottom: 18px; }
+.eyebrow::before { content: ""; display: inline-block; width: 28px; height: 1px; background: var(--orange); vertical-align: middle; margin-right: 12px; transform: translateY(-2px); }
+h1 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 900; line-height: 1.05; letter-spacing: -0.015em; text-transform: uppercase; color: var(--ink); margin-bottom: 18px; }
+p { font-size: 15px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 22px; }
+.label { display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 8px; }
+.email-input { width: 100%; font-family: var(--sans); font-size: 16px; padding: 14px 16px; background: #fff; border: 1px solid var(--rule); color: var(--ink); }
+.email-input:focus { outline: none; border-color: var(--ink); }
+.btn { width: 100%; margin-top: 22px; font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: #fff; background: var(--ink); border: none; padding: 18px 32px; cursor: pointer; transition: background 0.2s ease; }
+.btn:hover:not(:disabled) { background: var(--orange); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.help { font-size: 12px; color: var(--ink-mute); margin-top: 22px; line-height: 1.55; }
+.msg { font-size: 13px; line-height: 1.5; margin-top: 22px; padding: 14px 16px; border: 1px solid var(--rule); background: #fbf8f1; }
+.msg.error { border-color: #cc3a2a; background: #fbeae7; color: #8b1f12; }
+.msg.success { border-color: #2e7a4a; background: #e8f4ec; color: #1c5232; }
+
+.footer { background: #000; color: #d6cdb9; padding: 28px 36px; font-size: 11px; }
+.footer a { color: #d6cdb9; text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 640px) {
+  main { padding: 48px 16px; }
+  .card { padding: 36px 28px 32px; }
+  .topnav-inner { padding: 14px 16px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="topnav-inner">
+    <a href="/" aria-label="Mandarin home"><img src="images/mandarin-logo-horizontal.svg" alt="Mandarin" class="topnav-logo-img"></a>
+    <a class="topnav-cta" href="/">Back to landing</a>
+  </div>
+</header>
+
+<main>
+  <section class="card" aria-labelledby="adminLoginHeading">
+    <div class="eyebrow">Admin sign in</div>
+    <h1 id="adminLoginHeading">Sign in to the admin area</h1>
+    <p>Enter your admin email. If you are on the admin list, a sign-in link will be emailed to you. The link expires after 30 days.</p>
+
+    <form id="loginForm" autocomplete="off" novalidate>
+      <label class="label" for="email">Admin email</label>
+      <input class="email-input" type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" autocapitalize="off" spellcheck="false">
+      <button class="btn" type="submit" id="submitBtn">Send sign-in link</button>
+    </form>
+
+    <div id="msg" class="msg" style="display:none" role="status" aria-live="polite"></div>
+    <p class="help">Admin access is limited to a fixed list of email addresses. If you need access added, ask in the team channel.</p>
+  </section>
+</main>
+
+<footer class="footer">
+  An assessment by <a href="https://www.teammandarin.com/">Team Mandarin</a>.
+  &copy; Mandarin Business Associates Limited 2026
+</footer>
+
+<script>
+(function() {
+  var form = document.getElementById('loginForm');
+  var emailInput = document.getElementById('email');
+  var submitBtn = document.getElementById('submitBtn');
+  var msg = document.getElementById('msg');
+
+  function showMessage(text, kind) {
+    msg.textContent = text;
+    msg.className = 'msg ' + (kind || '');
+    msg.style.display = 'block';
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var email = (emailInput.value || '').trim();
+    if (!email) { showMessage('Enter an email address.', 'error'); return; }
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    msg.style.display = 'none';
+
+    fetch('/api/admin/request-magic-link', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ email: email })
+    }).then(function(r) {
+      return r.json().then(function(b) { return { ok: r.ok, status: r.status, body: b }; });
+    }).then(function(res) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send sign-in link';
+      if (res.ok) {
+        showMessage(res.body && res.body.message ? res.body.message : 'If this email is on the admin list, a sign-in link has been sent.', 'success');
+        emailInput.value = '';
+      } else {
+        showMessage((res.body && res.body.error) || 'Something went wrong. Try again.', 'error');
+      }
+    }).catch(function(err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send sign-in link';
+      showMessage('Network error. Try again.', 'error');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

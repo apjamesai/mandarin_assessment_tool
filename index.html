@@ -952,7 +952,7 @@ a { color: inherit; text-decoration: none; }
       An assessment by <a href="https://www.teammandarin.com/">Team Mandarin</a>.<br>
       Built on the <a href="https://www.teammandarin.com/be-more-strategic-book">Be More Strategic</a> framework by Charlie Curson.<br>
       &copy; Mandarin Business Associates Limited 2026
-      <a id="footerAdminLink" class="footer-admin-link" href="/assessment.html?admin=1" style="display:none">Admin</a>
+      <a class="footer-admin-link" href="/admin-login.html">Admin</a>
     </div>
   </div>
 </footer>
@@ -967,17 +967,9 @@ const grid = document.getElementById('skinGrid');
 const beginBtn = document.getElementById('beginBtn');
 const beginText = document.getElementById('beginText');
 
-// Reveal the footer Admin link only when ?admin=1 is present in the URL.
-// This is the only public entry point to the admin panel; clicking it
-// navigates to /assessment.html?admin=1 which auto-opens the panel.
-(function() {
-  try {
-    if (new URLSearchParams(window.location.search).has('admin')) {
-      const link = document.getElementById('footerAdminLink');
-      if (link) link.style.display = 'inline-block';
-    }
-  } catch (e) {}
-})();
+// Admin link now points at /admin-login.html and is always visible (it's
+// a small unobtrusive footer link). Anyone can hit the page, but a sign-in
+// link is only emailed to addresses in the server-side allowlist.
 
 function pickCard(card) {
   const skinId = card.dataset.skin;

@@ -21,7 +21,7 @@
 // receives email; admin send is silently skipped.
 
 import { getStore } from "@netlify/blobs";
-import { mintUserMagicToken, jsonResponse } from "../lib/auth.mjs";
+import { mintUserMagicToken, jsonResponse, ADMIN_ALLOWLIST } from "../lib/auth.mjs";
 import { buildUserEmailHTML, buildAdminEmailHTML, buildEmailTextSummary } from "../lib/email-template.mjs";
 
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
@@ -70,11 +70,19 @@ export default async (req) => {
     attachments
   });
 
-  // Admin email, optional
+  // Admin email, optional. If the recipients config is empty, seed it with
+  // ADMIN_ALLOWLIST so charlie + alex receive notifications by default. Admins
+  // can still edit the list later via the admin panel's Email tab.
   let adminResult = null;
   try {
-    const cfg = await store.get("config/admin-emails.json", { type: "json" });
-    const recipients = (cfg && Array.isArray(cfg.recipients) ? cfg.recipients : []).filter(Boolean);
+    let cfg = await store.get("config/admin-emails.json", { type: "json" });
+    let recipients = (cfg && Array.isArray(cfg.recipients) ? cfg.recipients : []).filter(Boolean);
+    if (recipients.length === 0 && Array.isArray(ADMIN_ALLOWLIST) && ADMIN_ALLOWLIST.length > 0) {
+      recipients = ADMIN_ALLOWLIST.slice();
+      try {
+        await store.setJSON("config/admin-emails.json", { recipients, updated_at: new Date().toISOString(), seeded: true });
+      } catch (e) { console.warn("Failed to persist seeded admin-emails config:", e); }
+    }
     if (recipients.length > 0) {
       adminResult = await sendResend(resendKey, {
         from,

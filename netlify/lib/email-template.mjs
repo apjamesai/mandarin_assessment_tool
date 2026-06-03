@@ -80,6 +80,53 @@ export function buildUserEmailHTML(session, magicLinkUrl) {
   `);
 }
 
+function breakdownBlock(session) {
+  const items = Array.isArray(session.answer_breakdown) ? session.answer_breakdown : [];
+  if (!items.length) return "";
+  const rows = items.map((rec) => {
+    let answerHTML = "";
+    if (rec.kind === "ranking" && Array.isArray(rec.selected_ranking_text) && rec.selected_ranking_text.length) {
+      answerHTML = `<ol style="margin:0;padding-left:18px;color:#0a0a0a">${rec.selected_ranking_text.map(t => `<li style="font-size:13px;line-height:1.45;margin:2px 0">${esc(t)}</li>`).join("")}</ol>`;
+    } else if (rec.selected_text) {
+      answerHTML = `<div style="font-size:13px;line-height:1.5;color:#0a0a0a">${esc(rec.selected_text)}</div>`;
+    } else {
+      answerHTML = `<div style="font-size:12px;color:#807868;font-style:italic">(no answer recorded)</div>`;
+    }
+    return `<tr>
+      <td style="padding:14px 16px;border-bottom:1px solid #ece5d7;background:#ffffff;vertical-align:top;width:100%">
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#ff481d;margin-bottom:4px">${esc(rec.location || "")}${rec.practice ? ` &middot; ${esc(rec.practice)}` : ""}</div>
+        <div style="font-size:13px;font-weight:600;color:#0a0a0a;margin-bottom:6px">${esc(rec.prompt || "")}</div>
+        <div style="font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#807868;margin-bottom:4px">Answer</div>
+        ${answerHTML}
+      </td>
+    </tr>`;
+  }).join("");
+  return `
+    <div style="margin:24px 0 8px">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#ff481d;margin-bottom:10px">Question by question</div>
+      <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #d8d2c5;border-collapse:separate">
+        ${rows}
+      </table>
+    </div>`;
+}
+
+function reflectionsBlock(session) {
+  const refs = session.reflections || {};
+  const entries = Object.entries(refs).filter(([k, v]) => typeof v === "string" && v.trim());
+  if (!entries.length) return "";
+  const items = entries.map(([key, val]) => `
+    <div style="padding:14px 16px;border-bottom:1px solid #ece5d7;background:#ffffff">
+      <div style="font-size:9px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#ff481d;margin-bottom:6px">${esc(key)}</div>
+      <div style="font-size:13px;line-height:1.5;color:#0a0a0a;white-space:pre-wrap">${esc(val)}</div>
+    </div>
+  `).join("");
+  return `
+    <div style="margin:18px 0 8px">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#ff481d;margin-bottom:10px">Free-text reflections</div>
+      <div style="border:1px solid #d8d2c5">${items}</div>
+    </div>`;
+}
+
 export function buildAdminEmailHTML(session, magicLinkUrl) {
   const fullName = [session.firstName || "", session.lastName || ""].filter(Boolean).join(" ");
   const submittedAt = new Date(session.completed_at || Date.now()).toLocaleString("en-GB");
@@ -93,6 +140,8 @@ export function buildAdminEmailHTML(session, magicLinkUrl) {
     ${levelGrid(session)}
     <p style="font-size:12px;color:#555048;margin:12px 0">PDF report attached. Full record available in the admin Results tab.</p>
     <div style="margin:12px 0 8px">${ctaButton("Open user view", magicLinkUrl)}</div>
+    ${breakdownBlock(session)}
+    ${reflectionsBlock(session)}
   `);
 }
 
