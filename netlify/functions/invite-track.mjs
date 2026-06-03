@@ -47,41 +47,49 @@ export default async (req) => {
 
   const store = getStore("sessions");
   const key = inviteIndexKey(email);
-  let rec = null;
-  try { rec = await store.get(key, { type: "json" }); }
-  catch (_) { /* fall through */ }
 
-  // If there's no record (rare — invite was issued but never persisted, or
-  // someone re-shared a stale token after the admin record was deleted), we
-  // still accept the token and create a minimal record so the funnel works.
-  if (!rec || typeof rec !== "object") {
-    rec = {
-      email,
-      created_at: new Date().toISOString(),
-      send_history: [],
-      first_opened_at: null,
-      first_started_at: null
-    };
+  // Netlify Blobs is eventually consistent on reads. If the admin just wrote
+  // the invite record (admin-invites POST), an immediate read here may miss
+  // it. Retry once after a short delay to give the write time to propagate
+  // before falling back. We do NOT create a fresh record on miss — that
+  // could clobber a concurrent admin record. Instead we fail-soft: the open
+  // beacon is lost, the next one (or the admin's next POST) will catch up.
+  async function readRecWithRetry() {
+    try {
+      const r = await store.get(key, { type: "json" });
+      if (r && typeof r === "object") return r;
+    } catch (_) {}
+    await new Promise((res) => setTimeout(res, 1200));
+    try {
+      const r = await store.get(key, { type: "json" });
+      if (r && typeof r === "object") return r;
+    } catch (_) {}
+    return null;
+  }
+
+  const rec = await readRecWithRetry();
+  if (!rec) {
+    // No invite record found even after retry. Token is valid but the admin
+    // hasn't persisted (or someone is replaying a stale token). Acknowledge
+    // the token without writing anything.
+    console.log(`invite-track: no record for ${email}, skipping write`);
+    return jsonResponse({ ok: true, email, event, recorded: false }, 200);
   }
 
   const now = new Date().toISOString();
   let changed = false;
   if (event === "opened" && !rec.first_opened_at) { rec.first_opened_at = now; changed = true; }
   if (event === "started" && !rec.first_started_at) { rec.first_started_at = now; changed = true; }
-  // Always keep a counter so we can observe re-opens later if useful
   rec.event_counts = rec.event_counts || {};
   rec.event_counts[event] = (rec.event_counts[event] || 0) + 1;
   changed = true;
 
   if (changed) {
     try { await store.setJSON(key, rec); }
-    catch (e) {
-      console.error("invite-track: failed to write blob:", e);
-      // Don't fail the request — the token is valid; admin can investigate later.
-    }
+    catch (e) { console.error("invite-track: failed to write blob:", e); }
   }
 
-  return jsonResponse({ ok: true, email, event }, 200);
+  return jsonResponse({ ok: true, email, event, recorded: true }, 200);
 };
 
 export const config = { path: "/api/invite/track" };
