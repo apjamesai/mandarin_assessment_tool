@@ -3619,6 +3619,99 @@ body.previewing .results-stage { padding-top: 14vh; }
 }
 .admin-panel .invites-linked strong { color: #0a0a0a; font-weight: 600; }
 
+/* Seats input on the Step 1 form */
+.admin-panel .invites-seats-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  background: #fbf8f1;
+  border: 1px solid #d8d2c5;
+}
+.admin-panel .invites-seats-input label {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #807868;
+  font-weight: 600;
+}
+.admin-panel .invites-seats-input input {
+  width: 56px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 15px;
+  color: #0a0a0a;
+  font-weight: 600;
+  padding: 14px 0;
+  text-align: center;
+}
+.admin-panel .invites-seats-input input:focus { outline: none; }
+.admin-panel .invites-seats-hint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #807868;
+  line-height: 1.5;
+}
+
+/* Seats row inside each invite table cell */
+.admin-panel .invites-seats-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 11px;
+  color: #555048;
+}
+.admin-panel .invites-seats-label {
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #807868;
+  font-weight: 700;
+}
+.admin-panel .invites-seats-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0a0a0a;
+  letter-spacing: -0.005em;
+}
+.admin-panel .invites-seats-row.over .invites-seats-count {
+  color: #c93a16;
+}
+.admin-panel .invites-seats-warn {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #c93a16;
+  padding: 3px 8px;
+  font-weight: 700;
+}
+.admin-panel .invites-seats-adjust {
+  display: inline-flex;
+  margin-left: auto;
+  gap: 4px;
+}
+.admin-panel .invites-seats-adjust button {
+  width: 22px;
+  height: 22px;
+  border: 1px solid #d8d2c5;
+  background: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0a0a0a;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.admin-panel .invites-seats-adjust button:hover {
+  background: #ff481d;
+  border-color: #ff481d;
+  color: #ffffff;
+}
+
 .admin-panel .invites-funnel {
   display: flex; flex-wrap: wrap; gap: 8px;
 }
@@ -17375,8 +17468,13 @@ function renderAdminInvites() {
         </div>
         <div class="invites-form">
           <input id="adminInviteEmail" type="email" placeholder="name@company.com" autocapitalize="off" spellcheck="false" class="invites-input" onkeydown="if(event.key==='Enter'){event.preventDefault();adminSendInvite();}"/>
+          <div class="invites-seats-input">
+            <label for="adminInviteSeats">Seats</label>
+            <input id="adminInviteSeats" type="number" min="1" max="50" value="2" />
+          </div>
           <button class="invites-send" onclick="adminSendInvite()">Send invite &amp; copy link</button>
         </div>
+        <div class="invites-seats-hint">Default 2 seats lets the invitee complete with their own email and share the link with one colleague. Increase to allow more.</div>
         <div id="adminInviteStatus" class="invites-status" role="status" aria-live="polite"></div>
       </div>
 
@@ -17469,6 +17567,15 @@ function renderInvitesTable(invites) {
             ${pip(started ? 'Started' : 'Not started', started, 'amber')}
             ${pip(completed ? `Completed ${completedCount}×` : 'Not completed', completed, 'green')}
           </div>
+          <div class="invites-seats-row${inv.over_quota ? ' over' : ''}">
+            <span class="invites-seats-label">Seats</span>
+            <span class="invites-seats-count">${inv.seats_used || 0}/${inv.seats || 2}</span>
+            ${inv.over_quota ? '<span class="invites-seats-warn">Over quota</span>' : ''}
+            <span class="invites-seats-adjust">
+              <button type="button" title="Remove a seat" onclick="adminAdjustSeats(${i}, -1)">−</button>
+              <button type="button" title="Add a seat" onclick="adminAdjustSeats(${i}, 1)">+</button>
+            </span>
+          </div>
           <div class="invites-funnel-times">
             ${opened ? `<span>Opened ${fmt(inv.opened_at)}</span>` : ''}
             ${started ? `<span>Started ${fmt(inv.started_at)}</span>` : ''}
@@ -17527,6 +17634,10 @@ function optimisticUpsertInvite(serverResp, email) {
   const norm = String(email || '').toLowerCase().trim();
   const idx = cache.findIndex(r => String(r.email || '').toLowerCase() === norm);
   const existing = idx >= 0 ? cache[idx] : null;
+  const seats = (serverResp && typeof serverResp.seats === 'number')
+    ? serverResp.seats
+    : ((existing && typeof existing.seats === 'number') ? existing.seats : 2);
+  const seatsUsed = existing && typeof existing.seats_used === 'number' ? existing.seats_used : 0;
   const next = {
     email: norm,
     created_at: existing ? existing.created_at : now,
@@ -17538,7 +17649,12 @@ function optimisticUpsertInvite(serverResp, email) {
     completions: existing ? existing.completions : 0,
     last_completed_at: existing ? existing.last_completed_at : null,
     invite_url: (serverResp && serverResp.url) || (existing && existing.invite_url) || null,
-    invite_code: (serverResp && serverResp.code) || (existing && existing.invite_code) || null
+    invite_code: (serverResp && serverResp.code) || (existing && existing.invite_code) || null,
+    linked_emails: (existing && Array.isArray(existing.linked_emails)) ? existing.linked_emails : [],
+    seats,
+    seats_used: seatsUsed,
+    seats_remaining: Math.max(0, seats - seatsUsed),
+    over_quota: seatsUsed > seats
   };
   if (idx >= 0) cache.splice(idx, 1);
   cache.unshift(next); // most recent at the top, matches server sort order
@@ -17550,23 +17666,57 @@ async function adminSendInvite() {
   if (!input) return;
   const email = (input.value || '').trim();
   if (!email) { setAdminInviteStatus('Enter an email address.', 'error'); return; }
+  const seatsInput = document.getElementById('adminInviteSeats');
+  const seatsRaw = seatsInput ? parseInt(seatsInput.value, 10) : 2;
+  const seats = Number.isFinite(seatsRaw) ? Math.max(1, Math.min(50, seatsRaw)) : 2;
   setAdminInviteStatus('Sending invite…', '');
   try {
     const resp = await fetch('/api/admin/invites', {
       method: 'POST',
       headers: Object.assign({ 'content-type': 'application/json' }, adminAuthHeaders()),
-      body: JSON.stringify({ email })
+      body: JSON.stringify({ email, seats })
     });
     const j = await resp.json().catch(() => ({}));
     if (!resp.ok) { setAdminInviteStatus(j.error || ('Failed (' + resp.status + ')'), 'error'); return; }
-    setAdminInviteStatus(`Sent to ${email}. Link copied to clipboard for sharing.`, 'success');
+    setAdminInviteStatus(`Sent to ${email} (${seats} seat${seats === 1 ? '' : 's'}). Link copied to clipboard for sharing.`, 'success');
     input.value = '';
+    if (seatsInput) seatsInput.value = '2';
     if (j.url) { try { await navigator.clipboard.writeText(j.url); } catch (e) {} }
-    // Optimistic insert — the new row shows up immediately, no refresh needed.
     optimisticUpsertInvite(j, email);
-    // Background reconcile a few seconds later to pick up any server-side
-    // fields we didn't replicate locally.
     setTimeout(adminFetchInvites, 4500);
+  } catch (e) {
+    setAdminInviteStatus('Network error: ' + e.message, 'error');
+  }
+}
+
+async function adminAdjustSeats(i, delta) {
+  const cache = window.__adminInvitesCache || [];
+  const inv = cache[i];
+  if (!inv) return;
+  const currentSeats = typeof inv.seats === 'number' ? inv.seats : 2;
+  const next = Math.max(1, Math.min(50, currentSeats + delta));
+  if (next === currentSeats) return;
+  setAdminInviteStatus(`Updating seats for ${inv.email}…`, '');
+  try {
+    const resp = await fetch('/api/admin/invites/seats', {
+      method: 'POST',
+      headers: Object.assign({ 'content-type': 'application/json' }, adminAuthHeaders()),
+      body: JSON.stringify({ email: inv.email, seats: next })
+    });
+    const j = await resp.json().catch(() => ({}));
+    if (!resp.ok) { setAdminInviteStatus(j.error || ('Failed (' + resp.status + ')'), 'error'); return; }
+    setAdminInviteStatus(`${inv.email}: ${next} seats.`, 'success');
+    // Optimistic update — bump the local cache so the row reflects the change immediately.
+    const updated = (window.__adminInvitesCache || []).slice();
+    if (updated[i]) {
+      updated[i] = Object.assign({}, updated[i], {
+        seats: next,
+        seats_remaining: Math.max(0, next - (updated[i].seats_used || 0)),
+        over_quota: (updated[i].seats_used || 0) > next
+      });
+      renderInvitesTable(updated);
+    }
+    setTimeout(adminFetchInvites, 3500);
   } catch (e) {
     setAdminInviteStatus('Network error: ' + e.message, 'error');
   }

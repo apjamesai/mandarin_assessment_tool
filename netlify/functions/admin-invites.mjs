@@ -58,19 +58,33 @@ async function readCompletions(store, email) {
 
 // Sum completions across the invitee's email AND any linked emails (where
 // the invitee used a different email at intake than the one they were
-// invited at). Newest last_at wins.
+// invited at). Newest last_at wins. Also returns which of the candidate
+// emails have at least one completion — used to compute seat utilisation.
 async function readAggregatedCompletions(store, primaryEmail, linkedEmails) {
   const allEmails = [primaryEmail, ...(Array.isArray(linkedEmails) ? linkedEmails : [])]
     .filter(Boolean)
-    .filter((e, i, arr) => arr.indexOf(e) === i); // dedupe
+    .filter((e, i, arr) => arr.indexOf(e) === i);
   let total = 0;
   let latest = null;
+  const emailsWithCompletions = [];
   for (const e of allEmails) {
     const c = await readCompletions(store, e);
     total += c.count;
+    if (c.count > 0) emailsWithCompletions.push(e);
     if (c.last_at && (!latest || c.last_at > latest)) latest = c.last_at;
   }
-  return { count: total, last_at: latest };
+  return { count: total, last_at: latest, emails_with_completions: emailsWithCompletions };
+}
+
+const DEFAULT_SEATS = 2;
+const MIN_SEATS = 1;
+const MAX_SEATS = 50;
+
+function normaliseSeats(input, fallback) {
+  if (input == null || input === "") return fallback;
+  const n = parseInt(input, 10);
+  if (!Number.isFinite(n)) return fallback;
+  return Math.max(MIN_SEATS, Math.min(MAX_SEATS, n));
 }
 
 export default async (req) => {
@@ -89,6 +103,12 @@ export default async (req) => {
           const rec = await store.get(item.key, { type: "json" });
           if (!rec || !rec.email) continue;
           const comp = await readAggregatedCompletions(store, rec.email, rec.linked_emails);
+          // Seats: how many DISTINCT emails are allowed to complete under
+          // this invite. Default 2 keeps backwards compat with every
+          // existing invite that doesn't have an explicit seats value yet.
+          const seats = normaliseSeats(rec.seats, DEFAULT_SEATS);
+          // seats_used counts distinct emails that have completed at least once
+          const seatsUsed = comp.emails_with_completions.length;
           out.push({
             email: rec.email,
             created_at: rec.created_at || null,
@@ -105,7 +125,11 @@ export default async (req) => {
             last_completed_at: comp.last_at,
             invite_url: rec.last_invite_url || null,
             invite_code: inviteCodeForEmail(rec.email),
-            linked_emails: Array.isArray(rec.linked_emails) ? rec.linked_emails : []
+            linked_emails: Array.isArray(rec.linked_emails) ? rec.linked_emails : [],
+            seats,
+            seats_used: seatsUsed,
+            seats_remaining: Math.max(0, seats - seatsUsed),
+            over_quota: seatsUsed > seats
           });
         } catch (_) { /* skip malformed records */ }
       }
@@ -150,6 +174,11 @@ export default async (req) => {
     rec.send_history.push({ sent_at: now, by: auth.email || null });
     // Keep history reasonable
     if (rec.send_history.length > 50) rec.send_history = rec.send_history.slice(-50);
+    // Seats: only overwrite if explicitly supplied in this request. Otherwise
+    // keep whatever was set previously (or fall back to the default at read time).
+    if (body && body.seats != null && body.seats !== "") {
+      rec.seats = normaliseSeats(body.seats, DEFAULT_SEATS);
+    }
 
     try {
       await store.setJSON(key, rec);
@@ -183,7 +212,8 @@ export default async (req) => {
       url: inviteUrl,
       code: inviteCode,
       send_count: rec.send_history.length,
-      last_sent_at: now
+      last_sent_at: now,
+      seats: normaliseSeats(rec.seats, DEFAULT_SEATS)
     }, 200);
   }
 
