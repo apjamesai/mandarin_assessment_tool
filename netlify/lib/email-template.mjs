@@ -156,7 +156,7 @@ export function buildInviteEmailHTML(email, inviteUrl, inviteCode) {
     <div style="font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#ff481d;margin-bottom:14px">You're invited</div>
     <h1 style="font-size:30px;font-weight:900;line-height:1.05;letter-spacing:-0.015em;text-transform:uppercase;color:#0a0a0a;margin:0 0 14px">Take the Strategic Capability Assessment</h1>
     <p style="font-size:15px;line-height:1.6;color:#1c1c1c;margin:0 0 14px">You've been invited to take Mandarin's Strategic Capability Assessment, a short, story-driven diagnostic that surfaces how you think, decide, and lead under pressure.</p>
-    <p style="font-size:15px;line-height:1.6;color:#1c1c1c;margin:0 0 22px">It takes around 20 minutes. Your result includes your strategic archetype, your scores across the 12 essential practices, and the patterns most likely to drift under pressure.</p>
+    <p style="font-size:15px;line-height:1.6;color:#1c1c1c;margin:0 0 22px">It takes around 30 minutes. Your result includes your strategic archetype, your scores across the 12 essential practices, and the patterns most likely to drift under pressure.</p>
     <div style="margin:8px 0 22px">${ctaButton("Begin the assessment", inviteUrl)}</div>
     <p style="font-size:12px;line-height:1.5;color:#555048;margin:12px 0 0">If the button doesn't work, paste this link into your browser:<br><span style="font-family:monospace;font-size:11px;color:#1c1c1c;word-break:break-all">${esc(inviteUrl)}</span></p>
     ${codeBlock}
