@@ -1,12 +1,15 @@
 // GET /api/sessions/list
 // Admin-only. Returns every stored session, newest first.
-// Requires header: Authorization: Bearer <ADMIN_API_TOKEN>
+// Auth accepts either the static ADMIN_API_TOKEN (legacy) OR a valid
+// admin magic-link JWT (sub: 'admin', email in allowlist), via the shared
+// requireAdminToken helper in lib/auth.mjs.
 
 import { getStore } from "@netlify/blobs";
+import { requireAdminToken, jsonResponse } from "../lib/auth.mjs";
 
 export default async (req) => {
-  const auth = requireAdmin(req);
-  if (!auth.ok) return json({ error: auth.error }, auth.status);
+  const auth = requireAdminToken(req);
+  if (!auth.ok) return jsonResponse({ error: auth.error || "Unauthorized" }, auth.status || 401);
 
   // Netlify Blobs treats keys with "/" as nested under a virtual directory.
   // List with `directories: true` so the full key (e.g. "sessions/abc.json")
@@ -18,7 +21,7 @@ export default async (req) => {
     blobs = result.blobs || [];
   } catch (e) {
     console.error("Failed to list Blobs:", e);
-    return json({ error: "Storage list failed" }, 500);
+    return jsonResponse({ error: "Storage list failed" }, 500);
   }
 
   // Fetch each session. For low volume (hundreds), one round-trip each is fine.
@@ -37,28 +40,8 @@ export default async (req) => {
     (b.completed_at || "").localeCompare(a.completed_at || "")
   );
 
-  return json({ sessions, count: sessions.length }, 200);
+  return jsonResponse({ sessions, count: sessions.length }, 200);
 };
-
-function requireAdmin(req) {
-  const expected = Netlify.env.get("ADMIN_API_TOKEN");
-  if (!expected) {
-    return { ok: false, status: 500, error: "Server is missing ADMIN_API_TOKEN" };
-  }
-  const header = req.headers.get("authorization") || "";
-  const match = header.match(/^Bearer\s+(.+)$/i);
-  if (!match || match[1] !== expected) {
-    return { ok: false, status: 401, error: "Unauthorized" };
-  }
-  return { ok: true };
-}
-
-function json(body, status) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: { "content-type": "application/json" }
-  });
-}
 
 export const config = {
   path: "/api/sessions/list"

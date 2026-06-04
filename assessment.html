@@ -3611,6 +3611,13 @@ body.previewing .results-stage { padding-top: 14vh; }
   border: 1px solid #d8d2c5;
   user-select: all;
 }
+.admin-panel .invites-linked {
+  margin-top: 6px;
+  font-size: 11px;
+  color: #555048;
+  line-height: 1.5;
+}
+.admin-panel .invites-linked strong { color: #0a0a0a; font-weight: 600; }
 
 .admin-panel .invites-funnel {
   display: flex; flex-wrap: wrap; gap: 8px;
@@ -17453,6 +17460,7 @@ function renderInvitesTable(invites) {
         <td class="cell-email">
           <div class="invites-email">${escapeHTML(inv.email)}</div>
           <div class="invites-meta">Sent ${inv.send_count || 0}× · last ${fmt(inv.last_sent_at)}${inv.invited_by ? ` · by ${escapeHTML(inv.invited_by)}` : ''}</div>
+          ${Array.isArray(inv.linked_emails) && inv.linked_emails.length ? `<div class="invites-linked">Also completed as <strong>${inv.linked_emails.map(escapeHTML).join('</strong>, <strong>')}</strong></div>` : ''}
           ${inv.invite_code ? `<div class="invites-code" title="Fallback code · enter on /invite-required.html if the link fails">${escapeHTML(inv.invite_code)}</div>` : ''}
         </td>
         <td class="cell-funnel">
@@ -18231,10 +18239,19 @@ function newSessionId() {
 }
 
 function submitSessionToCloud(session) {
+  // If the user arrived via an invite, attach the invite token so the server
+  // can link this completion back to the inviter's record even when the
+  // email used at intake differs from the one the invite was sent to.
+  // Token validation happens server-side via HMAC; we just pass it through.
+  let payload = session;
+  try {
+    const inviteToken = localStorage.getItem('mandarin.assessment.inviteToken') || '';
+    if (inviteToken) payload = Object.assign({}, session, { invite_token: inviteToken });
+  } catch (e) {}
   return fetch('/api/sessions/submit', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify(session)
+    body: JSON.stringify(payload)
   }).then(r => r.ok).catch(() => false);
 }
 

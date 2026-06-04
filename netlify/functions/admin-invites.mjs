@@ -56,6 +56,23 @@ async function readCompletions(store, email) {
   return { count: 0, last_at: null };
 }
 
+// Sum completions across the invitee's email AND any linked emails (where
+// the invitee used a different email at intake than the one they were
+// invited at). Newest last_at wins.
+async function readAggregatedCompletions(store, primaryEmail, linkedEmails) {
+  const allEmails = [primaryEmail, ...(Array.isArray(linkedEmails) ? linkedEmails : [])]
+    .filter(Boolean)
+    .filter((e, i, arr) => arr.indexOf(e) === i); // dedupe
+  let total = 0;
+  let latest = null;
+  for (const e of allEmails) {
+    const c = await readCompletions(store, e);
+    total += c.count;
+    if (c.last_at && (!latest || c.last_at > latest)) latest = c.last_at;
+  }
+  return { count: total, last_at: latest };
+}
+
 export default async (req) => {
   const auth = requireAdminToken(req);
   if (!auth.ok) return jsonResponse({ error: auth.error || "Unauthorized" }, auth.status || 401);
@@ -71,7 +88,7 @@ export default async (req) => {
         try {
           const rec = await store.get(item.key, { type: "json" });
           if (!rec || !rec.email) continue;
-          const comp = await readCompletions(store, rec.email);
+          const comp = await readAggregatedCompletions(store, rec.email, rec.linked_emails);
           out.push({
             email: rec.email,
             created_at: rec.created_at || null,
@@ -87,7 +104,8 @@ export default async (req) => {
             completions: comp.count,
             last_completed_at: comp.last_at,
             invite_url: rec.last_invite_url || null,
-            invite_code: inviteCodeForEmail(rec.email)
+            invite_code: inviteCodeForEmail(rec.email),
+            linked_emails: Array.isArray(rec.linked_emails) ? rec.linked_emails : []
           });
         } catch (_) { /* skip malformed records */ }
       }
