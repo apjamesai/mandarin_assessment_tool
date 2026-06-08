@@ -50,12 +50,19 @@ export default async (req) => {
   const token = mintUserMagicToken(session.email, magicSecret, 30);
   const magicUrl = `${siteUrl}/me?token=${encodeURIComponent(token)}`;
 
-  // Build attachment, if PDF supplied
+  // Build attachment, if PDF supplied. Filename includes both first and
+  // last name so two participants with the same first name (and the same
+  // completion date) produce distinguishable files — for example
+  // mandarin-tom-baker-2026-06-08.pdf vs mandarin-tom-mathews-2026-06-08.pdf.
   const attachments = [];
   if (typeof body.pdfBase64 === "string" && body.pdfBase64.length > 0) {
-    const safeName = String(session.firstName || "result").replace(/[^a-z0-9-]+/gi, "-").toLowerCase();
+    const safe = s => String(s || "").replace(/[^a-z0-9-]+/gi, "-").toLowerCase().replace(/^-+|-+$/g, "");
+    const first = safe(session.firstName);
+    const last  = safe(session.lastName);
+    const date  = (session.completed_at || "").slice(0, 10);
+    const slug  = [first, last].filter(Boolean).join("-") || "result";
     attachments.push({
-      filename: `mandarin-${safeName}-${(session.completed_at || "").slice(0,10)}.pdf`,
+      filename: `mandarin-${slug}-${date}.pdf`.replace(/--+/g, "-"),
       content: body.pdfBase64
     });
   }

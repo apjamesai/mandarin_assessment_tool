@@ -16655,10 +16655,18 @@ function buildResultsPrintHTML(session) {
   const totalPages = 7;
 
   // ─── PAGE 1: Cover ───────────────────────────────────────────────────────
+  // Participant name is placed prominently right under the eyebrow so two
+  // PDFs by people with the same archetype but different names are still
+  // visually distinguishable at a glance (no need to read the filename or
+  // the small "FOR" callout further down).
+  const coverNameBlock = fullName
+    ? `<div style="font-size:22px;font-weight:700;letter-spacing:-0.005em;color:#0a0a0a;margin-bottom:18px;text-transform:none">Prepared for <span style="font-weight:900">${escapeHTML(fullName)}</span></div>`
+    : '';
   const page1 = `
     <div class="pdf-page">
       ${pageHeader('Strategic Capability Assessment')}
-      <div class="pdf-eyebrow" style="margin-bottom:14px">Personal result</div>
+      <div class="pdf-eyebrow" style="margin-bottom:10px">Personal result</div>
+      ${coverNameBlock}
       <div class="pdf-h1">${escapeHTML(arch.name)}</div>
       <div style="font-size:14px;font-style:italic;color:#555048;margin-bottom:8px">${escapeHTML(arch.band || overallBandName)}</div>
       <div style="font-size:14px;color:#1c1c1c;line-height:1.55;max-width:600px;margin-bottom:24px">${escapeHTML(arch.headline || '')}</div>
