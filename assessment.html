@@ -16844,7 +16844,24 @@ function buildResultExplanation(R) {
 function personaliseArchetypeText(text, R, opts) {
   if (!text || !R || !R.practices) return text || '';
   const ctx = personaliseContext(R, opts || {});
-  return String(text).replace(/\{\{(\w+)\}\}/g, (_, key) => ctx[key] != null ? ctx[key] : ('{{' + key + '}}'));
+  const t = String(text);
+  // If the text has template slots, resolve them in place — this is the
+  // preferred path (base ARCHETYPES use it; updated skin overrides can too).
+  if (t.includes('{{')) {
+    return t.replace(/\{\{(\w+)\}\}/g, (_, key) => ctx[key] != null ? ctx[key] : ('{{' + key + '}}'));
+  }
+  // Fallback for skin overrides that pre-date the template syntax: prepend a
+  // single personalised sentence so the body still adapts to the user. The
+  // lead names their strongest and weakest practice in framework terms — same
+  // signal as the "Why you received this result" bullets, just contextualised
+  // alongside the archetype prose. Only the BODY field gets the lead (skipped
+  // for risk/focus/next so we don't carpet the page with the same names).
+  const looksLikeBody = (opts && opts.field === 'body') || (t.length > 200);
+  if (looksLikeBody && ctx.topPractice && ctx.bottomPractice) {
+    const lead = `Your strongest practice in this pattern is <em>${ctx.topPractice}</em>, and your softest is <em>${ctx.bottomPractice}</em>. The body that follows describes the archetype shape; the way it shows up for you is anchored in those two practices. `;
+    return lead + t;
+  }
+  return t;
 }
 
 function personaliseContext(R, opts) {
@@ -16882,29 +16899,29 @@ function personaliseContext(R, opts) {
 // score weakest in self-awareness. You don't — your L1 is 78."
 const ARCHETYPE_MODAL = {
   reactive_defender: [
-    { test: R => R.levels.L1 < 45, match: 'Self-awareness is the weakest level in your pattern, which is typical for this band.', miss: 'Self-awareness is not the weakest level in your pattern, which is unusual at this band and gives you a foothold most Reactive Defenders do not have.' },
-    { test: R => Math.max(R.risks.control_bias, R.risks.detachment_pressure) > 55, match: 'Control or detachment under pressure is firing strongly in your pattern, which is the typical risk overlay here.', miss: 'Your risk overlay is quieter than most at this band; the pattern is more about under-developed practice than entrenched defensive habits.' },
-    { test: R => R.practices.act_decisively > R.practices.think_critically + 10, match: 'You act faster than you think, which is the engine of the Reactive Defender pattern.', miss: 'You think before you act, which is rarer at this band, and a real lever for your development.' }
+    { test: R => R.levels.L1 < 45, match: 'Self-awareness is the weakest level in your pattern, which is typical for this band.', miss: 'Self-awareness is not the weakest level in your pattern, which is unusual at this band and gives you a foothold most people here do not have.' },
+    { test: R => Math.max(R.risks.control_bias, R.risks.detachment_pressure) > 55, match: 'Control or detachment under pressure is firing strongly in your pattern, the typical risk overlay here.', miss: 'Your risk overlays are quieter than most at this band; the pattern is more about under-developed practice than entrenched defensive habits.' },
+    { test: R => R.practices.act_decisively > R.practices.think_critically + 10, match: 'You act faster than you think, which is the engine of this pattern.', miss: 'You think before you act, which is rarer at this band, and a real lever for your development.' }
   ],
   tactical_survivor: [
     { test: R => R.levels.L3 < 50, match: 'Your strategic-capabilities level is the weakest, which is typical for this band.', miss: 'Your strategic-capabilities level is not the weakest, which is unusual; your gap sits somewhere other than the future horizon.' },
-    { test: R => R.practices.act_decisively > 60, match: 'You act decisively, the strength most Tactical Survivors share.', miss: 'Decisiveness is not your defining strength, which sets you apart from the modal pattern here.' },
-    { test: R => R.practices.future_focused < 50, match: 'Future-focus is muted in your pattern, the typical Tactical Survivor blindspot.', miss: 'Future-focus is not your weakest signal, which means the time-horizon gap most Tactical Survivors carry is not your main edge.' }
+    { test: R => R.practices.act_decisively > 60, match: 'You act decisively, the strength most people in this band share.', miss: 'Decisiveness is not your defining strength, which sets you apart from the modal pattern here.' },
+    { test: R => R.practices.future_focused < 50, match: 'Future-focus is muted in your pattern, the typical blindspot at this band.', miss: 'Future-focus is not your weakest signal, which means the time-horizon gap most people here carry is not your main edge.' }
   ],
   hidden_drifter: [
-    { test: R => R.levels.L1 < R.levels.L2 - 5, match: 'Your self-awareness lags your open-mindedness, the classic Hidden Drifter asymmetry.', miss: 'Your self-awareness is keeping pace with your open-mindedness, which is unusual here and means the drift in your case is less likely to come from not seeing yourself.' },
-    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift) > 55, match: 'Control bias or moral drift is loud in your pattern, the typical Hidden Drifter risk overlay.', miss: 'Your risk overlay is quieter than most Hidden Drifters, suggesting the drift may show up later than usual or through a less common channel.' },
-    { test: R => R.practices.listen_deeply < R.practices.influence_effortlessly - 10, match: 'You influence faster than you listen, a common Hidden Drifter pattern.', miss: 'You listen at least as well as you influence, which is uncommon at this band and a real strategic asset.' }
+    { test: R => R.levels.L1 < R.levels.L2 - 5, match: 'Your self-awareness lags your open-mindedness, the classic asymmetry at this band.', miss: 'Your self-awareness is keeping pace with your open-mindedness, which is unusual here and means the drift in your case is less likely to come from not seeing yourself.' },
+    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift) > 55, match: 'Control bias or moral drift is loud in your pattern, the typical risk overlay at this band.', miss: 'Your risk overlays are quieter than most at this band, suggesting the drift may show up later than usual or through a less common channel.' },
+    { test: R => R.practices.listen_deeply < R.practices.influence_effortlessly - 10, match: 'You influence faster than you listen, a common pattern at this band.', miss: 'You listen at least as well as you influence, which is uncommon at this band and a real strategic asset.' }
   ],
   strategic_operator: [
-    { test: R => R.levels.L4 > R.levels.L1 && R.levels.L4 > R.levels.L2 && R.levels.L4 > R.levels.L3, match: 'Your impact level is leading the pattern, the typical Strategic Operator shape.', miss: 'Your impact level is not leading the pattern, suggesting your version of Strategic Operator sits more in the inner or strategic work than in outward influence.' },
+    { test: R => R.levels.L4 > R.levels.L1 && R.levels.L4 > R.levels.L2 && R.levels.L4 > R.levels.L3, match: 'Your impact level is leading the pattern, the typical shape at this band.', miss: 'Your impact level is not leading the pattern, suggesting your version sits more in the inner or strategic work than in outward influence.' },
     { test: R => R.practices.collaborate_inclusively > 60 && R.practices.influence_effortlessly > 60, match: 'You collaborate and influence well, the dual signature of this band.', miss: 'Either collaboration or influence lags your other strengths, which means your version of this band is sharper inwardly than outwardly.' },
-    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift, R.risks.detachment_pressure) > 50, match: 'A risk overlay is starting to show, the consistency edge most Strategic Operators carry.', miss: 'Your risk overlays are unusually quiet for this band, suggesting genuine integration rather than the consistency challenge typical here.' }
+    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift, R.risks.detachment_pressure) > 50, match: 'A risk overlay is starting to show, the consistency edge most people in this band carry.', miss: 'Your risk overlays are unusually quiet for this band, suggesting genuine integration rather than the consistency challenge typical here.' }
   ],
   force_multiplier: [
-    { test: R => R.overall >= 90, match: 'Your overall capability is at the level expected of a Force Multiplier.', miss: 'Your overall is at the lower end of this band, meaning the multiplier reading is provisional, sensitive to a few practices.' },
-    { test: R => Math.min(R.levels.L1, R.levels.L2, R.levels.L3, R.levels.L4) > 80, match: 'All four levels are strong, the hallmark of a Force Multiplier pattern.', miss: 'One of your levels lags the others, which means the multiplier capacity is real but not yet uniformly distributed.' },
-    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift, R.risks.detachment_pressure) < 35, match: 'Your risk overlays are minimal, the calm centre most Force Multipliers operate from.', miss: 'A risk overlay is firing more strongly than is typical for this band, the place to watch as your multiplication scales.' }
+    { test: R => R.overall >= 90, match: 'Your overall capability sits at the level expected for this band.', miss: 'Your overall is at the lower end of this band, meaning the reading is provisional and sensitive to a few practices.' },
+    { test: R => Math.min(R.levels.L1, R.levels.L2, R.levels.L3, R.levels.L4) > 80, match: 'All four levels are strong, the hallmark of this pattern.', miss: 'One of your levels lags the others, which means the multiplier capacity is real but not yet uniformly distributed.' },
+    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift, R.risks.detachment_pressure) < 35, match: 'Your risk overlays are minimal, the calm centre most people at this band operate from.', miss: 'A risk overlay is firing more strongly than is typical for this band, the place to watch as your impact scales.' }
   ]
 };
 
@@ -17887,8 +17904,8 @@ function showResults(isPreview) {
       <!-- PATTERN PROSE (kept short) -->
       <div class="results-section">
         <div class="results-section-title">Your Pattern</div>
-        <div class="results-body">${personaliseArchetypeText(arch.body, R)}</div>
-        <div class="results-section-display" style="margin-top:32px">${personaliseArchetypeText(arch.risk, R)}</div>
+        <div class="results-body">${personaliseArchetypeText(arch.body, R, { field: 'body' })}</div>
+        <div class="results-section-display" style="margin-top:32px">${personaliseArchetypeText(arch.risk, R, { field: 'risk' })}</div>
       </div>
 
       <!-- HOW YOU APPROACHED THE MOMENTS — surfaces the user's actual ranking choices.
@@ -17928,8 +17945,8 @@ function showResults(isPreview) {
       <!-- DEVELOPMENT FOCUS -->
       <div class="results-section">
         <div class="results-section-title">Your Development Focus</div>
-        <div class="results-section-display">${personaliseArchetypeText(arch.focus, R)}</div>
-        <div class="results-body">${personaliseArchetypeText(arch.next, R)}</div>
+        <div class="results-section-display">${personaliseArchetypeText(arch.focus, R, { field: 'focus' })}</div>
+        <div class="results-body">${personaliseArchetypeText(arch.next, R, { field: 'next' })}</div>
       </div>
 
       <!-- NEXT STEPS, ACTIONS TO TEST AND TRIAL -->
