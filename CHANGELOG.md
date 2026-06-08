@@ -13,6 +13,12 @@ A running record of changes to the Mandarin Strategic Capability Assessment, new
 
 ## 2026-06-08
 
+### Report differentiation: personalised prose, score sharpening, ranking moments, archetype contrast
+**`1aedcda`** — Four-part push to address the beta finding that 6/7 sessions landed Hidden Drifter inside a 5-point overall band, with very different underlying patterns but identical reports. (A) Each archetype's `body` and `risk` strings now carry `{{topPractice}}` and `{{bottomPractice}}` slots resolved per-user via `personaliseArchetypeText()`; two same-archetype people now read different bodies. (C) `computeResults` applies a symmetric `f(x) = 50 + sign·|d|^0.75` transformation to each practice and risk score — strong stays strong, weak stays weak, but the middle thins out. Tested against the live beta cohort: practice spreads increase 36→41, 34→42, 28→38. Archetype band assignment unchanged. (D) New "How you approached the moments" block surfaces the user's #1 and last ranking choices for Q9 and Q28 — some of the most individuating data the assessment captures, previously invisible after the user answered. (F) New "Your version of this archetype" block compares the user's actual pattern against 3 modal traits per archetype; matches read subdued, divergences read amber + bold so the *uniqueness* gets the visual weight. Wired into both the results page and PDF page 2. CSS `.moments-grid` and `.version-bullets` in the cinematic palette.
+
+### "Why you received this result" intro tightened
+**`720942a`** — Section_display was reusing the wheel-section's 48px serif which read as a hero rather than a bridge sentence, and the copy double-used "pattern". Replaced with `.why-intro` at sans-serif 15-17px, lighter weight, max 720px wide. Archetype name keeps the serif/amber italic treatment.
+
 ### PDF: full first + last name on cover and in filename
 **`ef5af07`** — Two adjustments so multiple participants with the same first name produce distinguishable artifacts. (1) PDF cover now shows a "Prepared for ALEX POND" row at 22px directly under the eyebrow, surname bolded — previously the name only appeared at 18px inside the overall-capability tile. (2) Server-side email attachment filename now includes the last name as well, so `mandarin-tom-baker-2026-06-08.pdf` and `mandarin-tom-mathews-2026-06-08.pdf` never collide. The in-browser download already used both names; this aligns the server path.
 
