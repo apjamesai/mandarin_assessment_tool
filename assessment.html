@@ -1106,6 +1106,108 @@ h3.display {
   }
 }
 
+/* "How you approached the moments" — two side-by-side cards showing the user's
+   first-rank choice on each of the assessment's ranking questions. The first
+   choice gets full prominence; the last is tucked underneath as context. */
+.moments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  max-width: 880px;
+}
+.moments-card {
+  background: rgba(255, 90, 44, 0.03);
+  border: 1px solid rgba(255, 90, 44, 0.18);
+  padding: 18px 20px;
+}
+.moments-lead {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.moments-first {
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.2vw, 18px);
+  line-height: 1.4;
+  color: var(--ink);
+  font-weight: 400;
+  font-style: italic;
+}
+.moments-last {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  font-family: var(--sans);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ink-mute);
+}
+.moments-last span {
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+/* "Your version of this archetype" — pattern-match bullets. Hits = matches
+   the modal pattern (subdued amber). Miss = diverges (brighter, where the
+   uniqueness lives). */
+.version-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+  max-width: 880px;
+}
+.version-bullets li {
+  position: relative;
+  padding: 12px 16px 12px 36px;
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.015);
+  border-left: 2px solid rgba(255, 255, 255, 0.12);
+  letter-spacing: 0.005em;
+}
+.version-bullets li.miss {
+  background: rgba(255, 90, 44, 0.05);
+  border-left-color: var(--amber);
+  color: var(--ink);
+}
+.version-bullets li::before {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  font-size: 8px;
+  text-align: center;
+  line-height: 12px;
+}
+.version-bullets li.hits::before {
+  content: "=";
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.6);
+}
+.version-bullets li.miss::before {
+  content: "+";
+  background: var(--amber);
+  color: #0a0a0a;
+  font-weight: 700;
+}
+@media (max-width: 720px) {
+  .moments-grid { grid-template-columns: 1fr; }
+}
+
 .results-body em {
   font-family: var(--serif);
   font-style: italic;
@@ -14836,11 +14938,38 @@ function applyConditional(scene) {
   return clone;
 }
 
+// Sharpen a 0-100 score by pushing it away from the middle (50). The first
+// real beta cohort showed scores compressing into a narrow 60-66 band, which
+// meant the report layer had very little dispersion to work with. The fix is
+// not to change the answers, but to amplify the signal that's already there:
+// strong answers should produce strong-looking scores, weak answers weak.
+//
+// f(x) = 50 + sign(x-50) * 100 * (|x-50|/50)^gamma
+//
+// gamma < 1 expands dispersion (a 65 becomes ~70, a 40 becomes ~33). With
+// gamma=0.75, the curve is symmetric, monotonic, and the endpoints stay
+// fixed at 0 and 100. Applied to per-practice scores (and risks) so the
+// archetype assignment band is preserved at the overall-average level.
+function sharpenScore(x, gamma) {
+  const g = gamma == null ? 0.75 : gamma;
+  const v = Math.max(0, Math.min(100, Number(x) || 0));
+  const d = (v - 50) / 50; // -1 .. 1
+  const sign = d < 0 ? -1 : 1;
+  const mag = Math.pow(Math.abs(d), g);
+  return Math.round(clamp(50 + sign * mag * 50, 0, 100));
+}
+
 function computeResults() {
-  const p = {};
+  const pRaw = {};
   Object.keys(STATE.scores.practices).forEach(k => {
-    p[k] = clamp(Math.round(avg(STATE.scores.practices[k])), 0, 100);
+    pRaw[k] = clamp(Math.round(avg(STATE.scores.practices[k])), 0, 100);
   });
+  // Sharpen at scoring time so the values that flow to storage, the wheel,
+  // the PDF, and the email all share the same dispersion-amplified picture.
+  // Overall is the AVERAGE of sharpened practices — this still anchors the
+  // archetype band, but with more spread between two same-archetype people.
+  const p = {};
+  Object.keys(pRaw).forEach(k => { p[k] = sharpenScore(pRaw[k]); });
   const levels = {
     L1: Math.round((p.understand_self + p.master_emotions + p.embed_practices) / 3),
     L2: Math.round((p.be_curious + p.listen_deeply + p.think_critically) / 3),
@@ -14848,9 +14977,13 @@ function computeResults() {
     L4: Math.round((p.act_decisively + p.collaborate_inclusively + p.influence_effortlessly) / 3)
   };
   const overall = Math.round(Object.values(p).reduce((a,b)=>a+b,0) / 12);
+  // Risks also get sharpened — the beta data showed detachment_pressure
+  // pegged at 45 or 55 for everyone, which collapses the differentiation
+  // between people whose under-pressure pattern is genuinely different.
   const r = {};
   Object.keys(STATE.scores.risks).forEach(k => {
-    r[k] = clamp(Math.round(avg(STATE.scores.risks[k].length ? STATE.scores.risks[k] : [0])), 0, 100);
+    const raw = clamp(Math.round(avg(STATE.scores.risks[k].length ? STATE.scores.risks[k] : [0])), 0, 100);
+    r[k] = sharpenScore(raw);
   });
   return { practices: p, levels, overall, risks: r };
 }
@@ -14880,8 +15013,8 @@ const ARCHETYPES = {
     name: 'The Reactive Defender',
     band: 'Strategic Infancy',
     headline: 'You care about protecting what matters, but pressure may be driving more of your strategy than you realise.',
-    body: 'Your result suggests that when stakes rise, your attention narrows fast. You may move into reaction, urgency, or defence before you have understood what is happening. You are committed and action-oriented, but the same energy that makes you formidable in a crisis can make you blind to the pattern beneath it. You may respond to symptoms rather than causes, miss weak signals, or confuse movement with progress.',
-    risk: 'Your risk is not lack of effort. It is pressure-led action. You may be protecting the mission while reinforcing the very patterns that weaken it.',
+    body: 'Your result suggests that when stakes rise, your attention narrows fast. You move into reaction, urgency, or defence before you have understood what is happening. You are committed and action-oriented — and your strongest practice, <em>{{topPractice}}</em>, is real ground to build from. But the same energy that makes you formidable in a crisis can make you blind to the pattern beneath it. <em>{{bottomPractice}}</em> is where your pattern is weakest, and that is exactly the practice that would slow the reaction enough for the strategy to surface. You may respond to symptoms rather than causes, miss weak signals, or confuse movement with progress.',
+    risk: 'Your risk is not lack of effort. It is pressure-led action. With <em>{{bottomPractice}}</em> still developing, you may protect the mission while reinforcing the very patterns that weaken it.',
     focus: 'Start at Level 1, <em>Deepen Self-Awareness</em>. Notice your pressure patterns. Name your triggers. Build a pause before reacting. Separate fact from interpretation. Ask, "What am I not seeing yet?"',
     next: 'Your first breakthrough is likely to come from seeing your own operating system more clearly, before you change anything else.'
   },
@@ -14889,8 +15022,8 @@ const ARCHETYPES = {
     name: 'The Tactical Survivor',
     band: 'Tactical Survivor',
     headline: 'You can handle pressure, but your strategy may be too anchored in the immediate moment.',
-    body: 'You are capable, practical, and effective in difficult situations. You make decisions, keep momentum, and solve immediate problems. Your result suggests, though, that short-term demands may be crowding out longer-term strategic thinking. You may prioritise control over understanding, optimise for delivery rather than direction, and carry too much yourself.',
-    risk: 'Your risk is tactical over-functioning. You may become so good at surviving the current crisis that you unintentionally normalise crisis as the operating model.',
+    body: 'You are capable, practical, and effective in difficult situations. You make decisions, keep momentum, and solve immediate problems — your strongest practice, <em>{{topPractice}}</em>, is the engine of that effectiveness. Your result suggests, though, that short-term demands may be crowding out longer-term strategic thinking. You may prioritise control over understanding, optimise for delivery rather than direction, and carry too much yourself. <em>{{bottomPractice}}</em> is the practice that would most widen the time horizon you actually think in, and it is currently the quietest in your pattern.',
+    risk: 'Your risk is tactical over-functioning. The strength of <em>{{topPractice}}</em> keeps you delivering, but you may become so good at surviving the current crisis that you unintentionally normalise crisis as the operating model.',
     focus: 'Strengthen Level 3, <em>Develop Strategic Capabilities</em>. Focus on future-orientation, creative options, and acting well in uncertainty. Move from "What needs fixing now?" to "What future are we creating through this decision?"',
     next: 'Your growth edge is widening the time horizon you actually think in, from this week, to this decade.'
   },
@@ -14898,8 +15031,8 @@ const ARCHETYPES = {
     name: 'The Hidden Drifter',
     band: 'Hidden Drift',
     headline: 'You are more strategic than most, but your blindspots may emerge precisely when you feel most certain.',
-    body: 'You are thoughtful, capable, and likely well-intentioned. You can see complexity, make decisions, and influence others. But your result suggests a subtle risk: under pressure, your strengths can distort. Clarity becomes certainty. Decisiveness becomes control. Conviction becomes justification. Calm becomes detachment. This is the most psychologically important result because it mirrors how strategic drift happens in real life, not through incompetence, but through intelligent people making apparently reasonable choices under pressure.',
-    risk: 'Your risk is <em>justified drift</em>. You may continue making decisions that each seem defensible while the wider pattern moves quietly away from your stated values.',
+    body: 'You are thoughtful, capable, and likely well-intentioned. You can see complexity, make decisions, and influence others, and your strongest practice, <em>{{topPractice}}</em>, gives the pattern its centre of gravity. But your result suggests a subtle risk: under pressure, your strengths can distort. Clarity becomes certainty. Decisiveness becomes control. Conviction becomes justification. Calm becomes detachment. In your version of this pattern, <em>{{bottomPractice}}</em> is where the drift most likely begins, the place where, when stakes rise, your composure can quietly lose its grip on what is actually happening. This is the most psychologically important result because it mirrors how strategic drift happens in real life: not through incompetence, but through intelligent people making apparently reasonable choices under pressure.',
+    risk: 'Your risk is <em>justified drift</em>. You may continue making decisions that each seem defensible while the wider pattern moves quietly away from your stated values, and the drift is most likely to first surface in <em>{{bottomPractice}}</em>.',
     focus: 'Work across Levels 1 and 2 together, <em>Deepen Self-Awareness</em> and <em>Cultivate Open-Mindedness</em>. Notice yourself under pressure. Listen most carefully when you disagree. Test the assumptions you would rather keep. Invite challenge. Watch the moment when "necessary" becomes a dangerous word.',
     next: 'Your fastest development will come from learning to notice earlier, before the pattern becomes the path.'
   },
@@ -14907,8 +15040,8 @@ const ARCHETYPES = {
     name: 'The Strategic Operator',
     band: 'Strategic Operator',
     headline: 'You show strong strategic capability and a relatively balanced pattern under pressure.',
-    body: 'Your result suggests you can remain clear, reflective, and effective in complex situations. You likely balance action with thought, confidence with humility, and direction with collaboration. Composure, thoughtful decisions, openness, alignment, and awareness of consequence are all visible in your pattern.',
-    risk: 'Your risk is not capability, it is consistency. Under enough pressure, even strong strategic operators drift into old patterns. The opportunity is to make your strategic capability more reliable, more repeatable, and more visible to others.',
+    body: 'Your result suggests you can remain clear, reflective, and effective in complex situations. You likely balance action with thought, confidence with humility, and direction with collaboration. Composure, thoughtful decisions, openness, alignment, and awareness of consequence are visible throughout your pattern, most cleanly in <em>{{topPractice}}</em>, your strongest signal. The interesting question is where you operate at less than your full capability. <em>{{bottomPractice}}</em> is the practice you reach for least, and that gap is the one most likely to keep your strategic instinct from travelling further than it already does.',
+    risk: 'Your risk is not capability, it is consistency. <em>{{topPractice}}</em> is reliable in your pattern. Under enough pressure, though, even strong strategic operators drift into old patterns, most likely starting where <em>{{bottomPractice}}</em> sits.',
     focus: 'Strengthen Level 4, <em>Scale Your Impact</em>. Decision quality, stakeholder alignment, influence without over-control, collaboration under tension. Turning strategic insight into action that travels.',
     next: 'Your growth edge is becoming more conscious, and more deliberate, about the impact you already have.'
   },
@@ -14916,8 +15049,8 @@ const ARCHETYPES = {
     name: 'The Force Multiplier',
     band: 'Strategic Force Multiplier',
     headline: 'You do not just think strategically. You increase the strategic capacity of the people and system around you.',
-    body: 'Your result suggests a highly integrated strategic profile. You can stay aware of yourself under pressure, regulate emotion without disconnecting from consequence, listen deeply, think critically, generate options in uncertainty, decide with courage and humility, and influence without domination. You hold complexity without collapsing into confusion or control.',
-    risk: 'Your risk is <em>over-reliance</em>. Others may look to you for clarity, judgement, and steadiness. Over time, that can quietly create dependency, unless you intentionally build capability in the system around you.',
+    body: 'Your result suggests a highly integrated strategic profile. You can stay aware of yourself under pressure, regulate emotion without disconnecting from consequence, listen deeply, think critically, generate options in uncertainty, decide with courage and humility, and influence without domination, and <em>{{topPractice}}</em> is where that integration is most reliable. You hold complexity without collapsing into confusion or control. Even at this level, your pattern has a thinner edge: <em>{{bottomPractice}}</em> is the practice that lags relative to the others, not because it is weak in absolute terms, but because the rest of you has come up faster around it. That asymmetry is where your next development sits.',
+    risk: 'Your risk is <em>over-reliance</em>. Others may look to you for clarity, judgement, and steadiness, drawn especially to your <em>{{topPractice}}</em>. Over time, that can quietly create dependency, unless you intentionally build capability in the system around you.',
     focus: 'Your next level is multiplication. Develop strategic capability in others. Design decision systems. Build collective intelligence. Create the conditions for others to hold uncertainty without panic.',
     next: 'Your development edge is to become less necessary, by making the system more strategically capable.'
   }
@@ -16701,6 +16834,136 @@ function buildResultExplanation(R) {
   return bullets.slice(0, 4);
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// Personalised archetype prose
+// Archetype body/risk strings now carry {{slot}} markers. This helper
+// resolves those slots against the user's actual result (top + bottom
+// practice names from FRAMEWORK). Returns the original text unchanged
+// if no slots are present, so skin-overridden archetypes that haven't
+// yet adopted the template syntax still work.
+function personaliseArchetypeText(text, R, opts) {
+  if (!text || !R || !R.practices) return text || '';
+  const ctx = personaliseContext(R, opts || {});
+  return String(text).replace(/\{\{(\w+)\}\}/g, (_, key) => ctx[key] != null ? ctx[key] : ('{{' + key + '}}'));
+}
+
+function personaliseContext(R, opts) {
+  const P = R.practices || {};
+  const FW = (FRAMEWORK && FRAMEWORK.practices) || {};
+  const sorted = Object.entries(P).sort((a, b) => b[1] - a[1]);
+  const t = sorted[0], b = sorted[sorted.length - 1];
+  const ctx = {
+    firstName: (opts && opts.firstName) || (USER && USER.firstName) || 'you',
+    topPractice: t && FW[t[0]] ? FW[t[0]].name : 'your strongest practice',
+    topPracticeScore: t ? t[1] : null,
+    bottomPractice: b && FW[b[0]] ? FW[b[0]].name : 'your softest practice',
+    bottomPracticeScore: b ? b[1] : null
+  };
+  const levels = R.levels || {};
+  const levelLabels = (FRAMEWORK && FRAMEWORK.levels) || {};
+  const ls = Object.entries(levels).sort((a, b) => b[1] - a[1]);
+  if (ls.length) {
+    const top = levelLabels[ls[0][0]] || {};
+    const bot = levelLabels[ls[ls.length - 1][0]] || {};
+    ctx.topLevel = top.short || top.name || ls[0][0];
+    ctx.bottomLevel = bot.short || bot.name || ls[ls.length - 1][0];
+    ctx.topLevelScore = ls[0][1];
+    ctx.bottomLevelScore = ls[ls.length - 1][1];
+  }
+  return ctx;
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// "Your version of this archetype" contrast block
+// Each archetype has a small set of modal traits — patterns we'd expect
+// most people in that bin to show. We compare the user's actual scores
+// against those modal traits and surface where they MATCH or DON'T MATCH.
+// The DON'T-MATCH lines are the most individuating: "Most Hidden Drifters
+// score weakest in self-awareness. You don't — your L1 is 78."
+const ARCHETYPE_MODAL = {
+  reactive_defender: [
+    { test: R => R.levels.L1 < 45, match: 'Self-awareness is the weakest level in your pattern, which is typical for this band.', miss: 'Self-awareness is not the weakest level in your pattern, which is unusual at this band and gives you a foothold most Reactive Defenders do not have.' },
+    { test: R => Math.max(R.risks.control_bias, R.risks.detachment_pressure) > 55, match: 'Control or detachment under pressure is firing strongly in your pattern, which is the typical risk overlay here.', miss: 'Your risk overlay is quieter than most at this band; the pattern is more about under-developed practice than entrenched defensive habits.' },
+    { test: R => R.practices.act_decisively > R.practices.think_critically + 10, match: 'You act faster than you think, which is the engine of the Reactive Defender pattern.', miss: 'You think before you act, which is rarer at this band, and a real lever for your development.' }
+  ],
+  tactical_survivor: [
+    { test: R => R.levels.L3 < 50, match: 'Your strategic-capabilities level is the weakest, which is typical for this band.', miss: 'Your strategic-capabilities level is not the weakest, which is unusual; your gap sits somewhere other than the future horizon.' },
+    { test: R => R.practices.act_decisively > 60, match: 'You act decisively, the strength most Tactical Survivors share.', miss: 'Decisiveness is not your defining strength, which sets you apart from the modal pattern here.' },
+    { test: R => R.practices.future_focused < 50, match: 'Future-focus is muted in your pattern, the typical Tactical Survivor blindspot.', miss: 'Future-focus is not your weakest signal, which means the time-horizon gap most Tactical Survivors carry is not your main edge.' }
+  ],
+  hidden_drifter: [
+    { test: R => R.levels.L1 < R.levels.L2 - 5, match: 'Your self-awareness lags your open-mindedness, the classic Hidden Drifter asymmetry.', miss: 'Your self-awareness is keeping pace with your open-mindedness, which is unusual here and means the drift in your case is less likely to come from not seeing yourself.' },
+    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift) > 55, match: 'Control bias or moral drift is loud in your pattern, the typical Hidden Drifter risk overlay.', miss: 'Your risk overlay is quieter than most Hidden Drifters, suggesting the drift may show up later than usual or through a less common channel.' },
+    { test: R => R.practices.listen_deeply < R.practices.influence_effortlessly - 10, match: 'You influence faster than you listen, a common Hidden Drifter pattern.', miss: 'You listen at least as well as you influence, which is uncommon at this band and a real strategic asset.' }
+  ],
+  strategic_operator: [
+    { test: R => R.levels.L4 > R.levels.L1 && R.levels.L4 > R.levels.L2 && R.levels.L4 > R.levels.L3, match: 'Your impact level is leading the pattern, the typical Strategic Operator shape.', miss: 'Your impact level is not leading the pattern, suggesting your version of Strategic Operator sits more in the inner or strategic work than in outward influence.' },
+    { test: R => R.practices.collaborate_inclusively > 60 && R.practices.influence_effortlessly > 60, match: 'You collaborate and influence well, the dual signature of this band.', miss: 'Either collaboration or influence lags your other strengths, which means your version of this band is sharper inwardly than outwardly.' },
+    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift, R.risks.detachment_pressure) > 50, match: 'A risk overlay is starting to show, the consistency edge most Strategic Operators carry.', miss: 'Your risk overlays are unusually quiet for this band, suggesting genuine integration rather than the consistency challenge typical here.' }
+  ],
+  force_multiplier: [
+    { test: R => R.overall >= 90, match: 'Your overall capability is at the level expected of a Force Multiplier.', miss: 'Your overall is at the lower end of this band, meaning the multiplier reading is provisional, sensitive to a few practices.' },
+    { test: R => Math.min(R.levels.L1, R.levels.L2, R.levels.L3, R.levels.L4) > 80, match: 'All four levels are strong, the hallmark of a Force Multiplier pattern.', miss: 'One of your levels lags the others, which means the multiplier capacity is real but not yet uniformly distributed.' },
+    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift, R.risks.detachment_pressure) < 35, match: 'Your risk overlays are minimal, the calm centre most Force Multipliers operate from.', miss: 'A risk overlay is firing more strongly than is typical for this band, the place to watch as your multiplication scales.' }
+  ]
+};
+
+function buildArchetypeContrast(R, archKey) {
+  const arch = ARCHETYPE_MODAL[archKey];
+  if (!arch || !R) return [];
+  const out = [];
+  arch.forEach(item => {
+    try {
+      const hits = !!item.test(R);
+      out.push({ hits, text: hits ? item.match : item.miss });
+    } catch (e) {}
+  });
+  return out;
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// "How you approached the moments" — surface the user's ranking choices
+// Two ranking scenes in the assessment: Q9 (resolve the problem) and Q28
+// (redesign the sequence). For each, render the user's #1 ranked option
+// with a one-line framing in Charlie's voice.
+const RANKING_FRAMINGS = [
+  { sceneTitle: 'When asked to resolve the problem', lead: 'you put first:' },
+  { sceneTitle: 'When asked to redesign the sequence', lead: 'you put first:' }
+];
+
+function buildRankingMoments(session) {
+  // session.answers is keyed by scene index; session.scenes_snapshot or
+  // the live SCENES has the items. Live SCENES first; fall back if absent.
+  const answers = (session && session.answers) || {};
+  const scenes = Array.isArray(SCENES) ? SCENES : [];
+  const out = [];
+  scenes.forEach((s, i) => {
+    if (s.kind !== 'ranking') return;
+    const ans = answers[i];
+    if (!Array.isArray(ans) || !ans.length) return;
+    // Items can be strings or { text } objects
+    const items = (s.items || []).map(it => typeof it === 'string' ? it : (it.text || it.label || ''));
+    const firstIdx = ans[0];
+    if (firstIdx == null || !items[firstIdx]) return;
+    const lastIdx = ans[ans.length - 1];
+    const last = items[lastIdx] || '';
+    // Try to find a framing that fits this scene; otherwise auto-derive
+    const framing = (() => {
+      const prompt = (s.prompt || '').toLowerCase();
+      if (prompt.includes('resolve')) return { sceneTitle: 'When asked to resolve the problem', lead: 'you put first:' };
+      if (prompt.includes('redesign')) return { sceneTitle: 'When asked to redesign the sequence', lead: 'you put first:' };
+      return { sceneTitle: 'When faced with the choice', lead: 'you put first:' };
+    })();
+    out.push({
+      sceneTitle: framing.sceneTitle,
+      lead: framing.lead,
+      firstChoice: items[firstIdx],
+      lastChoice: last
+    });
+  });
+  return out;
+}
+
 // Resolve the archetype + secondary pattern + skin info for a session, with
 // graceful fallback when the session was taken on a skin no longer loaded.
 function resolveSessionRefs(session) {
@@ -16913,13 +17176,40 @@ function buildResultsPrintHTML(session) {
       })()}
 
       <div class="pdf-prose">
-        ${stripTags(arch.body || '').split(/\n\n+/).map(p => `<p>${escapeHTML(p.trim())}</p>`).join('')}
+        ${personaliseArchetypeText(stripTags(arch.body || ''), { practices: practices, levels: levels, risks: session.risks || {}, overall: session.overall || 0 }, { firstName: session.firstName }).split(/\n\n+/).map(p => `<p>${escapeHTML(p.trim())}</p>`).join('')}
       </div>
 
       ${arch.risk ? `<div style="background:#fff;border-left:3px solid #ff481d;padding:14px 18px;margin-top:18px">
         <div class="pdf-tile-eyebrow" style="margin-bottom:6px">Where this pattern leaks under pressure</div>
-        <div class="pdf-prose">${escapeHTML(stripTags(arch.risk))}</div>
+        <div class="pdf-prose">${escapeHTML(personaliseArchetypeText(stripTags(arch.risk), { practices: practices, levels: levels, risks: session.risks || {}, overall: session.overall || 0 }, { firstName: session.firstName }))}</div>
       </div>` : ''}
+
+      <!-- YOUR VERSION OF THIS ARCHETYPE — contrast block on the PDF. -->
+      ${(() => {
+        const contrasts = buildArchetypeContrast({ practices: practices, levels: levels, risks: session.risks || {}, overall: session.overall || 0 }, archKey);
+        if (!contrasts.length) return '';
+        return `<div style="background:#fff;border:1px solid #d8d2c5;padding:14px 18px;margin-top:18px">
+          <div class="pdf-tile-eyebrow" style="margin-bottom:8px">Your version of this archetype</div>
+          <div class="pdf-prose" style="margin-bottom:10px;font-size:10.5px;color:#3a352e">Your archetype tells you the shape of risk under pressure. The next section explains how that risk uniquely shows up for you, where your version diverges from the modal pattern at this band.</div>
+          <ul style="margin:0;padding-left:18px;font-family:Inter,Helvetica,Arial,sans-serif;font-size:11px;line-height:1.55;color:#1c1c1c">
+            ${contrasts.map(c => `<li style="margin-bottom:5px${c.hits ? '' : ';color:#0a0a0a;font-weight:500'}">${escapeHTML(c.text)}</li>`).join('')}
+          </ul>
+        </div>`;
+      })()}
+
+      <!-- HOW YOU APPROACHED THE MOMENTS — the user's actual ranking choices. -->
+      ${(() => {
+        const moments = buildRankingMoments(session);
+        if (!moments.length) return '';
+        return `<div style="margin-top:18px">
+          <div class="pdf-tile-eyebrow" style="margin-bottom:8px">How you approached the moments</div>
+          ${moments.map(m => `<div style="background:#fff;border:1px solid #d8d2c5;padding:12px 16px;margin-bottom:8px">
+            <div style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#807868;margin-bottom:4px">${escapeHTML(m.sceneTitle)}, ${escapeHTML(m.lead)}</div>
+            <div style="font-size:12.5px;line-height:1.5;color:#0a0a0a;font-weight:500">${escapeHTML(m.firstChoice)}</div>
+            ${m.lastChoice && m.lastChoice !== m.firstChoice ? `<div style="font-size:10.5px;line-height:1.45;color:#807868;margin-top:4px"><em>You placed last:</em> ${escapeHTML(m.lastChoice)}</div>` : ''}
+          </div>`).join('')}
+        </div>`;
+      })()}
 
       ${sec ? `<div style="margin-top:22px;padding-top:20px;border-top:1px solid #d8d2c5">
         <div class="pdf-eyebrow" style="margin-bottom:10px">Secondary pattern overlay</div>
@@ -17034,12 +17324,12 @@ function buildResultsPrintHTML(session) {
 
       ${arch.focus ? `<div style="background:#fff;border:1px solid #d8d2c5;padding:16px 18px;margin-bottom:14px">
         <div class="pdf-tile-eyebrow">Focus</div>
-        <div class="pdf-prose">${escapeHTML(stripTags(arch.focus))}</div>
+        <div class="pdf-prose">${escapeHTML(personaliseArchetypeText(stripTags(arch.focus), { practices: practices, levels: levels, risks: session.risks || {}, overall: session.overall || 0 }, { firstName: session.firstName }))}</div>
       </div>` : ''}
 
       ${arch.next ? `<div style="background:#fff;border:1px solid #d8d2c5;padding:16px 18px;margin-bottom:18px">
         <div class="pdf-tile-eyebrow">Your first breakthrough</div>
-        <div class="pdf-prose">${escapeHTML(stripTags(arch.next))}</div>
+        <div class="pdf-prose">${escapeHTML(personaliseArchetypeText(stripTags(arch.next), { practices: practices, levels: levels, risks: session.risks || {}, overall: session.overall || 0 }, { firstName: session.firstName }))}</div>
       </div>` : ''}
 
       <div class="pdf-eyebrow" style="margin:14px 0 10px">Practices to test and trial</div>
@@ -17597,15 +17887,49 @@ function showResults(isPreview) {
       <!-- PATTERN PROSE (kept short) -->
       <div class="results-section">
         <div class="results-section-title">Your Pattern</div>
-        <div class="results-body">${arch.body}</div>
-        <div class="results-section-display" style="margin-top:32px">${arch.risk}</div>
+        <div class="results-body">${personaliseArchetypeText(arch.body, R)}</div>
+        <div class="results-section-display" style="margin-top:32px">${personaliseArchetypeText(arch.risk, R)}</div>
       </div>
+
+      <!-- HOW YOU APPROACHED THE MOMENTS — surfaces the user's actual ranking choices.
+           These are highly individuating: two same-archetype people often ranked
+           the four options in different orders. -->
+      ${(() => {
+        const moments = buildRankingMoments({ answers: STATE.answers });
+        if (!moments.length) return '';
+        return `<div class="results-section moments-section">
+          <div class="results-section-title">How you approached the moments</div>
+          <p class="why-intro">When the assessment forced a priority order, you made choices that distinguish your pattern from the typical <em>${escapeHTML(arch.name)}</em>. These were the calls only you made.</p>
+          <div class="moments-grid">
+            ${moments.map(m => `
+              <div class="moments-card">
+                <div class="moments-lead">${escapeHTML(m.sceneTitle)}, ${escapeHTML(m.lead)}</div>
+                <div class="moments-first">${escapeHTML(m.firstChoice)}</div>
+                ${m.lastChoice && m.lastChoice !== m.firstChoice ? `<div class="moments-last"><span>You placed last:</span> ${escapeHTML(m.lastChoice)}</div>` : ''}
+              </div>
+            `).join('')}
+          </div>
+        </div>`;
+      })()}
+
+      <!-- YOUR VERSION OF THIS ARCHETYPE — contrast vs the modal pattern. -->
+      ${(() => {
+        const contrasts = buildArchetypeContrast(R, archKey);
+        if (!contrasts.length) return '';
+        return `<div class="results-section version-section">
+          <div class="results-section-title">Your version of this archetype</div>
+          <p class="why-intro">Your archetype tells you the shape of risk under pressure. Your capability profile, watchouts, and ranking choices explain how that risk uniquely shows up for you. These are the ways your version of <em>${escapeHTML(arch.name)}</em> diverges from the modal pattern at this band.</p>
+          <ul class="version-bullets">
+            ${contrasts.map(c => `<li class="${c.hits ? 'hits' : 'miss'}">${escapeHTML(c.text)}</li>`).join('')}
+          </ul>
+        </div>`;
+      })()}
 
       <!-- DEVELOPMENT FOCUS -->
       <div class="results-section">
         <div class="results-section-title">Your Development Focus</div>
-        <div class="results-section-display">${arch.focus}</div>
-        <div class="results-body">${arch.next}</div>
+        <div class="results-section-display">${personaliseArchetypeText(arch.focus, R)}</div>
+        <div class="results-body">${personaliseArchetypeText(arch.next, R)}</div>
       </div>
 
       <!-- NEXT STEPS, ACTIONS TO TEST AND TRIAL -->
