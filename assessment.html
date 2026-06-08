@@ -1036,6 +1036,67 @@ h3.display {
   letter-spacing: 0.005em;
 }
 
+/* "Why you received this result" — personalised explanation bullets.
+   Mirrors the cinematic results vocabulary (amber accent, serif display,
+   sans-serif body) so the new block sits naturally between the hero and
+   the wheel without inventing a new style language. */
+.why-section .results-section-display strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+.why-section .results-section-display em {
+  color: var(--amber);
+  font-style: italic;
+}
+.why-bullets {
+  list-style: none;
+  counter-reset: why-counter;
+  padding: 0;
+  margin: 4px 0 0;
+  display: grid;
+  gap: 16px;
+  max-width: 880px;
+}
+.why-bullets li {
+  counter-increment: why-counter;
+  position: relative;
+  padding: 14px 18px 14px 56px;
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.65;
+  color: var(--ink-soft);
+  background: rgba(255, 90, 44, 0.04);
+  border-left: 2px solid var(--amber);
+  letter-spacing: 0.005em;
+}
+.why-bullets li::before {
+  content: counter(why-counter, decimal-leading-zero);
+  position: absolute;
+  left: 18px;
+  top: 14px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--amber);
+  font-weight: 600;
+}
+.why-foot {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-top: 6px;
+}
+@media (max-width: 720px) {
+  .why-bullets li { padding: 12px 14px 12px 14px; }
+  .why-bullets li::before {
+    position: static;
+    display: block;
+    margin-bottom: 4px;
+  }
+}
+
 .results-body em {
   font-family: var(--serif);
   font-style: italic;
@@ -16519,6 +16580,118 @@ function pdfFilenameForSession(session) {
   return `mandarin-${safe(session.firstName) || 'result'}-${safe(session.lastName) || ''}-${date}.pdf`.replace(/--+/g,'-');
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// "Why you received this result" — personalised explanation bullets.
+//
+// Several people with quite different answer patterns can land on the same
+// archetype, so the archetype name alone doesn't explain itself. These
+// bullets surface the 3-4 most distinctive signals in a person's actual
+// pattern: top practices, weakest practices, behavioural tilts (e.g. acting
+// faster than thinking), and any HIGH risk overlay.
+//
+// Voice modelled on Charlie Curson's manuscript: direct second-person,
+// observational not prescriptive, no jargon-as-armour. Phrases lean on the
+// per-practice `high` / `low` strings already in FRAMEWORK (which Charlie
+// has edited), so a future rewrite of those propagates through here.
+//
+// Returns: an array of plain strings (3-4 items). Empty array if R is missing
+// or has no practice data.
+function buildResultExplanation(R) {
+  if (!R || !R.practices || !FRAMEWORK || !FRAMEWORK.practices) return [];
+  const P = R.practices;
+  const FW = FRAMEWORK.practices;
+
+  const sorted = Object.entries(P).sort((a, b) => b[1] - a[1]);
+  const bullets = [];
+
+  // ── 1. STRENGTH SIGNAL (top 1-2 practices) ──────────────────────────────
+  const t1 = sorted[0], t2 = sorted[1];
+  if (t1 && t1[1] >= 55) {
+    const p1 = FW[t1[0]];
+    const p2 = t2 ? FW[t2[0]] : null;
+    if (p1 && p2 && p1.level === p2.level && t2[1] >= 55) {
+      // Top pair sit in the same level — group them as a level-level signal.
+      bullets.push(`Strong ${p1.name} and ${p2.name}. ${p1.high}`);
+    } else if (p1 && p2 && t2[1] >= 55) {
+      // Different levels — name both.
+      bullets.push(`${p1.name} and ${p2.name} are your strongest signals. ${p1.high}`);
+    } else if (p1) {
+      bullets.push(`Your strongest practice is ${p1.name}. ${p1.high}`);
+    }
+  }
+
+  // ── 2. VULNERABILITY SIGNAL (bottom 1-2 practices) ──────────────────────
+  const b1 = sorted[sorted.length - 1], b2 = sorted[sorted.length - 2];
+  if (b1 && b1[1] < 65) {
+    const p1 = FW[b1[0]];
+    const p2 = b2 ? FW[b2[0]] : null;
+    if (p1 && p2 && p1.level === p2.level && b2[1] < 65) {
+      bullets.push(`${p1.name} and ${p2.name} thin out under pressure. ${p1.low}`);
+    } else if (p1 && p2 && b2[1] < 65) {
+      bullets.push(`${p1.name} and ${p2.name} are your softest signals. ${p1.low}`);
+    } else if (p1) {
+      bullets.push(`${p1.name} is the practice that most wants your attention. ${p1.low}`);
+    }
+  }
+
+  // ── 3. BEHAVIOURAL TILT (combinations) ──────────────────────────────────
+  // These are the patterns that explain *how* the inner state translates
+  // into outward behaviour. Pick the first one that triggers (most pressing).
+  const tilt = (() => {
+    const act = P.act_decisively || 0;
+    const crit = P.think_critically || 0;
+    const inf = P.influence_effortlessly || 0;
+    const list = P.listen_deeply || 0;
+    const self = P.understand_self || 0;
+    const embed = P.embed_practices || 0;
+    const em = P.master_emotions || 0;
+    const fut = P.future_focused || 0;
+
+    if (act - crit >= 18) {
+      return 'A tilt toward conclusion. You move from question to answer faster than the situation may reward, which speeds delivery but can starve the thinking good decisions need.';
+    }
+    if (crit - act >= 18) {
+      return 'Deliberation can become delay. The trade-off arrives at your desk, and the analysis keeps going long after the moment for action has passed.';
+    }
+    if (inf - list >= 22) {
+      return 'You influence well, but your influence tends to outrun your listening. People move with you on momentum rather than meaning, which holds while things work and frays when they do not.';
+    }
+    if (self - embed >= 22) {
+      return 'You see your own patterns clearly, but reflection still lives in moments rather than rituals. Awareness without practice tends to slip exactly when you most need it.';
+    }
+    if (act - em >= 22) {
+      return 'You act when others freeze, but the emotions driving the action are not always fully seen, which can make confident choices look reactive in hindsight.';
+    }
+    if (fut - em >= 22) {
+      return 'You hold the long view, but the inner steadiness needed to navigate the present has not caught up. Pressure may pull you back into the next twelve months while the strategy still lives in the next five years.';
+    }
+    return null;
+  })();
+  if (tilt) bullets.push(tilt);
+
+  // ── 4. RISK OVERLAY (HIGH band) ─────────────────────────────────────────
+  // Surfaces the most pressing under-pressure pattern. Uses the project's
+  // existing language for each risk type.
+  const RISK_HIGH = (typeof RULES !== 'undefined' && RULES && RULES.risk_mod_max != null)
+    ? RULES.risk_mod_max
+    : (typeof RULE_DEFAULTS !== 'undefined' ? RULE_DEFAULTS.risk_mod_max : 60);
+  const risks = R.risks || {};
+  const topRisk = Object.entries(risks)
+    .filter(([_, v]) => Number.isFinite(v) && v > RISK_HIGH)
+    .sort((a, b) => b[1] - a[1])[0];
+  if (topRisk) {
+    const RISK_TEXT = {
+      control_bias:        'Under pressure, your grip tightens. Alignment around you may not always be what it appears — silence can read as agreement when it is not.',
+      moral_drift:         'Necessary compromises accumulate. There is a point where they begin to bend the strategy itself, and the line tends to move quietly without you noticing.',
+      detachment_pressure: 'When the room heats up, you go steady and inward. That composure is real, but to the people around you it can read as withdrawal rather than calm.'
+    };
+    if (RISK_TEXT[topRisk[0]]) bullets.push(RISK_TEXT[topRisk[0]]);
+  }
+
+  // Cap at 4 bullets — more becomes noise.
+  return bullets.slice(0, 4);
+}
+
 // Resolve the archetype + secondary pattern + skin info for a session, with
 // graceful fallback when the session was taken on a skin no longer loaded.
 function resolveSessionRefs(session) {
@@ -16715,6 +16888,20 @@ function buildResultsPrintHTML(session) {
       <div style="font-size:13px;font-style:italic;color:#555048;margin-bottom:14px">${escapeHTML(arch.band || '')}</div>
 
       ${arch.headline ? `<div class="pdf-prose" style="font-size:14px;font-weight:500;color:#0a0a0a;margin-bottom:14px">${escapeHTML(stripTags(arch.headline))}</div>` : ''}
+
+      ${(() => {
+        // Personalised explanation bullets — same source of truth as the
+        // results page. Wired here so the static PDF is just as defensible
+        // as the live page when a user comes back to read it later.
+        const bullets = buildResultExplanation({ practices: practices, risks: session.risks || {} });
+        if (!bullets.length) return '';
+        return `<div style="background:#fff;border:1px solid #d8d2c5;border-left:3px solid #ff481d;padding:14px 18px;margin:0 0 16px">
+          <div class="pdf-tile-eyebrow" style="margin-bottom:8px">Why you received this result</div>
+          <ol style="margin:0 0 0 18px;padding:0;font-family:Inter,Helvetica,Arial,sans-serif;font-size:11.5px;line-height:1.55;color:#1c1c1c">
+            ${bullets.map(b => `<li style="margin-bottom:6px">${escapeHTML(b)}</li>`).join('')}
+          </ol>
+        </div>`;
+      })()}
 
       <div class="pdf-prose">
         ${stripTags(arch.body || '').split(/\n\n+/).map(p => `<p>${escapeHTML(p.trim())}</p>`).join('')}
@@ -17350,6 +17537,20 @@ function showResults(isPreview) {
           <div class="hero-headline">Your strongest practice is <em style="font-style:italic;color:var(--ink)">${FRAMEWORK.practices[top[0]].displayLong}</em>. Your development edge is <em style="font-style:italic;color:var(--ink)">${FRAMEWORK.practices[bottom[0]].displayLong}</em>.</div>
         </div>
       </div>
+
+      <!-- WHY YOU RECEIVED THIS RESULT — personalised explanation of the pattern. -->
+      ${(() => {
+        const bullets = buildResultExplanation(R);
+        if (!bullets.length) return '';
+        return `<div class="results-section why-section">
+          <div class="results-section-title">Why you received this result</div>
+          <div class="results-section-display">Three or four signals from your answers were strong enough to shape this archetype rather than another. Set in context of the <strong>Be More Strategic</strong> framework, these are the patterns that pushed your pattern toward <em style="font-style:italic">${escapeHTML(arch.name)}</em>.</div>
+          <ol class="why-bullets">
+            ${bullets.map(b => `<li>${escapeHTML(b)}</li>`).join('')}
+          </ol>
+          <div class="why-foot">Built on Charlie Curson's <em>Be More Strategic</em> framework.</div>
+        </div>`;
+      })()}
 
       <!-- INTERACTIVE WHEEL, primary visualization -->
       <div class="results-section">
