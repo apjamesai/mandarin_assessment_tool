@@ -13,6 +13,15 @@ A running record of changes to the Mandarin Strategic Capability Assessment, new
 
 ## 2026-06-08
 
+### PDF: full first + last name on cover and in filename
+**`ef5af07`** — Two adjustments so multiple participants with the same first name produce distinguishable artifacts. (1) PDF cover now shows a "Prepared for ALEX POND" row at 22px directly under the eyebrow, surname bolded — previously the name only appeared at 18px inside the overall-capability tile. (2) Server-side email attachment filename now includes the last name as well, so `mandarin-tom-baker-2026-06-08.pdf` and `mandarin-tom-mathews-2026-06-08.pdf` never collide. The in-browser download already used both names; this aligns the server path.
+
+### Save & exit lightbox replaces native prompt/alert
+**`604b4a6`** — The Save & exit flow previously used `window.prompt()` for the email and `window.alert()` for confirmation/error, which broke the cinematic surface. Replaced with `#saveExitOverlay`, a themed lightbox mirroring the resume prompt vocabulary (oxide backdrop, amber stripe, INTER caps title, serif input). Renders four step states in-place: form → sending (spinner) → success → error-with-retry. Inherits the active skin's `--amber` CSS var so it adapts per-skin without skin-specific styles. Dismissable via Esc, backdrop click, or the X. The "nothing to save yet" branch also uses the lightbox so the app never falls back to a native dialog.
+
+### Save & exit button: stack below Mandarin logo
+**`fb20c81`** — Button at `top: 2.4vh` sat at the same y-coordinate as the Mandarin logo (logo at `3.4vh`, ~30–40px tall) and the two visually collided. Moved to `top: 9vh` on desktop, `7.5vh` on small screens, so the button always sits clear under the logo on the right rail.
+
 ### Save & resume mid-assessment
 **`2c64b94`** — Users can now pause partway through and pick up later. Three layers working together. (1) Auto-save: after every answer and reflection, the in-progress state is written to localStorage immediately and to a cloud blob at `progress/<uuid>.json` (debounced ~1.1s). (2) Passive resume prompt: when the assessment loads and a local save is present, a full-screen prompt asks "Continue where you left off, or start over?" before any cinematic landing fires. (3) Save & exit button: a fixed top-right control mints a `sub:'resume'` magic link via `/api/sessions/resume-email` and emails it to the user's intake address, so they can finish on any device by clicking the link. Resume blobs auto-expire 30 days after last write (checked on read, no sweeper needed). Completion clears both the local save and the cloud blob. Admin previews and viewer mode never auto-save.
 
