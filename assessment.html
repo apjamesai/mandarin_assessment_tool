@@ -3843,12 +3843,13 @@ body.previewing .results-stage { padding-top: 14vh; }
 .admin-link.visible { opacity: 0.6; }
 .admin-link:hover { color: var(--amber); opacity: 1; }
 
-/* Save & exit button — fixed top-right, mirrors back-button styling.
-   Visible only when there's something worth saving (controlled by JS in
-   renderCurrent based on scene type + autosave-readiness). */
+/* Save & exit button — fixed top-right, sits *below* the Mandarin logo
+   so the two never overlap. Visible only when there's something worth
+   saving (controlled by JS in renderCurrent based on scene type +
+   autosave-readiness). */
 .save-exit-btn {
   position: fixed;
-  top: 2.4vh;
+  top: 9vh;
   right: 4vw;
   z-index: 55;
   display: inline-flex;
@@ -3878,9 +3879,8 @@ body.admin-open .save-exit-btn,
 html.admin-mode .save-exit-btn,
 html.session-viewer .save-exit-btn { display: none !important; }
 @media (max-width: 720px) {
-  .save-exit-btn { padding: 6px 10px; font-size: 8.5px; letter-spacing: 0.22em; }
+  .save-exit-btn { top: 7.5vh; padding: 6px 10px; font-size: 8.5px; letter-spacing: 0.22em; gap: 0; }
   .save-exit-btn span { display: none; } /* icon only on small screens */
-  .save-exit-btn { gap: 0; }
 }
 
 /* Resume prompt overlay — full-screen modal that appears on assessment
