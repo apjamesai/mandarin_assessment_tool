@@ -1037,16 +1037,25 @@ h3.display {
 }
 
 /* "Why you received this result" — personalised explanation bullets.
-   Mirrors the cinematic results vocabulary (amber accent, serif display,
-   sans-serif body) so the new block sits naturally between the hero and
-   the wheel without inventing a new style language. */
-.why-section .results-section-display strong {
-  color: var(--ink);
-  font-weight: 500;
+   Mirrors the cinematic results vocabulary (amber accent, sans-serif body)
+   so the new block sits naturally between the hero and the wheel without
+   inventing a new style language. */
+.why-section { gap: 18px; }
+.why-intro {
+  font-family: var(--sans);
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 720px;
+  margin: 0;
+  font-weight: 300;
 }
-.why-section .results-section-display em {
+.why-intro strong { color: var(--ink); font-weight: 500; }
+.why-intro em {
   color: var(--amber);
   font-style: italic;
+  font-family: var(--serif);
+  font-weight: 400;
 }
 .why-bullets {
   list-style: none;
@@ -17544,7 +17553,7 @@ function showResults(isPreview) {
         if (!bullets.length) return '';
         return `<div class="results-section why-section">
           <div class="results-section-title">Why you received this result</div>
-          <div class="results-section-display">Three or four signals from your answers were strong enough to shape this archetype rather than another. Set in context of the <strong>Be More Strategic</strong> framework, these are the patterns that pushed your pattern toward <em style="font-style:italic">${escapeHTML(arch.name)}</em>.</div>
+          <p class="why-intro">A handful of signals in your answers pushed your pattern toward <em>${escapeHTML(arch.name)}</em> rather than another archetype. Read in the context of the <strong>Be More Strategic</strong> framework, these are what they were.</p>
           <ol class="why-bullets">
             ${bullets.map(b => `<li>${escapeHTML(b)}</li>`).join('')}
           </ol>
