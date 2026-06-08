@@ -7582,7 +7582,7 @@ body.has-back .location-tag { left: calc(4vw + 100px); }
       {
         "icon": "experiment",
         "title": "Pick one risk to deliberately reduce",
-        "body": "Look at your three risk overlays. Choose the one closest to becoming a real constraint. Design a small practice to soften it.",
+        "body": "Look at your three watchouts. Choose the one closest to becoming a real constraint. Design a small practice to soften it.",
         "test": "One overlay, one practice, 30 days."
       }
     ],
@@ -10005,7 +10005,7 @@ body.has-back .location-tag { left: calc(4vw + 100px); }
       {
         "icon": "experiment",
         "title": "Pick one risk to deliberately reduce",
-        "body": "Look at your three risk overlays. Choose the one closest to becoming a real constraint. Design a small practice to soften it.",
+        "body": "Look at your three watchouts. Choose the one closest to becoming a real constraint. Design a small practice to soften it.",
         "test": "One overlay, one practice, 30 days."
       }
     ],
@@ -12425,7 +12425,7 @@ body.has-back .location-tag { left: calc(4vw + 100px); }
       {
         "icon": "experiment",
         "title": "Pick one risk to reduce",
-        "body": "Look at your three risk overlays. Choose the one closest to becoming a real constraint. Design a small practice to soften it.",
+        "body": "Look at your three watchouts. Choose the one closest to becoming a real constraint. Design a small practice to soften it.",
         "test": "One overlay, one practice, 30 days."
       }
     ],
@@ -16919,7 +16919,7 @@ const NEXT_STEPS = {
     { icon: 'multiply', title: 'Develop one other person',        body: 'Choose one person in your orbit. Help them build a strategic muscle they currently lack. Multiplication begins with one.',                                            test: 'Name the person. Name the muscle. Begin.' },
     { icon: 'decide',   title: 'Make decisions more visible',     body: 'When you make a meaningful call, share publicly what you considered and what you weighed. Make the strategy legible.',                                                test: 'Try this on three decisions this month.' },
     { icon: 'reframe',  title: 'Sharpen the consequential 20%',   body: 'Identify the 20% of your decisions that drive 80% of outcomes. Concentrate your thinking time there. Delegate or systematise the rest.',                              test: 'Map your decisions for a week. Re-balance time.' },
-    { icon: 'experiment', title: 'Pick one risk to deliberately reduce', body: 'Look at your three risk overlays. Choose the one closest to becoming a real constraint. Design a small practice to soften it.',                                test: 'One overlay, one practice, 30 days.' }
+    { icon: 'experiment', title: 'Pick one watchout to deliberately reduce', body: 'Look at your three watchouts. Choose the one closest to becoming a real constraint. Design a small practice to soften it.',                                test: 'One watchout, one practice, 30 days.' }
   ],
   force_multiplier: [
     { icon: 'multiply', title: 'Design a decision system',         body: 'Create a clear template for how strategic decisions get made in your team, owner, evidence, options, trade-offs, review. Replicable, not heroic.',                  test: 'Build the v1 template. Apply to your next big call.' },
@@ -17143,7 +17143,7 @@ function personaliseContext(R, opts) {
 const ARCHETYPE_MODAL = {
   reactive_defender: [
     { test: R => R.levels.L1 < 45, match: 'Self-awareness is the weakest level in your pattern, which is typical for this band.', miss: 'Self-awareness is not the weakest level in your pattern, which is unusual at this band and gives you a foothold most people here do not have.' },
-    { test: R => Math.max(R.risks.control_bias, R.risks.detachment_pressure) > 55, match: 'Control or detachment under pressure is firing strongly in your pattern, the typical risk overlay here.', miss: 'Your risk overlays are quieter than most at this band; the pattern is more about under-developed practice than entrenched defensive habits.' },
+    { test: R => Math.max(R.risks.control_bias, R.risks.detachment_pressure) > 55, match: 'Control or detachment under pressure is firing strongly in your pattern, the typical watchout here.', miss: 'Your watchouts are quieter than most at this band; the pattern is more about under-developed practice than entrenched defensive habits.' },
     { test: R => R.practices.act_decisively > R.practices.think_critically + 10, match: 'You act faster than you think, which is the engine of this pattern.', miss: 'You think before you act, which is rarer at this band, and a real lever for your development.' }
   ],
   tactical_survivor: [
@@ -17153,18 +17153,18 @@ const ARCHETYPE_MODAL = {
   ],
   hidden_drifter: [
     { test: R => R.levels.L1 < R.levels.L2 - 5, match: 'Your self-awareness lags your open-mindedness, the classic asymmetry at this band.', miss: 'Your self-awareness is keeping pace with your open-mindedness, which is unusual here and means the drift in your case is less likely to come from not seeing yourself.' },
-    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift) > 55, match: 'Control bias or moral drift is loud in your pattern, the typical risk overlay at this band.', miss: 'Your risk overlays are quieter than most at this band, suggesting the drift may show up later than usual or through a less common channel.' },
+    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift) > 55, match: 'Control bias or moral drift is loud in your pattern, the typical watchout at this band.', miss: 'Your watchouts are quieter than most at this band, suggesting the drift may show up later than usual or through a less common channel.' },
     { test: R => R.practices.listen_deeply < R.practices.influence_effortlessly - 10, match: 'You influence faster than you listen, a common pattern at this band.', miss: 'You listen at least as well as you influence, which is uncommon at this band and a real strategic asset.' }
   ],
   strategic_operator: [
     { test: R => R.levels.L4 > R.levels.L1 && R.levels.L4 > R.levels.L2 && R.levels.L4 > R.levels.L3, match: 'Your impact level is leading the pattern, the typical shape at this band.', miss: 'Your impact level is not leading the pattern, suggesting your version sits more in the inner or strategic work than in outward influence.' },
     { test: R => R.practices.collaborate_inclusively > 60 && R.practices.influence_effortlessly > 60, match: 'You collaborate and influence well, the dual signature of this band.', miss: 'Either collaboration or influence lags your other strengths, which means your version of this band is sharper inwardly than outwardly.' },
-    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift, R.risks.detachment_pressure) > 50, match: 'A risk overlay is starting to show, the consistency edge most people in this band carry.', miss: 'Your risk overlays are unusually quiet for this band, suggesting genuine integration rather than the consistency challenge typical here.' }
+    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift, R.risks.detachment_pressure) > 50, match: 'A watchout is starting to show, the consistency edge most people in this band carry.', miss: 'Your watchouts are unusually quiet for this band, suggesting genuine integration rather than the consistency challenge typical here.' }
   ],
   force_multiplier: [
     { test: R => R.overall >= 90, match: 'Your overall capability sits at the level expected for this band.', miss: 'Your overall is at the lower end of this band, meaning the reading is provisional and sensitive to a few practices.' },
     { test: R => Math.min(R.levels.L1, R.levels.L2, R.levels.L3, R.levels.L4) > 80, match: 'All four levels are strong, the hallmark of this pattern.', miss: 'One of your levels lags the others, which means the multiplier capacity is real but not yet uniformly distributed.' },
-    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift, R.risks.detachment_pressure) < 35, match: 'Your risk overlays are minimal, the calm centre most people at this band operate from.', miss: 'A risk overlay is firing more strongly than is typical for this band, the place to watch as your impact scales.' }
+    { test: R => Math.max(R.risks.control_bias, R.risks.moral_drift, R.risks.detachment_pressure) < 35, match: 'Your watchouts are minimal, the calm centre most people at this band operate from.', miss: 'A watchout is firing more strongly than is typical for this band, the place to watch as your impact scales.' }
   ]
 };
 
@@ -17347,9 +17347,22 @@ function buildRankingMoments(session) {
 // graceful fallback when the session was taken on a skin no longer loaded.
 function resolveSessionRefs(session) {
   const archKey = session.archetype;
-  const arch = (ARCHETYPES && ARCHETYPES[archKey]) || { name: session.archetype_name || archKey, band: '-', body: '', risk: '', focus: '', next: '' };
+  // The session was taken under a specific skin and stored that skin's
+  // archetype display name in session.archetype_name. If the viewer's
+  // current skin renames the same key (e.g. Yi calls it 'The Twelve Ships'
+  // where Apollo calls it 'The Compromised Trajectory'), the PDF or admin
+  // view would otherwise show the WRONG name on a stored session — a
+  // filename/content mismatch. Prefer the stored name when present; fall
+  // back to live ARCHETYPES name, then archetype_key as last resort.
+  const liveArch = (ARCHETYPES && ARCHETYPES[archKey]) || null;
+  const arch = liveArch
+    ? { ...liveArch, name: session.archetype_name || liveArch.name }
+    : { name: session.archetype_name || archKey, band: '-', body: '', risk: '', focus: '', next: '' };
   const secKey = session.secondary_pattern;
-  const sec = secKey && SECONDARY_PATTERNS && SECONDARY_PATTERNS[secKey] ? SECONDARY_PATTERNS[secKey] : null;
+  const liveSec = secKey && SECONDARY_PATTERNS && SECONDARY_PATTERNS[secKey] ? SECONDARY_PATTERNS[secKey] : null;
+  const sec = liveSec
+    ? { ...liveSec, name: session.secondary_name || liveSec.name }
+    : null;
   return { archKey, arch, secKey, sec };
 }
 
@@ -17476,7 +17489,26 @@ function buildResultsPrintHTML(session) {
     return (typeof bandFor === 'function') ? bandFor(score) : (score >= 65 ? 'Strong' : 'Emerging');
   }
 
-  const totalPages = 7;
+  // Reflections paginate dynamically — see the reflection-pages block
+  // below for the chunking logic. We must compute the page count first so
+  // pages 1-6 can show the correct "X of Y" footer.
+  const _refEntriesForCount = Object.entries(reflections).filter(([k, v]) => v && String(v).trim().length > 0);
+  function _refCostForCount(entry) {
+    const len = String(entry[1] || '').trim().length;
+    return 1 + Math.floor(len / 280);
+  }
+  const _REF_PAGE_CAP = 3;
+  let _refPageCount = 0, _refRunning = 0, _refOnPage = 0;
+  _refEntriesForCount.forEach(e => {
+    const c = _refCostForCount(e);
+    if (_refOnPage > 0 && _refRunning + c > _REF_PAGE_CAP) {
+      _refPageCount++; _refRunning = 0; _refOnPage = 0;
+    }
+    _refRunning += c; _refOnPage++;
+  });
+  if (_refOnPage > 0 || _refEntriesForCount.length === 0) _refPageCount++;
+  if (_refPageCount === 0) _refPageCount = 1;
+  const totalPages = 6 + _refPageCount;
 
   // ─── PAGE 1: Cover ───────────────────────────────────────────────────────
   // Participant name is placed prominently right under the eyebrow so two
@@ -17751,47 +17783,82 @@ function buildResultsPrintHTML(session) {
       ${pageFooter(6, totalPages)}
     </div>`;
 
-  // ─── PAGE 7: Reflections + closing ───────────────────────────────────────
+  // ─── PAGE 7+ : Reflections + closing ─────────────────────────────────────
+  // PDF pages are a fixed 794×1123 with overflow:hidden — any content past
+  // that gets silently clipped. Reflections can be up to 7 entries, each
+  // a paragraph or longer, so we paginate: first reflection page carries
+  // the section header + the first few entries, subsequent pages carry
+  // continuation, the closing note + archetype-question prompt always
+  // live on the FINAL reflection page. The number of pages adapts to the
+  // amount of free-text the user wrote.
   const refEntries = Object.entries(reflections).filter(([k, v]) => v && String(v).trim().length > 0);
-  const reflectionBlock = refEntries.length ? refEntries.map(([k, v]) => `
-    <div class="pdf-tile">
+  function renderReflectionTile([k, v]) {
+    return `<div class="pdf-tile">
       <div class="pdf-tile-eyebrow">${escapeHTML(k.replace(/^reflect_/, '').replace(/_/g, ' '))}</div>
       <div class="pdf-prose" style="font-style:italic">${escapeHTML(stripTags(v))}</div>
-    </div>
-  `).join('') : `<div class="pdf-prose" style="color:#807868;font-style:italic">No free-text reflections were captured during this session.</div>`;
+    </div>`;
+  }
+  // Cost-based packing: cards with long bodies get a higher cost, so a
+  // single page is allowed roughly 2 short cards OR 1 long card. Card
+  // base cost is 1; each ~280 chars of body adds 1. Page capacity 3.
+  function refCardCost(entry) {
+    const len = String(entry[1] || '').trim().length;
+    return 1 + Math.floor(len / 280);
+  }
+  const PAGE_CAP = 3;
+  const pages = [];
+  let cur = [], curCost = 0;
+  refEntries.forEach(e => {
+    const c = refCardCost(e);
+    if (cur.length && curCost + c > PAGE_CAP) {
+      pages.push(cur);
+      cur = []; curCost = 0;
+    }
+    cur.push(e); curCost += c;
+  });
+  if (cur.length) pages.push(cur);
+  if (!pages.length) pages.push([]); // ensure a single page even when empty
 
-  const page7 = `
-    <div class="pdf-page">
-      ${pageHeader('Your reflections')}
-      <div class="pdf-eyebrow" style="margin-bottom:10px">What you wrote, returned to you</div>
-      <div class="pdf-h2">Your own words</div>
-      <div class="pdf-prose" style="margin-bottom:18px">Returned without commentary. The point of these is to make your own pattern legible to you, not to score the writing.</div>
-      ${reflectionBlock}
-
-      ${(() => {
-        const baseArch = (typeof SKIN_FORCE_TRIAL !== 'undefined' && SKIN_FORCE_TRIAL.archetypes && SKIN_FORCE_TRIAL.archetypes[archKey]) || null;
-        const question = arch.question || (baseArch && baseArch.question) || null;
-        if (!question) return '';
-        return `<div style="margin:32px 0 0;padding:30px 24px 26px;border-top:1px solid #ff481d;border-bottom:1px solid #ff481d;text-align:center;position:relative">
-          <div style="position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:12px;height:12px;background:#ff481d;border-radius:50%"></div>
-          <div style="font-size:9px;letter-spacing:0.42em;text-transform:uppercase;color:#ff481d;font-weight:700;margin-bottom:14px">The question to sit with</div>
-          <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:18px;line-height:1.35;color:#0a0a0a;max-width:540px;margin:0 auto 12px;font-weight:400">${escapeHTML(question)}</div>
-          <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#807868">From the watchout pattern of <span style="font-style:italic;text-transform:none;letter-spacing:0;color:#ff481d">${escapeHTML(arch.name)}</span></div>
-        </div>`;
-      })()}
-
-      <div style="margin-top:28px;padding-top:24px;border-top:1px solid #d8d2c5">
+  // The closing block (archetype question + closing note) lives on the
+  // last reflection page only.
+  const closingHTML = (() => {
+    const baseArch = (typeof SKIN_FORCE_TRIAL !== 'undefined' && SKIN_FORCE_TRIAL.archetypes && SKIN_FORCE_TRIAL.archetypes[archKey]) || null;
+    const question = arch.question || (baseArch && baseArch.question) || null;
+    const qBlock = question ? `<div style="margin:24px 0 0;padding:26px 20px 22px;border-top:1px solid #ff481d;border-bottom:1px solid #ff481d;text-align:center;position:relative">
+      <div style="position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:12px;height:12px;background:#ff481d;border-radius:50%"></div>
+      <div style="font-size:9px;letter-spacing:0.42em;text-transform:uppercase;color:#ff481d;font-weight:700;margin-bottom:12px">The question to sit with</div>
+      <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:17px;line-height:1.35;color:#0a0a0a;max-width:540px;margin:0 auto 10px;font-weight:400">${escapeHTML(question)}</div>
+      <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#807868">From the watchout pattern of <span style="font-style:italic;text-transform:none;letter-spacing:0;color:#ff481d">${escapeHTML(arch.name)}</span></div>
+    </div>` : '';
+    return `${qBlock}
+      <div style="margin-top:22px;padding-top:20px;border-top:1px solid #d8d2c5">
         <div class="pdf-eyebrow" style="margin-bottom:10px">A closing note</div>
         <div class="pdf-prose">
           <p>Strategic capability is not fixed. It can be developed, deliberately, by anyone willing to notice their own pattern under pressure and choose differently inside it. Your result is a mirror, not a verdict.</p>
           <p>The 12-Practice framework, the four levels, and the archetype model are described in full in Charlie Curson's <em>Be More Strategic</em>. The assessment you completed is the diagnostic that maps your current position against that framework.</p>
         </div>
-      </div>
+      </div>`;
+  })();
 
-      ${pageFooter(7, totalPages)}
+  // Recompute total pages and produce all reflection pages
+  const reflectionPagesHTML = pages.map((chunk, idx) => {
+    const isFirst = idx === 0;
+    const isLast = idx === pages.length - 1;
+    const pageNum = 7 + idx;
+    return `<div class="pdf-page">
+      ${pageHeader(pages.length > 1 ? `Your reflections · ${idx + 1} / ${pages.length}` : 'Your reflections')}
+      ${isFirst ? `
+        <div class="pdf-eyebrow" style="margin-bottom:10px">What you wrote, returned to you</div>
+        <div class="pdf-h2">Your own words</div>
+        <div class="pdf-prose" style="margin-bottom:18px">Returned without commentary. The point of these is to make your own pattern legible to you, not to score the writing.</div>
+      ` : `<div class="pdf-eyebrow" style="margin-bottom:10px">Continued</div>`}
+      ${chunk.length ? chunk.map(renderReflectionTile).join('') : `<div class="pdf-prose" style="color:#807868;font-style:italic">No free-text reflections were captured during this session.</div>`}
+      ${isLast ? closingHTML : ''}
+      ${pageFooter(pageNum, 6 + pages.length)}
     </div>`;
+  }).join('');
 
-  return `<div id="pdfRoot"><style>${pageCSS}</style>${page1}${page2}${page3}${page4}${page5}${page6}${page7}</div>`;
+  return `<div id="pdfRoot"><style>${pageCSS}</style>${page1}${page2}${page3}${page4}${page5}${page6}${reflectionPagesHTML}</div>`;
 }
 
 // Build the jsPDF document for a session and return it. Shared by the
