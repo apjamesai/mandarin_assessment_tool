@@ -1208,6 +1208,81 @@ h3.display {
   .moments-grid { grid-template-columns: 1fr; }
 }
 
+/* "At a glance" — two big cards calling out the strongest area and the
+   development edge. Designed to be the loudest interpretation block on
+   the page, since this is what most readers look for first. */
+.glance-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  max-width: 880px;
+}
+.glance-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 28px 28px 24px;
+  position: relative;
+}
+.glance-card.glance-strong { border-top: 3px solid rgba(255, 255, 255, 0.35); }
+.glance-card.glance-edge {
+  border-top: 3px solid var(--amber);
+  background: rgba(255, 90, 44, 0.06);
+}
+.glance-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.glance-card.glance-edge .glance-eyebrow { color: var(--amber); }
+.glance-level {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin-bottom: 6px;
+  font-weight: 300;
+}
+.glance-score {
+  font-family: var(--serif);
+  font-size: clamp(48px, 5.5vw, 72px);
+  line-height: 1;
+  color: var(--ink);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.glance-card.glance-edge .glance-score { color: var(--amber); }
+.glance-score .pct {
+  font-size: 0.4em;
+  color: var(--ink-mute);
+  letter-spacing: 0.04em;
+  margin-left: 4px;
+}
+.glance-meta {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 14px;
+}
+.glance-blurb {
+  font-family: var(--sans);
+  font-size: clamp(13px, 0.95vw, 15px);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  font-weight: 300;
+}
+@media (max-width: 720px) {
+  .glance-grid { grid-template-columns: 1fr; gap: 12px; }
+  .glance-card { padding: 22px 20px 20px; }
+}
+
 .results-body em {
   font-family: var(--serif);
   font-style: italic;
@@ -16948,6 +17023,44 @@ const RANKING_FRAMINGS = [
   { sceneTitle: 'When asked to redesign the sequence', lead: 'you put first:' }
 ];
 
+// ─────────────────────────────────────────────────────────────────────────
+// "At a glance" — the two numbers most readers want first: strongest area
+// and development edge. Levels (not practices) because they cluster three
+// practices into a single named area, which is the right unit for headline
+// interpretation. Practice-level signals already surface in the wheel + tiles.
+const LEVEL_BLURB = {
+  L1: 'The foundation. How clearly you see yourself, your patterns under pressure, and the triggers that move you before you choose.',
+  L2: 'Curiosity, listening, critical thinking. How you stay open to information that contradicts the story you arrived with.',
+  L3: 'Creativity, comfort with uncertainty, future-focus. The strategic moves that turn understanding into a decision worth following.',
+  L4: 'Decision quality, collaboration, influence. The way your impact travels through the people and system around you.'
+};
+
+function buildLevelHighlight(R) {
+  if (!R || !R.levels || !FRAMEWORK || !FRAMEWORK.levels) return null;
+  const levels = R.levels;
+  const labels = FRAMEWORK.levels;
+  const entries = Object.entries(levels);
+  if (!entries.length) return null;
+  const sorted = entries.slice().sort((a, b) => b[1] - a[1]);
+  const top = sorted[0], bot = sorted[sorted.length - 1];
+  return {
+    top: {
+      key: top[0],
+      name: (labels[top[0]] || {}).short || (labels[top[0]] || {}).name || top[0],
+      number: (labels[top[0]] || {}).num || top[0],
+      score: top[1],
+      blurb: LEVEL_BLURB[top[0]] || ''
+    },
+    bot: {
+      key: bot[0],
+      name: (labels[bot[0]] || {}).short || (labels[bot[0]] || {}).name || bot[0],
+      number: (labels[bot[0]] || {}).num || bot[0],
+      score: bot[1],
+      blurb: LEVEL_BLURB[bot[0]] || ''
+    }
+  };
+}
+
 function buildRankingMoments(session) {
   // session.answers is keyed by scene index; session.scenes_snapshot or
   // the live SCENES has the items. Live SCENES first; fall back if absent.
@@ -17146,16 +17259,39 @@ function buildResultsPrintHTML(session) {
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:22px">
-        ${['L1','L2','L3','L4'].map(L => {
-          const v = levels[L] != null ? levels[L] : 0;
-          return `<div style="background:#fff;border:1px solid #d8d2c5;padding:12px 14px;text-align:center">
-            <div style="font-size:8px;font-weight:600;letter-spacing:0.3em;color:#ff481d;text-transform:uppercase">${escapeHTML(levelLabels[L].num)}</div>
-            <div style="font-size:11px;color:#1c1c1c;margin:4px 0">${escapeHTML(levelLabels[L].short || levelLabels[L].name)}</div>
-            <div style="font-size:28px;font-weight:900;color:#0a0a0a;line-height:1">${v}<span style="font-size:11px;color:#807868">%</span></div>
-          </div>`;
-        }).join('')}
-      </div>
+      <!-- Four-level row with the strongest area + development edge
+           explicitly tagged so the two numbers most readers reach for
+           first are unmissable at a glance. -->
+      ${(() => {
+        const sortedLs = ['L1','L2','L3','L4']
+          .map(L => ({ L, v: levels[L] != null ? levels[L] : 0 }))
+          .sort((a, b) => b.v - a.v);
+        const topL = sortedLs[0].L;
+        const botL = sortedLs[sortedLs.length - 1].L;
+        return `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:22px">
+          ${['L1','L2','L3','L4'].map(L => {
+            const v = levels[L] != null ? levels[L] : 0;
+            const isTop = L === topL;
+            const isBot = L === botL;
+            const cardStyle = isTop
+              ? 'background:#fff;border:2px solid #0a0a0a;padding:11px 13px;text-align:center;position:relative'
+              : isBot
+                ? 'background:#fffaf2;border:2px solid #ff481d;padding:11px 13px;text-align:center;position:relative'
+                : 'background:#fff;border:1px solid #d8d2c5;padding:12px 14px;text-align:center;position:relative';
+            const tag = isTop
+              ? '<div style="position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#0a0a0a;color:#fff;font-size:7px;font-weight:700;letter-spacing:0.28em;padding:2px 8px;text-transform:uppercase">Strongest</div>'
+              : isBot
+                ? '<div style="position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:#ff481d;color:#fff;font-size:7px;font-weight:700;letter-spacing:0.28em;padding:2px 8px;text-transform:uppercase">Edge</div>'
+                : '';
+            return `<div style="${cardStyle}">
+              ${tag}
+              <div style="font-size:8px;font-weight:600;letter-spacing:0.3em;color:#ff481d;text-transform:uppercase">${escapeHTML(levelLabels[L].num)}</div>
+              <div style="font-size:11px;color:#1c1c1c;margin:4px 0">${escapeHTML(levelLabels[L].short || levelLabels[L].name)}</div>
+              <div style="font-size:28px;font-weight:900;color:#0a0a0a;line-height:1">${v}<span style="font-size:11px;color:#807868">%</span></div>
+            </div>`;
+          }).join('')}
+        </div>`;
+      })()}
 
       ${sec ? `<div class="pdf-tile" style="margin-top:18px">
         <div class="pdf-tile-eyebrow">Secondary pattern &middot; ${escapeHTML(sec.name)}</div>
@@ -17853,6 +17989,33 @@ function showResults(isPreview) {
           <div class="hero-headline">Your strongest practice is <em style="font-style:italic;color:var(--ink)">${FRAMEWORK.practices[top[0]].displayLong}</em>. Your development edge is <em style="font-style:italic;color:var(--ink)">${FRAMEWORK.practices[bottom[0]].displayLong}</em>.</div>
         </div>
       </div>
+
+      <!-- AT A GLANCE — strongest area and development edge, the two
+           level-scale numbers most readers reach for first. -->
+      ${(() => {
+        const h = buildLevelHighlight(R);
+        if (!h) return '';
+        return `<div class="results-section glance-section">
+          <div class="results-section-title">At a glance</div>
+          <p class="why-intro">The two numbers that matter most for action — the part of the framework you operate from most reliably, and the one most likely to lift everything else if you move it next.</p>
+          <div class="glance-grid">
+            <div class="glance-card glance-strong">
+              <div class="glance-eyebrow">Strongest area</div>
+              <div class="glance-level">${escapeHTML(h.top.name)}</div>
+              <div class="glance-score">${h.top.score}<span class="pct">%</span></div>
+              <div class="glance-meta">${escapeHTML(h.top.number)}</div>
+              <div class="glance-blurb">${escapeHTML(h.top.blurb)}</div>
+            </div>
+            <div class="glance-card glance-edge">
+              <div class="glance-eyebrow">Development edge</div>
+              <div class="glance-level">${escapeHTML(h.bot.name)}</div>
+              <div class="glance-score">${h.bot.score}<span class="pct">%</span></div>
+              <div class="glance-meta">${escapeHTML(h.bot.number)}</div>
+              <div class="glance-blurb">${escapeHTML(h.bot.blurb)}</div>
+            </div>
+          </div>
+        </div>`;
+      })()}
 
       <!-- WHY YOU RECEIVED THIS RESULT — personalised explanation of the pattern. -->
       ${(() => {
