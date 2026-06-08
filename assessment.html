@@ -17768,12 +17768,17 @@ function buildResultsPrintHTML(session) {
       <div class="pdf-prose" style="margin-bottom:18px">Returned without commentary. The point of these is to make your own pattern legible to you, not to score the writing.</div>
       ${reflectionBlock}
 
-      ${arch.question ? `<div style="margin:32px 0 0;padding:30px 24px 26px;border-top:1px solid #ff481d;border-bottom:1px solid #ff481d;text-align:center;position:relative">
-        <div style="position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:12px;height:12px;background:#ff481d;border-radius:50%"></div>
-        <div style="font-size:9px;letter-spacing:0.42em;text-transform:uppercase;color:#ff481d;font-weight:700;margin-bottom:14px">The question to sit with</div>
-        <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:18px;line-height:1.35;color:#0a0a0a;max-width:540px;margin:0 auto 12px;font-weight:400">${escapeHTML(arch.question)}</div>
-        <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#807868">From the watchout pattern of <span style="font-style:italic;text-transform:none;letter-spacing:0;color:#ff481d">${escapeHTML(arch.name)}</span></div>
-      </div>` : ''}
+      ${(() => {
+        const baseArch = (typeof SKIN_FORCE_TRIAL !== 'undefined' && SKIN_FORCE_TRIAL.archetypes && SKIN_FORCE_TRIAL.archetypes[archKey]) || null;
+        const question = arch.question || (baseArch && baseArch.question) || null;
+        if (!question) return '';
+        return `<div style="margin:32px 0 0;padding:30px 24px 26px;border-top:1px solid #ff481d;border-bottom:1px solid #ff481d;text-align:center;position:relative">
+          <div style="position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:12px;height:12px;background:#ff481d;border-radius:50%"></div>
+          <div style="font-size:9px;letter-spacing:0.42em;text-transform:uppercase;color:#ff481d;font-weight:700;margin-bottom:14px">The question to sit with</div>
+          <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:18px;line-height:1.35;color:#0a0a0a;max-width:540px;margin:0 auto 12px;font-weight:400">${escapeHTML(question)}</div>
+          <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#807868">From the watchout pattern of <span style="font-style:italic;text-transform:none;letter-spacing:0;color:#ff481d">${escapeHTML(arch.name)}</span></div>
+        </div>`;
+      })()}
 
       <div style="margin-top:28px;padding-top:24px;border-top:1px solid #d8d2c5">
         <div class="pdf-eyebrow" style="margin-bottom:10px">A closing note</div>
@@ -18422,12 +18427,22 @@ function showResults(isPreview) {
            with. Positioned at the very end so it's the last thing the eye
            lands on, sized as a feature element. Mirrors the voice of the
            Watchouts which work because they're open-ended and slightly
-           uncomfortable in a productive way. -->
-      ${arch.question ? `<div class="archetype-question-block">
-        <div class="archetype-question-eyebrow">The question to sit with</div>
-        <div class="archetype-question-body">${escapeHTML(arch.question)}</div>
-        <div class="archetype-question-foot">From the watchout pattern of <em>${escapeHTML(arch.name)}</em>.</div>
-      </div>` : ''}
+           uncomfortable in a productive way.
+           Skins override ARCHETYPES via JSON, and those JSONs don't yet
+           carry the 'question' field, so we fall back to the base
+           archetype on SKIN_FORCE_TRIAL.archetypes when the active arch
+           lacks one. That way every skin reads the same coaching prompt
+           without each skin's JSON needing to be updated. -->
+      ${(() => {
+        const baseArch = (typeof SKIN_FORCE_TRIAL !== 'undefined' && SKIN_FORCE_TRIAL.archetypes && SKIN_FORCE_TRIAL.archetypes[archKey]) || null;
+        const question = arch.question || (baseArch && baseArch.question) || null;
+        if (!question) return '';
+        return `<div class="archetype-question-block">
+          <div class="archetype-question-eyebrow">The question to sit with</div>
+          <div class="archetype-question-body">${escapeHTML(question)}</div>
+          <div class="archetype-question-foot">From the watchout pattern of <em>${escapeHTML(arch.name)}</em>.</div>
+        </div>`;
+      })()}
 
       <div class="cta-block">
         <div class="cta-line">Strategic capability is not fixed. It can be developed. Your result is a mirror, not a verdict.</div>
