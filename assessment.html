@@ -1354,6 +1354,98 @@ h3.display {
   color: var(--ink);
 }
 
+/* Coaching question on each At a glance card. Sits below the blurb in a
+   subtle bordered well — feels like a question the page is leaving open
+   rather than another fact to absorb. */
+.glance-question {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
+}
+.glance-card.glance-edge .glance-question { border-top-color: rgba(255, 90, 44, 0.2); }
+.glance-question-eyebrow {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.glance-card.glance-edge .glance-question-eyebrow { color: var(--amber); }
+.glance-question-body {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.45;
+  color: var(--ink);
+  font-weight: 300;
+}
+
+/* The closing archetype question — the single sentence the report leaves
+   the reader with. Sized as a feature; serif italic; framed by light
+   amber accents top and bottom so it reads as a moment, not another
+   section. */
+.archetype-question-block {
+  margin: 60px auto 40px;
+  padding: 56px 0 56px;
+  max-width: 880px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 90, 44, 0.18);
+  border-bottom: 1px solid rgba(255, 90, 44, 0.18);
+  position: relative;
+}
+.archetype-question-block::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -7px;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: var(--amber);
+  border-radius: 50%;
+}
+.archetype-question-eyebrow {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+.archetype-question-body {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.25;
+  color: var(--ink);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  max-width: 760px;
+  margin: 0 auto 22px;
+}
+.archetype-question-foot {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.archetype-question-foot em {
+  color: var(--amber);
+  font-style: italic;
+  font-family: var(--serif);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 14px;
+}
+@media (max-width: 720px) {
+  .archetype-question-block { padding: 38px 0 38px; margin: 36px auto 28px; }
+  .archetype-question-body { font-size: 22px; }
+}
+
 .results-body em {
   font-family: var(--serif);
   font-style: italic;
@@ -12548,18 +12640,18 @@ const FRAMEWORK = {
     L4: { num: 'Level 04', name: 'Scale Your Impact', short: 'Impact' }
   },
   practices: {
-    understand_self:   { level: 'L1', name: 'Understand Self',       displayLong: 'Understand Self',        high: 'You notice your own patterns under pressure and can reflect on the impact you create.', low: 'You may be operating from patterns you have not fully seen yet, the parts of you below the waterline.' },
-    master_emotions:   { level: 'L1', name: 'Master Emotions',       displayLong: 'Master Emotions',        high: 'You can stay composed without becoming detached, and you recognise your emotional triggers as they rise.', low: 'Pressure may narrow your thinking or intensify your reactions before you have a chance to choose.' },
-    embed_practices:   { level: 'L1', name: 'Embed Practices',       displayLong: 'Embed Practices',        high: 'You have built reflective rituals into your life so awareness becomes a habit, not an event.', low: 'Self-awareness may feel like something you do occasionally rather than something you live inside.' },
-    be_curious:        { level: 'L2', name: 'Be Curious',            displayLong: 'Be Curious, Be a Learner',          high: 'You seek fresh perspectives, ask questions before answers, and stay open to learning.', low: 'You may move from uncertainty to conclusion too quickly, closing the door on the unfamiliar.' },
-    listen_deeply:     { level: 'L2', name: 'Listen Deeply',         displayLong: 'Listen Deeply, Be a Listener',      high: 'You listen for meaning, emotion, pattern, and what is unsaid as much as what is said.', low: 'You may prioritise response, control, or speed over genuine understanding.' },
-    think_critically:  { level: 'L2', name: 'Think Critically',      displayLong: 'Think Critically, Be a Critical Thinker', high: 'You frame the issue, test assumptions, and evaluate complexity rather than accepting the first plausible story.', low: 'You may accept the first plausible explanation too quickly or default to a single perspective.' },
-    unlock_creativity: { level: 'L3', name: 'Unlock Creativity',     displayLong: 'Unlock Creativity, Be a Creative',  high: 'You generate options, reframe constraints, and let imagination shape your strategy.', low: 'You may refine existing approaches rather than imagining different futures.' },
-    manage_uncertainty:{ level: 'L3', name: 'Manage Uncertainty',    displayLong: 'Manage Uncertainty',                 high: 'You can act without full information while staying adaptable and grounded.', low: 'Ambiguity may trigger delay, over-control, or false certainty.' },
-    future_focused:    { level: 'L3', name: 'Be Future-Focused',     displayLong: 'Be Future-Focused, Be a Visionary', high: 'You hold the long view, consider consequence, and act with direction.', low: 'Immediate pressure may dominate your strategic attention.' },
-    act_decisively:    { level: 'L4', name: 'Act Decisively',        displayLong: 'Act Decisively, Be a Doer',         high: 'You make clear, timely, accountable trade-offs and own them.', low: 'You may delay, diffuse, or avoid the trade-offs only you can make.' },
-    collaborate_inclusively: { level: 'L4', name: 'Collaborate Inclusively', displayLong: 'Collaborate Inclusively, Be a Collaborator', high: 'You invite challenge, create safety, and use difference productively.', low: 'You may underuse the intelligence around you, or treat collaboration as compliance.' },
-    influence_effortlessly:  { level: 'L4', name: 'Influence Effortlessly',  displayLong: 'Influence Effortlessly, Be an Influencer',  high: 'You align others through trust, clarity, and shared meaning.', low: 'Your ideas may not yet travel with enough force or credibility.' }
+    understand_self:   { level: 'L1', name: 'Understand Self',       displayLong: 'Understand Self',        high: 'You notice your own patterns under pressure and can reflect on the impact you create.', low: 'You may be operating from patterns you have not fully seen yet, the parts of you below the waterline.', question: 'When do you most reliably notice yourself in the moment, and when do you most reliably miss it?' },
+    master_emotions:   { level: 'L1', name: 'Master Emotions',       displayLong: 'Master Emotions',        high: 'You can stay composed without becoming detached, and you recognise your emotional triggers as they rise.', low: 'Pressure may narrow your thinking or intensify your reactions before you have a chance to choose.', question: 'Which emotion, when it rises in you under pressure, do you most often mistake for information about the situation rather than information about you?' },
+    embed_practices:   { level: 'L1', name: 'Embed Practices',       displayLong: 'Embed Practices',        high: 'You have built reflective rituals into your life so awareness becomes a habit, not an event.', low: 'Self-awareness may feel like something you do occasionally rather than something you live inside.', question: 'Which ritual would steady you most if you put it in place this week, and what has been stopping you?' },
+    be_curious:        { level: 'L2', name: 'Be Curious',            displayLong: 'Be Curious, Be a Learner',          high: 'You seek fresh perspectives, ask questions before answers, and stay open to learning.', low: 'You may move from uncertainty to conclusion too quickly, closing the door on the unfamiliar.', question: 'What is the question you have been avoiding because you suspect the answer will move the goalposts?' },
+    listen_deeply:     { level: 'L2', name: 'Listen Deeply',         displayLong: 'Listen Deeply, Be a Listener',      high: 'You listen for meaning, emotion, pattern, and what is unsaid as much as what is said.', low: 'You may prioritise response, control, or speed over genuine understanding.', question: 'When you say you are listening, what is your attention actually doing?' },
+    think_critically:  { level: 'L2', name: 'Think Critically',      displayLong: 'Think Critically, Be a Critical Thinker', high: 'You frame the issue, test assumptions, and evaluate complexity rather than accepting the first plausible story.', low: 'You may accept the first plausible explanation too quickly or default to a single perspective.', question: 'What is the assumption underneath the position you are most attached to right now?' },
+    unlock_creativity: { level: 'L3', name: 'Unlock Creativity',     displayLong: 'Unlock Creativity, Be a Creative',  high: 'You generate options, reframe constraints, and let imagination shape your strategy.', low: 'You may refine existing approaches rather than imagining different futures.', question: 'Where in your work have you stopped asking "what if" and started asking only "how"?' },
+    manage_uncertainty:{ level: 'L3', name: 'Manage Uncertainty',    displayLong: 'Manage Uncertainty',                 high: 'You can act without full information while staying adaptable and grounded.', low: 'Ambiguity may trigger delay, over-control, or false certainty.', question: 'Where are you reaching for certainty that the situation cannot honestly give you?' },
+    future_focused:    { level: 'L3', name: 'Be Future-Focused',     displayLong: 'Be Future-Focused, Be a Visionary', high: 'You hold the long view, consider consequence, and act with direction.', low: 'Immediate pressure may dominate your strategic attention.', question: 'What in your plan is true because you decided it, and what is true because it is true?' },
+    act_decisively:    { level: 'L4', name: 'Act Decisively',        displayLong: 'Act Decisively, Be a Doer',         high: 'You make clear, timely, accountable trade-offs and own them.', low: 'You may delay, diffuse, or avoid the trade-offs only you can make.', question: 'Whose decision is this, and what does waiting one more day actually cost you?' },
+    collaborate_inclusively: { level: 'L4', name: 'Collaborate Inclusively', displayLong: 'Collaborate Inclusively, Be a Collaborator', high: 'You invite challenge, create safety, and use difference productively.', low: 'You may underuse the intelligence around you, or treat collaboration as compliance.', question: 'Whose silence in your meetings are you reading as agreement when it might be something else?' },
+    influence_effortlessly:  { level: 'L4', name: 'Influence Effortlessly',  displayLong: 'Influence Effortlessly, Be an Influencer',  high: 'You align others through trust, clarity, and shared meaning.', low: 'Your ideas may not yet travel with enough force or credibility.', question: 'Where are you moving people on conviction when the situation needs you to move them on evidence?' }
   },
   risks: {
     control_bias:        { name: 'Control Bias',              question: 'Where might you be calling something alignment when it is actually compliance?' },
@@ -15162,7 +15254,8 @@ const ARCHETYPES = {
     body: 'Your result suggests that when stakes rise, your attention narrows fast. You move into reaction, urgency, or defence before you have understood what is happening. You are committed and action-oriented — and your strongest practice, <em>{{topPractice}}</em>, is real ground to build from. But the same energy that makes you formidable in a crisis can make you blind to the pattern beneath it. <em>{{bottomPractice}}</em> is where your pattern is weakest, and that is exactly the practice that would slow the reaction enough for the strategy to surface. You may respond to symptoms rather than causes, miss weak signals, or confuse movement with progress.',
     risk: 'Your risk is not lack of effort. It is pressure-led action. With <em>{{bottomPractice}}</em> still developing, you may protect the mission while reinforcing the very patterns that weaken it.',
     focus: 'Start at Level 1, <em>Deepen Self-Awareness</em>. Notice your pressure patterns. Name your triggers. Build a pause before reacting. Separate fact from interpretation. Ask, "What am I not seeing yet?"',
-    next: 'Your first breakthrough is likely to come from seeing your own operating system more clearly, before you change anything else.'
+    next: 'Your first breakthrough is likely to come from seeing your own operating system more clearly, before you change anything else.',
+    question: 'What are you protecting that is no longer worth protecting?'
   },
   tactical_survivor: {
     name: 'The Tactical Survivor',
@@ -15171,7 +15264,8 @@ const ARCHETYPES = {
     body: 'You are capable, practical, and effective in difficult situations. You make decisions, keep momentum, and solve immediate problems — your strongest practice, <em>{{topPractice}}</em>, is the engine of that effectiveness. Your result suggests, though, that short-term demands may be crowding out longer-term strategic thinking. You may prioritise control over understanding, optimise for delivery rather than direction, and carry too much yourself. <em>{{bottomPractice}}</em> is the practice that would most widen the time horizon you actually think in, and it is currently the quietest in your pattern.',
     risk: 'Your risk is tactical over-functioning. The strength of <em>{{topPractice}}</em> keeps you delivering, but you may become so good at surviving the current crisis that you unintentionally normalise crisis as the operating model.',
     focus: 'Strengthen Level 3, <em>Develop Strategic Capabilities</em>. Focus on future-orientation, creative options, and acting well in uncertainty. Move from "What needs fixing now?" to "What future are we creating through this decision?"',
-    next: 'Your growth edge is widening the time horizon you actually think in, from this week, to this decade.'
+    next: 'Your growth edge is widening the time horizon you actually think in, from this week, to this decade.',
+    question: 'What would change in your week if you trusted the system you have built to hold without you?'
   },
   hidden_drifter: {
     name: 'The Hidden Drifter',
@@ -15180,7 +15274,8 @@ const ARCHETYPES = {
     body: 'You are thoughtful, capable, and likely well-intentioned. You can see complexity, make decisions, and influence others, and your strongest practice, <em>{{topPractice}}</em>, gives the pattern its centre of gravity. But your result suggests a subtle risk: under pressure, your strengths can distort. Clarity becomes certainty. Decisiveness becomes control. Conviction becomes justification. Calm becomes detachment. In your version of this pattern, <em>{{bottomPractice}}</em> is where the drift most likely begins, the place where, when stakes rise, your composure can quietly lose its grip on what is actually happening. This is the most psychologically important result because it mirrors how strategic drift happens in real life: not through incompetence, but through intelligent people making apparently reasonable choices under pressure.',
     risk: 'Your risk is <em>justified drift</em>. You may continue making decisions that each seem defensible while the wider pattern moves quietly away from your stated values, and the drift is most likely to first surface in <em>{{bottomPractice}}</em>.',
     focus: 'Work across Levels 1 and 2 together, <em>Deepen Self-Awareness</em> and <em>Cultivate Open-Mindedness</em>. Notice yourself under pressure. Listen most carefully when you disagree. Test the assumptions you would rather keep. Invite challenge. Watch the moment when "necessary" becomes a dangerous word.',
-    next: 'Your fastest development will come from learning to notice earlier, before the pattern becomes the path.'
+    next: 'Your fastest development will come from learning to notice earlier, before the pattern becomes the path.',
+    question: 'Where have you most recently called a hard choice "necessary" when "inconvenient" would have been the more honest word?'
   },
   strategic_operator: {
     name: 'The Strategic Operator',
@@ -15189,7 +15284,8 @@ const ARCHETYPES = {
     body: 'Your result suggests you can remain clear, reflective, and effective in complex situations. You likely balance action with thought, confidence with humility, and direction with collaboration. Composure, thoughtful decisions, openness, alignment, and awareness of consequence are visible throughout your pattern, most cleanly in <em>{{topPractice}}</em>, your strongest signal. The interesting question is where you operate at less than your full capability. <em>{{bottomPractice}}</em> is the practice you reach for least, and that gap is the one most likely to keep your strategic instinct from travelling further than it already does.',
     risk: 'Your risk is not capability, it is consistency. <em>{{topPractice}}</em> is reliable in your pattern. Under enough pressure, though, even strong strategic operators drift into old patterns, most likely starting where <em>{{bottomPractice}}</em> sits.',
     focus: 'Strengthen Level 4, <em>Scale Your Impact</em>. Decision quality, stakeholder alignment, influence without over-control, collaboration under tension. Turning strategic insight into action that travels.',
-    next: 'Your growth edge is becoming more conscious, and more deliberate, about the impact you already have.'
+    next: 'Your growth edge is becoming more conscious, and more deliberate, about the impact you already have.',
+    question: 'Where is your steadiness costing the people around you growth they would otherwise be earning?'
   },
   force_multiplier: {
     name: 'The Force Multiplier',
@@ -15198,7 +15294,8 @@ const ARCHETYPES = {
     body: 'Your result suggests a highly integrated strategic profile. You can stay aware of yourself under pressure, regulate emotion without disconnecting from consequence, listen deeply, think critically, generate options in uncertainty, decide with courage and humility, and influence without domination, and <em>{{topPractice}}</em> is where that integration is most reliable. You hold complexity without collapsing into confusion or control. Even at this level, your pattern has a thinner edge: <em>{{bottomPractice}}</em> is the practice that lags relative to the others, not because it is weak in absolute terms, but because the rest of you has come up faster around it. That asymmetry is where your next development sits.',
     risk: 'Your risk is <em>over-reliance</em>. Others may look to you for clarity, judgement, and steadiness, drawn especially to your <em>{{topPractice}}</em>. Over time, that can quietly create dependency, unless you intentionally build capability in the system around you.',
     focus: 'Your next level is multiplication. Develop strategic capability in others. Design decision systems. Build collective intelligence. Create the conditions for others to hold uncertainty without panic.',
-    next: 'Your development edge is to become less necessary, by making the system more strategically capable.'
+    next: 'Your development edge is to become less necessary, by making the system more strategically capable.',
+    question: 'What capability in others have you been carrying that you could now stop carrying?'
   }
 };
 
@@ -17671,7 +17768,14 @@ function buildResultsPrintHTML(session) {
       <div class="pdf-prose" style="margin-bottom:18px">Returned without commentary. The point of these is to make your own pattern legible to you, not to score the writing.</div>
       ${reflectionBlock}
 
-      <div style="margin-top:32px;padding-top:24px;border-top:1px solid #d8d2c5">
+      ${arch.question ? `<div style="margin:32px 0 0;padding:30px 24px 26px;border-top:1px solid #ff481d;border-bottom:1px solid #ff481d;text-align:center;position:relative">
+        <div style="position:absolute;left:50%;top:-6px;transform:translateX(-50%);width:12px;height:12px;background:#ff481d;border-radius:50%"></div>
+        <div style="font-size:9px;letter-spacing:0.42em;text-transform:uppercase;color:#ff481d;font-weight:700;margin-bottom:14px">The question to sit with</div>
+        <div style="font-family:Georgia,'Times New Roman',serif;font-style:italic;font-size:18px;line-height:1.35;color:#0a0a0a;max-width:540px;margin:0 auto 12px;font-weight:400">${escapeHTML(arch.question)}</div>
+        <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#807868">From the watchout pattern of <span style="font-style:italic;text-transform:none;letter-spacing:0;color:#ff481d">${escapeHTML(arch.name)}</span></div>
+      </div>` : ''}
+
+      <div style="margin-top:28px;padding-top:24px;border-top:1px solid #d8d2c5">
         <div class="pdf-eyebrow" style="margin-bottom:10px">A closing note</div>
         <div class="pdf-prose">
           <p>Strategic capability is not fixed. It can be developed, deliberately, by anyone willing to notice their own pattern under pressure and choose differently inside it. Your result is a mirror, not a verdict.</p>
@@ -18154,10 +18258,21 @@ function showResults(isPreview) {
       </div>
 
       <!-- AT A GLANCE — strongest area and development edge, the two
-           level-scale numbers most readers reach for first. -->
+           level-scale numbers most readers reach for first.
+           Each card now also carries a coaching question tied to the user's
+           top + bottom PRACTICE inside that level — the question becomes
+           the most personalised line on the card. -->
       ${(() => {
         const h = buildLevelHighlight(R);
         if (!h) return '';
+        // Find the user's top + bottom practice for the practice questions
+        const sortedP = Object.entries(R.practices || {}).sort((a, b) => b[1] - a[1]);
+        const topP = sortedP[0];
+        const botP = sortedP[sortedP.length - 1];
+        const topPName = topP && FRAMEWORK.practices[topP[0]] ? FRAMEWORK.practices[topP[0]].name : '';
+        const topPQuestion = topP && FRAMEWORK.practices[topP[0]] ? FRAMEWORK.practices[topP[0]].question : '';
+        const botPName = botP && FRAMEWORK.practices[botP[0]] ? FRAMEWORK.practices[botP[0]].name : '';
+        const botPQuestion = botP && FRAMEWORK.practices[botP[0]] ? FRAMEWORK.practices[botP[0]].question : '';
         return `<div class="results-section glance-section">
           <div class="results-section-title">At a glance</div>
           <p class="why-intro">The two numbers that matter most for action — the part of the framework you operate from most reliably, and the one most likely to lift everything else if you move it next.</p>
@@ -18168,6 +18283,10 @@ function showResults(isPreview) {
               <div class="glance-score">${h.top.score}<span class="pct">%</span></div>
               <div class="glance-meta">${escapeHTML(h.top.number)}</div>
               <div class="glance-blurb">${escapeHTML(h.top.blurb)}</div>
+              ${topPQuestion ? `<div class="glance-question">
+                <div class="glance-question-eyebrow">A question for your strongest practice, ${escapeHTML(topPName)}</div>
+                <div class="glance-question-body">${escapeHTML(topPQuestion)}</div>
+              </div>` : ''}
             </div>
             <div class="glance-card glance-edge">
               <div class="glance-eyebrow">Development edge</div>
@@ -18175,6 +18294,10 @@ function showResults(isPreview) {
               <div class="glance-score">${h.bot.score}<span class="pct">%</span></div>
               <div class="glance-meta">${escapeHTML(h.bot.number)}</div>
               <div class="glance-blurb">${escapeHTML(h.bot.blurb)}</div>
+              ${botPQuestion ? `<div class="glance-question">
+                <div class="glance-question-eyebrow">A question for your development edge, ${escapeHTML(botPName)}</div>
+                <div class="glance-question-body">${escapeHTML(botPQuestion)}</div>
+              </div>` : ''}
             </div>
           </div>
         </div>`;
@@ -18294,6 +18417,17 @@ function showResults(isPreview) {
       </div>
 
       ${reflectionGridHTML}
+
+      <!-- ARCHETYPE QUESTION — the single coaching question to walk away
+           with. Positioned at the very end so it's the last thing the eye
+           lands on, sized as a feature element. Mirrors the voice of the
+           Watchouts which work because they're open-ended and slightly
+           uncomfortable in a productive way. -->
+      ${arch.question ? `<div class="archetype-question-block">
+        <div class="archetype-question-eyebrow">The question to sit with</div>
+        <div class="archetype-question-body">${escapeHTML(arch.question)}</div>
+        <div class="archetype-question-foot">From the watchout pattern of <em>${escapeHTML(arch.name)}</em>.</div>
+      </div>` : ''}
 
       <div class="cta-block">
         <div class="cta-line">Strategic capability is not fixed. It can be developed. Your result is a mirror, not a verdict.</div>
