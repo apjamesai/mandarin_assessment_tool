@@ -1283,6 +1283,77 @@ h3.display {
   .glance-card { padding: 22px 20px 20px; }
 }
 
+/* Development Focus — bridge from scores to recommendations. Visually
+   anchored with an amber stripe so the eye flows from this block down
+   into the Next Steps cards that follow. */
+.dev-bridge {
+  background: rgba(255, 90, 44, 0.04);
+  border-left: 2px solid var(--amber);
+  padding: 18px 22px 20px;
+  margin-bottom: 22px;
+  max-width: 880px;
+  position: relative;
+}
+.dev-bridge::after {
+  /* Stitch into the next block — a small connector line that visually
+     ties the bridge to the recommendations below it. */
+  content: "";
+  position: absolute;
+  left: -2px;
+  bottom: -16px;
+  width: 2px;
+  height: 16px;
+  background: var(--amber);
+  opacity: 0.35;
+}
+.dev-bridge-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.dev-bridge-sentence {
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+  font-weight: 300;
+}
+.dev-bridge-sentence em {
+  color: var(--amber);
+  font-style: italic;
+  font-family: var(--serif);
+  font-weight: 400;
+}
+.dev-prose {
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.65;
+  color: var(--ink-soft);
+  font-weight: 300;
+  max-width: 880px;
+  margin-bottom: 10px;
+}
+.dev-prose strong {
+  display: inline-block;
+  margin-right: 6px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+  vertical-align: middle;
+}
+.dev-prose em {
+  font-style: italic;
+  color: var(--ink);
+}
+
 .results-body em {
   font-family: var(--serif);
   font-style: italic;
@@ -17061,6 +17132,87 @@ function buildLevelHighlight(R) {
   };
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// "Why these recommendations" — a bridge that connects the user's scores
+// to the development actions that follow. Named the same kind of signal
+// as buildResultExplanation but in a forward-looking voice: strengths to
+// build from, tilt under pressure to compensate for. Returns a single
+// sentence in Charlie's voice ready to embed in the Development Focus
+// section, or null if the data is too sparse to form a useful bridge.
+function buildDevelopmentBridge(R) {
+  if (!R || !R.practices || !FRAMEWORK || !FRAMEWORK.practices) return null;
+  const P = R.practices;
+  const FW = FRAMEWORK.practices;
+  const sorted = Object.entries(P).sort((a, b) => b[1] - a[1]);
+  const t1 = sorted[0], t2 = sorted[1];
+  const b1 = sorted[sorted.length - 1];
+
+  // Strengths the recommendations build on
+  const strengths = [];
+  if (t1 && FW[t1[0]] && t1[1] >= 50) strengths.push(FW[t1[0]].name);
+  if (t2 && FW[t2[0]] && t2[1] >= 50) strengths.push(FW[t2[0]].name);
+
+  // Tilt under pressure — same logic as buildResultExplanation's tilt block,
+  // re-articulated as a forward-looking phrase (something the recommendations
+  // are calibrated to interrupt rather than describe).
+  const tilt = (() => {
+    const act = P.act_decisively || 0;
+    const crit = P.think_critically || 0;
+    const inf = P.influence_effortlessly || 0;
+    const list = P.listen_deeply || 0;
+    const self = P.understand_self || 0;
+    const embed = P.embed_practices || 0;
+    const em = P.master_emotions || 0;
+    const fut = P.future_focused || 0;
+    if (act - crit >= 18) return 'moving from question to answer faster than the situation may reward';
+    if (crit - act >= 18) return 'letting deliberation become delay when the trade-off is yours to make';
+    if (inf - list >= 22) return 'influencing on momentum rather than meaning';
+    if (self - embed >= 22) return 'noticing your patterns in moments rather than as rituals';
+    if (act - em >= 22) return 'acting before the emotion driving the action is fully seen';
+    if (fut - em >= 22) return 'holding the long view while present-tense steadiness lags';
+    return null;
+  })();
+
+  // Risk overlay as fallback tilt when no practice-combination triggers.
+  const RISK_HIGH = (typeof RULES !== 'undefined' && RULES && RULES.risk_mod_max != null)
+    ? RULES.risk_mod_max
+    : (typeof RULE_DEFAULTS !== 'undefined' ? RULE_DEFAULTS.risk_mod_max : 60);
+  let tiltText = tilt;
+  if (!tiltText) {
+    const risks = R.risks || {};
+    const topRisk = Object.entries(risks)
+      .filter(([_, v]) => Number.isFinite(v) && v > RISK_HIGH)
+      .sort((a, b) => b[1] - a[1])[0];
+    const RISK_TILT = {
+      control_bias: 'tightening control when pressure rises rather than opening it',
+      moral_drift: 'compromising the line quietly when urgency is loud',
+      detachment_pressure: 'going steady-and-inward in ways that can read as withdrawal'
+    };
+    if (topRisk && RISK_TILT[topRisk[0]]) tiltText = RISK_TILT[topRisk[0]];
+  }
+
+  // Weakest practice — used only when there's neither strengths nor tilt to
+  // anchor the bridge, so it never collapses to "we have nothing to tell you".
+  const weakest = (b1 && FW[b1[0]] && b1[1] < 65) ? FW[b1[0]].name : null;
+
+  // Compose the sentence. The bracketing varies based on which inputs fired.
+  let sentence;
+  if (strengths.length >= 2 && tiltText) {
+    sentence = `These actions have been selected because your responses suggest strengths in <em>${strengths[0]}</em> and <em>${strengths[1]}</em>, with a tendency under pressure toward <em>${tiltText}</em>. The focus that follows is calibrated to that specific combination, not to the archetype alone.`;
+  } else if (strengths.length === 1 && tiltText) {
+    sentence = `These actions have been selected because your responses suggest a clear strength in <em>${strengths[0]}</em>, with a tendency under pressure toward <em>${tiltText}</em>. The focus that follows is calibrated to that specific combination.`;
+  } else if (strengths.length >= 2) {
+    sentence = `These actions have been selected because your responses suggest strengths in <em>${strengths[0]}</em> and <em>${strengths[1]}</em>. The focus that follows is calibrated to extend that pattern into the levels where your signal is currently softer.`;
+  } else if (tiltText) {
+    sentence = `These actions have been selected because your responses suggest a tendency under pressure toward <em>${tiltText}</em>. The focus that follows is calibrated to interrupt that pattern before it shapes a decision you do not want to own later.`;
+  } else if (weakest) {
+    sentence = `These actions have been selected because your responses suggest <em>${weakest}</em> is the practice most likely to lift the rest of your pattern if you move it next.`;
+  } else {
+    return null;
+  }
+  return { sentence, strengths, tilt: tiltText, weakest };
+}
+
 function buildRankingMoments(session) {
   // session.answers is keyed by scene index; session.scenes_snapshot or
   // the live SCENES has the items. Live SCENES first; fall back if absent.
@@ -17474,6 +17626,17 @@ function buildResultsPrintHTML(session) {
       ${pageHeader('Your development focus')}
       <div class="pdf-eyebrow" style="margin-bottom:10px">Where the next gain comes from</div>
       <div class="pdf-h2">Focus and follow-through</div>
+
+      ${(() => {
+        // Bridge from scores to recommendations — explicit so the reader
+        // can see why these actions were chosen for them in particular.
+        const bridge = buildDevelopmentBridge({ practices: practices, levels: levels, risks: session.risks || {}, overall: session.overall || 0 });
+        if (!bridge) return '';
+        return `<div style="background:#fffaf2;border-left:3px solid #ff481d;padding:14px 18px;margin-bottom:16px">
+          <div class="pdf-tile-eyebrow" style="margin-bottom:6px">Why these recommendations</div>
+          <div class="pdf-prose" style="font-size:11.5px">${stripTags(bridge.sentence)}</div>
+        </div>`;
+      })()}
 
       ${arch.focus ? `<div style="background:#fff;border:1px solid #d8d2c5;padding:16px 18px;margin-bottom:14px">
         <div class="pdf-tile-eyebrow">Focus</div>
@@ -18105,11 +18268,22 @@ function showResults(isPreview) {
         </div>`;
       })()}
 
-      <!-- DEVELOPMENT FOCUS -->
+      <!-- DEVELOPMENT FOCUS — restructured per beta feedback: the
+           recommendations now lead with an explicit bridge from scores
+           to action, then the existing focus/next prose follows at a
+           tighter type scale (was display-48px, now body-15px). -->
       <div class="results-section">
         <div class="results-section-title">Your Development Focus</div>
-        <div class="results-section-display">${personaliseArchetypeText(arch.focus, R, { field: 'focus' })}</div>
-        <div class="results-body">${personaliseArchetypeText(arch.next, R, { field: 'next' })}</div>
+        ${(() => {
+          const bridge = buildDevelopmentBridge(R);
+          if (!bridge) return '';
+          return `<div class="dev-bridge">
+            <div class="dev-bridge-eyebrow">Why these recommendations</div>
+            <p class="dev-bridge-sentence">${bridge.sentence}</p>
+          </div>`;
+        })()}
+        <div class="dev-prose"><strong>Focus.</strong> ${personaliseArchetypeText(arch.focus, R, { field: 'focus' })}</div>
+        <div class="dev-prose"><strong>Your next breakthrough.</strong> ${personaliseArchetypeText(arch.next, R, { field: 'next' })}</div>
       </div>
 
       <!-- NEXT STEPS, ACTIONS TO TEST AND TRIAL -->
