@@ -3965,6 +3965,159 @@ body.resume-prompt-open { overflow: hidden; }
   color: #fff; border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.04);
 }
 
+/* Save & exit lightbox — same cinematic vocabulary as the resume prompt
+   so the two feel like one family, but with an email input + multi-step
+   transitions. Inherits the active skin's --amber accent so it adapts
+   per-skin without skin-specific CSS. */
+#saveExitOverlay {
+  position: fixed; inset: 0;
+  z-index: 9100;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  background: radial-gradient(circle at 50% 30%, rgba(20,12,4,0.96), rgba(0,0,0,0.98) 70%);
+  backdrop-filter: blur(8px);
+  animation: saveExitFade 0.35s var(--ease);
+}
+body.save-exit-open { overflow: hidden; }
+@keyframes saveExitFade { from { opacity: 0; } to { opacity: 1; } }
+#saveExitOverlay .save-exit-card {
+  max-width: 480px;
+  width: 100%;
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 36px 36px 30px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,72,29,0.12);
+}
+#saveExitOverlay .save-exit-card::before {
+  content: ""; position: absolute; left: 0; top: 0;
+  width: 56px; height: 3px; background: var(--amber);
+}
+#saveExitOverlay .save-exit-close {
+  position: absolute; top: 10px; right: 12px;
+  width: 30px; height: 30px;
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.45);
+  font-size: 24px; line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s var(--ease);
+}
+#saveExitOverlay .save-exit-close:hover { color: #fff; }
+#saveExitOverlay .save-exit-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+#saveExitOverlay .save-exit-title {
+  font-family: var(--sans);
+  font-size: 22px;
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 12px;
+}
+#saveExitOverlay .save-exit-sub {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 22px;
+}
+#saveExitOverlay .save-exit-sub strong { color: #fff; font-weight: 700; }
+#saveExitOverlay .save-exit-field {
+  margin-bottom: 22px;
+}
+#saveExitOverlay .save-exit-field label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+#saveExitOverlay .save-exit-field input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-family: var(--serif, var(--sans));
+  font-size: 18px;
+  padding: 6px 0 8px;
+  outline: none;
+  transition: border-color 0.25s var(--ease);
+}
+#saveExitOverlay .save-exit-field input::placeholder {
+  color: rgba(255,255,255,0.28);
+  font-style: italic;
+}
+#saveExitOverlay .save-exit-field input:focus { border-bottom-color: var(--amber); }
+#saveExitOverlay .save-exit-error {
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  color: #ff8a4a;
+  line-height: 1.4;
+}
+#saveExitOverlay .save-exit-actions {
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+#saveExitOverlay .save-exit-btn-primary,
+#saveExitOverlay .save-exit-btn-ghost {
+  flex: 1; min-width: 140px;
+  padding: 13px 16px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+#saveExitOverlay .save-exit-btn-primary {
+  background: var(--amber); color: #0a0a0a; border-color: var(--amber);
+}
+#saveExitOverlay .save-exit-btn-primary:hover { background: #ff5d35; border-color: #ff5d35; }
+#saveExitOverlay .save-exit-btn-ghost {
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border-color: rgba(255,255,255,0.18);
+}
+#saveExitOverlay .save-exit-btn-ghost:hover {
+  color: #fff; border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.04);
+}
+#saveExitOverlay .save-exit-spinner {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+#saveExitOverlay .save-exit-spinner span {
+  display: inline-block;
+  width: 28px; height: 28px;
+  border: 2px solid rgba(255,255,255,0.12);
+  border-top-color: var(--amber);
+  border-radius: 50%;
+  animation: saveExitSpin 0.9s linear infinite;
+}
+@keyframes saveExitSpin { to { transform: rotate(360deg); } }
+@media (max-width: 520px) {
+  #saveExitOverlay .save-exit-card { padding: 30px 24px 24px; }
+  #saveExitOverlay .save-exit-title { font-size: 19px; }
+  #saveExitOverlay .save-exit-actions { flex-direction: column-reverse; }
+  #saveExitOverlay .save-exit-btn-primary,
+  #saveExitOverlay .save-exit-btn-ghost { width: 100%; }
+}
+
 @media (max-width: 720px) {
   .admin-topbar { padding: 12px 18px; flex-wrap: wrap; gap: 8px; }
   .admin-body { padding: 24px 18px 60px; }
@@ -18768,23 +18921,95 @@ function showResumePrompt(payload) {
   };
 }
 
-// Save & exit button. Shown during questions (we hide it on the landing,
-// intake, results, and narrative beats). Posts to /api/sessions/resume-email.
-function openSaveAndExitDialog() {
-  if (!shouldAutoSave()) {
-    alert('Nothing to save yet — answer a question first.');
+// Save & exit lightbox — themed to match the cinematic surface (mirrors the
+// resume prompt overlay). Replaces window.prompt/alert with a custom modal
+// that uses the active skin's amber palette.
+//
+// Steps render in-place inside the same card:
+//   - 'form'    : email input + send button + cancel
+//   - 'sending' : neutral loading state, no actions
+//   - 'success' : confirmation + return-to-landing button
+//   - 'error'   : explains what went wrong, lets the user try again
+
+let __saveExitKeyHandler = null;
+
+function closeSaveExitDialog() {
+  const o = document.getElementById('saveExitOverlay');
+  if (o) o.remove();
+  document.body.classList.remove('save-exit-open');
+  if (__saveExitKeyHandler) {
+    document.removeEventListener('keydown', __saveExitKeyHandler);
+    __saveExitKeyHandler = null;
+  }
+}
+
+function renderSaveExitForm(error) {
+  const existingEmail = (USER && USER.email) || '';
+  const card = document.querySelector('#saveExitOverlay .save-exit-card');
+  if (!card) return;
+  card.innerHTML = `
+    <button class="save-exit-close" id="saveExitCloseBtn" aria-label="Close" type="button">&times;</button>
+    <div class="save-exit-eyebrow">Save &amp; continue later</div>
+    <div class="save-exit-title">Pick this up later, on any device.</div>
+    <div class="save-exit-sub">We'll email you a link back to this exact spot. The link is valid for 30 days and is private to the email you give us.</div>
+    <div class="save-exit-field">
+      <label for="saveExitEmail">Send the link to</label>
+      <input id="saveExitEmail" type="email" autocomplete="email" placeholder="your@email" value="${existingEmail.replace(/"/g, '&quot;')}">
+      ${error ? `<div class="save-exit-error">${error}</div>` : ''}
+    </div>
+    <div class="save-exit-actions">
+      <button class="save-exit-btn-primary" id="saveExitSendBtn" type="button">Send link</button>
+      <button class="save-exit-btn-ghost" id="saveExitCancelBtn" type="button">Cancel</button>
+    </div>
+  `;
+  document.getElementById('saveExitCloseBtn').onclick  = closeSaveExitDialog;
+  document.getElementById('saveExitCancelBtn').onclick = closeSaveExitDialog;
+  document.getElementById('saveExitSendBtn').onclick   = submitSaveExitDialog;
+  const input = document.getElementById('saveExitEmail');
+  input.focus();
+  input.select();
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') submitSaveExitDialog(); });
+}
+
+function renderSaveExitSending() {
+  const card = document.querySelector('#saveExitOverlay .save-exit-card');
+  if (!card) return;
+  card.innerHTML = `
+    <div class="save-exit-eyebrow">Save &amp; continue later</div>
+    <div class="save-exit-title">Sending your resume link&hellip;</div>
+    <div class="save-exit-sub">One moment.</div>
+    <div class="save-exit-spinner" aria-hidden="true"><span></span></div>
+  `;
+}
+
+function renderSaveExitSuccess(email) {
+  const card = document.querySelector('#saveExitOverlay .save-exit-card');
+  if (!card) return;
+  card.innerHTML = `
+    <button class="save-exit-close" id="saveExitCloseBtn" aria-label="Close" type="button">&times;</button>
+    <div class="save-exit-eyebrow">Saved</div>
+    <div class="save-exit-title">Check your inbox.</div>
+    <div class="save-exit-sub">We sent a resume link to <strong>${(email || '').replace(/</g,'&lt;')}</strong>. Open it on any device to pick up from this exact spot. The link is valid for 30 days.</div>
+    <div class="save-exit-actions">
+      <button class="save-exit-btn-primary" id="saveExitDoneBtn" type="button">Return to landing</button>
+    </div>
+  `;
+  document.getElementById('saveExitCloseBtn').onclick = closeSaveExitDialog;
+  document.getElementById('saveExitDoneBtn').onclick = () => {
+    closeSaveExitDialog();
+    try { window.location.href = '/'; } catch (e) {}
+  };
+}
+
+function submitSaveExitDialog() {
+  const input = document.getElementById('saveExitEmail');
+  const raw = input ? input.value : '';
+  const trimmed = (raw || '').trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+    renderSaveExitForm("That email doesn't look right. Try again.");
     return;
   }
-  const existingEmail = (USER && USER.email) || '';
-  const email = window.prompt(
-    "We'll email you a link so you can come back later from any device and pick up right where you left off.\n\nWhich email should we send it to?",
-    existingEmail
-  );
-  if (!email) return;
-  const trimmed = email.trim().toLowerCase();
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) { alert('That email looks invalid. Try again.'); return; }
-  // Make sure the latest state has been saved to the cloud BEFORE requesting
-  // the resume email — otherwise the server might mint a link to a stale UUID.
+  renderSaveExitSending();
   const payload = buildInProgressPayload();
   writeInProgressLocal(payload);
   // Force-flush the cloud save now (skip debounce), then send the email.
@@ -18799,16 +19024,49 @@ function openSaveAndExitDialog() {
       body: JSON.stringify({ uuid: payload.uuid, email: trimmed })
     });
   }).then(r => r.json()).then(j => {
-    if (j && j.ok) {
-      alert("Saved. Check your inbox at " + trimmed + " for a link back to this exact spot. The link is valid for 30 days.");
-      // Send them back to the brand landing so they don't sit on a stale assessment screen.
-      try { window.location.href = '/'; } catch (e) {}
-    } else {
-      alert("Couldn't send the resume email: " + ((j && j.error) || 'unknown error'));
-    }
+    if (j && j.ok) renderSaveExitSuccess(trimmed);
+    else renderSaveExitForm("Couldn't send the resume email: " + ((j && j.error) || 'unknown error'));
   }).catch(err => {
-    alert("Network error: " + err.message);
+    renderSaveExitForm("Network error: " + (err.message || 'check your connection and try again'));
   });
+}
+
+function openSaveAndExitDialog() {
+  // "Nothing to save yet" still uses the lightbox so we never fall back to
+  // a native alert. Brief, friendly, dismissable.
+  if (!shouldAutoSave()) {
+    const o = document.createElement('div');
+    o.id = 'saveExitOverlay';
+    o.innerHTML = `
+      <div class="save-exit-card">
+        <button class="save-exit-close" id="saveExitCloseBtn" aria-label="Close" type="button">&times;</button>
+        <div class="save-exit-eyebrow">Nothing to save yet</div>
+        <div class="save-exit-title">Answer one question first.</div>
+        <div class="save-exit-sub">Once you've started, Save &amp; exit will let you come back later from any device.</div>
+        <div class="save-exit-actions">
+          <button class="save-exit-btn-primary" id="saveExitDoneBtn" type="button">Got it</button>
+        </div>
+      </div>`;
+    document.body.appendChild(o);
+    document.body.classList.add('save-exit-open');
+    document.getElementById('saveExitCloseBtn').onclick = closeSaveExitDialog;
+    document.getElementById('saveExitDoneBtn').onclick  = closeSaveExitDialog;
+    __saveExitKeyHandler = (e) => { if (e.key === 'Escape') closeSaveExitDialog(); };
+    document.addEventListener('keydown', __saveExitKeyHandler);
+    return;
+  }
+  const overlay = document.createElement('div');
+  overlay.id = 'saveExitOverlay';
+  overlay.innerHTML = '<div class="save-exit-card"></div>';
+  // Clicking outside the card closes the dialog.
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeSaveExitDialog();
+  });
+  document.body.appendChild(overlay);
+  document.body.classList.add('save-exit-open');
+  __saveExitKeyHandler = (e) => { if (e.key === 'Escape') closeSaveExitDialog(); };
+  document.addEventListener('keydown', __saveExitKeyHandler);
+  renderSaveExitForm();
 }
 
 function markSessionSynced(id) {
