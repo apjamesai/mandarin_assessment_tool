@@ -164,6 +164,16 @@ export function buildInviteEmailHTML(email, inviteUrl, inviteCode) {
   `);
 }
 
+export function buildResumeEmailHTML(firstName, resumeUrl) {
+  return shellHTML(`
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#ff481d;margin-bottom:14px">Pick up where you left off</div>
+    <h1 style="font-size:28px;font-weight:900;line-height:1.05;letter-spacing:-0.015em;text-transform:uppercase;color:#0a0a0a;margin:0 0 14px">Welcome back, ${esc(firstName)}.</h1>
+    <p style="font-size:15px;line-height:1.6;color:#1c1c1c;margin:0 0 22px">You paused your Strategic Capability Assessment partway through. When you're ready, click below to resume from exactly the question you left on.</p>
+    <div style="margin:8px 0 22px">${ctaButton("Continue the assessment", resumeUrl)}</div>
+    <p style="font-size:12px;line-height:1.5;color:#807868;margin:14px 0 0">This resume link is valid for 30 days. Your saved progress is private to this email address and isn't visible to anyone else.</p>
+  `);
+}
+
 export function buildEmailTextSummary(session) {
   // Plaintext fallback for clients that block HTML.
   const overall = session.overall != null ? session.overall : 0;

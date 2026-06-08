@@ -11,6 +11,16 @@ A running record of changes to the Mandarin Strategic Capability Assessment, new
 
 ---
 
+## 2026-06-08
+
+### Save & resume mid-assessment
+**`(see latest)`** — Users can now pause partway through and pick up later. Three layers working together. (1) Auto-save: after every answer and reflection, the in-progress state is written to localStorage immediately and to a cloud blob at `progress/<uuid>.json` (debounced ~1.1s). (2) Passive resume prompt: when the assessment loads and a local save is present, a full-screen prompt asks "Continue where you left off, or start over?" before any cinematic landing fires. (3) Save & exit button: a fixed top-right control mints a `sub:'resume'` magic link via `/api/sessions/resume-email` and emails it to the user's intake address, so they can finish on any device by clicking the link. Resume blobs auto-expire 30 days after last write (checked on read, no sweeper needed). Completion clears both the local save and the cloud blob. Admin previews and viewer mode never auto-save.
+
+### Resume token type added
+**`(see latest)`** — New `sub:'resume'` magic-link variant in `auth.mjs` (30-day TTL by default). Carries a per-session UUID, not an email, so anyone with the link can resume that specific session but not impersonate the user.
+
+---
+
 ## 2026-06-04
 
 ### Duration estimate: 20 → 30 minutes

@@ -3843,6 +3843,128 @@ body.previewing .results-stage { padding-top: 14vh; }
 .admin-link.visible { opacity: 0.6; }
 .admin-link:hover { color: var(--amber); opacity: 1; }
 
+/* Save & exit button — fixed top-right, mirrors back-button styling.
+   Visible only when there's something worth saving (controlled by JS in
+   renderCurrent based on scene type + autosave-readiness). */
+.save-exit-btn {
+  position: fixed;
+  top: 2.4vh;
+  right: 4vw;
+  z-index: 55;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.62);
+  font-family: var(--sans);
+  font-size: 9.5px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+.save-exit-btn.visible { opacity: 1; pointer-events: auto; }
+.save-exit-btn:hover {
+  color: var(--amber);
+  border-color: rgba(255,72,29,0.55);
+  background: rgba(255,72,29,0.06);
+}
+.save-exit-btn svg { flex-shrink: 0; }
+body.admin-open .save-exit-btn,
+html.admin-mode .save-exit-btn,
+html.session-viewer .save-exit-btn { display: none !important; }
+@media (max-width: 720px) {
+  .save-exit-btn { padding: 6px 10px; font-size: 8.5px; letter-spacing: 0.22em; }
+  .save-exit-btn span { display: none; } /* icon only on small screens */
+  .save-exit-btn { gap: 0; }
+}
+
+/* Resume prompt overlay — full-screen modal that appears on assessment
+   bootstrap when there's a localStorage save to resume from. Matches the
+   cinematic palette (deep oxide background, amber accents). */
+#resumePromptOverlay {
+  position: fixed; inset: 0;
+  z-index: 9000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  background: radial-gradient(circle at 50% 30%, rgba(20,12,4,0.96), rgba(0,0,0,0.98) 70%);
+  backdrop-filter: blur(8px);
+  animation: resumeFade 0.5s var(--ease);
+}
+body.resume-prompt-open { overflow: hidden; }
+@keyframes resumeFade { from { opacity: 0; } to { opacity: 1; } }
+#resumePromptOverlay .resume-card {
+  max-width: 520px;
+  width: 100%;
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 38px 36px 32px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,72,29,0.12);
+}
+#resumePromptOverlay .resume-card::before {
+  content: ""; position: absolute; left: 0; top: 0;
+  width: 56px; height: 3px; background: var(--amber);
+}
+#resumePromptOverlay .resume-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+#resumePromptOverlay .resume-title {
+  font-family: var(--sans);
+  font-size: 26px;
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 14px;
+}
+#resumePromptOverlay .resume-sub {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 26px;
+}
+#resumePromptOverlay .resume-sub strong { color: #fff; font-weight: 700; }
+#resumePromptOverlay .resume-sub em { color: var(--amber); font-style: normal; font-weight: 600; }
+#resumePromptOverlay .resume-actions {
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+#resumePromptOverlay .resume-btn {
+  flex: 1; min-width: 180px;
+  padding: 14px 18px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+#resumePromptOverlay .resume-btn.primary {
+  background: var(--amber); color: #0a0a0a; border-color: var(--amber);
+}
+#resumePromptOverlay .resume-btn.primary:hover { background: #ff5d35; border-color: #ff5d35; }
+#resumePromptOverlay .resume-btn.ghost {
+  background: transparent; color: rgba(255,255,255,0.7);
+  border-color: rgba(255,255,255,0.18);
+}
+#resumePromptOverlay .resume-btn.ghost:hover {
+  color: #fff; border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.04);
+}
+
 @media (max-width: 720px) {
   .admin-topbar { padding: 12px 18px; flex-wrap: wrap; gap: 8px; }
   .admin-body { padding: 24px 18px 60px; }
@@ -4620,6 +4742,11 @@ body.has-back .location-tag { left: calc(4vw + 100px); }
 <button class="back-button" id="backButton" onclick="goBack()" title="Back" aria-label="Back">
   <svg viewBox="0 0 24 24" width="14" height="14"><path d="M14 6 L8 12 L14 18" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
   <span>Back</span>
+</button>
+
+<button class="save-exit-btn" id="saveExitBtn" onclick="openSaveAndExitDialog()" title="Save and continue later" aria-label="Save and exit">
+  <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path d="M5 4 h11 l3 3 v13 H5z M8 4 v5 h7 V4" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linejoin="round"/></svg>
+  <span>Save &amp; exit</span>
 </button>
 
 <!-- Builtin skins, auto-registered at boot. Add more <script type="application/json" id="builtin-skin-{id}"> blocks here. -->
@@ -15375,6 +15502,7 @@ function submitIntake() {
   USER.firstName = first;
   USER.lastName  = last;
   USER.email     = email;
+  try { scheduleInProgressSave(); } catch (e) {}
   next();
 }
 
@@ -15645,6 +15773,18 @@ function renderCurrent() {
     if (logoTR) logoTR.classList.remove('visible');
   }
 
+  // Save & Exit button — visible during questions, end-reflection, midpoints,
+  // and narrative beats once the user has actually started. Hidden on the
+  // landing/intake (nothing to save yet), crawl (full-bleed cinema), and
+  // results-launch (about to submit anyway).
+  const saveExitBtn = document.getElementById('saveExitBtn');
+  if (saveExitBtn) {
+    const inProgressScene = scene.type !== 'landing' && scene.type !== 'intake' &&
+                            scene.type !== 'crawl' && scene.type !== 'results-launch';
+    if (inProgressScene && shouldAutoSave()) saveExitBtn.classList.add('visible');
+    else saveExitBtn.classList.remove('visible');
+  }
+
   // Back button visibility
   const backBtn = document.getElementById('backButton');
   if (shouldShowBack(scene)) {
@@ -15901,20 +16041,24 @@ function submitAnswer() {
     STATE.answers[STATE.current] = STATE.pendingAnswer;
     STATE.pendingAnswer = undefined;
     rebuildScoresFromAnswers();
+    try { scheduleInProgressSave(); } catch (e) {}
     next();
   } else if (scene.kind === 'mc' && STATE.pendingAnswer !== undefined) {
     STATE.answers[STATE.current] = STATE.pendingAnswer;
     STATE.pendingAnswer = undefined;
     rebuildScoresFromAnswers();
+    try { scheduleInProgressSave(); } catch (e) {}
     next();
   } else if (scene.kind === 'ranking' && STATE.ranking && STATE.ranking.length === scene.items.length) {
     STATE.answers[STATE.current] = STATE.ranking.slice();
     STATE.ranking = [];
     rebuildScoresFromAnswers();
+    try { scheduleInProgressSave(); } catch (e) {}
     next();
   } else if (scene.kind === 'short-text') {
     const input = currentSceneScope().querySelector('#qInput');
     STATE.reflections['midtext_' + STATE.current] = input ? input.value.trim() : '';
+    try { scheduleInProgressSave(); } catch (e) {}
     next();
   }
 }
@@ -15923,6 +16067,7 @@ function submitReflection(key) {
   const input = currentSceneScope().querySelector('#qInput');
   const val = input ? input.value.trim() : '';
   STATE.reflections[key] = val;
+  try { scheduleInProgressSave(); } catch (e) {}
   next();
 }
 
@@ -18392,17 +18537,278 @@ function submitSessionToCloud(session) {
   // If the user arrived via an invite, attach the invite token so the server
   // can link this completion back to the inviter's record even when the
   // email used at intake differs from the one the invite was sent to.
-  // Token validation happens server-side via HMAC; we just pass it through.
+  // Also pass progress_uuid (if any) so the server clears the in-progress
+  // save now that the assessment is complete.
   let payload = session;
   try {
     const inviteToken = localStorage.getItem('mandarin.assessment.inviteToken') || '';
-    if (inviteToken) payload = Object.assign({}, session, { invite_token: inviteToken });
+    const progressUuid = localStorage.getItem(IN_PROGRESS_ID_KEY) || '';
+    const extras = {};
+    if (inviteToken) extras.invite_token = inviteToken;
+    if (progressUuid) extras.progress_uuid = progressUuid;
+    if (Object.keys(extras).length) payload = Object.assign({}, session, extras);
   } catch (e) {}
   return fetch('/api/sessions/submit', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
     body: JSON.stringify(payload)
-  }).then(r => r.ok).catch(() => false);
+  }).then(r => {
+    if (r.ok) clearInProgressSave();
+    return r.ok;
+  }).catch(() => false);
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// SAVE & RESUME
+// Three layers, working together:
+//   1) localStorage save after every change — fast, free, single-device.
+//   2) Cloud auto-save (debounced) to /api/sessions/progress — survives
+//      cache wipes, lets us resume by token from another device.
+//   3) Explicit "Save & exit" emails a magic resume link with sub:'resume'.
+// On completion (submitSessionToCloud), both the localStorage save and the
+// cloud progress blob are cleared so the resume prompt doesn't reappear.
+// ─────────────────────────────────────────────────────────────────────────
+
+const IN_PROGRESS_ID_KEY = 'mandarin.assessment.inProgressId';
+const IN_PROGRESS_STATE_KEY = 'mandarin.assessment.inProgressState';
+const SAVE_DEBOUNCE_MS = 1100;
+
+function newInProgressUuid() {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
+  return 'p-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
+}
+
+function getOrCreateInProgressId() {
+  try {
+    let uuid = localStorage.getItem(IN_PROGRESS_ID_KEY);
+    if (!uuid) {
+      uuid = newInProgressUuid();
+      localStorage.setItem(IN_PROGRESS_ID_KEY, uuid);
+    }
+    return uuid;
+  } catch (e) { return null; }
+}
+
+// The shape we persist locally + send to the server. Mirrors STATE/USER
+// plus the skin + the current scene index. Reflections, answers, and
+// intake fields all sit here.
+function buildInProgressPayload() {
+  return {
+    uuid: getOrCreateInProgressId(),
+    skin: STATE.currentSkin || '',
+    current_scene: STATE.current || 0,
+    answers: { ...(STATE.answers || {}) },
+    reflections: { ...(STATE.reflections || {}) },
+    intake_email: (USER && USER.email) || '',
+    first_name:   (USER && USER.firstName) || '',
+    last_name:    (USER && USER.lastName)  || '',
+    gender:       (USER && USER.gender)    || ''
+  };
+}
+
+function shouldAutoSave() {
+  // Don't auto-save during admin previews, view-session viewers, or before
+  // the user has actually started answering anything.
+  if (STATE.adminForceArchetype) return false;
+  if (window.__sessionViewerReturnTo) return false;
+  if (document.documentElement.classList.contains('admin-mode')) return false;
+  if (document.documentElement.classList.contains('session-viewer')) return false;
+  if (document.body.classList.contains('admin-open')) return false;
+  if (!STATE.current || STATE.current < 1) return false;
+  // Some answers OR some reflections must exist
+  const a = Object.keys(STATE.answers || {}).length;
+  const r = Object.keys(STATE.reflections || {}).length;
+  return (a + r) > 0;
+}
+
+function writeInProgressLocal(payload) {
+  try {
+    const wrapped = { saved_at: new Date().toISOString(), ...payload };
+    localStorage.setItem(IN_PROGRESS_STATE_KEY, JSON.stringify(wrapped));
+  } catch (e) {}
+}
+
+function writeInProgressCloud(payload) {
+  try {
+    let inviteToken = '';
+    try { inviteToken = localStorage.getItem('mandarin.assessment.inviteToken') || ''; } catch (e) {}
+    fetch('/api/sessions/progress', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(inviteToken ? Object.assign({}, payload, { invite_token: inviteToken }) : payload)
+    }).catch(() => {});
+  } catch (e) {}
+}
+
+let __saveTimer = null;
+function scheduleInProgressSave() {
+  if (!shouldAutoSave()) return;
+  const payload = buildInProgressPayload();
+  writeInProgressLocal(payload);
+  if (__saveTimer) clearTimeout(__saveTimer);
+  __saveTimer = setTimeout(() => writeInProgressCloud(payload), SAVE_DEBOUNCE_MS);
+}
+
+function clearInProgressSave() {
+  let uuid = null;
+  try { uuid = localStorage.getItem(IN_PROGRESS_ID_KEY); } catch (e) {}
+  try { localStorage.removeItem(IN_PROGRESS_ID_KEY); } catch (e) {}
+  try { localStorage.removeItem(IN_PROGRESS_STATE_KEY); } catch (e) {}
+  if (uuid) {
+    // Best-effort cloud cleanup. The server also cleans up on completion
+    // via the progress_uuid in submit-session — this DELETE is for the
+    // rarer case where the user manually started over.
+    try {
+      fetch('/api/sessions/progress?uuid=' + encodeURIComponent(uuid), { method: 'DELETE' }).catch(() => {});
+    } catch (e) {}
+  }
+}
+
+function readInProgressLocal() {
+  try {
+    const raw = localStorage.getItem(IN_PROGRESS_STATE_KEY);
+    if (!raw) return null;
+    return JSON.parse(raw);
+  } catch (e) { return null; }
+}
+
+function timeAgoLabel(iso) {
+  if (!iso) return 'recently';
+  const then = Date.parse(iso);
+  if (!Number.isFinite(then)) return 'recently';
+  const sec = Math.max(0, (Date.now() - then) / 1000);
+  if (sec < 90) return 'just now';
+  if (sec < 60 * 60) return Math.round(sec / 60) + ' minutes ago';
+  if (sec < 60 * 60 * 24) return Math.round(sec / 3600) + ' hour' + (sec < 7200 ? '' : 's') + ' ago';
+  return Math.round(sec / 86400) + ' day' + (sec < 86400 * 2 ? '' : 's') + ' ago';
+}
+
+// Pull the cloud-saved state (used on ?resume=<jwt> deep links). Returns
+// the progress payload or null on any failure.
+async function fetchCloudProgress(resumeToken) {
+  try {
+    const r = await fetch('/api/sessions/progress', {
+      method: 'GET',
+      headers: { 'authorization': 'Bearer ' + resumeToken }
+    });
+    if (!r.ok) return null;
+    const j = await r.json();
+    return (j && j.progress) || null;
+  } catch (e) { return null; }
+}
+
+// Apply a saved payload back into STATE/USER and jump to the right scene.
+// Returns true if the restore succeeded.
+function restoreFromInProgress(payload) {
+  if (!payload || typeof payload !== 'object') return false;
+  try {
+    // Skin first (resets SCENES references)
+    if (payload.skin && SKINS && SKINS[payload.skin] && STATE.currentSkin !== payload.skin) {
+      try { applySkin(payload.skin, { skipRender: true, preserveProgress: true }); } catch (e) {}
+    }
+    // Hydrate intake fields
+    if (payload.first_name) USER.firstName = payload.first_name;
+    if (payload.last_name)  USER.lastName  = payload.last_name;
+    if (payload.intake_email) USER.email   = payload.intake_email;
+    if (payload.gender) USER.gender = payload.gender;
+    // Hydrate answers + reflections
+    STATE.answers     = Object.assign({}, payload.answers || {});
+    STATE.reflections = Object.assign({}, payload.reflections || {});
+    // Recompute scores from the restored answers so the live R is correct.
+    try { rebuildScoresFromAnswers(); } catch (e) {}
+    // Jump to the scene the user was on
+    const scenes = Array.isArray(SCENES) ? SCENES.length : 0;
+    let target = Number.isFinite(payload.current_scene) ? payload.current_scene : 0;
+    if (target < 0) target = 0;
+    if (scenes > 0 && target >= scenes) target = scenes - 1;
+    STATE.current = target;
+    return true;
+  } catch (e) { return false; }
+}
+
+function showResumePrompt(payload) {
+  const firstName = (payload && payload.first_name) || 'there';
+  const ago = timeAgoLabel(payload && payload.saved_at);
+  const total = Array.isArray(SCENES) ? SCENES.length : 62;
+  const at = payload && Number.isFinite(payload.current_scene) ? payload.current_scene : 0;
+  const pct = total > 0 ? Math.min(99, Math.max(1, Math.round((at / total) * 100))) : 0;
+  const sceneLabel = (payload && payload.skin && SKINS && SKINS[payload.skin] && SKINS[payload.skin].name) || 'the assessment';
+
+  const overlay = document.createElement('div');
+  overlay.id = 'resumePromptOverlay';
+  overlay.innerHTML = `
+    <div class="resume-card">
+      <div class="resume-eyebrow">Welcome back</div>
+      <div class="resume-title">Pick up where you left off, ${firstName}.</div>
+      <div class="resume-sub">You're about <strong>${pct}%</strong> through <em>${sceneLabel}</em>. Saved ${ago}.</div>
+      <div class="resume-actions">
+        <button class="resume-btn primary" id="resumeContinueBtn">Continue from where I was</button>
+        <button class="resume-btn ghost" id="resumeRestartBtn">Start over</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  document.body.classList.add('resume-prompt-open');
+  document.getElementById('resumeContinueBtn').onclick = () => {
+    overlay.remove();
+    document.body.classList.remove('resume-prompt-open');
+    if (restoreFromInProgress(payload)) {
+      try { renderCurrent(); } catch (e) {}
+      // Fire the started beacon if not already fired this session
+      try { fireInviteStartedOnce(); } catch (e) {}
+    }
+  };
+  document.getElementById('resumeRestartBtn').onclick = () => {
+    if (!confirm('This will discard your saved progress and start the assessment from the beginning. Continue?')) return;
+    clearInProgressSave();
+    overlay.remove();
+    document.body.classList.remove('resume-prompt-open');
+    // Bootstrap proceeds normally — first render happens after overlay is gone
+    try { renderCurrent(); } catch (e) {}
+  };
+}
+
+// Save & exit button. Shown during questions (we hide it on the landing,
+// intake, results, and narrative beats). Posts to /api/sessions/resume-email.
+function openSaveAndExitDialog() {
+  if (!shouldAutoSave()) {
+    alert('Nothing to save yet — answer a question first.');
+    return;
+  }
+  const existingEmail = (USER && USER.email) || '';
+  const email = window.prompt(
+    "We'll email you a link so you can come back later from any device and pick up right where you left off.\n\nWhich email should we send it to?",
+    existingEmail
+  );
+  if (!email) return;
+  const trimmed = email.trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) { alert('That email looks invalid. Try again.'); return; }
+  // Make sure the latest state has been saved to the cloud BEFORE requesting
+  // the resume email — otherwise the server might mint a link to a stale UUID.
+  const payload = buildInProgressPayload();
+  writeInProgressLocal(payload);
+  // Force-flush the cloud save now (skip debounce), then send the email.
+  fetch('/api/sessions/progress', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(Object.assign({}, payload, { intake_email: trimmed }))
+  }).then(() => {
+    return fetch('/api/sessions/resume-email', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ uuid: payload.uuid, email: trimmed })
+    });
+  }).then(r => r.json()).then(j => {
+    if (j && j.ok) {
+      alert("Saved. Check your inbox at " + trimmed + " for a link back to this exact spot. The link is valid for 30 days.");
+      // Send them back to the brand landing so they don't sit on a stale assessment screen.
+      try { window.location.href = '/'; } catch (e) {}
+    } else {
+      alert("Couldn't send the resume email: " + ((j && j.error) || 'unknown error'));
+    }
+  }).catch(err => {
+    alert("Network error: " + err.message);
+  });
 }
 
 function markSessionSynced(id) {
@@ -19433,9 +19839,59 @@ if (isAdminEnabled()) {
 // Probe images first so any present PNGs are detected before first render.
 // Skip if we're showing a stored-session view; renderSessionResults handles
 // it directly and we don't want a brief flash of the cinematic landing.
+//
+// Save-and-resume integrates here in two paths:
+//   (a) ?resume=<jwt> deep link  → fetch cloud progress, restore, render
+//   (b) localStorage has an in-progress save → show resume prompt before
+//       first render so the cinematic landing doesn't flash first
 (function() {
   var qs = new URLSearchParams(window.location.search);
   if (qs.has('view-session')) return;
+
+  // (a) Magic-link resume from a different device.
+  const resumeToken = qs.get('resume');
+  if (resumeToken) {
+    // Strip ?resume from the URL so a back/forward navigation doesn't
+    // retrigger and so the token isn't sitting in browser history.
+    try {
+      qs.delete('resume');
+      const cleanQuery = qs.toString();
+      const cleanUrl = window.location.pathname + (cleanQuery ? '?' + cleanQuery : '') + window.location.hash;
+      window.history.replaceState(null, '', cleanUrl);
+    } catch (e) {}
+    probeAllImages().finally(() => {
+      fetchCloudProgress(resumeToken).then(payload => {
+        if (payload) {
+          // Adopt the cloud UUID so future auto-saves overwrite the same
+          // blob the user just resumed from (rather than starting a new one).
+          try {
+            localStorage.setItem(IN_PROGRESS_ID_KEY, payload.uuid);
+            localStorage.setItem(IN_PROGRESS_STATE_KEY, JSON.stringify(Object.assign({ saved_at: payload.last_saved_at }, payload)));
+          } catch (e) {}
+          if (restoreFromInProgress(payload)) {
+            try { renderCurrent(); } catch (e) {}
+            try { fireInviteStartedOnce(); } catch (e) {}
+            return;
+          }
+        }
+        // Couldn't restore — fall through to normal bootstrap with a notice.
+        alert("That resume link couldn't be loaded (expired or invalid). Starting fresh.");
+        renderCurrent();
+      });
+    });
+    return;
+  }
+
+  // (b) Same-device resume from localStorage.
+  const saved = readInProgressLocal();
+  if (saved && saved.uuid && (Object.keys(saved.answers || {}).length || Object.keys(saved.reflections || {}).length)) {
+    probeAllImages().finally(() => {
+      showResumePrompt(saved);
+      // Don't renderCurrent yet — the prompt handlers do it after the user picks.
+    });
+    return;
+  }
+
   probeAllImages().finally(() => {
     renderCurrent();
   });

@@ -36,9 +36,10 @@ export default async (req) => {
     ? body.id
     : crypto.randomUUID();
 
-  // Strip the invite_token before persisting the session blob — we don't
-  // want raw tokens sitting in the session record (small but real PII).
-  const { invite_token, ...sessionFields } = body;
+  // Strip the invite_token and progress_uuid before persisting the session
+  // blob — we don't want raw tokens or in-progress identifiers sitting in
+  // the completed session record.
+  const { invite_token, progress_uuid, ...sessionFields } = body;
   const session = { ...sessionFields, id, server_received_at: new Date().toISOString() };
   const serialized = JSON.stringify(session);
   if (serialized.length > MAX_PAYLOAD_BYTES) return json({ error: "Payload too large" }, 413);
@@ -102,6 +103,17 @@ export default async (req) => {
   } catch (e) {
     console.error("Failed to write session to Blobs:", e);
     return json({ error: "Storage write failed" }, 500);
+  }
+
+  // If this completion was the climax of a save-and-resume in-progress run,
+  // clear the progress blob so it doesn't linger. Non-fatal on failure.
+  if (typeof progress_uuid === "string" && /^[a-zA-Z0-9_-]{8,64}$/.test(progress_uuid)) {
+    try {
+      const store = getStore("sessions");
+      await store.delete(`progress/${progress_uuid}.json`);
+    } catch (e) {
+      console.warn("submit-session: failed to clear progress blob:", e.message);
+    }
   }
 
   return json({ ok: true, id }, 200);

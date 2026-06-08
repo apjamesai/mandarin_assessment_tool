@@ -155,6 +155,15 @@ export function mintInviteToken(email, secret, ttlDays = 90) {
   return signToken({ iss: TOKEN_ISSUER, sub: "invite", email: normaliseEmail(email), exp }, secret);
 }
 
+// Resume tokens carry a per-session UUID, not an email. Anyone holding the
+// token can fetch and continue that specific in-progress assessment. 30-day
+// TTL — long enough for the user to come back after a holiday, short enough
+// to be a reasonable privacy expiry for mid-flight reflections.
+export function mintResumeToken(uuid, secret, ttlDays = 30) {
+  const exp = Date.now() + ttlDays * 24 * 60 * 60 * 1000;
+  return signToken({ iss: TOKEN_ISSUER, sub: "resume", uuid: String(uuid || ""), exp }, secret);
+}
+
 export function requireMagicLinkSecret() {
   const s = Netlify.env.get("MAGIC_LINK_SECRET");
   if (!s) throw new Error("Server missing MAGIC_LINK_SECRET");
