@@ -164,6 +164,34 @@ export function buildInviteEmailHTML(email, inviteUrl, inviteCode) {
   `);
 }
 
+export function buildRetakeRequestEmailHTML(req) {
+  const fullName = [req.firstName, req.lastName].filter(Boolean).join(" ").trim();
+  // Soft-wrap on \n so paragraph breaks survive HTML rendering.
+  const reasonHTML = esc(req.reason).split(/\n+/).map(p => `<p style="margin:0 0 10px">${p}</p>`).join("");
+  return shellHTML(`
+    <div style="font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#ff481d;margin-bottom:14px">Retake request</div>
+    <h1 style="font-size:24px;font-weight:900;line-height:1.1;letter-spacing:-0.01em;text-transform:uppercase;color:#0a0a0a;margin:0 0 14px">${esc(fullName) || "A user"} has asked to retake the assessment</h1>
+    <p style="font-size:14px;color:#1c1c1c;margin:0 0 22px">Reply directly to this email to start the conversation. Their reply-to address is set on this message.</p>
+
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #d8d2c5;background:#fffaf2;margin-bottom:20px">
+      <tr><td style="padding:14px 18px">
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.28em;text-transform:uppercase;color:#ff481d;margin-bottom:6px">Their reason</div>
+        <div style="font-size:14px;line-height:1.55;color:#0a0a0a">${reasonHTML || "<em>(no reason provided)</em>"}</div>
+      </td></tr>
+    </table>
+
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="border:1px solid #d8d2c5;background:#fff;margin-bottom:20px">
+      <tr><td style="padding:6px 14px;border-bottom:1px solid #d8d2c5;font-size:11px;color:#807868;letter-spacing:0.08em;text-transform:uppercase">Name</td><td style="padding:6px 14px;border-bottom:1px solid #d8d2c5;font-size:13px;color:#0a0a0a">${esc(fullName) || "&mdash;"}</td></tr>
+      <tr><td style="padding:6px 14px;border-bottom:1px solid #d8d2c5;font-size:11px;color:#807868;letter-spacing:0.08em;text-transform:uppercase">Email</td><td style="padding:6px 14px;border-bottom:1px solid #d8d2c5;font-size:13px;color:#0a0a0a"><a href="mailto:${esc(req.email)}" style="color:#ff481d">${esc(req.email)}</a></td></tr>
+      <tr><td style="padding:6px 14px;border-bottom:1px solid #d8d2c5;font-size:11px;color:#807868;letter-spacing:0.08em;text-transform:uppercase">Current archetype</td><td style="padding:6px 14px;border-bottom:1px solid #d8d2c5;font-size:13px;color:#0a0a0a">${esc(req.archetype) || "&mdash;"}</td></tr>
+      <tr><td style="padding:6px 14px;border-bottom:1px solid #d8d2c5;font-size:11px;color:#807868;letter-spacing:0.08em;text-transform:uppercase">Completed at</td><td style="padding:6px 14px;border-bottom:1px solid #d8d2c5;font-size:13px;color:#0a0a0a">${esc(req.completedAt) || "&mdash;"}</td></tr>
+      <tr><td style="padding:6px 14px;font-size:11px;color:#807868;letter-spacing:0.08em;text-transform:uppercase">Requested at</td><td style="padding:6px 14px;font-size:13px;color:#0a0a0a">${esc(req.submittedAt)}</td></tr>
+    </table>
+
+    <p style="font-size:12px;line-height:1.5;color:#807868;margin:0">If you decide to grant the retake, the simplest path is to resend an invite from the Admin &raquo; Invites tab. This routes the user through a fresh entry without losing the prior session's data.</p>
+  `);
+}
+
 export function buildResumeEmailHTML(firstName, resumeUrl) {
   return shellHTML(`
     <div style="font-size:11px;font-weight:600;letter-spacing:0.3em;text-transform:uppercase;color:#ff481d;margin-bottom:14px">Pick up where you left off</div>

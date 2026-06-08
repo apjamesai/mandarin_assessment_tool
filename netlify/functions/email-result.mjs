@@ -106,6 +106,11 @@ export default async (req) => {
 
   return jsonResponse({
     ok: true,
+    // The freshly-minted magic token. Returned so the client can store it
+    // and use it for the "View all your assessments" dashboard button on
+    // the results page — saves the user from having to fish through their
+    // inbox immediately after finishing the assessment.
+    magic_token: token,
     user: { sent: !!userResult.ok, status: userResult.status },
     admin: adminResult ? { sent: !!adminResult.ok, status: adminResult.status, count: adminResult.count } : { sent: false, reason: "no recipients configured" }
   }, 200);

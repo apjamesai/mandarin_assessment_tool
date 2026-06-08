@@ -4528,6 +4528,194 @@ body.save-exit-open { overflow: hidden; }
   #saveExitOverlay .save-exit-btn-ghost { width: 100%; }
 }
 
+/* "Want to retake the assessment? Contact us." sub-link under the CTA
+   buttons on the results page. Small, understated, the orange anchor
+   is what makes it findable. */
+.cta-retake-link {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-mute);
+  margin-top: 18px;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+.cta-retake-link a {
+  color: var(--amber);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  margin-left: 4px;
+  font-weight: 500;
+}
+.cta-retake-link a:hover { color: #ff5d35; }
+
+/* Retake-request lightbox — same cinematic vocabulary as the Save & exit
+   dialog, just with two text fields and a textarea for the reason. */
+#retakeOverlay {
+  position: fixed; inset: 0;
+  z-index: 9200;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  background: radial-gradient(circle at 50% 30%, rgba(20,12,4,0.96), rgba(0,0,0,0.98) 70%);
+  backdrop-filter: blur(8px);
+  animation: retakeFade 0.35s var(--ease);
+}
+body.retake-open { overflow: hidden; }
+@keyframes retakeFade { from { opacity: 0; } to { opacity: 1; } }
+#retakeOverlay .retake-card {
+  max-width: 520px;
+  width: 100%;
+  background: #0a0a0a;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 36px 36px 30px;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,72,29,0.12);
+}
+#retakeOverlay .retake-card::before {
+  content: ""; position: absolute; left: 0; top: 0;
+  width: 56px; height: 3px; background: var(--amber);
+}
+#retakeOverlay .retake-close {
+  position: absolute; top: 10px; right: 12px;
+  width: 30px; height: 30px;
+  background: transparent; border: none;
+  color: rgba(255,255,255,0.45);
+  font-size: 24px; line-height: 1; cursor: pointer;
+  transition: color 0.2s var(--ease);
+}
+#retakeOverlay .retake-close:hover { color: #fff; }
+#retakeOverlay .retake-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--amber);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+#retakeOverlay .retake-title {
+  font-family: var(--sans);
+  font-size: 22px;
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 12px;
+}
+#retakeOverlay .retake-sub {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 22px;
+}
+#retakeOverlay .retake-sub strong { color: #fff; font-weight: 700; }
+#retakeOverlay .retake-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+#retakeOverlay .retake-field { margin-bottom: 16px; }
+#retakeOverlay .retake-row .retake-field { margin-bottom: 0; }
+#retakeOverlay .retake-field label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+#retakeOverlay .retake-field input,
+#retakeOverlay .retake-field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-family: var(--serif, var(--sans));
+  font-size: 16px;
+  padding: 6px 0 8px;
+  outline: none;
+  transition: border-color 0.25s var(--ease);
+  box-sizing: border-box;
+  resize: vertical;
+}
+#retakeOverlay .retake-field textarea {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  font-style: normal;
+  min-height: 88px;
+}
+#retakeOverlay .retake-field input::placeholder,
+#retakeOverlay .retake-field textarea::placeholder {
+  color: rgba(255,255,255,0.28);
+  font-style: italic;
+}
+#retakeOverlay .retake-field input:focus,
+#retakeOverlay .retake-field textarea:focus { border-bottom-color: var(--amber); }
+#retakeOverlay .retake-error {
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  color: #ff8a4a;
+  line-height: 1.4;
+}
+#retakeOverlay .retake-actions {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-top: 8px;
+}
+#retakeOverlay .retake-btn-primary,
+#retakeOverlay .retake-btn-ghost {
+  flex: 1; min-width: 140px;
+  padding: 13px 16px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+#retakeOverlay .retake-btn-primary {
+  background: var(--amber); color: #0a0a0a; border-color: var(--amber);
+}
+#retakeOverlay .retake-btn-primary:hover { background: #ff5d35; border-color: #ff5d35; }
+#retakeOverlay .retake-btn-ghost {
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border-color: rgba(255,255,255,0.18);
+}
+#retakeOverlay .retake-btn-ghost:hover {
+  color: #fff; border-color: rgba(255,255,255,0.45); background: rgba(255,255,255,0.04);
+}
+#retakeOverlay .retake-spinner {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+#retakeOverlay .retake-spinner span {
+  display: inline-block;
+  width: 28px; height: 28px;
+  border: 2px solid rgba(255,255,255,0.12);
+  border-top-color: var(--amber);
+  border-radius: 50%;
+  animation: saveExitSpin 0.9s linear infinite;
+}
+@media (max-width: 520px) {
+  #retakeOverlay .retake-card { padding: 30px 24px 24px; }
+  #retakeOverlay .retake-title { font-size: 19px; }
+  #retakeOverlay .retake-row { grid-template-columns: 1fr; }
+  #retakeOverlay .retake-actions { flex-direction: column-reverse; }
+  #retakeOverlay .retake-btn-primary,
+  #retakeOverlay .retake-btn-ghost { width: 100%; }
+}
+
 @media (max-width: 720px) {
   .admin-topbar { padding: 12px 18px; flex-wrap: wrap; gap: 8px; }
   .admin-body { padding: 24px 18px 60px; }
@@ -17915,6 +18103,9 @@ async function getResultsPDFBase64(session) {
 
 // Fire-and-forget email send after results show. Failure is silent, the
 // user keeps using the page; we surface no error UI on purpose.
+// On success we ALSO store the magic token the server returns so the
+// "View all your assessments" CTA on the results page can jump straight
+// to /me without forcing the user to fish the link out of their inbox.
 function autoEmailResult(session) {
   if (!session || !session.email) return;
   // Generate the PDF in the background, then POST.
@@ -17925,7 +18116,15 @@ function autoEmailResult(session) {
       body: JSON.stringify({ session, pdfBase64: pdfBase64 || '' })
     });
   }).then(r => {
-    if (!r || !r.ok) console.warn('autoEmailResult: server returned', r && r.status);
+    if (!r || !r.ok) { console.warn('autoEmailResult: server returned', r && r.status); return; }
+    return r.json().catch(() => null);
+  }).then(body => {
+    if (body && typeof body.magic_token === 'string' && body.magic_token) {
+      try {
+        localStorage.setItem('mandarin.user.magicToken', body.magic_token);
+        localStorage.setItem('mandarin.user.magicEmail', String((body.session && body.session.email) || (window.USER && USER.email) || '').toLowerCase());
+      } catch (_) {}
+    }
   }).catch(e => {
     console.warn('autoEmailResult failed:', e);
   });
@@ -18513,9 +18712,10 @@ function showResults(isPreview) {
 
       <div class="cta-block">
         <div class="cta-line">Strategic capability is not fixed. It can be developed. Your result is a mirror, not a verdict.</div>
-        <a class="cta-btn" onclick="restart()">Retake the assessment</a>
+        <a class="cta-btn" onclick="openUserDashboard()">View all your assessments</a>
         <a class="cta-btn ghost" onclick="downloadCurrentResultsPDF()">Download PDF report</a>
         <a class="cta-btn ghost" onclick="downloadJSON()">Download JSON profile</a>
+        <div class="cta-retake-link">Want to retake the assessment? <a onclick="openRetakeRequestDialog()">Contact us</a></div>
       </div>
 
     </div>
@@ -18621,6 +18821,174 @@ function downloadJSON() {
   const a = document.createElement('a');
   a.href = url; a.download = 'strategic-force-assessment-result.json'; a.click();
   URL.revokeObjectURL(url);
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// "View all your assessments" — opens /me using the magic token the
+// server returned to autoEmailResult after the user just submitted. If
+// no token is stored (e.g. admin preview of a non-real session, or an
+// older session before this code shipped), we fall back to telling the
+// user to check their inbox for the magic link.
+function openUserDashboard() {
+  let token = '';
+  try { token = localStorage.getItem('mandarin.user.magicToken') || ''; } catch (_) {}
+  if (token) {
+    // New tab so the user can come back to the results page if they want.
+    try { window.open('/me?token=' + encodeURIComponent(token), '_blank'); }
+    catch (e) { window.location.href = '/me?token=' + encodeURIComponent(token); }
+    return;
+  }
+  // Friendly fallback for the no-token case (admin previews, etc.)
+  openTinyNoticeDialog(
+    'Check your inbox',
+    "Your dashboard is on its way. We've just sent a magic link to <strong>" + escapeHTML((USER && USER.email) || 'your email') + "</strong> that opens your personal results page. Once it arrives, click it to see every assessment you've completed."
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// Retake-request lightbox — same vocabulary as the Save & exit dialog.
+// Steps: form → sending → success → form-with-error. POSTs to
+// /api/email/retake-request which emails the admins.
+let __retakeKeyHandler = null;
+function closeRetakeRequestDialog() {
+  const o = document.getElementById('retakeOverlay');
+  if (o) o.remove();
+  document.body.classList.remove('retake-open');
+  if (__retakeKeyHandler) {
+    document.removeEventListener('keydown', __retakeKeyHandler);
+    __retakeKeyHandler = null;
+  }
+}
+
+function renderRetakeForm(error) {
+  const card = document.querySelector('#retakeOverlay .retake-card');
+  if (!card) return;
+  const fn = (USER && USER.firstName) || '';
+  const ln = (USER && USER.lastName) || '';
+  const em = (USER && USER.email) || '';
+  card.innerHTML = `
+    <button class="retake-close" id="retakeCloseBtn" aria-label="Close" type="button">&times;</button>
+    <div class="retake-eyebrow">Contact us about a retake</div>
+    <div class="retake-title">Tell us why you'd like to retake.</div>
+    <div class="retake-sub">Your message goes straight to the Mandarin team. We read every one, and reply directly to your email.</div>
+    <div class="retake-row">
+      <div class="retake-field">
+        <label>First name</label>
+        <input id="retakeFirst" type="text" value="${escapeHTML(fn).replace(/"/g,'&quot;')}">
+      </div>
+      <div class="retake-field">
+        <label>Last name</label>
+        <input id="retakeLast" type="text" value="${escapeHTML(ln).replace(/"/g,'&quot;')}">
+      </div>
+    </div>
+    <div class="retake-field">
+      <label>Email</label>
+      <input id="retakeEmail" type="email" value="${escapeHTML(em).replace(/"/g,'&quot;')}">
+    </div>
+    <div class="retake-field">
+      <label>Reason for the retake</label>
+      <textarea id="retakeReason" rows="4" placeholder="A few sentences is plenty. What's changed since the first attempt, or what didn't feel right about the result?"></textarea>
+      ${error ? `<div class="retake-error">${escapeHTML(error)}</div>` : ''}
+    </div>
+    <div class="retake-actions">
+      <button class="retake-btn-primary" id="retakeSendBtn" type="button">Send to Mandarin</button>
+      <button class="retake-btn-ghost"   id="retakeCancelBtn" type="button">Cancel</button>
+    </div>
+  `;
+  document.getElementById('retakeCloseBtn').onclick  = closeRetakeRequestDialog;
+  document.getElementById('retakeCancelBtn').onclick = closeRetakeRequestDialog;
+  document.getElementById('retakeSendBtn').onclick   = submitRetakeRequest;
+  setTimeout(() => { const t = document.getElementById('retakeReason'); if (t) t.focus(); }, 80);
+}
+
+function renderRetakeSending() {
+  const card = document.querySelector('#retakeOverlay .retake-card');
+  if (!card) return;
+  card.innerHTML = `
+    <div class="retake-eyebrow">Contact us about a retake</div>
+    <div class="retake-title">Sending your message&hellip;</div>
+    <div class="retake-sub">One moment.</div>
+    <div class="retake-spinner" aria-hidden="true"><span></span></div>
+  `;
+}
+
+function renderRetakeSuccess() {
+  const card = document.querySelector('#retakeOverlay .retake-card');
+  if (!card) return;
+  card.innerHTML = `
+    <button class="retake-close" id="retakeCloseBtn" aria-label="Close" type="button">&times;</button>
+    <div class="retake-eyebrow">Sent</div>
+    <div class="retake-title">Thank you. We've got it.</div>
+    <div class="retake-sub">The Mandarin team will reply directly to your email, usually within a day or two. If a retake is granted, you'll receive a fresh invite link.</div>
+    <div class="retake-actions">
+      <button class="retake-btn-primary" id="retakeDoneBtn" type="button">Close</button>
+    </div>
+  `;
+  document.getElementById('retakeCloseBtn').onclick = closeRetakeRequestDialog;
+  document.getElementById('retakeDoneBtn').onclick = closeRetakeRequestDialog;
+}
+
+function submitRetakeRequest() {
+  const get = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+  const firstName = get('retakeFirst');
+  const lastName  = get('retakeLast');
+  const email     = get('retakeEmail').toLowerCase();
+  const reason    = get('retakeReason');
+  if (!firstName) { renderRetakeForm('Please add your first name.'); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { renderRetakeForm("That email doesn't look right."); return; }
+  if (reason.length < 10) { renderRetakeForm('A sentence or two helps us understand the request.'); return; }
+  renderRetakeSending();
+  const arch = window.__arch ? window.__arch.name : '';
+  const session = {
+    firstName, lastName, email, reason,
+    archetype_name: arch,
+    completed_at: new Date().toISOString()
+  };
+  fetch('/api/email/retake-request', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(session)
+  }).then(r => r.json()).then(j => {
+    if (j && j.ok) renderRetakeSuccess();
+    else renderRetakeForm("Could not send: " + ((j && j.error) || 'unknown error'));
+  }).catch(err => {
+    renderRetakeForm("Network error: " + (err.message || 'check your connection and try again'));
+  });
+}
+
+function openRetakeRequestDialog() {
+  const overlay = document.createElement('div');
+  overlay.id = 'retakeOverlay';
+  overlay.innerHTML = '<div class="retake-card"></div>';
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeRetakeRequestDialog(); });
+  document.body.appendChild(overlay);
+  document.body.classList.add('retake-open');
+  __retakeKeyHandler = (e) => { if (e.key === 'Escape') closeRetakeRequestDialog(); };
+  document.addEventListener('keydown', __retakeKeyHandler);
+  renderRetakeForm();
+}
+
+// Generic 'no action needed' notice using the same dialog vocabulary. Used
+// by openUserDashboard when no magic token is available.
+function openTinyNoticeDialog(titleHTML, bodyHTML) {
+  const overlay = document.createElement('div');
+  overlay.id = 'retakeOverlay';
+  overlay.innerHTML = `<div class="retake-card">
+    <button class="retake-close" id="retakeCloseBtn" aria-label="Close" type="button">&times;</button>
+    <div class="retake-eyebrow">Heads up</div>
+    <div class="retake-title">${titleHTML}</div>
+    <div class="retake-sub">${bodyHTML}</div>
+    <div class="retake-actions">
+      <button class="retake-btn-primary" id="retakeDoneBtn" type="button">Got it</button>
+    </div>
+  </div>`;
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeRetakeRequestDialog(); });
+  document.body.appendChild(overlay);
+  document.body.classList.add('retake-open');
+  __retakeKeyHandler = (e) => { if (e.key === 'Escape') closeRetakeRequestDialog(); };
+  document.addEventListener('keydown', __retakeKeyHandler);
+  document.getElementById('retakeCloseBtn').onclick = closeRetakeRequestDialog;
+  document.getElementById('retakeDoneBtn').onclick = closeRetakeRequestDialog;
 }
 
 // ─────────── ATMOSPHERE: cursor, glow, particles
